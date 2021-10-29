@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RESTful API v2 | IBAX ドキュメンテーション</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="apple-touch-icon" size="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" size="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" size="16x16" href="/favicon-16x16.png">
+    <link rel="mask-icon" color="#5bbad5" href="/safari-pinned-tab.svg">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="description" content="A Decentralized Commercial Cross-Chain infrastructure Network">
+    
+    <link rel="preload" href="/assets/css/0.styles.844a2aa8.css" as="style"><link rel="preload" href="/assets/js/app.61b025f2.js" as="script"><link rel="preload" href="/assets/js/2.6aa4ccad.js" as="script"><link rel="preload" href="/assets/js/85.172ceb4e.js" as="script"><link rel="prefetch" href="/assets/js/10.08482f57.js"><link rel="prefetch" href="/assets/js/100.19ffa9d1.js"><link rel="prefetch" href="/assets/js/101.a17a4847.js"><link rel="prefetch" href="/assets/js/102.723bab5b.js"><link rel="prefetch" href="/assets/js/103.dcede536.js"><link rel="prefetch" href="/assets/js/104.d56a4c22.js"><link rel="prefetch" href="/assets/js/105.2e1fc32d.js"><link rel="prefetch" href="/assets/js/106.f0d5d902.js"><link rel="prefetch" href="/assets/js/107.ef3504c7.js"><link rel="prefetch" href="/assets/js/108.6e20dcf7.js"><link rel="prefetch" href="/assets/js/109.21b04363.js"><link rel="prefetch" href="/assets/js/11.d011c109.js"><link rel="prefetch" href="/assets/js/110.2ea3149a.js"><link rel="prefetch" href="/assets/js/111.8fc45d89.js"><link rel="prefetch" href="/assets/js/112.38d23ad7.js"><link rel="prefetch" href="/assets/js/113.abcb7fc3.js"><link rel="prefetch" href="/assets/js/114.30ddb83f.js"><link rel="prefetch" href="/assets/js/115.04f0ad2a.js"><link rel="prefetch" href="/assets/js/116.a30aeff1.js"><link rel="prefetch" href="/assets/js/117.a2c63013.js"><link rel="prefetch" href="/assets/js/118.aa3deee7.js"><link rel="prefetch" href="/assets/js/12.0a55f41c.js"><link rel="prefetch" href="/assets/js/13.8f94af3b.js"><link rel="prefetch" href="/assets/js/14.b323c62f.js"><link rel="prefetch" href="/assets/js/15.c2262e36.js"><link rel="prefetch" href="/assets/js/16.51ac5124.js"><link rel="prefetch" href="/assets/js/17.1146e0d1.js"><link rel="prefetch" href="/assets/js/18.7621e4ec.js"><link rel="prefetch" href="/assets/js/19.159baebe.js"><link rel="prefetch" href="/assets/js/20.366e1f92.js"><link rel="prefetch" href="/assets/js/21.9705c140.js"><link rel="prefetch" href="/assets/js/22.61ef3688.js"><link rel="prefetch" href="/assets/js/23.76321f34.js"><link rel="prefetch" href="/assets/js/24.f4040ec4.js"><link rel="prefetch" href="/assets/js/25.60e92547.js"><link rel="prefetch" href="/assets/js/26.061fa338.js"><link rel="prefetch" href="/assets/js/27.1d448442.js"><link rel="prefetch" href="/assets/js/28.ef371faa.js"><link rel="prefetch" href="/assets/js/29.9cb10946.js"><link rel="prefetch" href="/assets/js/3.32d82b67.js"><link rel="prefetch" href="/assets/js/30.e1959a6c.js"><link rel="prefetch" href="/assets/js/31.48b16532.js"><link rel="prefetch" href="/assets/js/32.6d8b2c86.js"><link rel="prefetch" href="/assets/js/33.2840b8c2.js"><link rel="prefetch" href="/assets/js/34.cc0bda62.js"><link rel="prefetch" href="/assets/js/35.42e0589f.js"><link rel="prefetch" href="/assets/js/36.f82dc05b.js"><link rel="prefetch" href="/assets/js/37.eca22300.js"><link rel="prefetch" href="/assets/js/38.51c5adc6.js"><link rel="prefetch" href="/assets/js/39.51e61425.js"><link rel="prefetch" href="/assets/js/4.1e8ca44e.js"><link rel="prefetch" href="/assets/js/40.9c648e1f.js"><link rel="prefetch" href="/assets/js/41.89667f32.js"><link rel="prefetch" href="/assets/js/42.c171feae.js"><link rel="prefetch" href="/assets/js/43.6b1c8393.js"><link rel="prefetch" href="/assets/js/44.dde6597c.js"><link rel="prefetch" href="/assets/js/45.adfec81c.js"><link rel="prefetch" href="/assets/js/46.14fb8892.js"><link rel="prefetch" href="/assets/js/47.5f2ad56b.js"><link rel="prefetch" href="/assets/js/48.be4b7847.js"><link rel="prefetch" href="/assets/js/49.cc7ff52b.js"><link rel="prefetch" href="/assets/js/5.50ebf2b0.js"><link rel="prefetch" href="/assets/js/50.c1058c87.js"><link rel="prefetch" href="/assets/js/51.87dd6331.js"><link rel="prefetch" href="/assets/js/52.e101067c.js"><link rel="prefetch" href="/assets/js/53.62474001.js"><link rel="prefetch" href="/assets/js/54.b2b368d5.js"><link rel="prefetch" href="/assets/js/55.1b853509.js"><link rel="prefetch" href="/assets/js/56.7f18849f.js"><link rel="prefetch" href="/assets/js/57.18bc496e.js"><link rel="prefetch" href="/assets/js/58.6ba8bafa.js"><link rel="prefetch" href="/assets/js/59.2761494a.js"><link rel="prefetch" href="/assets/js/6.b72a56bb.js"><link rel="prefetch" href="/assets/js/60.c250ff55.js"><link rel="prefetch" href="/assets/js/61.f6941452.js"><link rel="prefetch" href="/assets/js/62.d59944b5.js"><link rel="prefetch" href="/assets/js/63.67e27658.js"><link rel="prefetch" href="/assets/js/64.020f36b3.js"><link rel="prefetch" href="/assets/js/65.5e19e22e.js"><link rel="prefetch" href="/assets/js/66.8312b734.js"><link rel="prefetch" href="/assets/js/67.b15c696f.js"><link rel="prefetch" href="/assets/js/68.184819b3.js"><link rel="prefetch" href="/assets/js/69.95d91fbb.js"><link rel="prefetch" href="/assets/js/7.b5d312ad.js"><link rel="prefetch" href="/assets/js/70.f7c603b6.js"><link rel="prefetch" href="/assets/js/71.fd4b92de.js"><link rel="prefetch" href="/assets/js/72.bf7d7fb9.js"><link rel="prefetch" href="/assets/js/73.c6806fbb.js"><link rel="prefetch" href="/assets/js/74.25aa64bd.js"><link rel="prefetch" href="/assets/js/75.ea2c1cf6.js"><link rel="prefetch" href="/assets/js/76.aa4ac646.js"><link rel="prefetch" href="/assets/js/77.73949b79.js"><link rel="prefetch" href="/assets/js/78.f9378a75.js"><link rel="prefetch" href="/assets/js/79.e5645697.js"><link rel="prefetch" href="/assets/js/8.571bb877.js"><link rel="prefetch" href="/assets/js/80.686aa57a.js"><link rel="prefetch" href="/assets/js/81.103613fd.js"><link rel="prefetch" href="/assets/js/82.714e22bd.js"><link rel="prefetch" href="/assets/js/83.d223b74e.js"><link rel="prefetch" href="/assets/js/84.4dfea1c8.js"><link rel="prefetch" href="/assets/js/86.cc96c0f8.js"><link rel="prefetch" href="/assets/js/87.5683f1a6.js"><link rel="prefetch" href="/assets/js/88.967a58b1.js"><link rel="prefetch" href="/assets/js/89.5411aaf4.js"><link rel="prefetch" href="/assets/js/9.c5900138.js"><link rel="prefetch" href="/assets/js/90.834f415c.js"><link rel="prefetch" href="/assets/js/91.ffe4ccac.js"><link rel="prefetch" href="/assets/js/92.77a35972.js"><link rel="prefetch" href="/assets/js/93.d3be9009.js"><link rel="prefetch" href="/assets/js/94.b0b7146d.js"><link rel="prefetch" href="/assets/js/95.8d024dbe.js"><link rel="prefetch" href="/assets/js/96.4e6463a4.js"><link rel="prefetch" href="/assets/js/97.00440597.js"><link rel="prefetch" href="/assets/js/98.b6bdfa87.js"><link rel="prefetch" href="/assets/js/99.e400417f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.844a2aa8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/ja/" class="home-link router-link-active"><img src="/ibax.ico" alt="IBAX ドキュメンテーション" class="logo"> <span class="site-name can-hide">IBAX ドキュメンテーション</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/ja/concepts/blockchain-layers.html" class="nav-link">
+  コンセプト
+</a></div><div class="nav-item"><a href="/ja/tutorials/app_tutorial.html" class="nav-link">
+  チュートリアル
+</a></div><div class="nav-item"><a href="/ja/topics/templates2.html" class="nav-link">
+  ガイド
+</a></div><div class="nav-item"><a href="/ja/reference/api2.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  リファレンス
+</a></div><div class="nav-item"><a href="/ja/howtos/deployment.html" class="nav-link">
+  展開
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="言語を選択する" class="dropdown-title"><span class="title">言語</span> <span class="arrow down"></span></button> <button type="button" aria-label="言語を選択する" class="mobile-dropdown-title"><span class="title">言語</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/reference/api2.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/de/reference/api2.html" class="nav-link">
+  Deutsch
+</a></li><li class="dropdown-item"><!----> <a href="/es/reference/api2.html" class="nav-link">
+  Español
+</a></li><li class="dropdown-item"><!----> <a href="/fr/reference/api2.html" class="nav-link">
+  Français
+</a></li><li class="dropdown-item"><!----> <a href="/it/reference/api2.html" class="nav-link">
+  Italiano
+</a></li><li class="dropdown-item"><!----> <a href="/ja/reference/api2.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  日本
+</a></li><li class="dropdown-item"><!----> <a href="/zh-CN/reference/api2.html" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <a href="https://github.com/IBAX-io" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/ja/concepts/blockchain-layers.html" class="nav-link">
+  コンセプト
+</a></div><div class="nav-item"><a href="/ja/tutorials/app_tutorial.html" class="nav-link">
+  チュートリアル
+</a></div><div class="nav-item"><a href="/ja/topics/templates2.html" class="nav-link">
+  ガイド
+</a></div><div class="nav-item"><a href="/ja/reference/api2.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  リファレンス
+</a></div><div class="nav-item"><a href="/ja/howtos/deployment.html" class="nav-link">
+  展開
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="言語を選択する" class="dropdown-title"><span class="title">言語</span> <span class="arrow down"></span></button> <button type="button" aria-label="言語を選択する" class="mobile-dropdown-title"><span class="title">言語</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/reference/api2.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/de/reference/api2.html" class="nav-link">
+  Deutsch
+</a></li><li class="dropdown-item"><!----> <a href="/es/reference/api2.html" class="nav-link">
+  Español
+</a></li><li class="dropdown-item"><!----> <a href="/fr/reference/api2.html" class="nav-link">
+  Français
+</a></li><li class="dropdown-item"><!----> <a href="/it/reference/api2.html" class="nav-link">
+  Italiano
+</a></li><li class="dropdown-item"><!----> <a href="/ja/reference/api2.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  日本
+</a></li><li class="dropdown-item"><!----> <a href="/zh-CN/reference/api2.html" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <a href="https://github.com/IBAX-io" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>リファレンス</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/ja/reference/api2.html" aria-current="page" class="active sidebar-link">RESTful API v2</a></li><li><a href="/ja/reference/desync_monitor.html" class="sidebar-link">Synchronized Monitoring Tool</a></li><li><a href="/ja/reference/platform-parameters.html" class="sidebar-link">Platform Parameters</a></li><li><a href="/ja/reference/backend-config.html" class="sidebar-link">Server Configuration File</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="restful-api-v2"><a href="#restful-api-v2" class="header-anchor">#</a> RESTful API v2</h1> <p>All functions provided by Weaver, including authentication, ecosystem data reception, error handling, database table operations, pages and contracts implementation are available by using IBAX's REST API.</p> <p>With REST API, developers can access all platform functions without using Weaver.</p> <p>API command calls are executed by addressing /api/v2/command/[param], where command is the command name and param is an additional parameter. The request parameters must be sent in the format Content-Type: x-www-form-urlencoded. The server response result is in JSON format.</p> <ul><li><p>Error handling
+–Error list</p></li> <li><p>Authentification
+–getuid
+–login</p></li> <li><p>Service commands
+–version</p></li> <li><p>Data request functions
+–balance
+–blocks
+–detailed_blocks
+–/data/{table}/{id}/{column}/{hash}
+–keyinfo</p></li> <li><p>Getting metrics
+–keys
+–blocks
+–transactions
+–ecosystems
+–fullnodes</p></li> <li><p>Ecosystem
+–ecosystemname
+–ecosystems
+–appparams/{appID}
+–appparam/{appid}/{name}
+–ecosystemparams
+–ecosystemparam/{name}
+–tables/[?limit=…&amp;offset=…]
+–table/{name}
+–list/{name}[?limit=…&amp;offset=…&amp;columns=…]
+–sections[?limit=…&amp;offset=…&amp;lang=]
+–row/{name}/{id}[?columns=]
+–systemparams
+–history/{name}/{id}
+–interface/{page|menu|block}/{name}</p></li> <li><p>Contract functions
+–contracts[?limit=…&amp;offset=…]
+–contract/{name}
+–sendTX
+–txstatus
+–txinfo/{hash}
+–txinfoMultiple/
+–/page/validators_count/{name}
+–content/menu|page/{name}
+–content/source/{name}
+–content/hash/{name}
+–content
+–maxblockid
+–block/{id}
+–avatar/{ecosystem}/{member}
+–config/centrifugo
+–updnotificator</p></li></ul> <p>Error handling</p> <p>If the request is executed successfully, a status code 200 is returned. If an error occurs, in addition to the error status, a JSON object with the following fields will be returned:</p> <ul><li><p>error
+Error identifier.</p></li> <li><p>msg
+The text returned in case of an error.</p></li> <li><p>params
+Additional parameters of the error, which may be contained in the text returned in case of an error.</p></li></ul> <p>Response example</p> <p>400 (Bad request)
+Content-Type: application/json
+{
+&quot;err&quot;: &quot;E_INVALIDWALLET&quot;,
+&quot;msg&quot;: &quot;Wallet 1234-5678-9012-3444-3488 is not valid&quot;,
+&quot;params&quot;: [&quot;1234-5678-9012-3444-3488&quot;]
+}
+Error list
+E_CONTRACT
+contract %s does not exist
+E_DBNIL</p> <p>Blank database</p> <p>E_DELETEDKEY</p> <p>Account address suspended</p> <p>E_ECOSYSTEM
+Ecosystem %d does not exist
+E_EMPTYPUBLIC
+Invalid public key for the account
+E_KEYNOTFOUND
+Account address not found
+E_HASHWRONG
+Wrong hash
+E_HASHNOTFOUND
+Has not found
+E_HEAVYPAGE
+Too many pages loaded
+E_INVALIDWALLET
+Invalid wallet address %s
+E_LIMITTXSIZE
+Size of a transaction out of limit
+E_NOTFOUND
+Page or menu content not found
+E_PARAMNOTFOUND
+Parameter not found
+E_PERMISSION
+No permission
+E_QUERY
+Database query error
+E_RECOVERED
+The API has an panic error.
+Return an error if has a panic error.
+It means you had encountered a bug to be located and fixed.
+E_SERVER
+Server error.
+If there is an error in the golang library function, it returns. The msg field contains the text in returned in case of an error.
+An E_SERVER error may occur in response to any command. If it occurs due to incorrect input parameters, you can change it to a related error. In another case, this error reports invalid operation or incorrect system configuration, which requires a more detailed investigation report.
+E_SIGNATURE
+Incorrect signature
+E_STATELOGIN
+%s is not a member of the ecosystem %s
+E_TABLENOTFOUND
+Table %s not found
+E_TOKENEXPIRED
+Session %s has expired
+E_UNAUTHORIZED
+Unauthorized.
+If not logged in or the session expired, any command except getuid, login will return an E_UNAUTHORIZED error.
+E_UNKNOWNUID
+Unknown UID
+E_UPDATING
+The node is updating the blockchain
+E_STOPPING
+The node has stopped
+E_NOTIMPLEMENTED
+Not yet implemented
+E_BANNED
+The account address is forbidden in %s
+E_CHECKROLE
+Access denied
+APIs unavailable to CLB</p> <p>Interface request unavailable to the CLB node:</p> <ul><li>metrics</li> <li>txinfo</li> <li>txinfoMultiple</li> <li>appparam</li> <li>appparams</li> <li>appcontent</li> <li>history</li> <li>balance</li> <li>block</li> <li>maxblockid</li> <li>blocks</li> <li>detailed_blocks</li> <li>ecosystemparams</li> <li>systemparams</li> <li>ecosystems</li> <li>ecosystemparam</li> <li>ecosystemname</li> <li>walletHistory</li> <li>tx_record
+Authentication
+JWT token is used for authentication. After receiving the JWT token, it must be placed in each request header: Authorization: Bearer TOKEN_HERE.
+getuid
+GET/ returns a unique value, signed it with the private key, and then sent it back to the server using the login command.
+To generate a temporary JWT token, you need to pass the token to Authorization when calling login.
+Request
+GET
+/api/v2/getuid
+Response</li> <li>uid
+Signature numbers.</li> <li>token
+Temporary token passed during login.
+Lifetime of a temporary token is 5 seconds.</li> <li>network_id
+Server identifier.
+If authorization is not required, the following information will be returned:</li> <li>expire
+Expiration time.</li> <li>ecosystem
+Ecosystem ID.</li> <li>key_id
+Account address.</li> <li>address
+Wallet address XXXX-XXXX-.....-XXXX.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;uid&quot;: &quot;4999317241855959593&quot;,
+&quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9........I7LY6XX4IP12En6nr8UPklE9U4qicqg3K9KEzGq_8zE&quot;
+&quot;network_id&quot;: &quot;4717243765193692211&quot;
+}
+Error response
+E_SERVER
+login
+POST/ Authentication of user identity.
+The getuid command should be called first to receive a unique value and sign it. The temporary JWT token of getuid needs to be passed in the request header.
+If the request was successful, the token received in the response is included in Authorization.
+Request
+POST
+/api/v2/login</li> <li>[ecosystem]
+Ecosystem ID.
+If not specified, ID of the first ecosystem by default.</li> <li>[expire]
+Lifetime of the JWT token, in seconds, 28800 by default.</li> <li>[pubkey]
+Hexadecimal public key of the account.</li> <li>[key_id]
+Account address XXXX-...-XXXX.
+Use this parameter when the public key is already stored in the blockchain. It cannot be used with the pubkey parameter at the same time.</li> <li>signature
+UID signature received through getuid.
+Response</li> <li>token
+JWT token.</li> <li>ecosystem
+Ecosystem ID.</li> <li>key_id
+Account address ID</li> <li>address
+Wallet address XXXX-XXXX-.....-XXXX.</li> <li>notify_key
+Notification ID.</li> <li>isnode
+Whether the account address is the owner of the node. Value: true,false.</li> <li>isowner
+Whether the account address is the creator of the ecosystem. Value: true,false.</li> <li>obs
+Whether the registered ecosystem is CLB. Value: true,false.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9........AHDRDqDFBoWEHw-9lfIcLobehvNEeIYBB4BIb5J72aQ&quot;
+&quot;ecosystem&quot;:&quot;1&quot;,
+&quot;key_id&quot;:&quot;54321&quot;,
+&quot;address&quot;: &quot;4321-....-2223&quot;
+}
+Error response
+E_SERVER, E_UNKNOWNUID, E_SIGNATURE, E_STATELOGIN, E_EMPTYPUBLIC
+Service commands
+version
+GET/ Returns the version of the current server.
+Login authorization is not required for this request.
+Request
+GET
+/api/v2/version
+Response example
+200 (OK)
+Content-Type: application/json
+&quot;1.2.6&quot;
+Data request functions
+balance
+GET/ Request the balance of the account address in the current ecosystem.
+Request
+GET
+/api/v2/balance/{wallet}</li> <li>wallet
+Address identifier. You can specify it in any format int64, uint64, XXXX-...-XXXX. This address will be queried in the ecosystem the user is currently logged in.
+Response</li> <li>amount
+Account balance of the smallest unit.</li> <li>money
+Account balance.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;amount&quot;: &quot;877450000000000&quot;,
+&quot;money&quot;: &quot;877.45&quot;
+}
+Error response
+E_SERVER, E_INVALIDWALLET
+blocks
+GET/ returns a list containing additional information related to transactions in each block.
+Login authorization is not required for this request.
+Request
+GET
+/api/v2/blocks</li> <li>block_id
+Height of the starting block to be queried.</li> <li>count
+Number of blocks
+Response</li> <li>Block height
+The list of transactions in the block and the additional information of each transaction:
+–hash
+Transaction hash.
+–contract_name
+Contract name.
+–params
+An array of contract parameters.
+–key_id
+For the first block, account address of the first block that signed the transaction.
+For all other blocks, address of the account that signed the transaction.
+Response example
+200 (OK)
+Content-Type: application/json
+{&quot;1&quot;:
+[{&quot;hash&quot;:&quot;O1LhrjKznrYa0z5n5cej6p5Y1j5E9v/oV27VPRJmfgo=&quot;,
+&quot;contract_name&quot;:&quot;&quot;,
+&quot;params&quot;:null,
+&quot;key_id&quot;:-118432674655542910}]
+}
+Error response
+E_SERVER, E_NOTFOUND
+detailed_blocks
+GET/ returns a list containing detailed additional information related to transactions in each block.
+Login authorization is not required for this request.
+Request
+GET
+/api/v2/detailed_blocks
+Response</li> <li>Block height
+–Block header
+The block header contains the following fields:</li> <li>block_id
+Block height.</li> <li>time
+Block generation timestamp.</li> <li>key_id
+The address of the account that signed the block.</li> <li>node_position
+The position of the node that generates the block in the list of honor nodes.</li> <li>version
+Block structure version.
+–hash
+Block hash.
+–node_position
+Position of the node that generated the block in the list of honor nodes.
+–key_id
+Address of the account that signed the block.
+–time
+Block generation timestamp.
+–tx_count
+Number of transactions in the block.
+–rollback_hash
+Block rollback hash.
+–mrkl_root
+Merkel tree of transactions of the block.
+–bin_data
+Serialization of the block header, all transactions in the block, the previous block hash, and the private key of the node that generated the block.
+–sys_update
+Does the block contain transactions to update system parameters.
+–Transaction
+The list of transactions in the block and the additional information of each transaction:</li> <li>hash
+Transaction hash.</li> <li>contract_name
+Contract name.</li> <li>params
+Contract parameters.</li> <li>key_id
+Address of the account that signed the transaction.</li> <li>time
+Transaction generation timestamp.</li> <li>type
+Transaction type.
+Response example
+200 (OK)
+Content-Type: application/json
+{&quot;1&quot;:
+{&quot;header&quot;:
+{&quot;block_id&quot;:1,
+&quot;time&quot;:1551069320,
+&quot;ecosystem_id&quot;:0,
+&quot;key_id&quot;:-118432674655542910,
+&quot;node_position&quot;:0,
+&quot;version&quot;:1},
+&quot;hash&quot;:&quot;3NxhvswmpGvRdw8HdkrniI5Mx/q14Z4d5hwGKMp6KHI=&quot;,
+&quot;ecosystem_id&quot;:0,
+&quot;node_position&quot;:0,
+&quot;key_id&quot;:-118432674655542910,
+&quot;time&quot;:1551069320,
+&quot;tx_count&quot;:1,
+&quot;rollbacks_hash&quot;:&quot;I2JHugpbdMNxBdNW1Uc0XnbiXFtzB74yD9AK5YI5i/k=&quot;,
+&quot;mrkl_root&quot;:&quot;MTZiMjY2NGJjOWY3MDAyODlhYjkyMDVhZDQwNDgxNzkxMjY1MWJjNjczNDkyZjk5MWI2Y2JkMjAxNTIwYjUyYg==&quot;,
+&quot;bin_data&quot;:null,
+&quot;sys_update&quot;:false,
+&quot;gen_block&quot;:false,
+&quot;stop_count&quot;:0,
+&quot;transactions&quot;:[
+{&quot;hash&quot;:&quot;O1LhrjKznrYa0z5n5cej6p5Y1j5E9v/oV27VPRJmfgo=&quot;,&quot;contract_name&quot;:&quot;&quot;,&quot;params&quot;:null,&quot;key_id&quot;:0,&quot;time&quot;:0,&quot;type&quot;:0}]
+}
+}
+Error response
+E_SERVER, E_NOTFOUND
+/data/{table}/{id}/{column}/{hash}
+GET/ If the specified hash matches the data in the specified table, field and record, this request will return the data. Otherwise, an error is returned.
+Login authorization is not required for this request.
+Request
+GET
+/data/{table}/{id}/{column}/{hash}</li> <li>table
+Table name.</li> <li>id
+Record ID.</li> <li>column
+Field name.</li> <li>hash
+Hash of the requested data.
+Response
+Binary data
+keyinfo
+GET/ returns a list of ecosystems, including roles registered with the specified address.
+Login authorization is not required for this request.
+Request
+GET
+/api/v2/keyinfo/{key_id}</li> <li>key_id
+Address identifier, you can specify it any format int64, uint64, XXXX-...-XXXX.
+Request queried in all ecosystems.
+Response</li> <li>ecosystem
+Ecosystem ID.</li> <li>name
+Ecosystem name.</li> <li>roles
+A list of roles with the id and name fields.
+Response example
+200 (OK)
+Content-Type: application/json
+[{
+&quot;ecosystem&quot;:&quot;1&quot;,
+&quot;name&quot;:&quot;platform ecosystem&quot;,
+&quot;roles&quot;:[{&quot;id&quot;:&quot;1&quot;,&quot;name&quot;:&quot;Admin&quot;},{&quot;id&quot;:&quot;2&quot;,&quot;name&quot;:&quot;Developer&quot;}]
+}]
+Error response
+E_SERVER, E_INVALIDWALLET
+Get metrics
+keys
+GET/ Returns the number of account addresses.
+Request
+GET
+/api/v2/metrics/keys
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;count&quot;: 28
+}
+blocks
+GET/ Returns the number of blocks.
+Request
+GET
+/api/v2/metrics/blocks
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;count&quot;: 28
+}
+transactions
+GET/ Returns the total number of transactions.
+Request
+GET
+/api/v2/metrics/transactions
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;count&quot;: 28
+}
+ecosystems
+GET/ Returns the number of ecosystems.
+Request
+GET
+/api/v2/metrics/ecosystems
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;count&quot;: 28
+}
+fullnodes
+GET/ returns the number of honor nodes.
+GET
+/api/v2/metrics/fullnodes
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;count&quot;: 28
+}
+Ecosystem
+ecosystemname
+GET/ returns the name of the ecosystem by its identifier.
+Login authorization is not required for this request.
+GET
+/api/v2/ecosystemname?id=..</li> <li>id
+Ecosystem ID.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;ecosystem_name&quot;: &quot;platform_ecosystem&quot;
+}
+Error response
+E_PARAMNOTFOUND
+ecosystems
+GET/ Returns the number of ecosystems.
+GET
+/api/v2/ecosystems/
+Response</li> <li>number
+The number of ecosystems installed.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;number&quot;: 100,
+}
+appparams/{appID}
+GET/ Returns a list of application parameters in the current or specified ecosystem.
+Request
+GET
+/api/v2/appparams</li> <li>[appid]
+Application ID.</li> <li>[ecosystem]
+Ecosystem ID. If not specified, the parameters of the current ecosystem will be returned.</li> <li>[names]
+List of parameters received.
+You can specify the list of parameter names separated by commas. For example: /api/v2/appparams/1?names=name,mypar.
+Response</li> <li>list
+Each element in the array contains the following parameters:
+–name, parameter name;
+–value, parameter value;
+–conditions, permission to change parameters.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;list&quot;: [{
+&quot;name&quot;: &quot;name&quot;,
+&quot;value&quot;: &quot;MyState&quot;,
+&quot;conditions&quot;: &quot;true&quot;,
+},
+{
+&quot;name&quot;: &quot;mypar&quot;,
+&quot;value&quot;: &quot;My value&quot;,
+&quot;conditions&quot;: &quot;true&quot;,
+},
+]
+}
+Error response
+E_ECOSYSTEM
+appparam/{appid}/{name}
+GET/ Returns information related to the parameter {name} of the application {appid} in the current or specified ecosystem.
+Request
+GET
+/api/v2/appparam/{appid}/{name}[?ecosystem=1]</li> <li>appid
+Application ID.</li> <li>name
+Name of the parameter requested.</li> <li>[ecosystem]
+Ecosystem ID (optional parameter).
+Returns the current ecosystem by default.
+Response</li> <li>id
+Parameter ID.</li> <li>name
+Parameter name.</li> <li>value
+Parameter value.</li> <li>conditions
+Permission to change parameters.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;id&quot;: &quot;10&quot;,
+&quot;name&quot;: &quot;par&quot;,
+&quot;value&quot;: &quot;My value&quot;,
+&quot;conditions&quot;: &quot;true&quot;
+}
+Error response
+E_ECOSYSTEM, E_PARAMNOTFOUND
+ecosystemparams
+GET/ Returns the list of ecosystem parameters.
+Request
+GET
+/api/v2/ecosystemparams/[?ecosystem=...&amp;names=...]</li> <li>[ecosystem]
+Ecosystem ID. If not specified, the current ecosystem ID will be returned.</li> <li>[names]
+List of request parameters, separated by commas.
+For example: /api/v2/ecosystemparams/?names=name,currency,logo*.
+Response</li> <li>list
+Each element in the array contains the following parameters:
+–name
+Parameter name.
+–value
+Parameter value.
+–conditions
+Permission to change parameters.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;list&quot;: [{
+&quot;name&quot;: &quot;name&quot;,
+&quot;value&quot;: &quot;MyState&quot;,
+&quot;conditions&quot;: &quot;true&quot;,
+},
+{
+&quot;name&quot;: &quot;currency&quot;,
+&quot;value&quot;: &quot;MY&quot;,
+&quot;conditions&quot;: &quot;true&quot;,
+},
+]
+}
+Error response
+E_ECOSYSTEM
+ecosystemparam/{name}
+GET/ Returns information related to the parameter {name} in the current or specified ecosystem.
+Request
+GET
+/api/v2/ecosystemparam/{name}[?ecosystem=1]</li> <li>name
+Name of the request parameter.</li> <li>[ecosystem]
+You can specify the ecosystem ID. By default, the current ecosystem ID is returned.
+Response</li> <li>name
+Parameter name.</li> <li>value
+Parameter value.</li> <li>conditions
+Permission to change the parameters.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;name&quot;: &quot;currency&quot;,
+&quot;value&quot;: &quot;MYCUR&quot;,
+&quot;conditions&quot;: &quot;true&quot;
+}
+Error response
+E_ECOSYSTEM
+tables/[?limit=…&amp;offset=…]
+GET/ Returns the list of tables of the current ecosystem, where you can set the offset and the number of entries.
+Request</li> <li>[limit]
+Number of entries, 25 by default.</li> <li>[offset]
+Offset, 0 by default.
+GET
+/api/v2/tables
+Response</li> <li>count
+Total entries in the table.</li> <li>list
+Each element in the array contains the following parameters:
+–name
+Table name without the prefix.
+–count
+Number of entries in the table.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;count&quot;: &quot;100&quot;
+&quot;list&quot;: [{
+&quot;name&quot;: &quot;accounts&quot;,
+&quot;count&quot;: &quot;10&quot;,
+},
+{
+&quot;name&quot;: &quot;citizens&quot;,
+&quot;count&quot;: &quot;5&quot;,
+},
+]
+}
+table/{name}
+GET/ Returns information related to the table requested by the current ecosystem.
+Returns the following field information:</li> <li>name
+Table name.</li> <li>insert
+Permission to add new entries.</li> <li>new_column
+Permission to add new fields.</li> <li>update
+Permission to change entries.</li> <li>columns
+An array of field related information:
+–name
+Field name.
+–type
+Field data type.
+–perm
+Permission to change the value of this field.
+Request
+GET
+/api/v2/table/mytable</li> <li>name
+Table name without the ecosystem prefix.
+Response</li> <li>name
+Table name without the ecosystem prefix.</li> <li>insert
+Permission to add new entries.</li> <li>new_column
+Permission to add new fields.</li> <li>update
+Permission to change entries.</li> <li>conditions
+Permission to change table configuration.</li> <li>columns
+An array of field related information:
+–name
+Field name.
+–type
+Field data type.
+–perm
+Permission to change the value of this field.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;name&quot;: &quot;mytable&quot;,
+&quot;insert&quot;: &quot;ContractConditions(<code>MainCondition</code>)&quot;,
+&quot;new_column&quot;: &quot;ContractConditions(<code>MainCondition</code>)&quot;,
+&quot;update&quot;: &quot;ContractConditions(<code>MainCondition</code>)&quot;,
+&quot;conditions&quot;: &quot;ContractConditions(<code>MainCondition</code>)&quot;,
+&quot;columns&quot;: [{&quot;name&quot;: &quot;mynum&quot;, &quot;type&quot;: &quot;number&quot;, &quot;perm&quot;:&quot;ContractConditions(<code>MainCondition</code>)&quot; },
+{&quot;name&quot;: &quot;mytext&quot;, &quot;type&quot;: &quot;text&quot;, &quot;perm&quot;:&quot;ContractConditions(<code>MainCondition</code>)&quot; }
+]
+}
+Error response
+E_TABLENOTFOUND
+list/{name}[?limit=…&amp;offset=…&amp;columns=…]
+GET/ Returns the list of specified table entries in the current ecosystem, and where you can set the offset and the number of entries.
+Request</li> <li>name
+Table name.</li> <li>[limit]
+The number of entries, 25 by default.</li> <li>[offset]
+Offset, 0 by default.</li> <li>[columns]
+List of requested columns, separated by commas. If not specified, all columns will be returned. In call cases, the id column is returned.
+GET
+/api/v2/list/mytable?columns=name
+Response</li> <li>count
+Total entries.</li> <li>list
+Each element in the array contains the following parameters:
+–id
+Entry ID.
+–Sequence of requested columns.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;count&quot;: &quot;10&quot;
+&quot;list&quot;: [{
+&quot;id&quot;: &quot;1&quot;,
+&quot;name&quot;: &quot;John&quot;,
+},
+{
+&quot;id&quot;: &quot;2&quot;,
+&quot;name&quot;: &quot;Mark&quot;,
+},
+]
+}
+sections[?limit=…&amp;offset=…&amp;lang=]
+GET/ Returns the list of entries in table sections of the current ecosystem, and where the offset and number of entries can be set.
+If the role_access field contains a list of roles and does not include the current role, no record will be returned. The data in the title field will be replaced by the Accept-Language language resource in the request header.
+Request</li> <li>[limit]
+Number of entries, 25 by default.</li> <li>[offset]
+Offset, 0 by default.</li> <li>[lang]
+This field specifies the language resources or localization code, for example: en, zh. If find no language resources specified, for example: en-US, then, search in the language resources group en.
+GET
+/api/v2/sections
+Response</li> <li>count
+Total number of entries in table sections.</li> <li>list
+Each element in the array contains the information of all columns in the table sections.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;count&quot;: &quot;2&quot;
+&quot;list&quot;: [{
+&quot;id&quot;: &quot;1&quot;,
+&quot;title&quot;: &quot;Development&quot;,
+&quot;urlpage&quot;: &quot;develop&quot;,
+...
+},
+]
+}
+Error response
+E_TABLENOTFOUND
+row/{name}/{id}[?columns=]
+GET/ Returns the entry of the specified table in the current ecosystem. You can specify the column(s) to be returned.
+Request</li> <li>name
+Table name.</li> <li>id
+Entry ID.</li> <li>[columns]
+List of requested columns, separated by commass. If not specified, all columns will be returned. In all cases, the id column is returned.
+GET
+/api/v2/row/mytable/10?columns=name
+Response</li> <li>value
+An array of values of the requested columns
+–id
+Entry ID.
+–Sequence of requested columns.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;values&quot;: {
+&quot;id&quot;: &quot;10&quot;,
+&quot;name&quot;: &quot;John&quot;,
+}
+}
+Error response
+E_NOTFOUND
+systemparams
+GET/ Returns the list of platform parameters.
+Request
+GET
+/api/v2/systemparams/[?names=...]</li> <li>[names]
+A list of request parameters, separated by commass. For example, /api/v2/systemparams/?names=max_columns,max_indexes.
+Response</li> <li>list
+Each element in the array contains the following parameters:
+–name
+Parameter name.
+–value
+Parameter value.
+–conditions
+Permissions to change the parameter.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;list&quot;: [{
+&quot;name&quot;: &quot;max_columns&quot;,
+&quot;value&quot;: &quot;100&quot;,
+&quot;conditions&quot;: &quot;ContractAccess(&quot;@1UpdateSysParam&quot;)&quot;,
+},
+{
+&quot;name&quot;: &quot;max_indexes&quot;,
+&quot;value&quot;: &quot;1&quot;,
+&quot;conditions&quot;: &quot;ContractAccess(&quot;@1UpdateSysParam&quot;)&quot;,
+},
+]
+}
+Error response
+E_PARAMNOTFOUND
+history/{name}/{id}
+GET/ Returns the change record of the entry in the specified table in the current ecosystem.
+Request</li> <li>name
+Table name.</li> <li>id
+Entry ID.
+Response</li> <li>list
+Each element in an array, the elements of which contain modified parameters of the requested entry.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;list&quot;: [
+{
+&quot;name&quot;: &quot;default_page&quot;,
+&quot;value&quot;: &quot;P(class, Default Ecosystem Page)&quot;
+},
+{
+&quot;menu&quot;: &quot;default_menu&quot;
+}
+]
+}
+interface/{page|menu|block}/{name}
+GET/ Returns the entry of the name field in the specified table (pages, menu or blocks) of the current ecosystem.
+GET
+/api/v2/interface/page/default_page
+Request</li> <li>name
+Name of the entry specified in the table.
+Response</li> <li>id
+Entry ID.</li> <li>name
+Entry name.</li> <li>other
+Other columns of the table.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;id&quot;: &quot;1&quot;,
+&quot;name&quot;: &quot;default_page&quot;,
+&quot;value&quot;: &quot;P(Page content)&quot;,
+&quot;default_menu&quot;: &quot;default_menu&quot;,
+&quot;validate_count&quot;: 1
+}
+Error response
+E_QUERY, E_NOTFOUND
+Contract functions
+contracts[?limit=…&amp;offset=…]
+GET/ Returns the list of contracts in the current ecosystem, and can set the offset and number of entries.
+Request</li> <li>[limit]
+Number of entries, 25 by default.</li> <li>[offset]
+Offset, 0 by default.
+GET
+/api/v2/contracts
+Response</li> <li>count
+Total number of entries.</li> <li>list
+Each element in the array contains the following parameters:
+–id
+Contract ID.
+–name
+Contract name.
+–value
+Contract content.
+–wallet_id
+Account address bound to the contract.
+–address
+Wallet address XXXX-...-XXXX bound to the contract.
+–ecosystem_id
+ID of the ecosystem which the contract belongs.
+–app_id
+ID of the application which the contract belongs.
+–conditions
+Permissions to change the contract.
+–token_id
+ID of the ecosystem where the token used to pay the contract fee is located.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;count&quot;: &quot;10&quot;
+&quot;list&quot;: [{
+&quot;id&quot;: &quot;1&quot;,
+&quot;name&quot;: &quot;MainCondition&quot;,
+&quot;token_id&quot;:&quot;1&quot;,
+&quot;wallet_id&quot;:&quot;0&quot;,
+&quot;value&quot;:&quot;contract MainCondition {
+conditions {
+if(EcosysParam(<code>founder_account</code>)!=$key_id)
+{
+warning <code>Sorry, you dont have access to this action.</code>
+}
+}
+}&quot;,
+&quot;address&quot;:&quot;0000-0000-0000-0000-0000&quot;,
+&quot;conditions&quot;:&quot;ContractConditions(<code>MainCondition</code>)&quot;
+},
+...
+]
+}
+contract/{name}
+GET/ Returns the relevant information of the specified contract. By default, the contract is queried in the current ecosystem.
+Request</li> <li>name
+Contract name.
+GET
+/api/v2/contract/mycontract
+Response</li> <li>id
+Contract ID in VM.</li> <li>name
+Contract name @1MainCondition with the ecosystem ID.</li> <li>state
+ID of the ecosystem which the contract belongs.</li> <li>walletid
+Account address bound to the contract.</li> <li>tokenid
+As the ID of the ecosystem where the token used to pay the contract fee is located.</li> <li>address
+Wallet address XXXX-...-XXXX bound to the contract.</li> <li>tableid
+Entry ID of the contract in the contracts table.</li> <li>fields
+The array contains the structure information of each parameter in the data section of the contract:
+–name
+Parameter name.
+–type
+Parameter type.
+–optional
+Parameter option, true means optional parameter, false means mandatory parameter.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;fields&quot; : [
+{&quot;name&quot;:&quot;amount&quot;, &quot;type&quot;:&quot;int&quot;, &quot;optional&quot;: false},
+{&quot;name&quot;:&quot;name&quot;, &quot;type&quot;:&quot;string&quot;, &quot;optional&quot;: true}
+],
+&quot;id&quot;: 150,
+&quot;name&quot;: &quot;@1mycontract&quot;,
+&quot;tableid&quot; : 10,
+}
+Error response
+E_CONTRACT
+sendTX
+POST/ Receive the transaction in the parameter and add it to the transaction queue. If the request is executed successfully, the transaction hash is returned. With the hash, you can obtain the corresponding transaction in the block. When an error response occurs, the hash is included in the error text message.
+Request
+*tx_key
+Transaction content. You can specify any name and supports receiving multiple transactions with this parameter.
+POST
+/api/v2/sendTx
+Headers:
+Content-Type: multipart/form-data
+Parameters:
+tx1 - transaction 1
+txN - transaction N
+Response</li> <li>hashes
+Array of transaction hashes:
+–tx1
+Hash of transaction 1.
+–txN
+Hash of transaction N.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;hashes&quot;: {
+&quot;tx1&quot;: &quot;67afbc435634.....&quot;,
+&quot;txN&quot;: &quot;89ce4498eaf7.....&quot;,
+}
+Error response
+E_LIMITTXSIZE,<em>E_BANNED</em>
+txstatus
+POST/ Returns the block ID and error message of the specified transaction hash. If the return value of the block ID and error text message is empty, the transaction has not been included in the block.
+Request</li> <li>data
+JSON list of transaction hashes.
+{&quot;hashes&quot;:[&quot;contract1hash&quot;, &quot;contract2hash&quot;, &quot;contract3hash&quot;]}
+POST
+/api/v2/txstatus/
+Response</li> <li>results
+In the data dictionary, transaction hash as the key, while the transaction detail as the value.
+hash
+Transaction hash.
+–blockid
+If the transaction is executed successfully, the block ID is returned; if failed to execute the transaction, the blockid is 0.
+–result
+Return the transaction result through the $result variable.
+–errmsg
+If failed to execute the transaction, an error text message will be returned.
+Response example
+200 (OK)
+Content-Type: application/json
+{&quot;results&quot;:
+{
+&quot;hash1&quot;: {
+&quot;blockid&quot;: &quot;3123&quot;,
+&quot;result&quot;: &quot;&quot;,
+},
+&quot;hash2&quot;: {
+&quot;blockid&quot;: &quot;3124&quot;,
+&quot;result&quot;: &quot;&quot;,
+}
+}
+}
+Error response
+E_HASHWRONG, E_HASHNOTFOUND
+txinfo/{hash}
+GET/ Returns the information of the specified hash correlating to the transaction, including the block ID and the number of confirmations. If optional parameters are specified, the contract name and related parameters can also be returned.
+Request</li> <li>hash
+Transaction hash.</li> <li>[contractinfo]
+Detailed contract parameter identifier. To obtain contract details correlating to the transaction, specify contractinfo=1.
+GET
+/api/v2/txinfo/c7ef367b494c7ce855f09aa3f1f2af7402535ea627fa615ebd63d437db5d0c8a?contractinfo=1
+Response</li> <li>blockid
+Contains the block ID of the transaction. If the value is 0, no transaction with this hash can be found.</li> <li>confirm
+Number of confirmations of the block blockid.</li> <li>data
+If contentinfo=1 is specified, the contract details will be returned to this parameter.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;blockid&quot;: &quot;9&quot;,
+&quot;confirm&quot;: 11,
+&quot;data&quot;: {
+&quot;block&quot;: &quot;9&quot;,
+&quot;contract&quot;: &quot;@1NewContract&quot;,
+&quot;params&quot;: {
+&quot;ApplicationId&quot;: 1,
+&quot;Conditions&quot;: &quot;true&quot;,
+&quot;Value&quot;: &quot;contract crashci4b {\n\t\t\tdata {}\n\t\t}&quot;
+}
+}
+}
+Error response
+E_HASHWRONG
+txinfoMultiple/
+GET/ Returns the information of the specified hash correlating to a transaction.
+Request</li> <li>hash
+List of transaction hashes.</li> <li>[contractinfo]
+Detailed contract parameter identifier. To obtain contract details related to the transaction, specify contractinfo=1.
+{&quot;hashes&quot;:[&quot;contract1hash&quot;, &quot;contract2hash&quot;, &quot;contract3hash&quot;]}
+GET
+/api/v2/txinfoMultiple/
+Response</li> <li>results
+In the data dictionary, transaction hashes as the key and transaction details as the value.
+hash
+Transaction hash.
+blockid
+Block ID containing the transaction. If the value is 0, no transaction with this hash can be found.
+confirm
+Number of confirmations of the block blockid.
+data
+If contentinfo=1 is specified, the contract details will be return to this parameter.
+Response example
+200 (OK)
+Content-Type: application/json
+{&quot;results&quot;:
+{
+&quot;hash1&quot;: {
+&quot;blockid&quot;: &quot;3123&quot;,
+&quot;confirm&quot;: &quot;5&quot;,
+},
+&quot;hash2&quot;: {
+&quot;blockid&quot;: &quot;3124&quot;,
+&quot;confirm&quot;: &quot;3&quot;,
+}
+}
+}
+Error response
+E_HASHWRONG
+/page/validators_count/{name}
+GET/ Returns the number of nodes required to verify the specified page.
+Request</li> <li>name
+Page name with ecosystem ID in a format: @ecosystem_id%%page_name%. For example @1main_page.
+GET
+/api/v2/page/validators_count/@1page_name
+Response</li> <li>validate_count
+Number of nodes required to verify the specified page
+Response example
+200 (OK)
+Content-Type: application/json
+{&quot;validate_count&quot;:1}
+Error response
+E_NOTFOUND, E_SERVER
+content/menu|page/{name}
+POST/ Returns the JSON object tree of the code of specified page or menu name, which is the result of the template engine processing.
+Request</li> <li>name
+Page or menu name.
+POST
+/api/v2/content/page/default
+Response</li> <li>menu
+Menu name of the page when requesting content/page/…</li> <li>menutree
+A JSON object tree of the page menu when requesting content/page/…</li> <li>title–head for the menu content/menu/…
+Menu name when requesting content/menu/...</li> <li>tree
+A JSON object tree of a page or menu.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;tree&quot;: {&quot;type&quot;:&quot;......&quot;,
+&quot;children&quot;: [
+{...},
+{...}
+]
+},
+}
+Error response
+E_NOTFOUND
+content/source/{name}
+POST/ Returns the JSON object tree of the specified page name code. Does not execute any function or receive any data. The returned JSON object tree corresponds to the page template and can be used in the visual page designer. If the page cannot be found, a 404 error is returned. Request &quot;&quot;&quot;&quot;&quot;&quot;&quot;</li> <li>name
+Page name.
+Response
+POST
+/api/v2/content/source/default</li> <li>tree
+A JSON object tree of the page.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;tree&quot;: {&quot;type&quot;:&quot;......&quot;,
+&quot;children&quot;: [
+{...},
+{...}
+]
+},
+}
+Error response
+E_NOTFOUND, E_SERVER
+content/hash/{name}
+POST/ Returns the SHA256 hash of the page name specified , or 404 error if the page cannot be found.
+Login authorization is not required for this request. To receive the correct hash when making a request to other nodes, you must also pass the ecosystem, keyID, roleID, isMobile parameters. To receive pages from other ecosystems, the ecosystem ID must be prefixed to the page name. For example: @2mypage.
+Request</li> <li>name
+Page name with the ecosystem ID.</li> <li>ecosystem
+Ecosystem ID.</li> <li>keyID
+Account address.</li> <li>roleID
+Role ID.</li> <li>isMobile
+Parameter identifier of the mobile platform.
+POST
+/api/v2/content/hash/default
+Response</li> <li>hex
+Hexadecimal hash.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;hash&quot;: &quot;b631b8c28761b5bf03c2cfbc2b49e4b6ade5a1c7e2f5b72a6323e50eae2a33c6&quot;
+}
+Error response
+E_NOTFOUND, E_SERVER, E_HEAVYPAGE
+content
+POST/ The number of JSON objects that return the page code from the template parameter. If the optional parameter source is specified as true or 1, the JSON object tree does not execute any function and data received. The JSON object tree can be used in the visual page designer.
+Login authorization is not required for this request.
+Request</li> <li>template
+The page code.</li> <li>[source]
+If specified as true or 1, the JSON object tree does not execute any function and data received.
+POST
+/api/v2/content
+Response</li> <li>tree
+JSON object tree.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;tree&quot;: {&quot;type&quot;:&quot;......&quot;,
+&quot;children&quot;: [
+{...},
+{...}
+]
+},
+}
+Error response
+E_NOTFOUND, E_SERVER
+maxblockid
+GET/ Returns the ID of the highest block on the current node.
+Login authorization is not required for this request.
+Request
+GET
+/api/v2/maxblockid
+Response</li> <li>max_block_id
+ID of the highest block on the current node.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;max_block_id&quot; : 341,
+}
+Error response
+E_NOTFOUND
+block/{id}
+GET/ Returns relevant information of the block with the ID specified.
+Login authorization is not required for this request.
+Request</li> <li>id
+Block ID.
+POST
+/api/v2/block/32
+Response</li> <li>hash
+Hash of the block.</li> <li>key_id
+Address of the account that signed the block.</li> <li>time
+Block generation timestamp.</li> <li>tx_count
+Total number of transactions in the block.</li> <li>rollbacks_hash
+Hash for block rollback.</li> <li>node_position
+Position of the block in the list of honor nodes.
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;hash&quot;: &quot;1x4S5s/zNUTopP2YK43SppEyvT2O4DW5OHSpQfp5Tek=&quot;,
+&quot;key_id&quot;: -118432674655542910,
+&quot;time&quot;: 1551145365,
+&quot;tx_count&quot;: 3,
+&quot;rollbacks_hash&quot;: &quot;47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&quot;,
+&quot;node_position&quot;: 0,
+}
+Error response
+E_NOTFOUND
+avatar/{ecosystem}/{member}
+GET/ Returns the avatar of the user in the member table (you can use it without logging in).
+Request</li> <li>ecosystem
+Ecosystem ID.</li> <li>member
+Account address of the user.
+GET
+/api/v2/avatar/1/-118432674655542910
+Response
+The type of the request header Content-Type is image, and the image data is returned in the response body.
+Response example
+200 (OK)
+Content-Type: image/png
+Error response
+E_NOTFOUND E_SERVER
+config/centrifugo
+GET/ Returns the host address and port of centrifugo.
+Login authorization is not required for this request.
+Request
+GET
+/api/v2/config/centrifugo
+Response
+The response format is http://address:port, for example: http://127.0.0.1:8100.
+Error response
+E_SERVER
+updnotificator
+POST/ Send all messages that have not yet been sent to the centrifugo notification service. Only send messages for ecosystems and members specified.
+Login authorization is not required for this request.
+Request</li> <li>id
+Member account address.</li> <li>ecosystem
+Ecosystem ID.
+POST
+/api/v2/updnotificator
+Response example
+200 (OK)
+Content-Type: application/json
+{
+&quot;result&quot;: true
+}</li></ul></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/ja/reference/api2.md" target="_blank" rel="noopener noreferrer">GitHubでこのページを編集する</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/ja/reference/desync_monitor.html">
+        Synchronized Monitoring Tool
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.61b025f2.js" defer></script><script src="/assets/js/2.6aa4ccad.js" defer></script><script src="/assets/js/85.172ceb4e.js" defer></script>
+  </body>
+</html>

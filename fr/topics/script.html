@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Smart Contracts | IBAX Documentation</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="apple-touch-icon" size="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" size="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" size="16x16" href="/favicon-16x16.png">
+    <link rel="mask-icon" color="#5bbad5" href="/safari-pinned-tab.svg">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="description" content="A Decentralized Commercial Cross-Chain infrastructure Network">
+    
+    <link rel="preload" href="/assets/css/0.styles.844a2aa8.css" as="style"><link rel="preload" href="/assets/js/app.61b025f2.js" as="script"><link rel="preload" href="/assets/js/2.6aa4ccad.js" as="script"><link rel="preload" href="/assets/js/57.18bc496e.js" as="script"><link rel="prefetch" href="/assets/js/10.08482f57.js"><link rel="prefetch" href="/assets/js/100.19ffa9d1.js"><link rel="prefetch" href="/assets/js/101.a17a4847.js"><link rel="prefetch" href="/assets/js/102.723bab5b.js"><link rel="prefetch" href="/assets/js/103.dcede536.js"><link rel="prefetch" href="/assets/js/104.d56a4c22.js"><link rel="prefetch" href="/assets/js/105.2e1fc32d.js"><link rel="prefetch" href="/assets/js/106.f0d5d902.js"><link rel="prefetch" href="/assets/js/107.ef3504c7.js"><link rel="prefetch" href="/assets/js/108.6e20dcf7.js"><link rel="prefetch" href="/assets/js/109.21b04363.js"><link rel="prefetch" href="/assets/js/11.d011c109.js"><link rel="prefetch" href="/assets/js/110.2ea3149a.js"><link rel="prefetch" href="/assets/js/111.8fc45d89.js"><link rel="prefetch" href="/assets/js/112.38d23ad7.js"><link rel="prefetch" href="/assets/js/113.abcb7fc3.js"><link rel="prefetch" href="/assets/js/114.30ddb83f.js"><link rel="prefetch" href="/assets/js/115.04f0ad2a.js"><link rel="prefetch" href="/assets/js/116.a30aeff1.js"><link rel="prefetch" href="/assets/js/117.a2c63013.js"><link rel="prefetch" href="/assets/js/118.aa3deee7.js"><link rel="prefetch" href="/assets/js/12.0a55f41c.js"><link rel="prefetch" href="/assets/js/13.8f94af3b.js"><link rel="prefetch" href="/assets/js/14.b323c62f.js"><link rel="prefetch" href="/assets/js/15.c2262e36.js"><link rel="prefetch" href="/assets/js/16.51ac5124.js"><link rel="prefetch" href="/assets/js/17.1146e0d1.js"><link rel="prefetch" href="/assets/js/18.7621e4ec.js"><link rel="prefetch" href="/assets/js/19.159baebe.js"><link rel="prefetch" href="/assets/js/20.366e1f92.js"><link rel="prefetch" href="/assets/js/21.9705c140.js"><link rel="prefetch" href="/assets/js/22.61ef3688.js"><link rel="prefetch" href="/assets/js/23.76321f34.js"><link rel="prefetch" href="/assets/js/24.f4040ec4.js"><link rel="prefetch" href="/assets/js/25.60e92547.js"><link rel="prefetch" href="/assets/js/26.061fa338.js"><link rel="prefetch" href="/assets/js/27.1d448442.js"><link rel="prefetch" href="/assets/js/28.ef371faa.js"><link rel="prefetch" href="/assets/js/29.9cb10946.js"><link rel="prefetch" href="/assets/js/3.32d82b67.js"><link rel="prefetch" href="/assets/js/30.e1959a6c.js"><link rel="prefetch" href="/assets/js/31.48b16532.js"><link rel="prefetch" href="/assets/js/32.6d8b2c86.js"><link rel="prefetch" href="/assets/js/33.2840b8c2.js"><link rel="prefetch" href="/assets/js/34.cc0bda62.js"><link rel="prefetch" href="/assets/js/35.42e0589f.js"><link rel="prefetch" href="/assets/js/36.f82dc05b.js"><link rel="prefetch" href="/assets/js/37.eca22300.js"><link rel="prefetch" href="/assets/js/38.51c5adc6.js"><link rel="prefetch" href="/assets/js/39.51e61425.js"><link rel="prefetch" href="/assets/js/4.1e8ca44e.js"><link rel="prefetch" href="/assets/js/40.9c648e1f.js"><link rel="prefetch" href="/assets/js/41.89667f32.js"><link rel="prefetch" href="/assets/js/42.c171feae.js"><link rel="prefetch" href="/assets/js/43.6b1c8393.js"><link rel="prefetch" href="/assets/js/44.dde6597c.js"><link rel="prefetch" href="/assets/js/45.adfec81c.js"><link rel="prefetch" href="/assets/js/46.14fb8892.js"><link rel="prefetch" href="/assets/js/47.5f2ad56b.js"><link rel="prefetch" href="/assets/js/48.be4b7847.js"><link rel="prefetch" href="/assets/js/49.cc7ff52b.js"><link rel="prefetch" href="/assets/js/5.50ebf2b0.js"><link rel="prefetch" href="/assets/js/50.c1058c87.js"><link rel="prefetch" href="/assets/js/51.87dd6331.js"><link rel="prefetch" href="/assets/js/52.e101067c.js"><link rel="prefetch" href="/assets/js/53.62474001.js"><link rel="prefetch" href="/assets/js/54.b2b368d5.js"><link rel="prefetch" href="/assets/js/55.1b853509.js"><link rel="prefetch" href="/assets/js/56.7f18849f.js"><link rel="prefetch" href="/assets/js/58.6ba8bafa.js"><link rel="prefetch" href="/assets/js/59.2761494a.js"><link rel="prefetch" href="/assets/js/6.b72a56bb.js"><link rel="prefetch" href="/assets/js/60.c250ff55.js"><link rel="prefetch" href="/assets/js/61.f6941452.js"><link rel="prefetch" href="/assets/js/62.d59944b5.js"><link rel="prefetch" href="/assets/js/63.67e27658.js"><link rel="prefetch" href="/assets/js/64.020f36b3.js"><link rel="prefetch" href="/assets/js/65.5e19e22e.js"><link rel="prefetch" href="/assets/js/66.8312b734.js"><link rel="prefetch" href="/assets/js/67.b15c696f.js"><link rel="prefetch" href="/assets/js/68.184819b3.js"><link rel="prefetch" href="/assets/js/69.95d91fbb.js"><link rel="prefetch" href="/assets/js/7.b5d312ad.js"><link rel="prefetch" href="/assets/js/70.f7c603b6.js"><link rel="prefetch" href="/assets/js/71.fd4b92de.js"><link rel="prefetch" href="/assets/js/72.bf7d7fb9.js"><link rel="prefetch" href="/assets/js/73.c6806fbb.js"><link rel="prefetch" href="/assets/js/74.25aa64bd.js"><link rel="prefetch" href="/assets/js/75.ea2c1cf6.js"><link rel="prefetch" href="/assets/js/76.aa4ac646.js"><link rel="prefetch" href="/assets/js/77.73949b79.js"><link rel="prefetch" href="/assets/js/78.f9378a75.js"><link rel="prefetch" href="/assets/js/79.e5645697.js"><link rel="prefetch" href="/assets/js/8.571bb877.js"><link rel="prefetch" href="/assets/js/80.686aa57a.js"><link rel="prefetch" href="/assets/js/81.103613fd.js"><link rel="prefetch" href="/assets/js/82.714e22bd.js"><link rel="prefetch" href="/assets/js/83.d223b74e.js"><link rel="prefetch" href="/assets/js/84.4dfea1c8.js"><link rel="prefetch" href="/assets/js/85.172ceb4e.js"><link rel="prefetch" href="/assets/js/86.cc96c0f8.js"><link rel="prefetch" href="/assets/js/87.5683f1a6.js"><link rel="prefetch" href="/assets/js/88.967a58b1.js"><link rel="prefetch" href="/assets/js/89.5411aaf4.js"><link rel="prefetch" href="/assets/js/9.c5900138.js"><link rel="prefetch" href="/assets/js/90.834f415c.js"><link rel="prefetch" href="/assets/js/91.ffe4ccac.js"><link rel="prefetch" href="/assets/js/92.77a35972.js"><link rel="prefetch" href="/assets/js/93.d3be9009.js"><link rel="prefetch" href="/assets/js/94.b0b7146d.js"><link rel="prefetch" href="/assets/js/95.8d024dbe.js"><link rel="prefetch" href="/assets/js/96.4e6463a4.js"><link rel="prefetch" href="/assets/js/97.00440597.js"><link rel="prefetch" href="/assets/js/98.b6bdfa87.js"><link rel="prefetch" href="/assets/js/99.e400417f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.844a2aa8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/fr/" class="home-link router-link-active"><img src="/ibax.ico" alt="IBAX Documentation" class="logo"> <span class="site-name can-hide">IBAX Documentation</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/fr/concepts/blockchain-layers.html" class="nav-link">
+  Concept
+</a></div><div class="nav-item"><a href="/fr/tutorials/app_tutorial.html" class="nav-link">
+  Didacticiel
+</a></div><div class="nav-item"><a href="/fr/topics/templates2.html" class="nav-link">
+  Guider
+</a></div><div class="nav-item"><a href="/fr/reference/api2.html" class="nav-link">
+  Référence
+</a></div><div class="nav-item"><a href="/fr/howtos/deployment.html" class="nav-link">
+  Déploiement
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Choisir la langue" class="dropdown-title"><span class="title">Langages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Choisir la langue" class="mobile-dropdown-title"><span class="title">Langages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/topics/script.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/de/topics/script.html" class="nav-link">
+  Deutsch
+</a></li><li class="dropdown-item"><!----> <a href="/es/topics/script.html" class="nav-link">
+  Español
+</a></li><li class="dropdown-item"><!----> <a href="/fr/topics/script.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Français
+</a></li><li class="dropdown-item"><!----> <a href="/it/topics/script.html" class="nav-link">
+  Italiano
+</a></li><li class="dropdown-item"><!----> <a href="/ja/topics/script.html" class="nav-link">
+  日本
+</a></li><li class="dropdown-item"><!----> <a href="/zh-CN/topics/script.html" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <a href="https://github.com/IBAX-io" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/fr/concepts/blockchain-layers.html" class="nav-link">
+  Concept
+</a></div><div class="nav-item"><a href="/fr/tutorials/app_tutorial.html" class="nav-link">
+  Didacticiel
+</a></div><div class="nav-item"><a href="/fr/topics/templates2.html" class="nav-link">
+  Guider
+</a></div><div class="nav-item"><a href="/fr/reference/api2.html" class="nav-link">
+  Référence
+</a></div><div class="nav-item"><a href="/fr/howtos/deployment.html" class="nav-link">
+  Déploiement
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Choisir la langue" class="dropdown-title"><span class="title">Langages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Choisir la langue" class="mobile-dropdown-title"><span class="title">Langages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/topics/script.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/de/topics/script.html" class="nav-link">
+  Deutsch
+</a></li><li class="dropdown-item"><!----> <a href="/es/topics/script.html" class="nav-link">
+  Español
+</a></li><li class="dropdown-item"><!----> <a href="/fr/topics/script.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Français
+</a></li><li class="dropdown-item"><!----> <a href="/it/topics/script.html" class="nav-link">
+  Italiano
+</a></li><li class="dropdown-item"><!----> <a href="/ja/topics/script.html" class="nav-link">
+  日本
+</a></li><li class="dropdown-item"><!----> <a href="/zh-CN/topics/script.html" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <a href="https://github.com/IBAX-io" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guider</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/fr/topics/templates2.html" class="sidebar-link">Template Language</a></li><li><a href="/fr/topics/vm.html" class="sidebar-link">Compiler and Virtual Machine</a></li><li><a href="/fr/topics/script.html" aria-current="page" class="active sidebar-link">Smart Contracts</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/fr/topics/script.html#contract-structure" class="sidebar-link">Contract Structure</a></li><li class="sidebar-sub-header"><a href="/fr/topics/script.html#variables" class="sidebar-link">Variables</a></li><li class="sidebar-sub-header"><a href="/fr/topics/script.html#nested-contracts" class="sidebar-link">Nested Contracts</a></li><li class="sidebar-sub-header"><a href="/fr/topics/script.html#file-upload" class="sidebar-link">File upload</a></li><li class="sidebar-sub-header"><a href="/fr/topics/script.html#queries-in-json-format" class="sidebar-link">Queries in JSON format</a></li><li class="sidebar-sub-header"><a href="/fr/topics/script.html#v-logic-contract-language" class="sidebar-link">V-Logic contract language</a></li><li class="sidebar-sub-header"><a href="/fr/topics/script.html#functions" class="sidebar-link">Functions</a></li><li class="sidebar-sub-header"><a href="/fr/topics/script.html#v-logic-functions-classification" class="sidebar-link">V-Logic functions classification</a></li><li class="sidebar-sub-header"><a href="/fr/topics/script.html#v-logic-functions-reference" class="sidebar-link">V-Logic functions reference</a></li><li class="sidebar-sub-header"><a href="/fr/topics/script.html#stringtobytes" class="sidebar-link">StringToBytes</a></li><li class="sidebar-sub-header"><a href="/fr/topics/script.html#system-contracts" class="sidebar-link">System Contracts</a></li></ul></li><li><a href="/fr/topics/daemons.html" class="sidebar-link">Daemon</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="smart-contracts"><a href="#smart-contracts" class="header-anchor">#</a> Smart Contracts</h1> <ul><li>Contract structure</li> <li>Variables</li> <li>Nested Contracts</li> <li>File upload</li> <li>Queries in JSON format</li> <li>Queries with date and time operations</li> <li>V-Logic contracts language</li> <li>V-Logic functions classification</li> <li>V-Logic functions reference</li> <li>System contracts</li></ul> <p>Smart Contract (hereinafter referred to as Contract) is one of the basic elements of an application. The implementation of a contract on a page by the user is usually a single operation that the purpose is to update or create a database entry. All data operations of an application form a contract system, and these contracts interact with each other through database or contract content functions.</p> <h2 id="contract-structure"><a href="#contract-structure" class="header-anchor">#</a> Contract Structure</h2> <p>Use the keyword <code>contract</code> to declare a contract, followed by the contract name, and the contract content must be enclosed in braces. A contract mainly consists of three sections:</p> <ol><li><p><strong>data</strong> - data section, where declares the variables of the input data, including variable name and variable type;</p></li> <li><p><strong>conditions</strong> - conditions section, where validates the correctness of the data;</p></li> <li><p><strong>action</strong> - operation section, where defines the data manipulations.</p></li></ol> <div class="language- extra-class"><pre class="language-text"><code>contract MyContract {
+    data {
+          FromId int
+          ToId int
+          Amount money
+       }
+       func conditions {
+          ...
+       }
+       func action {
+          ...
+       }
+    }
+</code></pre></div><h3 id="data-section"><a href="#data-section" class="header-anchor">#</a> Data section</h3> <p>The <code>data</code> section describes the contract data inputs and the form parameters received.</p> <p>The structure of each line by sequence:</p> <ul><li>Variable name - only receive variables, not arrays;</li> <li>Variable data type - the data type of the variable;</li> <li>optional - an optional parameter that do not need to fill in the form element.</li></ul> <div class="language- extra-class"><pre class="language-text"><code>contract my {
+ data {
+ Name string
+ RequestId int
+ Photo file &quot;optional&quot;
+ Amount money
+ Private bytes
+ }
+ ...
+}
+</code></pre></div><h3 id="conditions-section"><a href="#conditions-section" class="header-anchor">#</a> Conditions section</h3> <p>The <code>conditions</code> section describes the validation of data received.</p> <p>The following commands are used for error warnings: serious errors error, warning errors warning, suggestive errors info. These three commands will generate an error that terminates the execution of contracts, and each error will print a different type of error log information. For example:</p> <p>if fuel == 0 {
+error &quot;fuel cannot be zero!&quot;
+}
+if money &lt;limit {
+warning Sprintf(&quot;You don't have enough money: %v &lt;%v&quot;, money, limit)
+}
+if idexist &gt; 0 {
+info &quot;You have already been registered&quot;
+}</p> <h3 id="action-section"><a href="#action-section" class="header-anchor">#</a> Action section</h3> <p>The <code>action</code> section describes the main code of the contract, which retrieves other data and records the result values in tables. For example:</p> <div class="language- extra-class"><pre class="language-text"><code>action {
+DBUpdate(&quot;keys&quot;, $key_id, {&quot;-amount&quot;: $amount})
+DBUpdate(&quot;keys&quot;, $recipient, {&quot;+amount&quot;: $amount, &quot;pub&quot;: $Pub})
+}
+</code></pre></div><h2 id="variables"><a href="#variables" class="header-anchor">#</a> Variables</h2> <p>Variables declared in the data section are passed to other contract sections through the $ symbol followed by the variable name. The $ symbol can also be used to declare other variables that are not within the data section, which are considered as global variables of this contract and all contracts that this contract is nested.</p> <p>Pre-defined variables can be used in contracts, which contain transaction data that called the contract:</p> <ul><li><code>$time</code> - transaction timestamp;</li> <li><code>$ecosystem_id</code> - ecosystem ID;</li> <li><code>$block</code> - ID of the block containing the transaction;</li> <li><code>$key_id</code> - address of the account that signed the current transaction;</li> <li><code>$type</code> - contract ID in the virtual machine;</li> <li><code>$block_key_id</code> - account address of the node generated the block;</li> <li><code>$block_time</code> - block generation timestamp;</li> <li><code>$original_contract</code> - name of the contract that initially processed the transaction. It means the contract is called during transaction validation if the variable is an empty string. To check whether the contract is called by another contract or directly by the transaction, you need to compare the values of $original_contract and $this_contract. It means that the contract is called by the transaction if they are equal;</li> <li><code>$this_contract</code> - name of the contract currently being executed;</li> <li><code>$guest_key</code> - guest account address;</li> <li><code>$stack</code> - contract array stack with a data type of array, containing all contracts executed. The first element of the array represents the name of the contract currently being executed, while the last element represents the name of the contract that initially processed the transaction;</li> <li><code>$node_position</code> - the index number of the verification node array where the block is located;</li> <li><code>$txhash</code> - transaction hash;</li> <li><code>$contract</code> - the current contract structure array.</li></ul> <p>Predefined variables can be accessed not only in contracts, but also in permission fields that defines the access permission conditions of the application elements. When used in permission fields, predefined variables for block information are always equal to zero, such as <code>$time</code>, <code>$block</code>, etc.</p> <p>A predefined variable <code>$result</code> is assigned with the return result of the contract.</p> <div class="language- extra-class"><pre class="language-text"><code>contract my {
+ data {
+     Name string
+     Amount money
+ }
+ func conditions {
+     if $Amount &lt;= 0 {
+     error &quot;Amount cannot be 0&quot;
+     }
+     $ownerId = 1232
+ }
+ func action {
+     var amount money
+     amount = $Amount - 10
+     DBUpdate(&quot;mytable&quot;, $ownerId, {name: $Name,amount: amount})
+     DBUpdate(&quot;mytable2&quot;, $ownerId, {amount: 10})
+ }
+}
+</code></pre></div><h2 id="nested-contracts"><a href="#nested-contracts" class="header-anchor">#</a> Nested Contracts</h2> <p>You can nest contracts in the conditions and action sections of the contract. Nested contracts can be called directly, and the contract parameters are specified in parentheses after the contract name, for example, <code>@1NameContract(Params)</code>. You may also call nested contracts with the CallContract function.</p> <h2 id="file-upload"><a href="#file-upload" class="header-anchor">#</a> File upload</h2> <p>To upload a file using a form in the format of <code>multipart/form-data</code>, the data type of the contract must be file.</p> <div class="language- extra-class"><pre class="language-text"><code>contract Upload {
+     data {
+  	   File file
+     }
+     ...
+}
+</code></pre></div><p>The UploadBinary contract is used to upload and store files. With the V-Style language function Binary in the page editor, you can get the file download link.</p> <h2 id="queries-in-json-format"><a href="#queries-in-json-format" class="header-anchor">#</a> Queries in JSON format</h2> <p>In the contract language, JSON can be specified as a field type. You can use the syntax: columnname-&gt;fieldname to process the entry field. The value obtained is recorded in columnname.fieldname. The above syntax can be used in Columns,One,Where of the DBFind function.</p> <div class="language- extra-class"><pre class="language-text"><code>var ret map
+var val str
+var list array
+ret = DBFind(&quot;mytable&quot;).Columns(&quot;myname,doc,doc-&gt;ind&quot;).WhereId($Id).Row()
+val = ret[&quot;doc.ind&quot;]
+val = DBFind(&quot;mytable&quot;).Columns(&quot;myname,doc-&gt;type&quot;).WhereId($Id).One(&quot;doc-&gt;type&quot;)
+list = DBFind(&quot;mytable&quot;).Columns(&quot;myname,doc,doc-&gt;ind&quot;).Where(&quot;doc-&gt;ind = ?&quot;, &quot;101&quot;)
+val = DBFind(&quot;mytable&quot;).WhereId($Id).One(&quot;doc-&gt;check&quot;)
+</code></pre></div><h3 id="queries-with-date-and-time-operations"><a href="#queries-with-date-and-time-operations" class="header-anchor">#</a> Queries with date and time operations</h3> <p>You cannot directly query and update the date and time with the contract language functions, but you can use PostgreSQL functions and features in the Where statement as in the example below. For example, you need to compare the field date_column with the current time. If date_column is a timestamp type, the expression should be <code>date_column &lt;NOW()</code>; if date_column is a Unix type, the expression should be <code>to_timestamp(date_column)&gt; NOW()</code>.</p> <div class="language- extra-class"><pre class="language-text"><code>Where(&quot;to_timestamp(date_column)&gt; NOW()&quot;)
+Where(&quot;date_column &lt;NOW() - 30 * interval '1 day'&quot;)
+</code></pre></div><p>The following V-Logic function is used to process date and time in SQL format:</p> <ul><li>BlockTime</li> <li>DateTime</li> <li>UnixDateTime</li></ul> <h2 id="v-logic-contract-language"><a href="#v-logic-contract-language" class="header-anchor">#</a> V-Logic contract language</h2> <p>The contract language includes a set of functions, operators and structures, which can realize data algorithm processing and database operations.</p> <p>The contract content can be modified if the contract editing permission is not set to false. The complete history of contract changes is stored in the blockchain, which is available in Weaver.</p> <p>Data operations in the blockchain are executed in accordance with the latest version of the contract.</p> <h3 id="basic-elements-and-structure"><a href="#basic-elements-and-structure" class="header-anchor">#</a> Basic elements and structure</h3> <h3 id="data-types-and-variables"><a href="#data-types-and-variables" class="header-anchor">#</a> Data types and variables</h3> <p>Data type must be defined for every variables. Normally, data types are converted automatically. The following data types can be used:</p> <ul><li>bool - Boolean, true or false;</li> <li>bytes - a byte format;</li> <li>Int - a 64-bit integer;</li> <li>Array - an array of any type;</li> <li>map - an object array;</li> <li>money - a big integer;</li> <li>float - a 64-bit float number;</li> <li>string - a string must be defined with double quotes or escape format: &quot;This is a string&quot; or <code>This is a string</code>;</li> <li>file - an object array:</li> <li>Name - file name, string type;</li> <li>MimeType - mime-type file, string type;</li> <li>Body - file content, bytes type.</li></ul> <p>All identifiers, including the names of variables, functions and contracts, are case sensitive (MyFunc and myFunc are different names).</p> <p>Use the var keyword to declare a variable, followed by the name and type of the variable. Variables declared in braces must be used in the same pair of braces.</p> <p>The default value of any variable declared is zero: the zero value of bool type is false, the zero value of all numeric types is 0, and the zero value, for strings, empty strings. An example of variable declaration:</p> <div class="language- extra-class"><pre class="language-text"><code>func myfunc( val int) int {
+ var mystr1 mystr2 string, mypar int
+ var checked bool
+ ...
+ if checked {
+ var temp int
+ ...
+ }
+}
+</code></pre></div><h3 id="array"><a href="#array" class="header-anchor">#</a> Array</h3> <p>The contract language supports two array types:</p> <ul><li>Array - an array with index starting from 0;</li> <li>map - an array of objects.</li></ul> <p>When allocating and retrieving array elements, the index must be placed in square brackets. Multiple indexes are not supported in the array, and the array elements cannot be treated as myarr[i][j].</p> <div class="language- extra-class"><pre class="language-text"><code>var myarr array
+var mymap map
+var s string
+
+myarr[0] \= 100
+myarr[1] \= &quot;This is a line&quot;
+mymap[&quot;value&quot;] \= 777
+mymap[&quot;param&quot;] \= &quot;Parameter&quot;
+
+s \= Sprintf(&quot;%v, %v, %v&quot;, myarr[0] + mymap[&quot;value&quot;], myarr[1], mymap[&quot;param&quot;])
+// s \= 877, This is a line, Parameter
+</code></pre></div><p>You can also define arrays of array type by specifying elements in []. For map type arrays, please use {}.</p> <div class="language- extra-class"><pre class="language-text"><code>var my map
+my={&quot;key1&quot;: &quot;value1&quot;, key2: i, &quot;key3&quot;: $Name}
+var mya array
+mya=[&quot;value1&quot;, {key2: i}, $Name]
+</code></pre></div><p>You can use such initialization in expressions. For example, use it in function parameters.</p> <div class="language- extra-class"><pre class="language-text"><code>DBFind...Where({id: 1})
+</code></pre></div><p>For an array of objects, you must specify a key. Key are specified as strings in double quotes (&quot;&quot;). If the key name is limited to letters, numbers and underscores, you can omit the double quotes.</p> <div class="language- extra-class"><pre class="language-text"><code>{key1: &quot;value1&quot;, key2: &quot;value2&quot;}
+</code></pre></div><p>An array can contain strings, numbers, variable names of any type, and variable names with the $ symbol. It supports nested arrays. You can specify different maps or arrays as values.</p> <p>Expressions cannot be used as array elements. Use a variable to store the expression result and specify this variable as an array element.</p> <div class="language- extra-class"><pre class="language-text"><code>[1+2, myfunc(), name[&quot;param&quot;]] // don't do this
+[1, 3.4, mystr, &quot;string&quot;, $ext, myarr, mymap, {&quot;ids&quot;: [1,2, i], company: {&quot;Name&quot;: &quot;MyCompany&quot;}} ] // this is ok
+
+var val string
+val = my[&quot;param&quot;]
+MyFunc({key: val, sub: {name: &quot;My name&quot;, &quot;color&quot;: &quot;Red&quot;}})
+</code></pre></div><h3 id="if-and-while-statements"><a href="#if-and-while-statements" class="header-anchor">#</a> If and While statements</h3> <p>The contract language supports standard if conditional statements and while loops, which can be used in contracts and functions. These statements can be nested within each other.</p> <p>if and while must be followed by a conditional statement. If the conditional statement returns a number, it is regarded as false when its value is 0.</p> <p>val == 0 is equal to !val, val != 0 is equal to val. The if statement can have an else code block, and the else is executed when the if conditional statement is false.</p> <p>The following comparison operators can be used in conditional statements: <code>&lt;, &gt;, &gt;=, &lt;=, ==, !=, ||, &amp;&amp;</code></p> <div class="language- extra-class"><pre class="language-text"><code>if val&gt; 10 || id != $block_key_id {
+ ...
+} else {
+ ...
+}
+</code></pre></div><p>The code block is executed when the conditional statement of the while loop is true. break means to terminate the loop of the code block. If you want to start a loop from the beginning, use continue.</p> <div class="language- extra-class"><pre class="language-text"><code>var i int
+while true {
+ if i &gt; 100 {
+ break
+ }
+ ...
+ if i \== 50 {
+ continue
+ }
+ ...
+ i \= i + 1
+}
+</code></pre></div><p>In addition to conditional statements, V-Logic also supports standard arithmetic operations: +, -, *, /.</p> <p>Variables of string and bytes types can be used as a conditional statement. If the length of the type is greater than zero, the condition is true, otherwise it is false.</p> <h2 id="functions"><a href="#functions" class="header-anchor">#</a> Functions</h2> <p>Functions can perform some operations on the data received by the data section of a contract: read and write data from the database, convert the type of value, and establish the interaction between contracts.</p> <h3 id="function-declaration"><a href="#function-declaration" class="header-anchor">#</a> Function declaration</h3> <p>Use the func keyword to declare a function, followed by the name and the list of parameters passed to it and their types. All parameters are enclosed in parentheses and separated by commas. After the parentheses, the data type of the value returned by the function must be declared. The function body must be enclosed in braces. If the function has no parameters, the braces can be omitted. To return a value from a function, use the return keyword.</p> <div class="language- extra-class"><pre class="language-text"><code>func myfunc(left int, right int) int {
+ return left*right + left - right
+}
+func test int {
+ return myfunc(10, 30) + myfunc(20, 50)
+}
+func ooops {
+ error &quot;Ooops...&quot;
+}
+</code></pre></div><p>Function do not return errors, because all error checks are performed automatically. If there is an error in any function, the contract will terminate its operation and present the error description in a window.</p> <h3 id="variable-length-parameters"><a href="#variable-length-parameters" class="header-anchor">#</a> Variable-length parameters</h3> <p>Functions can define variable-length parameters, use the ... symbol as the last parameter type of the function to indicate variable-length parameters, with a data type of array. Variable-length parameters include all variables from the time the parameter is passed in the call. All types of variables can be passed, but you need to deal with conflicts of mismatching of data types.</p> <div class="language- extra-class"><pre class="language-text"><code>func sum(out string, values ...) {
+ var i, res int
+
+while i &lt;Len(values) {
+
+   res \= res + values\[i\]
+
+   i \= i + 1
+
+}
+
+Println(out, res)
+
+}
+
+func main() {
+ sum(&quot;Sum:&quot;, 10, 20, 30, 40)
+}
+</code></pre></div><h3 id="optional-parameters"><a href="#optional-parameters" class="header-anchor">#</a> Optional parameters</h3> <p>A function has many parameters, but we only need some of them when calling it. In this case, you can declare optional parameters in the following way: <code>func myfunc(name string).Param1(param string).Param2(param2 int) {...}</code>, then you can call the specified parameters in any order: <code>myfunc(&quot;name&quot;).Param2(100)</code>.</p> <p>In the function body, you can handle these variables normally. If no specified optional parameters called, their default values are zero. You can also use ... to specify a variable-length parameter: <code>func DBFind(table string).Where(request string, params ...)</code> and then call it: <code>DBFind(&quot;mytable&quot;).Where({&quot; id&quot;: $myid, &quot;type&quot;: 2})</code></p> <div class="language- extra-class"><pre class="language-text"><code>func DBFind(table string).Columns(columns string).Where(format string, tail ...)
+ .Limit(limit int).Offset(offset int) string {
+ ...
+}
+
+func names() string {
+ ...
+ return DBFind(&quot;table&quot;).Columns(&quot;name&quot;).Where({&quot;id&quot;: 100}).Limit(1)
+}
+</code></pre></div><h2 id="v-logic-functions-classification"><a href="#v-logic-functions-classification" class="header-anchor">#</a> V-Logic functions classification</h2> <p>Retrieving values from the database:</p> <table><thead><tr><th></th> <th></th> <th></th></tr></thead> <tbody><tr><td>AppParam</td> <td>EcosysParam</td> <td>GetDataFromXLSX</td></tr> <tr><td>DBFind</td> <td>GetHistory</td> <td>GetDataFromXLSX</td></tr> <tr><td>DBRow</td> <td>GetHistoryRow</td> <td>GetBlock</td></tr> <tr><td>DBSelectMetrics</td> <td>GetColumnType</td> <td>LangRes</td></tr></tbody></table> <p>Updating data in tables:</p> <table><thead><tr><th></th> <th></th> <th></th></tr></thead> <tbody><tr><td>DBInsert</td> <td>DBUpdateExt</td> <td>DelTable</td></tr> <tr><td>DBUpdate</td> <td>DelColumn</td> <td></td></tr></tbody></table> <p>Operations with arrays:</p> <table><thead><tr><th></th> <th></th> <th></th></tr></thead> <tbody><tr><td>Append</td> <td>Len</td> <td>GetMapKeys</td></tr> <tr><td>Join</td> <td>Row</td> <td>SortedKeys</td></tr> <tr><td>Split</td> <td>One</td> <td></td></tr></tbody></table> <p>Operations with contracts and permissions:</p> <table><thead><tr><th></th> <th></th> <th></th></tr></thead> <tbody><tr><td>CallContract</td> <td>GetContractById</td> <td>TransactionInfo</td></tr> <tr><td>ContractAccess</td> <td>RoleAccess</td> <td>Throw</td></tr> <tr><td>ContractConditions</td> <td>GetContractByName</td> <td>ValidateCondition</td></tr> <tr><td>EvalCondition</td> <td></td> <td></td></tr></tbody></table> <p>Operations with addresses:</p> <table><thead><tr><th></th> <th></th> <th></th></tr></thead> <tbody><tr><td>AddressToId</td> <td>IdToAddress</td> <td>PubToID</td></tr></tbody></table> <p>Operations with variable values:</p> <table><thead><tr><th></th> <th></th> <th></th></tr></thead> <tbody><tr><td>DecodeBase64</td> <td>FormatMoney</td> <td>Hash</td></tr> <tr><td>EncodeBase64</td> <td>Random</td> <td>Sha256</td></tr> <tr><td>Float</td> <td>Int</td> <td>Str</td></tr> <tr><td>HexToBytes</td> <td></td> <td></td></tr></tbody></table> <p>Arithmetic operations:</p> <table><thead><tr><th></th> <th></th> <th></th></tr></thead> <tbody><tr><td>Floor</td> <td>Log10</td> <td>Round</td></tr> <tr><td>Log</td> <td>Pow</td> <td>Sqrt</td></tr></tbody></table> <p>Operations with JSON:</p> <table><thead><tr><th></th> <th></th> <th></th></tr></thead> <tbody><tr><td>JSONEncode</td> <td>JSONEncodeIndent</td> <td>JSONDecode</td></tr></tbody></table> <p>Operations with strings:</p> <table><thead><tr><th></th> <th></th> <th></th></tr></thead> <tbody><tr><td>HasPrefix</td> <td>Size</td> <td>ToLower</td></tr> <tr><td>Contains</td> <td>Sprintf</td> <td>ToUpper</td></tr> <tr><td>Replace</td> <td>Substr</td> <td>TrimSpace</td></tr></tbody></table> <p>Operations with bytes:</p> <table><thead><tr><th></th> <th></th> <th></th></tr></thead> <tbody><tr><td>StringToBytes</td> <td>BytesToString</td> <td></td></tr></tbody></table> <p>Operations with date and time in SQL format:</p> <table><thead><tr><th></th> <th></th> <th></th></tr></thead> <tbody><tr><td>BlockTime</td> <td>DateTime</td> <td>UnixDateTime</td></tr></tbody></table> <p>Operations with platform parameters:</p> <table><thead><tr><th></th> <th></th> <th></th></tr></thead> <tbody><tr><td>HTTPRequest</td> <td>HTTPPostJSON</td> <td></td></tr></tbody></table> <p>Functions for master CLB nodes:</p> <table><thead><tr><th></th> <th></th> <th></th></tr></thead> <tbody><tr><td>CreateOBS</td> <td>RunOBS</td> <td>RemoveOBS</td></tr> <tr><td>GetOBSList</td> <td>StopOBS</td> <td></td></tr></tbody></table> <h2 id="v-logic-functions-reference"><a href="#v-logic-functions-reference" class="header-anchor">#</a> V-Logic functions reference</h2> <h3 id="appparam"><a href="#appparam" class="header-anchor">#</a> AppParam</h3> <p>Returns the value of a specified application parameter (from the application parameter table app_params).</p> <h4 id="syntax"><a href="#syntax" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>AppParam(app int, name string, ecosystemid int) string
+</code></pre></div><ul><li><p>App</p> <p>Application ID.</p></li> <li><p>name
+Application parameter name.</p></li> <li><p>Ecosystemid</p> <p>Ecosystem ID.</p></li></ul> <h4 id="example"><a href="#example" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>AppParam(1, &quot;app_account&quot;, 1)
+</code></pre></div><h3 id="dbfind"><a href="#dbfind" class="header-anchor">#</a> DBFind</h3> <p>Queries data from a specified table with the specified parameters and returns an array array consisting of an array of objects map.</p> <p><code>.Row()</code> can get the first map element in the query, <code>.One(column string)</code> can get the first map element of a specified column in the query.</p> <h4 id="syntax-2"><a href="#syntax-2" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>DBFind(table string)
+ [.Columns(columns array|string)]
+ [.Where(where map)]
+ [.WhereId(id int)]
+ [.Order(order string)]
+ [.Limit(limit int)]
+ [.Offset(offset int)]
+ [.Row()]
+ [.One(column string)]
+ [.Ecosystem(ecosystemid int)] array
+</code></pre></div><ul><li><p>table
+Table name.</p></li> <li><p>сolumns
+Returns a list of columns. If not specified, all columns will be returned.
+The value is an array or a string separated by commas.</p></li> <li><p>where
+Query conditions.
+Example: <code>.Where({name: &quot;John&quot;})</code> or <code>.Where({&quot;id&quot;: {&quot;$gte&quot;: 4}})</code>.
+This parameter must contain an array of objects with search criteria. The array can contain nested elements.
+Following syntactic constructions are used:</p> <ul><li><p><code>{&quot;field1&quot;: &quot;value1&quot;, &quot;field2&quot;: &quot;value2&quot;}</code>
+Equivalent to <code>field1 = &quot;value1&quot; AND field2 = &quot;value2&quot;</code>.</p></li> <li><p><code>{&quot;field1&quot;: {&quot;$eq&quot;:&quot;value&quot;}}</code>
+Equivalent to <code>field = &quot;value&quot;</code>.</p></li> <li><p><code>{&quot;field1&quot;: {&quot;$neq&quot;: &quot;value&quot;}}</code>
+Equivalent to <code>field != &quot;value&quot;</code>.</p></li> <li><p><code>{&quot;field1: {&quot;$in&quot;: [1,2,3]}</code>
+Equivalent to <code>field IN (1,2,3)</code>.</p></li> <li><p><code>{&quot;field1&quot;: {&quot;$nin&quot;: [1,2,3]}</code>
+Equivalent to field NOT IN (1,2,3).</p></li> <li><p><code>{&quot;field&quot;: {&quot;$lt&quot;: 12}}</code>
+Equivalent to <code>field &lt;12</code>.</p></li> <li><p><code>{&quot;field&quot;: {&quot;$lte&quot;: 12}}</code>
+Equivalent to f<code>ield &lt;= 12</code>.</p></li> <li><p><code>{&quot;field&quot;: {&quot;$gt&quot;: 12}}</code>
+Equivalent to <code>field&gt; 12</code>.</p></li> <li><p><code>{&quot;field&quot;: {&quot;$gte&quot;: 12}}</code>
+Equivalent to <code>field &gt;= 12</code>.</p></li> <li><p><code>{&quot;$and&quot;: [&lt;expr1&gt;, &lt;expr2&gt;, &lt;expr3&gt;]}</code>
+Equivalent to <code>expr1 AND expr2 AND expr3</code>.</p></li> <li><p><code>{&quot;$or&quot;: [&lt;expr1&gt;, &lt;expr2&gt;, &lt;expr3&gt;]}</code>
+Equivalent to <code>expr1 OR expr2 OR expr3</code>.</p></li> <li><p><code>{field: {&quot;$like&quot;: &quot;value&quot;}}</code>
+Equivalent to <code>field like'%value%'</code> (fuzzy search).</p></li> <li><p><code>{field: {&quot;$begin&quot;: &quot;value&quot;}}</code>
+Equivalent to <code>field like'value%'</code> (starts with <code>value</code>).</p></li> <li><p><code>{field: {&quot;$end&quot;: &quot;value&quot;}}</code>
+Equivalent to <code>field like'%value'</code> (ends with <code>value</code>).</p></li> <li><p><code>{field: &quot;$isnull&quot;}</code>
+Equivalent to field is null.</p></li></ul></li></ul> <p>Make sure not to overwrite the keys of object arrays. For example, if you want to query with <code>id&gt;2 and id&lt;5</code>, you cannot use <code>{id:{&quot;$gt&quot;: 2}, id:{&quot;$lt&quot;: 5}}</code>, because the first element will be overwritten by the second element. You should use the following query structure:
+{id: [{&quot;$gt&quot;: 2}, {&quot;$lt&quot;: 5}]}
+{&quot;$and&quot;: [{id:{&quot;$gt&quot;: 2}}, {id:{&quot;$lt&quot;: 5}}]}</p> <ul><li><p>Id
+Queries by ID. For example, .WhereId(1).</p></li> <li><p>Order</p> <p>Used to sort the result set by a specified column, or by id by default.</p> <p>If you use only one field for sorting, you can specify it as a string. To sort multiple fields, you need to specify an array of string objects:</p> <p>Descending order: <code>{&quot;field&quot;: &quot;-1&quot;}</code> Equivalent to <code>field desc</code>.</p> <p>Ascending order: <code>{&quot;field&quot;: &quot;1&quot;}</code> Equivalent to <code>field asc</code>.</p></li> <li><p>limit</p> <p>Returns the number of entries. 25, by default. The maximum number is 10,000.</p></li> <li><p>Offset</p> <p>Offset.</p></li> <li><p>Ecosystemid</p> <p>Ecosystem ID. By default, the table of the current ecosystem is queried.</p></li></ul> <h4 id="example-2"><a href="#example-2" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>     var i int
+     var ret string
+     ret \= DBFind(&quot;contracts&quot;).Columns(&quot;id,value&quot;).Where({id: [{&quot;$gt&quot;: 2}, {&quot;$lt&quot;: 5}]}).Order( &quot;id&quot;)
+     while i &lt;Len(ret) {
+      var vals map
+      vals \= ret[0]
+      Println(vals[&quot;value&quot;])
+      i \= i + 1
+     }
+     ret \= DBFind(&quot;contracts&quot;).Columns(&quot;id,value&quot;).WhereId(10).One(&quot;value&quot;)
+     if ret != nil {
+      Println(ret)
+      Println(ret)
+      Println(ret)
+     }
+</code></pre></div><p>​</p> <h3 id="dbrow"><a href="#dbrow" class="header-anchor">#</a> DBRow</h3> <p>Queries data from a specified table with the specified parameters. Returns an array array consisting of an array of objects map.</p> <h4 id="syntax-3"><a href="#syntax-3" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>DBRow(table string)
+ [.Columns(columns array|string)]
+ [.Where(where map)]
+ [.WhereId(id int)]
+ [.Order(order array|string)]
+ [.Ecosystem(ecosystemid int)] map
+</code></pre></div><ul><li>table
+Table name.
+columns
+Returns a list of columns. If not specified, all columns will be returned.
+The value is an array or a string separated by commas.</li> <li>where
+Query conditions.
+For example: <code>.Where({name: &quot;John&quot;})</code> or <code>.Where({&quot;id&quot;: {&quot;$gte&quot;: 4}})</code>.
+For more details, see DBFind.</li> <li>Id
+Query by ID. For example, <code>.WhereId(1)</code>.</li> <li>Order
+Used to sort the result set by a specified column, or by id by default.
+For more details, see DBFind.</li> <li>Ecosystemid
+Ecosystem ID. By default, the table of the current ecosystem is queried.</li></ul> <h4 id="example-3"><a href="#example-3" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>var ret map
+ret = DBRow(&quot;contracts&quot;).Columns([&quot;id&quot;,&quot;value&quot;]).Where({id: 1})
+Println(ret)
+</code></pre></div><h3 id="dbselectmetrics"><a href="#dbselectmetrics" class="header-anchor">#</a> DBSelectMetrics</h3> <p>Returns the aggregated data of a metric.
+The metrics are updated each time 100 blocks are generated. And the aggregated data is stored on a 1-day cycle.</p> <h4 id="syntax-4"><a href="#syntax-4" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>DBSelectMetrics(metric string, timeInterval string, aggregateFunc string) array
+
+</code></pre></div><ul><li><p>metric
+Metric name</p> <ul><li>ecosystem_pages
+Number of ecosystem pages.
+Return value: key - ecosystem ID, value - number of ecosystem pages.</li> <li>ecosystem_members
+Number of ecosystem members.
+Return value: key - ecosystem ID, value - number of ecosystem members.</li> <li>ecosystem_tx
+Number of ecosystem transactions.
+Return value: key - ecosystem ID, value - number of ecosystem transactions.</li></ul></li> <li><p>timeInterval
+The time interval for aggregating metric data. For example: <code>1 day</code>, <code>30 days</code>.</p></li> <li><p>aggregateFunc
+Aggregate function. For example, <code>max</code>, <code>min</code>, <code>avg</code>.</p></li></ul> <h4 id="example-4"><a href="#example-4" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>var rows array
+rows \= DBSelectMetrics(&quot;ecosystem_tx&quot;, &quot;30 days&quot;, &quot;avg&quot;)
+var i int
+while(i &lt;Len(rows)) {
+ var row map
+ row \= rows[i]
+ i \= i + 1
+}
+</code></pre></div><h3 id="ecosysparam"><a href="#ecosysparam" class="header-anchor">#</a> EcosysParam</h3> <p>Returns the value of a specified parameter in the ecosystem parameters table parameters.</p> <h4 id="syntax-5"><a href="#syntax-5" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>EcosysParam(name string) string
+
+</code></pre></div><ul><li>name
+Parameter name.</li></ul> <h4 id="example-5"><a href="#example-5" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>Println(EcosysParam(&quot;founder_account&quot;))
+</code></pre></div><h3 id="gethistory"><a href="#gethistory" class="header-anchor">#</a> GetHistory</h3> <p>Returns the history of changes to entries in a specified table.</p> <h4 id="syntax-6"><a href="#syntax-6" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>GetHistory(table string, id int) array
+
+</code></pre></div><ul><li>table
+Table name.</li> <li>Id
+Entry ID.</li> <li>Return value
+Returns an array of objects of type map, which specify the history of changes to entries in tables.
+Each array contains the fields of a record before making the next change.
+The array is sorted by order of most recent changes.
+The id field in the array points to the id of the rollback_tx table. block_id represents the block ID, while block_time represents the block generation timestamp.</li></ul> <h4 id="example-6"><a href="#example-6" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>var list array
+var item map
+list \= GetHistory(&quot;blocks&quot;, 1)
+if Len(list) &gt; 0 {
+ item \= list[0]
+}
+</code></pre></div><h3 id="gethistoryrow"><a href="#gethistoryrow" class="header-anchor">#</a> GetHistoryRow</h3> <p>Returns a single snapshot from the change history of a specified entry in a specified table.</p> <h4 id="syntax-7"><a href="#syntax-7" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>GetHistoryRow(table string, id int, rollbackId int) map
+</code></pre></div><ul><li><p>table
+Table name.</p></li> <li><p>Id
+Entry ID.</p></li> <li><p>rollbackId
+rollback_tx The entry ID of the table.</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>  $result = GetHistoryRow(&quot;contracts&quot;,205,2358)
+</code></pre></div><h3 id="getcolumntype"><a href="#getcolumntype" class="header-anchor">#</a> GetColumnType</h3> <p>Returns the data type of a specified field in a specified table.</p> <h4 id="syntax-8"><a href="#syntax-8" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>GetColumnType(table, column string) string
+
+</code></pre></div><ul><li>table
+Table name.</li> <li>column
+Field Name.</li> <li>Return value
+The following types can be returned: text, varchar, number, money, double, bytes, json, datetime, double.</li></ul> <h4 id="example-7"><a href="#example-7" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>var coltype string
+coltype \= GetColumnType(&quot;members&quot;, &quot;member_name&quot;)
+</code></pre></div><h3 id="getdatafromxlsx"><a href="#getdatafromxlsx" class="header-anchor">#</a> GetDataFromXLSX</h3> <p>Returns data from XLSX spreadsheets.</p> <h4 id="syntax-9"><a href="#syntax-9" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>GetDataFromXLSX(binId int, line int, count int, sheet int) string
+
+</code></pre></div><ul><li>binId
+ID in XLSX format in the binary table binary.</li> <li>line
+The starting line number, starting from 0 by default.</li> <li>count
+The number of rows that need to be returned.</li> <li>sheet
+List number, starting from 1 by default.</li></ul> <h4 id="example-8"><a href="#example-8" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>var a array
+a \= GetDataFromXLSX(3, 12, 10, 1)
+</code></pre></div><h3 id="getrowscountxlsx"><a href="#getrowscountxlsx" class="header-anchor">#</a> GetRowsCountXLSX</h3> <p>Returns the number of lines in a specified XLSX file.</p> <h4 id="syntax-10"><a href="#syntax-10" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>GetRowsCountXLSX(binId int, sheet int) int
+</code></pre></div><ul><li>binId
+ID in XLSX format in the binary table binary.</li> <li>sheet
+List number, starting from 1 by default.</li></ul> <h4 id="example-9"><a href="#example-9" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>var count int
+count \= GetRowsCountXLSX(binid, 1)
+</code></pre></div><h3 id="langres"><a href="#langres" class="header-anchor">#</a> LangRes</h3> <p>Returns a multilingual resource with name label for language lang, specified as a two-character code, for example: en, zh. If there is no language for a selected language, then the language resource of the en label is returned.</p> <h4 id="syntax-11"><a href="#syntax-11" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>LangRes(label string, lang string) string
+</code></pre></div><ul><li>label
+Language resource name.</li> <li>lang
+Two-character language code.</li></ul> <h4 id="example-10"><a href="#example-10" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>warning LangRes(&quot;@1confirm&quot;, &quot;en&quot;)
+error LangRes(&quot;@1problems&quot;, &quot;zh&quot;)
+</code></pre></div><h3 id="getblock"><a href="#getblock" class="header-anchor">#</a> GetBlock</h3> <p>Returns relevant information about a specified block.</p> <h4 id="syntax-12"><a href="#syntax-12" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>GetBlock(blockID int64) map
+
+</code></pre></div><ul><li>blockID
+Block ID.</li> <li>Return value
+Return an array of objects:
+<ul><li>id
+Block ID.</li> <li>time
+Block generation timestamp.</li> <li>key_id
+The account address of the verification node generated the block.</li></ul></li></ul> <h4 id="example-11"><a href="#example-11" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>var b map
+b \= GetBlock(1)
+Println(b)
+</code></pre></div><h3 id="dbinsert"><a href="#dbinsert" class="header-anchor">#</a> DBInsert</h3> <p>Adds an entry to a specified table and return the entry ID.</p> <h4 id="syntax-13"><a href="#syntax-13" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>DBInsert(table string, params map) int
+
+</code></pre></div><ul><li>tblname
+Table name.</li> <li>params
+An array of objects where keys are field names and values are inserted values.</li></ul> <h4 id="example-12"><a href="#example-12" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>DBInsert(&quot;mytable&quot;, {name: &quot;John Smith&quot;, amount: 100})
+</code></pre></div><h3 id="dbupdate"><a href="#dbupdate" class="header-anchor">#</a> DBUpdate</h3> <p>Changes the column value of a specified entry ID in a specified table. If the entry ID does not exist in the table, an error is returned.</p> <h4 id="syntax-14"><a href="#syntax-14" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>DBUpdate(tblname string, id int, params map)
+
+</code></pre></div><ul><li>tblname
+Table name.</li> <li>Id
+Entry ID.</li> <li>params
+An array of objects where keys are field names and values are new values after changes.</li></ul> <h4 id="example-13"><a href="#example-13" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>DBUpdate(&quot;mytable&quot;, myid, {name: &quot;John Smith&quot;, amount: 100})
+</code></pre></div><h3 id="dbupdateext"><a href="#dbupdateext" class="header-anchor">#</a> DBUpdateExt</h3> <p>Changes the value of a column in a specified table that matches the query condition.</p> <h4 id="syntax-15"><a href="#syntax-15" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>DBUpdateExt(tblname string, where map, params map)
+
+</code></pre></div><ul><li>tblname
+Table name.</li> <li>where
+Query conditions.
+For more details, see DBFind.</li> <li>params
+An array of objects where keys are field names and values are new values after changes.</li></ul> <h4 id="example-14"><a href="#example-14" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>DBUpdateExt(&quot;mytable&quot;, {id: $key_id, ecosystem: $ecosystem_id}, {name: &quot;John Smith&quot;, amount: 100})
+</code></pre></div><h3 id="delcolumn"><a href="#delcolumn" class="header-anchor">#</a> DelColumn</h3> <p>Deletes a field in a specified table that has no records.</p> <h4 id="syntax-16"><a href="#syntax-16" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>DelColumn(tblname string, column string)
+
+</code></pre></div><ul><li><p>tblname
+Table name.</p></li> <li><p>column
+The field to be deleted.</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>  DelColumn(&quot;mytable&quot;, &quot;mycolumn&quot;)
+</code></pre></div><h3 id="deltable"><a href="#deltable" class="header-anchor">#</a> DelTable</h3> <p>Deletes a specified table that has e no records.</p> <h4 id="syntax-17"><a href="#syntax-17" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>DelTable(tblname string)
+
+</code></pre></div><ul><li>tblname
+Table name.</li></ul> <h4 id="example-15"><a href="#example-15" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>DelTable(&quot;mytable&quot;)
+</code></pre></div><h3 id="append"><a href="#append" class="header-anchor">#</a> Append</h3> <p>Inserts any type of val into the src array.</p> <h4 id="syntax-18"><a href="#syntax-18" class="header-anchor">#</a> Syntax</h4> <p>Append(src array, val anyType) array</p> <ul><li>src
+The original array.</li> <li>val
+The value to be inserted.</li></ul> <h4 id="example-16"><a href="#example-16" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>var list array
+list \= Append(list, &quot;new_val&quot;)
+</code></pre></div><h3 id="join"><a href="#join" class="header-anchor">#</a> Join</h3> <p>Combines elements of the in array into a string with a specified sep separator.</p> <h4 id="syntax-19"><a href="#syntax-19" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>Join(in array, sep string) string
+
+</code></pre></div><ul><li>In
+Array name.</li> <li>sep
+Separator.</li></ul> <h4 id="example-17"><a href="#example-17" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code> var val string, myarr array
+ myarr[0] \= &quot;first&quot;
+ myarr[1] \= 10
+ val \= Join(myarr, &quot;,&quot;)
+</code></pre></div><h3 id="split"><a href="#split" class="header-anchor">#</a> Split</h3> <p>Uses the sep separator to split the in string into elements and put them into an array.</p> <h4 id="syntax-20"><a href="#syntax-20" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code> Split(in string, sep string) array
+</code></pre></div><ul><li>In
+String.</li> <li>sep
+Separator.</li></ul> <h4 id="example-18"><a href="#example-18" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>var myarr array
+myarr \= Split(&quot;first,second,third&quot;, &quot;,&quot;)
+</code></pre></div><h3 id="len"><a href="#len" class="header-anchor">#</a> Len</h3> <p>Returns the number of elements in a specified array.</p> <h4 id="syntax-21"><a href="#syntax-21" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>Len(val array) int
+</code></pre></div><ul><li>val
+Array.</li></ul> <h4 id="example-19"><a href="#example-19" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code> if Len(mylist) \== 0 {
+  ...
+ }
+</code></pre></div><h3 id="row"><a href="#row" class="header-anchor">#</a> Row</h3> <p>The list parameter must not be specified in this case. Return the first object array in the array list. If the list is empty, an empty result is returned. This function is mostly used in conjunction with the DBFind function. When using this function, you cannot specify parameters.</p> <h4 id="syntax-22"><a href="#syntax-22" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code> Row(list array) map
+</code></pre></div><ul><li>list
+The array of objects returned by the DBFind function.</li></ul> <h4 id="example-20"><a href="#example-20" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code> var ret map
+ ret \= DBFind(&quot;contracts&quot;).Columns(&quot;id,value&quot;).WhereId(10).Row()
+ Println(ret)
+</code></pre></div><h3 id="one"><a href="#one" class="header-anchor">#</a> One</h3> <p>Returns the field value of the first object array in the array list. If the list array is empty, nil is returned. It is mostly used in conjunction with the DBFind function. When using this function, you cannot specify parameters.</p> <h4 id="syntax-23"><a href="#syntax-23" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code> One(list array, column string) string
+</code></pre></div><ul><li>list</li></ul> <p>The array of objects returned by the DBFind function.</p> <ul><li><p>column</p> <p>Field Name.</p></li></ul> <h4 id="example-21"><a href="#example-21" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var ret string
+  ret \= DBFind(&quot;contracts&quot;).Columns(&quot;id,value&quot;).WhereId(10).One(&quot;value&quot;)
+  if ret != nil {
+   Println(ret)
+  }
+</code></pre></div><h3 id="getmapkeys"><a href="#getmapkeys" class="header-anchor">#</a> GetMapKeys</h3> <p>Returns the key array in the object array.</p> <h4 id="syntax-24"><a href="#syntax-24" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code> GetMapKeys(val map) array
+</code></pre></div><ul><li>val
+Object array.</li></ul> <h4 id="example-22"><a href="#example-22" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var val map
+  var arr array
+  val[&quot;k1&quot;] \= &quot;v1&quot;
+  val[&quot;k2&quot;] \= &quot;v2&quot;
+  arr \= GetMapKeys(val)
+</code></pre></div><h3 id="sortedkeys"><a href="#sortedkeys" class="header-anchor">#</a> SortedKeys</h3> <p>Returns a sorted key array in the object array.</p> <h4 id="syntax-25"><a href="#syntax-25" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  SortedKeys(val map) array
+
+</code></pre></div><ul><li>val
+Object array.</li></ul> <h4 id="example-23"><a href="#example-23" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var val map
+  var arr array
+  val[&quot;k2&quot;] \= &quot;v2&quot;
+  val[&quot;k1&quot;] \= &quot;v1&quot;
+  arr \= SortedKeys(val)
+</code></pre></div><h3 id="callcontract"><a href="#callcontract" class="header-anchor">#</a> CallContract</h3> <p>Calls the contract with a specified name. All parameters of the data section in the contract must be included in an object array. This function returns the value assigned to the $result variable by a specified contract.</p> <h4 id="syntax-26"><a href="#syntax-26" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  CallContract(name string, params map)
+
+</code></pre></div><ul><li>name
+The name of the contract being called.</li> <li>params
+An associative array of the contract input data.</li></ul> <h4 id="example-24"><a href="#example-24" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var par map
+  par[&quot;Name&quot;] \= &quot;My Name&quot;
+  CallContract(&quot;MyContract&quot;, par)
+</code></pre></div><h3 id="contractaccess"><a href="#contractaccess" class="header-anchor">#</a> ContractAccess</h3> <p>Checks if the name of contract being executed matches one of the names listed in the parameters. Usually it is used to control contract access to tables. When editing table fields or inserting and adding new column fields in the permissions section of the table, please specify this function in the permissions fields.</p> <h4 id="syntax-27"><a href="#syntax-27" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>ContractAccess(name string, [name string]) bool
+</code></pre></div><ul><li>name
+Contract name.</li></ul> <h4 id="example-25"><a href="#example-25" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  ContractAccess(&quot;MyContract&quot;)
+  ContractAccess(&quot;MyContract&quot;,&quot;SimpleContract&quot;)
+</code></pre></div><h3 id="contractconditions"><a href="#contractconditions" class="header-anchor">#</a> ContractConditions</h3> <p>Calls the conditions section in the contract with a specified name.
+For this type of contracts, the data section must be empty. If the conditions section is executed without error, it returns true. If there is an error during execution, the parent contract will also be terminated due to the error. This function is usually used to control the contract's access to tables and can be called in the permission fields when editing system tables.</p> <h4 id="syntax-28"><a href="#syntax-28" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  ContractConditions(name string, [name string]) bool
+
+</code></pre></div><ul><li>name
+Contract name.</li></ul> <h4 id="example-26"><a href="#example-26" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  ContractConditions(&quot;MainCondition&quot;)
+</code></pre></div><h3 id="evalcondition"><a href="#evalcondition" class="header-anchor">#</a> EvalCondition</h3> <p>Gets the value of the condfield field in the record with a 'name' field from the tablename table, and checks the conditions of the condfield field value.</p> <h4 id="syntax-29"><a href="#syntax-29" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  EvalCondition(tablename string, name string, condfield string)
+
+</code></pre></div><ul><li>tablename
+Table name.</li> <li>name
+Queries the value with the 'name' field.</li> <li>condfield
+The name of the field whose conditions needs to be checked.</li></ul> <h4 id="example-27"><a href="#example-27" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  EvalCondition(`menu`, $Name, `conditions`)
+</code></pre></div><h3 id="getcontractbyid"><a href="#getcontractbyid" class="header-anchor">#</a> GetContractById</h3> <p>Returns its contract name by contract ID. If not found the contract, an empty string is returned.</p> <h4 id="syntax-30"><a href="#syntax-30" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  GetContractById(id int) string
+
+</code></pre></div><ul><li>Id
+The contract ID in the contract table contracts.</li></ul> <h4 id="example-28"><a href="#example-28" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var name string
+  name = GetContractById($IdContract)
+</code></pre></div><h3 id="getcontractbyname"><a href="#getcontractbyname" class="header-anchor">#</a> GetContractByName</h3> <p>This function returns its contract ID by contract name. If not found the contract, zero is returned.</p> <h4 id="syntax-31"><a href="#syntax-31" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  GetContractByName(name string) int
+</code></pre></div><ul><li>name
+The contract name in the contract table contracts.</li></ul> <h4 id="example-29"><a href="#example-29" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var id int
+  id = GetContractByName(`NewBlock`)
+</code></pre></div><h3 id="roleaccess"><a href="#roleaccess" class="header-anchor">#</a> RoleAccess</h3> <p>Checks whether the role ID of the contract caller matches one of the IDs specified in the parameter.
+You can use this function to control contract access to tables and other data.</p> <h4 id="syntax-32"><a href="#syntax-32" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code> RoleAccess(id int, [id int]) bool
+</code></pre></div><ul><li>Id
+Role ID.</li></ul> <h4 id="example-30"><a href="#example-30" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  RoleAccess(1)
+  RoleAccess(1, 3)
+</code></pre></div><h3 id="transactioninfo"><a href="#transactioninfo" class="header-anchor">#</a> TransactionInfo</h3> <p>Queries transactions by specified hash value and returns information about the contract executed and its parameters.</p> <h4 id="syntax-33"><a href="#syntax-33" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  TransactionInfo(hash: string)
+</code></pre></div><ul><li><p>hash
+Transaction hash in hexadecimal string format.</p></li> <li><p>Return value
+This function returns a string in JSON format:</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>    {&quot;contract&quot;:&quot;ContractName&quot;, &quot;params&quot;:{&quot;key&quot;: &quot;val&quot;}, &quot;block&quot;: &quot;N&quot;}
+</code></pre></div><ul><li><p>contract
+Contract name.</p></li> <li><p>params
+Data passed to contract parameters.
+block
+ID of the block that processed the transaction.</p></li></ul> <h4 id="example-31"><a href="#example-31" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var out map
+  out \= JSONDecode(TransactionInfo(hash))
+</code></pre></div><h3 id="throw"><a href="#throw" class="header-anchor">#</a> Throw</h3> <p>Generates an error of type exception.</p> <h4 id="syntax-34"><a href="#syntax-34" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>Throw(ErrorId string, ErrDescription string)
+</code></pre></div><ul><li><p>ErrorId
+Error identifier.</p></li> <li><p>ErrDescription
+Error description.</p></li> <li><p>Return value
+The format of this type of transaction results:</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>    {&quot;type&quot;:&quot;exception&quot;,&quot;error&quot;:&quot;Error description&quot;,&quot;id&quot;:&quot;Error ID&quot;}
+</code></pre></div><h4 id="example-32"><a href="#example-32" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>Throw(&quot;Problem&quot;, &quot;There is a problem&quot;)
+</code></pre></div><h3 id="validatecondition"><a href="#validatecondition" class="header-anchor">#</a> ValidateCondition</h3> <p>Tries to compile the conditions specified by the condition parameter. If there is an error during the compilation process, an error is generated and the contract called is terminated. This function is designed to check the correctness of the conditional format.</p> <h4 id="syntax-35"><a href="#syntax-35" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  ValidateCondition(condition string, state int)
+</code></pre></div><ul><li>condition
+The conditional format that needs to be verified.</li> <li>state
+Ecosystem ID. If you check the global condition, please specify it as 0.</li></ul> <h4 id="example-33"><a href="#example-33" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  ValidateCondition(`ContractAccess(&quot;@1MyContract&quot;)`, 1)
+</code></pre></div><h3 id="addresstoid"><a href="#addresstoid" class="header-anchor">#</a> AddressToId</h3> <p>Returns the corresponding account address by wallet address. If an invalid address is specified, '0' is returned.</p> <h4 id="syntax-36"><a href="#syntax-36" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  AddressToId(address string) int
+
+</code></pre></div><ul><li>Address
+Wallet address in XXXX-...-XXXX format or number format.</li></ul> <h4 id="example-34"><a href="#example-34" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  wallet = AddressToId($Recipient)
+</code></pre></div><h3 id="idtoaddress"><a href="#idtoaddress" class="header-anchor">#</a> IdToAddress</h3> <p>Returns the corresponding wallet address by account address. If an invalid address is specified, the invalid address 'invalid' is returned.</p> <h4 id="syntax-37"><a href="#syntax-37" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  IdToAddress(id int) string
+
+</code></pre></div><ul><li>Id
+Account address.</li></ul> <h4 id="example-35"><a href="#example-35" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  $address = IdToAddress($id)
+</code></pre></div><h3 id="pubtoid"><a href="#pubtoid" class="header-anchor">#</a> PubToID</h3> <p>The account address is returned by public key in hexadecimal format.</p> <h4 id="syntax-38"><a href="#syntax-38" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  PubToID(hexkey string) int
+
+</code></pre></div><ul><li>hexkey
+The public key in hexadecimal format.</li></ul> <h4 id="example-36"><a href="#example-36" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>var wallet int
+  wallet \= PubToID(&quot;04fa5e78.....34abd6&quot;)
+</code></pre></div><h3 id="decodebase64"><a href="#decodebase64" class="header-anchor">#</a> DecodeBase64</h3> <p>Returns a string by specifying the base64 format</p> <h4 id="syntax-39"><a href="#syntax-39" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  DecodeBase64(input string) string
+
+</code></pre></div><ul><li>Input
+String in base64 format.</li></ul> <h4 id="example-37"><a href="#example-37" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  val \= DecodeBase64(mybase64)
+</code></pre></div><h3 id="encodebase64"><a href="#encodebase64" class="header-anchor">#</a> EncodeBase64</h3> <p>Returns a string in base64 format by specifying a string.</p> <h4 id="syntax-40"><a href="#syntax-40" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  EncodeBase64(input string) string
+
+</code></pre></div><ul><li>Input
+The string to be encoded.</li></ul> <h4 id="example-38"><a href="#example-38" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code> var base64str string
+  base64str \= EncodeBase64(&quot;my text&quot;)
+</code></pre></div><h3 id="float"><a href="#float" class="header-anchor">#</a> Float</h3> <p>Converts an integer or string to a float number.</p> <h4 id="syntax-41"><a href="#syntax-41" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  Float(val int|string) float
+
+</code></pre></div><ul><li>val
+An integer or string.</li></ul> <h4 id="example-39"><a href="#example-39" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  val \= Float(&quot;567.989&quot;) + Float(232)
+</code></pre></div><h3 id="hextobytes"><a href="#hextobytes" class="header-anchor">#</a> HexToBytes</h3> <p>Converts a string in hexadecimal format to byte type bytes.</p> <h4 id="syntax-42"><a href="#syntax-42" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  HexToBytes(hexdata string) bytes
+
+</code></pre></div><ul><li>hexdata
+A string in hexadecimal format.</li></ul> <h4 id="example-40"><a href="#example-40" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var val bytes
+  val \= HexToBytes(&quot;34fe4501a4d80094&quot;)
+</code></pre></div><h3 id="formatmoney"><a href="#formatmoney" class="header-anchor">#</a> FormatMoney</h3> <p>Returns the string value of exp / 10 ^ digit.</p> <h4 id="syntax-43"><a href="#syntax-43" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>FormatMoney(exp string, digit int) string
+</code></pre></div><ul><li>Exp
+A number in string format.
+digit
+The exponent (positive or negative) of 10 in the expression <code>Exp/10^digit</code>. Positive values determine decimal places.</li></ul> <h4 id="example-41"><a href="#example-41" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  s \= FormatMoney(&quot;78236475917384&quot;, 0)
+</code></pre></div><h3 id="random"><a href="#random" class="header-anchor">#</a> Random</h3> <p>Returns a random number between min and max (min &lt;= result &lt;max). Both min and max must be positive numbers.</p> <h4 id="syntax-44"><a href="#syntax-44" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code> Random(min int, max int) int
+</code></pre></div><ul><li><p>min
+The minimum value among random numbers.</p></li> <li><p>max
+The upper limit of random numbers. The random number generated will be less than this value.</p></li></ul> <h4 id="example-42"><a href="#example-42" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  i \= Random(10,5000)
+</code></pre></div><h3 id="int"><a href="#int" class="header-anchor">#</a> Int</h3> <p>Converts a value in string format to an integer.</p> <h4 id="syntax-45"><a href="#syntax-45" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  Int(val string) int
+</code></pre></div><ul><li>val
+A number in string format.</li></ul> <h4 id="example-43"><a href="#example-43" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  mystr \= &quot;-37763499007332&quot;
+  val \= Int(mystr)
+</code></pre></div><h3 id="hash"><a href="#hash" class="header-anchor">#</a> Hash</h3> <p>Returns the hash of a specified byte array or string, which is generated by the system encryption library crypto.</p> <h4 id="syntax-46"><a href="#syntax-46" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code> Hash(val interface{}) string, error
+</code></pre></div><ul><li>val
+A string or byte array.</li></ul> <h4 id="example-44"><a href="#example-44" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var hash string
+  hash \= Hash(&quot;Test message&quot;)
+</code></pre></div><h3 id="sha256"><a href="#sha256" class="header-anchor">#</a> Sha256</h3> <p>Returns the SHA256 hash of a specified string.</p> <h4 id="syntax-47"><a href="#syntax-47" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code> Sha256(val string) string
+</code></pre></div><ul><li>val
+A string requires the Sha256 hash operation.</li></ul> <h4 id="example-45"><a href="#example-45" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var sha string
+  sha \= Sha256(&quot;Test message&quot;)
+</code></pre></div><h3 id="str"><a href="#str" class="header-anchor">#</a> Str</h3> <p>Converts an integer int or float float number to a string.</p> <h4 id="syntax-48"><a href="#syntax-48" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>Str(val int|float) string
+</code></pre></div><ul><li>val
+An integer or float number.</li></ul> <h4 id="example-46"><a href="#example-46" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  myfloat \= 5.678
+  val \= Str(myfloat)
+</code></pre></div><h3 id="jsonencode"><a href="#jsonencode" class="header-anchor">#</a> JSONEncode</h3> <p>Converts a number, string or array to a string in JSON format.</p> <h4 id="syntax-49"><a href="#syntax-49" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  JSONEncode(src int|float|string|map|array) string
+
+</code></pre></div><ul><li>src
+Data to convert.</li></ul> <h4 id="example-47"><a href="#example-47" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>var mydata map
+  mydata[&quot;key&quot;] \= 1
+  var json string
+  json \= JSONEncode(mydata)
+</code></pre></div><h3 id="jsonencodeindent"><a href="#jsonencodeindent" class="header-anchor">#</a> JSONEncodeIndent</h3> <p>Uses the specified indentation to convert a number, string, or array to a string in JSON format.</p> <h4 id="syntax-50"><a href="#syntax-50" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  JSONEncodeIndent(src int|float|string|map|array, indent string) string
+
+</code></pre></div><ul><li><p>src
+Data to convert.</p></li> <li><p>Indent
+The string will be used as indentation.</p></li></ul> <h4 id="example-48"><a href="#example-48" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>var mydata map
+  mydata[&quot;key&quot;] \= 1
+  var json string
+  json \= JSONEncodeIndent(mydata, &quot;\t&quot;)
+</code></pre></div><h3 id="jsondecode"><a href="#jsondecode" class="header-anchor">#</a> JSONDecode</h3> <p>Converts a string in JSON format to a number, string or array.</p> <h4 id="syntax-51"><a href="#syntax-51" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  JSONDecode(src string) int|float|string|map|array
+
+</code></pre></div><ul><li>src
+A string containing data in JSON format.</li></ul> <h4 id="example-49"><a href="#example-49" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var mydata map
+  mydata = JSONDecode(`{&quot;name&quot;: &quot;John Smith&quot;, &quot;company&quot;: &quot;Smith's company&quot;}`)
+</code></pre></div><h3 id="hasprefix"><a href="#hasprefix" class="header-anchor">#</a> HasPrefix</h3> <p>Checks whether the string starts with a specified string.</p> <h4 id="syntax-52"><a href="#syntax-52" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>HasPrefix(s string, prefix string) bool
+</code></pre></div><ul><li><p>s
+A string.</p></li> <li><p>prefix
+The prefix to check.</p></li> <li><p>Return value
+If the string starts with a specified string, true is returned.</p></li></ul> <h4 id="example-50"><a href="#example-50" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  if HasPrefix($Name, `my`) {
+  ...
+  }
+</code></pre></div><h3 id="contains"><a href="#contains" class="header-anchor">#</a> Contains</h3> <p>Checks whether the string contains a specified substring.</p> <h4 id="syntax-53"><a href="#syntax-53" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code> Contains(s string, substr string) bool
+</code></pre></div><ul><li><p>s
+A string.</p></li> <li><p>substr
+A substring.</p></li> <li><p>Return value
+If the string contains the substring, it returns true.</p></li></ul> <h4 id="example-51"><a href="#example-51" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  if Contains($Name, `my`) {
+  ...
+  }
+</code></pre></div><h3 id="replace"><a href="#replace" class="header-anchor">#</a> Replace</h3> <p>Replaces old (the old string) with new (the new string) in the string.</p> <h4 id="syntax-54"><a href="#syntax-54" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  Replace(s string, old string, new string) string
+
+</code></pre></div><ul><li><p>s
+The original string.</p></li> <li><p>Old
+The substring to replace.</p></li> <li><p>new
+The new string.</p></li></ul> <h4 id="example-52"><a href="#example-52" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  s = Replace($Name, `me`, `you`)
+</code></pre></div><h3 id="size"><a href="#size" class="header-anchor">#</a> Size</h3> <p>Returns the number of bytes in a specified string.</p> <h4 id="syntax-55"><a href="#syntax-55" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  Size(val string) int
+
+</code></pre></div><ul><li>val
+A string.</li></ul> <h4 id="example-53"><a href="#example-53" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var len int
+  len = Size($Name)
+</code></pre></div><h3 id="sprintf"><a href="#sprintf" class="header-anchor">#</a> Sprintf</h3> <p>This function creates a string using the specified template and parameters.
+Available wildcards:</p> <ul><li><code>%d</code> (integer)</li> <li><code>%s</code> (string)</li> <li><code>%f</code> (float)</li> <li><code>%v</code> (any type)</li></ul> <h4 id="syntax-56"><a href="#syntax-56" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  Sprintf(pattern string, val ...) string
+
+</code></pre></div><ul><li>pattern
+A string template.</li></ul> <h4 id="example-54"><a href="#example-54" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  out \= Sprintf(&quot;%s\=%d&quot;, mypar, 6448)
+</code></pre></div><h3 id="substr"><a href="#substr" class="header-anchor">#</a> Substr</h3> <p>Returns the substring obtained from a specified string starting from the offset offset (calculated from 0 by default), and the maximum length is limited to length.
+If the offset or length is less than zero, or the offset is greater than the length, an empty string is returned.
+If the sum of the offset and length is greater than the string size, then, the substring will be returned starting from the offset to the end of the string.</p> <h4 id="syntax-57"><a href="#syntax-57" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  Substr(s string, offset int, length int) string
+
+</code></pre></div><ul><li><p>val
+A string.</p></li> <li><p>Offset
+Offset.</p></li> <li><p>length
+Length of the substring.</p></li></ul> <h4 id="example-55"><a href="#example-55" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var s string
+  s = Substr($Name, 1, 10)
+</code></pre></div><h3 id="tolower"><a href="#tolower" class="header-anchor">#</a> ToLower</h3> <p>Returns a specified string in lowercase.</p> <h4 id="syntax-58"><a href="#syntax-58" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  ToLower(val string) string
+
+</code></pre></div><ul><li>val
+A string.</li></ul> <h4 id="example-56"><a href="#example-56" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  val \= ToLower(val)
+</code></pre></div><h3 id="toupper"><a href="#toupper" class="header-anchor">#</a> ToUpper</h3> <p>Returns a specified string in uppercase.</p> <h4 id="syntax-59"><a href="#syntax-59" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  ToUpper(val string) string
+
+</code></pre></div><ul><li>val
+A string.</li></ul> <h4 id="example-57"><a href="#example-57" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  val \= ToUpper(val)
+</code></pre></div><h3 id="trimspace"><a href="#trimspace" class="header-anchor">#</a> TrimSpace</h3> <p>Deletes the leading and trailing spaces, tabs and newlines of a specified string.</p> <h4 id="syntax-60"><a href="#syntax-60" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  TrimSpace(val string) string
+
+</code></pre></div><ul><li>val
+A string.</li></ul> <h4 id="example-58"><a href="#example-58" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>var val string
+val \= TrimSpace(&quot; mystr &quot;)
+</code></pre></div><h3 id="floor"><a href="#floor" class="header-anchor">#</a> Floor</h3> <p>Returns the largest integer value less than or equal to a specified number, float number, and string.</p> <h4 id="syntax-61"><a href="#syntax-61" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  Floor(x float|int|string) int
+</code></pre></div><ul><li>x
+A number, float number, and string.</li></ul> <h4 id="example-59"><a href="#example-59" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>val \= Floor(5.6) // returns 5
+</code></pre></div><h3 id="log"><a href="#log" class="header-anchor">#</a> Log</h3> <p>Returns the natural logarithm of a specified number, float number, and string.</p> <h4 id="syntax-62"><a href="#syntax-62" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  Log(x float|int|string) float
+
+</code></pre></div><ul><li>x
+A number, float number, and string.</li></ul> <h4 id="example-60"><a href="#example-60" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  val \= Log(10)
+</code></pre></div><h3 id="log10"><a href="#log10" class="header-anchor">#</a> Log10</h3> <p>Returns the base-10 logarithm of a specified number, float number, and string.</p> <h4 id="syntax-63"><a href="#syntax-63" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  Log10(x float|int|string) float
+
+</code></pre></div><ul><li>x
+A number, float number, and string.</li></ul> <h4 id="example-61"><a href="#example-61" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code> val \= Log10(100)
+</code></pre></div><h3 id="pow"><a href="#pow" class="header-anchor">#</a> Pow</h3> <p>Returns the specified base to the specified power (xy).</p> <h4 id="syntax-64"><a href="#syntax-64" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  Pow(x float|int|string, y float|int|string) float
+
+</code></pre></div><ul><li><p>x
+Base number.</p></li> <li><p>y
+Exponent.</p></li></ul> <h4 id="example-62"><a href="#example-62" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  val \= Pow(2, 3)
+
+</code></pre></div><h3 id="round"><a href="#round" class="header-anchor">#</a> Round</h3> <p>Returns the value of a specified number rounded to the nearest integer.</p> <h4 id="syntax-65"><a href="#syntax-65" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  Round(x float|int|string) int
+
+</code></pre></div><ul><li>x
+A number.</li></ul> <h4 id="example-63"><a href="#example-63" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  val \= Round(5.6)
+</code></pre></div><h3 id="sqrt"><a href="#sqrt" class="header-anchor">#</a> Sqrt</h3> <p>Returns the square root of a specified number.</p> <div class="language- extra-class"><pre class="language-text"><code>  Sqrt(x float|int|string) float
+
+</code></pre></div><ul><li>x
+A number.</li></ul> <h4 id="example-64"><a href="#example-64" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  val \= Sqrt(225)
+</code></pre></div><h2 id="stringtobytes"><a href="#stringtobytes" class="header-anchor">#</a> StringToBytes</h2> <p>Converts a string to bytes.</p> <h4 id="syntax-66"><a href="#syntax-66" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  StringToBytes(src string) bytes
+
+</code></pre></div><ul><li>src
+A string.</li></ul> <h4 id="example-65"><a href="#example-65" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code> var b bytes
+  b \= StringToBytes(&quot;my string&quot;)
+</code></pre></div><h3 id="bytestostring"><a href="#bytestostring" class="header-anchor">#</a> BytesToString</h3> <p>Converts bytes to string.</p> <h4 id="syntax-67"><a href="#syntax-67" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  BytesToString(src bytes) string
+
+</code></pre></div><ul><li>src
+Byte.</li></ul> <h4 id="example-66"><a href="#example-66" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var s string
+  s = BytesToString($Bytes)
+</code></pre></div><h3 id="sysparamstring"><a href="#sysparamstring" class="header-anchor">#</a> SysParamString</h3> <p>Returns the value of a specified platform parameter.</p> <h4 id="syntax-68"><a href="#syntax-68" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  SysParamString(name string) string
+
+</code></pre></div><ul><li>name
+Parameter name.</li></ul> <h4 id="example-67"><a href="#example-67" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  url = SysParamString(`blockchain_url`)
+</code></pre></div><h3 id="sysparamint"><a href="#sysparamint" class="header-anchor">#</a> SysParamInt</h3> <p>Returns the value of a specified platform parameter in the form of a number.</p> <h4 id="syntax-69"><a href="#syntax-69" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  SysParamInt(name string) int
+
+</code></pre></div><ul><li>name
+Parameter name.</li></ul> <h4 id="example-68"><a href="#example-68" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  maxcol = SysParam(`max_columns`)
+</code></pre></div><h3 id="dbupdatesysparam"><a href="#dbupdatesysparam" class="header-anchor">#</a> DBUpdateSysParam</h3> <p>Updates the value and conditions of a platform parameter. If you do not need to change the value or conditions, please specify an empty string in the corresponding parameter.</p> <h4 id="syntax-70"><a href="#syntax-70" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  DBUpdateSysParam(name, value, conditions string)
+
+</code></pre></div><ul><li><p>name
+Parameter name.</p></li> <li><p>value
+New value of a parameter.</p></li> <li><p>conditions
+New conditions for updating a parameter.</p></li></ul> <h4 id="example-69"><a href="#example-69" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  DBUpdateSysParam(`fuel_rate`, `400000000000`, ``)
+
+</code></pre></div><h3 id="updatenotifications"><a href="#updatenotifications" class="header-anchor">#</a> UpdateNotifications</h3> <p>Obtains the notification list of a specified key from the database, and sends the notification obtained to Centrifugo.</p> <h4 id="syntax-71"><a href="#syntax-71" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  UpdateNotifications(ecosystemID int, keys int...)
+
+</code></pre></div><ul><li><p>EcosystemID
+Ecosystem ID.</p></li> <li><p>key
+A list of account addresses, separated by commas. Or you can use an array to specify a list of account addresses.</p></li></ul> <h4 id="example-70"><a href="#example-70" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  UpdateNotifications($ecosystem_id, $key_id, 23345355454, 35545454554)
+  UpdateNotifications(1, [$key_id, 23345355454, 35545454554])
+</code></pre></div><h3 id="updaterolesnotifications"><a href="#updaterolesnotifications" class="header-anchor">#</a> UpdateRolesNotifications</h3> <p>Obtains the notification list of all account addresses of a specified role ID in the database, and sends the notification obtained to Centrifugo.</p> <h4 id="syntax-72"><a href="#syntax-72" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  UpdateRolesNotifications(ecosystemID int, roles int ...)
+
+</code></pre></div><ul><li><p>EcosystemID
+Ecosystem ID.</p></li> <li><p>roles
+A list of role IDs, separated by commas. Or you can use an array to specify a list of role IDs.</p></li></ul> <h4 id="example-71"><a href="#example-71" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  UpdateRolesNotifications(1, 1, 2)
+
+</code></pre></div><h3 id="httprequest"><a href="#httprequest" class="header-anchor">#</a> HTTPRequest</h3> <p>Sends HTTP requests to the specified address.
+Note
+This function can only be used in CLB contracts.</p> <h4 id="syntax-73"><a href="#syntax-73" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  HTTPRequest(url string, method string, heads map, pars map) string
+
+</code></pre></div><ul><li><p>Url
+Address, to which the request will be sent.</p></li> <li><p>method
+Request type (GET or POST).</p></li> <li><p>heads
+An array of request headers, objects.</p></li> <li><p>pars
+Request parameters.</p></li></ul> <h4 id="example-72"><a href="#example-72" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var ret string
+   var ret string
+  var ret string
+  var pars, heads, json map
+  heads[&quot;Authorization&quot;] = &quot;Bearer &quot;+ $auth_token
+  pars[&quot;obs&quot;] = &quot;true&quot;
+  ret = HTTPRequest(&quot;http://localhost:7079/api/v2/content/page/default_page&quot;, &quot;POST&quot;, heads, pars)
+  json = JSONToMap(ret)
+</code></pre></div><h3 id="httppostjson"><a href="#httppostjson" class="header-anchor">#</a> HTTPPostJSON</h3> <p>This function is similar to the HTTPRequest function, but it sends a POST request and the request parameters are strings.</p> <blockquote><p>Note
+This function can only be used in CLB contracts</p></blockquote> <h4 id="syntax-74"><a href="#syntax-74" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  HTTPPostJSON(url string, heads map, pars string) string
+
+</code></pre></div><ul><li><p>Url
+Address, to which the request will be sent.</p></li> <li><p>heads
+An array of request headers, objects.</p></li> <li><p>pars
+Request parameters as a JSON string.</p></li></ul> <h4 id="example-73"><a href="#example-73" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var ret string
+   var ret string
+  var ret string
+  var heads, json map
+  heads[&quot;Authorization&quot;] = &quot;Bearer &quot;+ $auth_token
+  ret = HTTPPostJSON(&quot;http://localhost:7079/api/v2/content/page/default_page&quot;, heads, `{&quot;obs&quot;:&quot;true&quot;}`)
+  json = JSONToMap(ret)
+</code></pre></div><h3 id="blocktime"><a href="#blocktime" class="header-anchor">#</a> BlockTime</h3> <p>Returns the generation time of the block in SQL format.</p> <h4 id="syntax-75"><a href="#syntax-75" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  BlockTime()
+</code></pre></div><h4 id="example-74"><a href="#example-74" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  var mytime string
+  mytime \= BlockTime()
+  DBInsert(&quot;mytable&quot;, myid, {time: mytime})
+</code></pre></div><h3 id="datetime"><a href="#datetime" class="header-anchor">#</a> DateTime</h3> <p>Converts the timestamp unixtime to a string in YYYY-MM-DD HH:MI:SS format.</p> <h4 id="syntax-76"><a href="#syntax-76" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  DateTime(unixtime int) string
+</code></pre></div><h4 id="example-75"><a href="#example-75" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  DateTime(1532325250)
+
+</code></pre></div><h3 id="unixdatetime"><a href="#unixdatetime" class="header-anchor">#</a> UnixDateTime</h3> <p>Converts a string in YYYY-MM-DD HH:MI:SS format to a timestamp unixtime</p> <h4 id="syntax-77"><a href="#syntax-77" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  UnixDateTime(datetime string) int
+</code></pre></div><h4 id="example-76"><a href="#example-76" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  UnixDateTime(&quot;2018-07-20 14:23:10&quot;)
+</code></pre></div><h3 id="createobs"><a href="#createobs" class="header-anchor">#</a> CreateOBS</h3> <p>Creates a child CLB.
+This function can only be used in the master CLB mode.</p> <h4 id="syntax-78"><a href="#syntax-78" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  CreateOBS(OBSName string, DBUser string, DBPassword string, OBSAPIPort int)
+
+</code></pre></div><ul><li><p>OBSName
+CLB name.</p></li> <li><p>DBUser
+The role name of the database.</p></li> <li><p>DBPassword
+The password of the role.</p></li> <li><p>OBSAPIPort
+The port of the API request.</p></li></ul> <h4 id="example-77"><a href="#example-77" class="header-anchor">#</a> Example</h4> <div class="language- extra-class"><pre class="language-text"><code>  CreateOBS(&quot;obsname&quot;, &quot;obsuser&quot;, &quot;obspwd&quot;, 8095)
+
+</code></pre></div><h3 id="getobslist"><a href="#getobslist" class="header-anchor">#</a> GetOBSList</h3> <p>Returns the list of child CLBs.
+This function can only be used in the master CLB mode.</p> <h4 id="syntax-79"><a href="#syntax-79" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  GetOBSList()
+
+</code></pre></div><ul><li>Return value
+An array of objects, where the key is the CLB name and the value is the process state.</li></ul> <h3 id="runobs"><a href="#runobs" class="header-anchor">#</a> RunOBS</h3> <p>A process running the CLB.
+This function can only be used in the master CLB mode.</p> <h4 id="syntax-80"><a href="#syntax-80" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  RunOBS(OBSName string)
+
+</code></pre></div><ul><li><p>OBSName
+CLB name.</p> <p>It can only contain letters and numbers, and the space symbol cannot be used.</p></li></ul> <h3 id="stopobs"><a href="#stopobs" class="header-anchor">#</a> StopOBS</h3> <p>Stop the process of a specified CLB.
+This function can only be used in the master CLB mode.</p> <h4 id="syntax-81"><a href="#syntax-81" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  StopOBS(OBSName string)
+
+</code></pre></div><ul><li>OBSName
+CLB name.</li></ul> <p>It can only contain letters and numbers, and the space symbol cannot be used.</p> <h3 id="removeobs"><a href="#removeobs" class="header-anchor">#</a> RemoveOBS</h3> <p>Deletes the process of a specified CLB.
+This function can only be used in the master CLB mode.</p> <h4 id="syntax-82"><a href="#syntax-82" class="header-anchor">#</a> Syntax</h4> <div class="language- extra-class"><pre class="language-text"><code>  RemoveOBS(OBSName string)
+
+</code></pre></div><ul><li>OBSName
+CLB name.</li></ul> <p>It can only contain letters and numbers, and the space symbol cannot be used.</p> <h2 id="system-contracts"><a href="#system-contracts" class="header-anchor">#</a> System Contracts</h2> <p>System contracts are created by default when the IBax blockchain platform is launched. All these contracts were created in the first ecosystem. This is why you need to specify their full names when calling them from other ecosystems, for example, @1NewContract.</p> <h3 id="newecosystem"><a href="#newecosystem" class="header-anchor">#</a> NewEcosystem</h3> <p>This contract creates a new ecosystem. To obtain the ID of the ecosystem created, you must quote the result filed returned in txstatus.
+Parameters:</p> <ul><li>Name string - name of the ecosystem. It can be changed later.</li></ul> <h3 id="editecosystemname"><a href="#editecosystemname" class="header-anchor">#</a> EditEcosystemName</h3> <p>Changes the name of the ecosystem in the 1_ecosystems table that only exists in the first ecosystem.
+Parameters:</p> <ul><li>EcosystemID int - changes the name of the ecosystem ID;</li> <li>NewName string - new name of the ecosystem.</li></ul> <h3 id="newcontract"><a href="#newcontract" class="header-anchor">#</a> NewContract</h3> <p>Creates a new contract in the current ecosystem.
+Parameters:</p> <ul><li>ApplicationId int - the application to which a new contract belongs;</li> <li>Value string - contract source code. The upper layer must have only one contract;</li> <li>Conditions string - changes the conditions of the contract;</li> <li>TokenEcosystem int &quot;optional&quot; - ecosystem ID. It determines which token will be used for transactions when the contract is activated.</li></ul> <h3 id="editcontract"><a href="#editcontract" class="header-anchor">#</a> EditContract</h3> <p>Edits the contract in the current ecosystem.
+Parameters:</p> <ul><li>Id int - the contract ID changed;</li> <li>Value string &quot;optional&quot; - source code of the contract;</li> <li>Conditions string &quot;optional&quot; - changes the conditions of the contract.</li></ul> <h3 id="bindwallet"><a href="#bindwallet" class="header-anchor">#</a> BindWallet</h3> <p>Binding the contract to the wallet address in the current ecosystem. After binding with the contract, the contract execution fee will be paid under this address. Parameters:</p> <ul><li>Id int - the contract ID to be bound.</li> <li>WalletId string &quot;optional&quot; - the wallet address bound to the contract.</li></ul> <h3 id="unbindwallet"><a href="#unbindwallet" class="header-anchor">#</a> UnbindWallet</h3> <p>Unbinding the contract from the wallet address in the current ecosystem. Only addresses bound to the contract can be unbound. After unbinding the contract, users who execute the contract will pay the execution fee.
+Parameters:</p> <ul><li>Id int - the ID of the contract being bound.</li></ul> <h3 id="newparameter"><a href="#newparameter" class="header-anchor">#</a> NewParameter</h3> <p>A new ecosystem parameter has been added to the current ecosystem.
+Parameters:</p> <ul><li>Name string - parameter name;</li> <li>Value string - parameter value;</li> <li>Conditions string - conditions to change the parameter.</li></ul> <h3 id="editparameter"><a href="#editparameter" class="header-anchor">#</a> EditParameter</h3> <p>Changes existing ecosystem parameters in the current ecosystem.
+Parameters:</p> <ul><li>Name string - name of the parameter to be changed;</li> <li>Value string - new parameter value;</li> <li>Conditions string - new conditions to change the parameter.</li></ul> <h3 id="newmenu"><a href="#newmenu" class="header-anchor">#</a> NewMenu</h3> <p>Adds a new menu in the current ecosystem.
+Parameters:</p> <ul><li>Name string - menu name;</li> <li>Value string - menu source code;</li> <li>Title string &quot;optional&quot; - menu title;</li> <li>Conditions string - conditions to change the menu.</li></ul> <h3 id="editmenu"><a href="#editmenu" class="header-anchor">#</a> EditMenu</h3> <p>Changes the existing menu in the current ecosystem.
+Parameters:</p> <ul><li>Id int - menu ID to be changed;</li> <li>Value string &quot;optional&quot; - source code of the new menu;</li> <li>Title string &quot;optional&quot; - title of the new menu;</li> <li>Conditions string &quot;optional&quot; - new conditions to change the menu.</li></ul> <h3 id="appendmenu"><a href="#appendmenu" class="header-anchor">#</a> AppendMenu</h3> <p>Adds the source code content to existing menus in the current ecosystem
+Parameters:</p> <ul><li>Id int - menu ID;</li> <li>Value string - source code to be added.</li></ul> <h3 id="newpage"><a href="#newpage" class="header-anchor">#</a> NewPage</h3> <p>Adds a new page in the current ecosystem.
+Parameters:</p> <ul><li>Name string - name of the page;</li> <li>Value string - source code of the page;</li> <li>Menu string - name of the menu associated with the page;</li> <li>Conditions string - conditions to change the page;</li> <li>ValidateCount int &quot;optional&quot; - number of nodes required for page validation. If this parameter is not specified, the min_page_validate_count ecosystem parameter value is used. The value of this parameter cannot be less than min_page_validate_count and greater than max_page_validate_count;</li> <li>ValidateMode int &quot;optional&quot; - mode of page validity check. The page will be checked when it is loaded if the value of this parameter is 0; or checked when it is loaded or exit the page if the value of this parameter is 1.</li></ul> <h3 id="editpage"><a href="#editpage" class="header-anchor">#</a> EditPage</h3> <p>Changes existing pages in the current ecosystem.
+Parameters:</p> <ul><li>Id int - ID of the page to be changed;</li> <li>Value string &quot;optional&quot; - source code of the new page;</li> <li>Menu string &quot;optional&quot; - name of the new menu associated with the page;</li> <li>Conditions string &quot;optional&quot; - new conditions to change the page;</li> <li>ValidateCount int &quot;optional&quot; - number of nodes required for page validation. If this parameter is not specified, the min_page_validate_count ecosystem parameter value is used. The value of this parameter cannot be less than min_page_validate_count and greater than max_page_validate_count;</li> <li>ValidateMode int &quot;optional&quot; - mode of page validity check. The page will be checked when it is loaded if the value of this parameter is 0; or checked when it is loaded or exit the page if the value of this parameter is 1.</li></ul> <h3 id="appendpage"><a href="#appendpage" class="header-anchor">#</a> AppendPage</h3> <p>Adds the source content to existing pages in the current ecosystem.
+Parameters:</p> <ul><li>Id int - ID of the page to be changed;</li> <li>Value string - the source code to be added.</li></ul> <h3 id="newblock"><a href="#newblock" class="header-anchor">#</a> NewBlock</h3> <p>Adds a page module to the current ecosystem.
+Parameters:</p> <ul><li>Name string - name of the module;</li> <li>Value string - source code of the module;</li> <li>Conditions string - conditions to change the module.</li></ul> <h3 id="editblock"><a href="#editblock" class="header-anchor">#</a> EditBlock</h3> <p>Changes existing page modules in the current ecosystem.
+Parameters:</p> <ul><li>Id int - module ID to be changed;</li> <li>Value string - source code of the new module;</li> <li>Conditions string - new conditions to change the module.</li></ul> <h3 id="newtable"><a href="#newtable" class="header-anchor">#</a> NewTable</h3> <p>Adds a new table to the current ecosystem.
+Parameters:</p> <ul><li>ApplicationId int - application ID of the associated table;</li> <li>Name string - name of the new table;</li> <li>Columns string - field array in JSON format [{&quot;name&quot;:&quot;...&quot;, &quot;type&quot;:&quot;...&quot;,&quot;index&quot;: &quot;0&quot;, &quot;conditions&quot;:&quot;.. .&quot;},...], where
+–name - field name, only Latin characters;
+–type - data type varchar,bytea,number,datetime,money,text,double,character;
+–index - non-primary key field 0, primary key 1;
+–conditions - conditions to change the field data, and the access permissions must be specified in JSON format &quot;{&quot;update&quot;:&quot;ContractConditions(MainCondition)&quot;, &quot;read&quot;:&quot;ContractConditions(MainCondition)&quot;} ``;</li> <li>Permissions string - access permissions in JSON format {&quot;insert&quot;: &quot;...&quot;, &quot;new_column&quot;: &quot;...&quot;, &quot;update&quot;: &quot;...&quot;, &quot;read&quot;: &quot;.. .&quot;}.
+–insert - permission to insert entries;
+–new_column - permission to add a new column;
+–update - permission to change entry data;
+–read - permission to read entry data.</li></ul> <h3 id="edittable"><a href="#edittable" class="header-anchor">#</a> EditTable</h3> <p>Changes the access permissions of a table in the current ecosystem.
+Parameters:</p> <ul><li>Name string - name of the table;</li> <li>InsertPerm string - permission to insert entries into the table;</li> <li>UpdatePerm string - permission to update entries in the table;</li> <li>ReadPerm string - permission to read entries in the table;</li> <li>NewColumnPerm string - permission to create a new column;</li></ul> <h3 id="newcolumn"><a href="#newcolumn" class="header-anchor">#</a> NewColumn</h3> <p>Adds a new field to the table of the current ecosystem.
+Parameters:</p> <ul><li>TableName string - table name;</li> <li>Name string - field name in Latin characters;</li> <li>Type string - data type varchar,bytea,number,money,datetime,text,double,character;</li> <li>UpdatePerm string - permission to change the value in the column;</li> <li>ReadPerm string - permission to read the value in the column.</li></ul> <h3 id="editcolumn"><a href="#editcolumn" class="header-anchor">#</a> EditColumn</h3> <p>Changes the permission of a specified table field in the current ecosystem.
+Parameters:</p> <ul><li>TableName string - table name;</li> <li>Name string - field name in Latin characters to be changed;</li> <li>UpdatePerm string - new permission to change the value in the column;</li> <li>ReadPerm string - new permission to read the value in the column.</li></ul> <h3 id="newlang"><a href="#newlang" class="header-anchor">#</a> NewLang</h3> <p>Adds language resources to the current ecosystem, and the permission to do so is set in the changing_language parameter of the ecosystem parameters.</p> <p>Parameters:</p> <ul><li>Name string - name of the language resources in Latin characters;</li> <li>Trans string - string in JSON format, with a two-character lang code as the key and the translated string as the value. For example, {&quot;en&quot;: &quot;English text&quot;, &quot;zh&quot;: &quot;Chinese text&quot;}.</li></ul> <h3 id="editlang"><a href="#editlang" class="header-anchor">#</a> EditLang</h3> <p>Changes the language resources in the current ecosystem, and the permission to do so is set in the changing_language parameter of the ecosystem parameter.</p> <p>Parameters:</p> <ul><li>Id int - language resources ID.</li> <li>Trans - string in JSON format, with a two-character lang code as the key and the translated string as the value. For example, {&quot;en&quot;: &quot;English text&quot;, &quot;zh&quot;: &quot;Chinese text&quot;}.</li></ul> <h3 id="import"><a href="#import" class="header-anchor">#</a> Import</h3> <p>Imports an application into the current ecosystem and imports the data loaded from the ImportUpload contract.</p> <p>Parameters:</p> <ul><li>Data string - data imported in text format, which comes from a file exported by the ecosystem.</li></ul> <h3 id="importupload"><a href="#importupload" class="header-anchor">#</a> ImportUpload</h3> <p>Loads an external application file into the buffer_data table of the current ecosystem for subsequent import.</p> <p>Parameters:</p> <ul><li>InputFile file - a file written to the buffer_data table of the current ecosystem.</li></ul> <h3 id="newappparam"><a href="#newappparam" class="header-anchor">#</a> NewAppParam</h3> <p>Adds new application parameters to the current ecosystem.</p> <p>Parameters:</p> <ul><li>ApplicationId int - application ID;</li> <li>Name string - parameter name;</li> <li>Value string - parameter value;</li> <li>Conditions string - permission to change the parameter.</li></ul> <h3 id="editappparam"><a href="#editappparam" class="header-anchor">#</a> EditAppParam</h3> <p>Changes existing application parameters in the current ecosystem.</p> <p>Parameters:</p> <ul><li>Id int - application parameter ID;</li> <li>Value string &quot;optional&quot; - new parameter value;</li> <li>Conditions string &quot;optional&quot; - new permissions to change the parameter.</li></ul> <h3 id="newdelayedcontract"><a href="#newdelayedcontract" class="header-anchor">#</a> NewDelayedContract</h3> <p>Adds a new task to the delayed contracts scheduler daemon.</p> <p>The delayered contracts scheduler runs contracts required by the currently generated block.</p> <p>Parameters:</p> <ul><li>Contract string - contract name;</li> <li>EveryBlock int - the contract will be executed every such amount of blocks;</li> <li>Conditions string - permission to change the task;</li> <li>BlockID int &quot;optional&quot; - the block ID where the contract must be executed. If not specified, it will be calculated automatically by adding the &quot;current block ID&quot; + EveryBlock;</li> <li>Limit int &quot;optional&quot; - the maximum number of task execution. If not specified, the task will be executed for an unlimited times.</li></ul> <h3 id="editdelayedcontract"><a href="#editdelayedcontract" class="header-anchor">#</a> EditDelayedContract</h3> <p>Changes a task in the delayed contracts scheduler daemon.</p> <p>Parameters:</p> <ul><li>Id int - task ID;</li> <li>Contract string - contract name;</li> <li>EveryBlock int - the contract will be executed every such amount of blocks;</li> <li>Conditions string - permission to change the task;</li> <li>BlockID int &quot;optional&quot; - the block ID where the contract must be executed. If not specified, it will be calculated automatically by adding the &quot;current block ID&quot; + EveryBlock;</li> <li>Limit int &quot;optional&quot; - the maximum number of task execution. If not specified, the task will be executed for an unlimited times.</li> <li>Deleted int &quot;optional&quot; - task switching. A value of 1 will disable the task. A value of 0 will enable the task.</li></ul> <h3 id="uploadbinary"><a href="#uploadbinary" class="header-anchor">#</a> UploadBinary</h3> <p>Adds or overwrites a static file in the X_binaries table. When calling a contract via HTTP API, the request must be in multipart/form-data format; the DataMimeType parameter will be used in conjunction with the form data.</p> <p>Parameters:</p> <ul><li>Name string - name of the static file;</li> <li>Data bytes - content of the static file;</li> <li>DataMimeType string &quot;optional&quot; - a static file in mime-type format;</li> <li>ApplicationId int - the application ID associated with the X_binaries table.
+If the DataMimeType parameter is not passed, the application/octet-stream format is used by default.</li></ul></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/fr/topics/script.md" target="_blank" rel="noopener noreferrer">Modifier cette page sur GitHub</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/fr/topics/vm.html" class="prev">
+        Compiler and Virtual Machine
+      </a></span> <span class="next"><a href="/fr/topics/daemons.html">
+        Daemon
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.61b025f2.js" defer></script><script src="/assets/js/2.6aa4ccad.js" defer></script><script src="/assets/js/57.18bc496e.js" defer></script>
+  </body>
+</html>
