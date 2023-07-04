@@ -216,13 +216,13 @@ Virgülle ayrılmış parametre adlarının listesini belirleyebilirsiniz. Örne
     <span class="token property">&quot;list&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
         <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;name&quot;</span><span class="token punctuation">,</span>
         <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token string">&quot;MyState&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;conditions&quot;</span><span class="token operator">:</span> <span class="token string">&quot;true&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;conditions&quot;</span><span class="token operator">:</span> <span class="token string">&quot;true&quot;</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
         <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;mypar&quot;</span><span class="token punctuation">,</span>
         <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token string">&quot;My value&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;conditions&quot;</span><span class="token operator">:</span> <span class="token string">&quot;true&quot;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;conditions&quot;</span><span class="token operator">:</span> <span class="token string">&quot;true&quot;</span>
+    <span class="token punctuation">}</span>
     <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 </code></pre></div><p><strong>Hatalı Cevap</strong>
@@ -247,13 +247,13 @@ Content-Type: application/json</p> <div class="language-json extra-class"><pre c
     <span class="token property">&quot;list&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
             <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;name&quot;</span><span class="token punctuation">,</span>
             <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token string">&quot;MyState&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;conditions&quot;</span><span class="token operator">:</span> <span class="token string">&quot;true&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;conditions&quot;</span><span class="token operator">:</span> <span class="token string">&quot;true&quot;</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token punctuation">{</span>
         <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;currency&quot;</span><span class="token punctuation">,</span>
         <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token string">&quot;MY&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;conditions&quot;</span><span class="token operator">:</span> <span class="token string">&quot;true&quot;</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;conditions&quot;</span><span class="token operator">:</span> <span class="token string">&quot;true&quot;</span>
+        <span class="token punctuation">}</span>
     <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 </code></pre></div><p><strong>Hatalı Cevap</strong>
@@ -271,15 +271,15 @@ Content-Type: application/json</p> <div class="language-json extra-class"><pre c
 E_ECOSYSTEM</p> <h3 id="tables-limit-offset"><a href="#tables-limit-offset" class="header-anchor">#</a> tables/[?limit=... &amp;offset=... ] </h3> <p>GET/ Ofseti ve giriş sayısını ayarlayabileceğiniz mevcut ekosistemin tablolarının listesini döndürür.</p> <p><strong>İstek</strong></p> <ul><li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p> <p>Giriş sayısı, varsayılan olarak 25.</p></li> <li><p><code>offset</code> <a href="#omitempty">Omitempty</a></p> <p>Ofset, varsayılan olarak 0.</p></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
 /api/v2/tables?limit=... &amp;amp;offset=...
 </code></pre></div><p><strong>Cevap</strong></p> <ul><li><p><code>count</code></p> <p>Tablodaki toplam girişler.</p></li> <li><p><code>list</code></p> <p>Dizideki her öğe aşağıdaki parametreleri içerir:</p> <ul><li><p><code>name</code></p> <p>Ön eki olmayan tablo adı.</p></li> <li><p><code>count</code></p> <p>Tablodaki giriş sayısı.</p></li></ul></li></ul> <p><strong>Cevap Örneği</strong></p> <p>200 (OK)</p> <p>Content-Type: application/json</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
-    <span class="token property">&quot;count&quot;</span><span class="token operator">:</span> <span class="token string">&quot;100&quot;</span>
+    <span class="token property">&quot;count&quot;</span><span class="token operator">:</span> <span class="token string">&quot;100&quot;</span><span class="token punctuation">,</span>
     <span class="token property">&quot;list&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
             <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;accounts&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;count&quot;</span><span class="token operator">:</span> <span class="token string">&quot;10&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;count&quot;</span><span class="token operator">:</span> <span class="token string">&quot;10&quot;</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token punctuation">{</span>
             <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;citizens&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;count&quot;</span><span class="token operator">:</span> <span class="token string">&quot;5&quot;</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;count&quot;</span><span class="token operator">:</span> <span class="token string">&quot;5&quot;</span>
+        <span class="token punctuation">}</span>
     <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 </code></pre></div><h3 id="table-name"><a href="#table-name" class="header-anchor">#</a> table/{name} </h3> <p>GET/ Mevcut ekosistem tarafından istenen tabloyla ilgili bilgileri döndürür.
@@ -310,31 +310,31 @@ E_TABLENOTFOUND</p> <h3 id="list-name-limit-offset-columns"><a href="#list-name-
     <span class="token property">&quot;count&quot;</span><span class="token operator">:</span> <span class="token string">&quot;10&quot;</span><span class="token punctuation">,</span>
     <span class="token property">&quot;list&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
         <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;John&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;John&quot;</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
         <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Mark&quot;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Mark&quot;</span>
+    <span class="token punctuation">}</span>
     <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 </code></pre></div><h3 id="sections-limit-offset-lang"><a href="#sections-limit-offset-lang" class="header-anchor">#</a> sections[?limit=... &amp;offset=... &amp;lang=] </h3> <p>GET/ Mevcut ekosistemin tablo bölümlerindeki girişlerin listesini ve girişlerin ofset ve sayısının ayarlanabileceği yeri döndürür.</p> <p>role_access alanı bir roller listesi içeriyorsa ve mevcut rolü içermiyorsa, hiçbir kayıt döndürülmez. Başlık alanındaki veriler, istek başlığındaki Kabul Et-Dil dil kaynağı ile değiştirilecektir.</p> <p><strong>İstek</strong></p> <ul><li><p>[limit]</p> <p>Giriş sayısı, varsayılan olarak 25.</p></li> <li><p>[offset]</p> <p>Offset, 0 by default.</p></li> <li><p>[lang]</p> <p>Bu alan, dil kaynaklarını veya yerelleştirme kodunu belirtir, örneğin: en, zh. Belirtilen dil kaynakları bulamazsanız, örneğin: en-US, o zaman en dil kaynakları grubunda arama yapın.</p></li></ul> <blockquote><p>GET /api/v2/sections</p></blockquote> <p><strong>Cevap</strong></p> <ul><li><p>count</p> <p>Tablo bölümlerindeki toplam giriş sayısı.</p></li> <li><p>list</p> <p>Dizideki her öğe, tablo bölümlerindeki tüm sütunların bilgilerini içerir.</p></li></ul> <p><strong>Cevap Örneği</strong>
 200 (OK)
-Content-Type: application/json</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
-    <span class="token property">&quot;count&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;list&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
-        <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Development&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;urlpage&quot;</span><span class="token operator">:</span> <span class="token string">&quot;develop&quot;</span><span class="token punctuation">,</span>
+Content-Type: application/json</p> <div class="language-text extra-class"><pre class="language-text"><code>{
+    &quot;count&quot;: &quot;2&quot;,
+    &quot;list&quot;: [{
+        &quot;id&quot;: &quot;1&quot;,
+        &quot;title&quot;: &quot;Development&quot;,
+        &quot;urlpage&quot;: &quot;develop&quot;,
         ...
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
+        }
+    ]
+}
 </code></pre></div><p><strong>Hatalı Cevap</strong>
 E_TABLENOTFOUND</p> <h3 id="row-name-id-columns"><a href="#row-name-id-columns" class="header-anchor">#</a> row/{name}/{id}[?columns=] </h3> <p><a href="#authorization">Authorization</a></p> <p>GET/ Geçerli ekosistemde belirtilen tablonun girişini döndürür. Döndürülecek sütunları belirtebilirsiniz.</p> <p><strong>İstek</strong></p> <ul><li><p>name</p> <p>Tablo ismi.</p></li> <li><p>id</p> <p>Giriş ID.</p></li> <li><p>[columns]</p> <p>İstenen sütunların virgülle ayrılmış listesi. Belirtilmezse, tüm sütunlar döndürülür. Her durumda, id sütunu döndürülür.</p></li></ul> <blockquote><p>GET /api/v2/row/mytable/10?columns=name</p></blockquote> <p><strong>Cevap</strong></p> <ul><li><p>value</p> <p>İstenen sütunların bir dizi değeri</p> <ul><li>id</li></ul> <p>Giriş ID.</p> <ul><li>Sequence of İsteked columns.</li></ul></li></ul> <p><strong>Cevap Örneği</strong></p> <p>200 (OK)</p> <p>Content-Type: application/json</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
     <span class="token property">&quot;values&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;10&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;John&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;John&quot;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre></div><p><strong>Error Response</strong></p> <p><em>E_NOTFOUND</em></p> <h3 id="row-name-colorn-id"><a href="#row-name-colorn-id" class="header-anchor">#</a> row/{name}/{column}/{id} </h3> <p>[Authorization] (#authorization)</p> <p><strong>GET</strong>/ Return to the entry of the data table specified in the current ecosystem. You can specify columns to be returned.</p> <p><strong>Request</strong></p> <ul><li><p><code>Name</code></p> <blockquote><p>Data table name.</p></blockquote></li> <li><p><code>colorn</code></p> <blockquote><p>Data list name.</p></blockquote></li> <li><p><code>ID</code></p> <blockquote><p>Stripe ID.</p></blockquote></li> <li><p><code>columns</code> [omitempty] (#omitempty)</p> <blockquote><p>The list of request lists is separated by commas. If it is not specified, all columns will be returned. In all cases, the ID column will be returned.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
@@ -353,19 +353,19 @@ Content-type: Application/JSON
 </code></pre></div><ul><li><p><code>names</code> <a href="#omitempty">Omitempty</a></p> <p>Virgülle ayrılmış bir istek parametreleri listesi. Örneğin, /api/v2/systemparams/?names=max_columns,max_indexes.
 <strong>Cevap</strong></p></li> <li><p><code>list</code></p> <p>Dizideki her öğe aşağıdaki parametreleri içerir:</p> <ul><li><p>name</p> <p>Parametre adı.</p></li> <li><p>value</p> <p>Parametre değeri.</p></li> <li><p>conditions</p> <p>Parametreyi değiştirme izinleri.</p></li></ul></li></ul> <p><strong>Cevap Örneği</strong>
 200 (OK)
-Content-Type: application/json</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
-    <span class="token property">&quot;list&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
-        <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;max_columns&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token string">&quot;100&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;conditions&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ContractAccess(&quot;</span>@1UpdateSysParam<span class="token string">&quot;)&quot;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span>
-        <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;max_indexes&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;conditions&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ContractAccess(&quot;</span>@1UpdateSysParam<span class="token string">&quot;)&quot;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
+Content-Type: application/json</p> <div class="language-text extra-class"><pre class="language-text"><code>{
+    &quot;list&quot;: [{
+        &quot;name&quot;: &quot;max_columns&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;conditions&quot;: &quot;ContractAccess(&quot;@1UpdateSysParam&quot;)&quot;,
+    },
+    {
+        &quot;name&quot;: &quot;max_indexes&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;conditions&quot;: &quot;ContractAccess(&quot;@1UpdateSysParam&quot;)&quot;,
+    },
+    ]
+}
 </code></pre></div><p><strong>Hatalı Cevap</strong>
 E_PARAMNOTFOUND</p> <h3 id="history-name-id"><a href="#history-name-id" class="header-anchor">#</a> history/{name}/{id} </h3> <p>GET/ Geçerli ekosistemde belirtilen tablodaki girişin değişiklik kaydını döndürür.</p> <p><strong>İstek</strong></p> <ul><li><p>name</p> <p>Tablo adı.</p></li> <li><p>id</p> <p>Giriş ID.</p></li></ul> <p><strong>Cevap</strong></p> <ul><li><p>list</p> <p>Öğeleri istenen girişin değiştirilmiş parametrelerini içeren bir dizideki her öğe.</p></li></ul> <p><strong>Cevap Örneği</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
 Content-Type: application/json
@@ -441,8 +441,9 @@ txN - transaction N
 200 (OK)
 Content-Type: application/json</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
     <span class="token property">&quot;hashes&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;tx1&quot;</span><span class="token operator">:</span> <span class="token string">&quot;67afbc435634.....&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;txN&quot;</span><span class="token operator">:</span> <span class="token string">&quot;89ce4498eaf7.....&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;tx1&quot;</span><span class="token operator">:</span> <span class="token string">&quot;67afbc435634.....&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;txN&quot;</span><span class="token operator">:</span> <span class="token string">&quot;89ce4498eaf7.....&quot;</span>
+    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre></div><p><strong>Hatalı Cevap</strong>
 E_LIMITTXSIZE,<em>E_BANNED</em></p> <h3 id="txstatus"><a href="#txstatus" class="header-anchor">#</a> txstatus </h3> <p>POST/ Belirtilen işlem hashinin blok id ve hata mesajını döndürür. Blok id ve hata metin mesajının dönüş değeri boşsa, işlem bloğa dahil edilmemiştir.
@@ -453,12 +454,12 @@ Veri sözlüğünde, anahtar olarak işlem hash'i, değer olarak işlem detayı.
 200 (OK)</p> <p>Content-Type: application/json</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span><span class="token property">&quot;results&quot;</span><span class="token operator">:</span>
     <span class="token punctuation">{</span>
         <span class="token property">&quot;hash1&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">&quot;blockid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;3123&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;result&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;blockid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;3123&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;result&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token property">&quot;hash2&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">&quot;blockid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;3124&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;result&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;blockid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;3124&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;result&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
@@ -482,12 +483,12 @@ E_HASHWRONG</p> <h3 id="txinfomultiple"><a href="#txinfomultiple" class="header-
 </code></pre></div></li></ul> <blockquote><p>GET /api/v2/txinfoMultiple/</p></blockquote> <p><strong>Cevap</strong></p> <ul><li><p>results</p> <p>Veri sözlüğünde, anahtar olarak işlem hash'leri ve değer olarak işlem ayrıntıları.</p> <p>doğramak</p> <p>İşlem hash.</p> <p>blockid</p> <p>İşlemi içeren blok kimliği. Değer &quot;0&quot; ise, bu hash ile işlem bulunamaz.</p> <p>onaylama</p> <p>Blok blokidinin onay sayısı.</p> <p>veri</p> <p><code>contentinfo=1</code> belirtilirse, sözleşme detayları bu parametreye döndürülecektir.</p></li></ul> <p><strong>Cevap Örneği</strong></p> <p>200 (OK)</p> <p>Content-Type: application/json</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span><span class="token property">&quot;results&quot;</span><span class="token operator">:</span>
     <span class="token punctuation">{</span>
         <span class="token property">&quot;hash1&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">&quot;blockid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;3123&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;confirm&quot;</span><span class="token operator">:</span> <span class="token string">&quot;5&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;blockid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;3123&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;confirm&quot;</span><span class="token operator">:</span> <span class="token string">&quot;5&quot;</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token property">&quot;hash2&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">&quot;blockid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;3124&quot;</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;confirm&quot;</span><span class="token operator">:</span> <span class="token string">&quot;3&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;blockid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;3124&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;confirm&quot;</span><span class="token operator">:</span> <span class="token string">&quot;3&quot;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
  <span class="token punctuation">}</span>
@@ -510,14 +511,14 @@ Content-Type: application/json
 </code></pre></div><p><strong>Hatalı Cevap</strong>
 E_NOTFOUND</p> <h3 id="content-source-name"><a href="#content-source-name" class="header-anchor">#</a> content/source/{name} </h3> <p>POST/ Belirtilen sayfa adı kodunun JSON nesne ağacını döndürür. Herhangi bir işlevi yürütmez veya herhangi bir veri almaz. Döndürülen JSON nesne ağacı, sayfa şablonuna karşılık gelir ve görsel sayfa tasarımcısında kullanılabilir. Sayfa bulunamazsa, 404 hatası döndürülür. İstek &quot;&quot;&quot;&quot;&quot;&quot;&quot;</p> <ul><li><p>name</p> <p>Sayfa adı.
 <strong>Cevap</strong></p></li></ul> <blockquote><p>POST /api/v2/content/source/default</p></blockquote> <ul><li><p>tree</p> <p>Sayfanın bir JSON nesne ağacı.
-<strong>Cevap Örneği</strong></p></li></ul> <p>200 (OK)</p> <p>Content-Type: application/json</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
-    <span class="token property">&quot;tree&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token property">&quot;type&quot;</span><span class="token operator">:</span><span class="token string">&quot;......&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-        <span class="token punctuation">{</span>...<span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token punctuation">{</span>...<span class="token punctuation">}</span>
-    <span class="token punctuation">]</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
+<strong>Cevap Örneği</strong></p></li></ul> <p>200 (OK)</p> <p>Content-Type: application/json</p> <div class="language-text extra-class"><pre class="language-text"><code>{
+    &quot;tree&quot;: {&quot;type&quot;:&quot;......&quot;,
+    &quot;children&quot;: [
+        {...},
+        {...}
+    ]
+    },
+}
 </code></pre></div><p><strong>Hatalı Cevap</strong>
 E_NOTFOUND, E_SERVER</p> <h3 id="content-hash-name"><a href="#content-hash-name" class="header-anchor">#</a> content/hash/{name} </h3> <p>POST/ Belirtilen sayfa adının SHA256 hashi veya sayfa bulunamazsa 404 hatasını döndürür.</p> <p>Bu istek için oturum açma yetkisi gerekli değildir. Diğer nodelara istekte bulunurken doğru hash almak için ekosistem, keyID, roleID, isMobile parametrelerini de iletmelisiniz. Diğer ekosistemlerden sayfa almak için, ekosistem idnin sayfa adının önüne eklenmesi gerekir. Örneğin: &quot;@2sayfam&quot;.</p> <p><strong>İstek</strong></p> <ul><li><p>name</p> <p>Ekosistem id sahip sayfa adı.</p></li> <li><p>ecosystem</p> <p>Ekosistem ID.</p></li> <li><p>keyID</p> <p>Hesap adresi.</p></li> <li><p>roleID</p> <p>Rol ID.</p></li> <li><p>isMobile</p> <p>Mobil platformun parametre tanımlayıcısı.</p></li></ul> <blockquote><p>POST /api/v2/content/hash/default</p></blockquote> <p><strong>Cevap</strong></p> <ul><li><p>hex</p> <p>Hexadecimal hash.</p></li></ul> <p><strong>Cevap Örneği</strong></p> <div class="language- extra-class"><pre class="language-text"><code>200 (OK)
 Content-Type: application/json
@@ -526,18 +527,18 @@ Content-Type: application/json
 } 
 </code></pre></div><p><strong>Hatalı Cevap</strong>
 E_NOTFOUND, E_SERVER, E_HEAVYPAGE</p> <h3 id="content"><a href="#content" class="header-anchor">#</a> content </h3> <p>POST/ Şablon parametresinden sayfa kodunu döndüren JSON nesnelerinin sayısı. İsteğe bağlı parametre kaynağı &quot;true&quot; veya &quot;1&quot; olarak belirtilirse, JSON nesne ağacı alınan herhangi bir işlevi ve veriyi yürütmez. JSON nesne ağacı, görsel sayfa tasarımcısında kullanılabilir.</p> <p>Bu istek için oturum açma yetkisi gerekli değildir.</p> <p><strong>İstek</strong></p> <ul><li><p>template</p> <p>Sayfa kodu.</p></li> <li><p>[source]</p> <p><code>true</code> veya <code>1</code> olarak belirtilirse, JSON nesne ağacı, alınan herhangi bir işlevi ve veriyi yürütmez.</p></li></ul> <blockquote><p>POST /api/v2/content</p></blockquote> <p><strong>Cevap</strong></p> <ul><li><p>tree</p> <p>JSON nesne ağacı.
-<strong>Cevap Örneği</strong></p></li></ul> <p>200 (OK)</p> <p>Content-Type: application/json</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
-    <span class="token property">&quot;tree&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token property">&quot;type&quot;</span><span class="token operator">:</span><span class="token string">&quot;......&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-        <span class="token punctuation">{</span>...<span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token punctuation">{</span>...<span class="token punctuation">}</span>
-    <span class="token punctuation">]</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
+<strong>Cevap Örneği</strong></p></li></ul> <p>200 (OK)</p> <p>Content-Type: application/json</p> <div class="language-text extra-class"><pre class="language-text"><code>{
+    &quot;tree&quot;: {&quot;type&quot;:&quot;......&quot;,
+    &quot;children&quot;: [
+        {...},
+        {...}
+    ]
+    },
+}
 </code></pre></div><p><strong>Hatalı Cevap</strong>
 E_NOTFOUND, E_SERVER</p> <h3 id="maxblockid"><a href="#maxblockid" class="header-anchor">#</a> maxblockid </h3> <p>GET/ Geçerli nodedaki en yüksek bloğun idsini döndürür.</p> <p>Bu istek için oturum açma yetkisi gerekli değildir.</p> <p><strong>İstek</strong></p> <blockquote><p>GET /api/v2/maxblockid</p></blockquote> <p><strong>Cevap</strong></p> <ul><li><p>max_block_id</p> <p>Geçerli nodedaki en yüksek bloğun id.
 <strong>Cevap Örneği</strong></p></li></ul> <p>200 (OK)</p> <p>Content-Type: application/json</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
-    <span class="token property">&quot;max_block_id&quot;</span> <span class="token operator">:</span> <span class="token number">341</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;max_block_id&quot;</span> <span class="token operator">:</span> <span class="token number">341</span>
 <span class="token punctuation">}</span>
 </code></pre></div><p><strong>Hatalı Cevap</strong>
 E_NOTFOUND</p> <h3 id="block-id"><a href="#block-id" class="header-anchor">#</a> block/{id} </h3> <p>GET/ Belirtilen ID ile bloğun ilgili bilgilerini döndürür.</p> <p>Bu istek için oturum açma yetkisi gerekli değildir.</p> <p><strong>İstek</strong></p> <ul><li>id
@@ -547,7 +548,7 @@ Block ID.</li></ul> <blockquote><p>POST /api/v2/block/32</p></blockquote> <p><st
     <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1551145365</span><span class="token punctuation">,</span>
     <span class="token property">&quot;tx_count&quot;</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
     <span class="token property">&quot;rollbacks_hash&quot;</span><span class="token operator">:</span> <span class="token string">&quot;47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;node_position&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;node_position&quot;</span><span class="token operator">:</span> <span class="token number">0</span>
 <span class="token punctuation">}</span>
 </code></pre></div><p><strong>Hatalı Cevap</strong>
 E_NOTFOUND</p> <h3 id="avatar-ecosystem-member"><a href="#avatar-ecosystem-member" class="header-anchor">#</a> avatar/{ecosystem}/{member} </h3> <p>GET/ Üye tablosundaki kullanıcının avatarını döndürür (oturum açmadan kullanabilirsiniz).</p> <p><strong>İstek</strong></p> <ul><li><p>ecosystem</p> <p>Ekosistem ID.</p></li> <li><p>member</p> <p>Kullanıcının hesap adresi.</p></li></ul> <blockquote><p>GET /api/v2/avatar/1/-118432674655542910</p></blockquote> <p><strong>Cevap</strong>
@@ -562,11 +563,11 @@ E_SERVER</p> <h3 id="updnotificator"><a href="#updnotificator" class="header-anc
 <span class="token punctuation">}</span>
 </code></pre></div><h3 id="special-instructions"><a href="#special-instructions" class="header-anchor">#</a> Special instructions </h3> <h4 id="omitempty"><a href="#omitempty" class="header-anchor">#</a> Omitempty </h4> <p>If the field has an omitempty attribute, it means that the field is an optional parameter</p> <h4 id="authorization"><a href="#authorization" class="header-anchor">#</a> Authorization </h4> <p>If the interface with Authorization tag, that this interface requires login authorization, add Authorization to the request header, example.</p> <p>key = Authorization
 value = &quot;Bearer + <a href="#login">login token</a>&quot;</p> <div class="language-text extra-class"><pre class="language-text"><code>Authorization Bearer eyJhbGciOiJI..... kBZgGIlPhfXNZJ73RiZtM
-</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/tr-TR/reference/api2.md" target="_blank" rel="noopener noreferrer">Bu sayfayı GitHub da düzenleyin</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">son Güncelleme:</span> <span class="time">01.04.2022 23:20:24</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/tr-TR/reference/platform-parameters.html">
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/tr-TR/reference/api2.md" target="_blank" rel="noopener noreferrer">Bu sayfayı GitHub da düzenleyin</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">son Güncelleme:</span> <span class="time">25.06.2023 15:46:02</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/tr-TR/reference/platform-parameters.html">
         Platform Parametreleri 
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.1e099771.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/120.4b8f5cdc.js" defer></script>
+    <script src="/assets/js/app.8ffd1d30.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/138.20ea164a.js" defer></script>
   </body>
 </html>

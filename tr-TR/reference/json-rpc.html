@@ -699,6 +699,8 @@ The data in the field will be replaced by the <em>Accept-Language</em> language 
         }
     }
 </code></pre></div><h3 id="ibax-getappcontent"><a href="#ibax-getappcontent" class="header-anchor">#</a> <strong>ibax.getAppContent</strong> </h3> <p>Get application related information (including page, snippet, menu)</p> <p><a href="#authorization">Authorization</a></p> <p><strong>Parameters</strong></p> <ul><li><strong>id</strong> - <em>Number</em> - Application id</li></ul> <p><strong>Return Value</strong></p> <ul><li><p><strong>snippets</strong> - <em>Array</em> - Array of code snippet information</p> <ul><li><strong>id</strong> - <em>Number</em> - id</li> <li><strong>name</strong> - <em>String</em> - Code snippet name</li></ul></li> <li><p><strong>pages</strong> - <em>Array</em> - Array of page information</p> <ul><li><strong>id</strong> - <em>Number</em> - id</li> <li><strong>name</strong> - <em>String</em> - page name</li></ul></li> <li><p><strong>contracts</strong> - <em>Array</em> - an array of contract information</p> <ul><li><strong>id</strong> - <em>Number</em> - id</li> <li><strong>name</strong> - <em>String</em> - Contract name</li></ul></li></ul> <p><strong>Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getAppContent&quot;,&quot;id&quot;:1,&quot;params&quot;:[1]}' http://127.0.0.1:7079
+    
     //Response
     {
         &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -931,7 +933,7 @@ If the transaction occurred on the current node, it can be obtained via <a href=
             }
         }
     }
-</code></pre></div><h3 id="ibax-getpagevalidatorscount"><a href="#ibax-getpagevalidatorscount" class="header-anchor">#</a> <strong>ibax.getPageValidatorsCount</strong> </h3> <p>Returns the number of nodes to be validated for the specified page.</p> <p><strong>Parameters</strong></p> <ul><li><strong>name</strong>  -  <em>String</em>  -  page  name  in  the  format  <code>@ecosystem_id%%%page_name%</code>,  e.g. @1params_list (specifying ecology 1 page name params_list) or params_list (current ecology page name params_list)</li></ul> <p><strong>Return Value</strong></p> <ul><li><strong>validate_count</strong> - <em>Number</em> - Specifies the number of nodes to be validated by the page.</li></ul> <p><strong>Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+</code></pre></div><h3 id="ibax-getpagevalidatorscount"><a href="#ibax-getpagevalidatorscount" class="header-anchor">#</a> <strong>ibax.getPageValidatorsCount</strong> </h3> <p>Returns the number of nodes to be validated for the specified page.</p> <p><strong>Parameters</strong></p> <ul><li><strong>name</strong>  -  <em>String</em>  -  page  name  in  the  format  <code>@ecosystem_id%%%page_name%</code>,  e.g. @1params_list (specifying ecosystem 1 page name params_list) or params_list (current ecosystem page name params_list)</li></ul> <p><strong>Return Value</strong></p> <ul><li><strong>validate_count</strong> - <em>Number</em> - Specifies the number of nodes to be validated by the page.</li></ul> <p><strong>Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
     curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getPageValidatorsCount&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;@1params_list&quot;]}' http://127.0.0.1:7079
 
     //Response
@@ -975,7 +977,7 @@ If the transaction occurred on the current node, it can be obtained via <a href=
 </code></pre></div><h3 id="ibax-getmenu"><a href="#ibax-getmenu" class="header-anchor">#</a> <strong>ibax.getMenu</strong> </h3> <p>Gets the tree of code JSON objects for the specified menu name, which is the result of processing by the template engine.</p> <p><a href="#authorization">Authorization</a></p> <p><strong>Parameters</strong></p> <ul><li><strong>name</strong> - <em>String</em> -
 <blockquote><p>Menu name with ecosystem ID in the format <code>@ecosystem_id%%%menu_name%</code>, e.g.
 <code>@1main_menu</code>.
-If you don't bring the ecosystem ID, the menu of the current ecology will be found by default, for example
+If you don't bring the ecosystem ID, the menu of the current ecosystem will be found by default, for example
 <code>main_menu</code></p></blockquote></li></ul> <p><strong>Return Value</strong></p> <ul><li><p><strong>title</strong> - <em>String</em> - the menu title.</p></li> <li><p><strong>tree</strong> - <em>Array</em> - Menu JSON object tree.</p></li></ul> <p><strong>Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
     curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getMenu&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;@1default_menu&quot;]}' http://127.0.0.1:7079
 
@@ -1238,11 +1240,11 @@ parameter. To receive pages from other ecosystems, the ecosystem ID must be pref
             &quot;sys&quot;: 35329248
         }
     }
-</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/tr-TR/reference/json-rpc.md" target="_blank" rel="noopener noreferrer">Bu sayfayı GitHub da düzenleyin</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">son Güncelleme:</span> <span class="time">09.06.2023 11:58:17</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/tr-TR/reference/json-rpc.md" target="_blank" rel="noopener noreferrer">Bu sayfayı GitHub da düzenleyin</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">son Güncelleme:</span> <span class="time">25.06.2023 15:46:02</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/tr-TR/reference/desync_monitor.html" class="prev">
         Senkronize İzleme Aracı 
       </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.1e099771.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/123.ea65aa7e.js" defer></script>
+    <script src="/assets/js/app.8ffd1d30.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/141.8c632b82.js" defer></script>
   </body>
 </html>
