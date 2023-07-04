@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Server Configuration File </a></li><li><a href="/it/reference/platform-parameters.html" class="sidebar-link">Platform Parameters </a></li><li><a href="/it/reference/backend-config.html" aria-current="page" class="active sidebar-link">Server Configuration File </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/it/reference/backend-config.html#introduction-to-the-server-configuration-file" class="sidebar-link">Introduction to the server configuration file </a></li><li class="sidebar-sub-header"><a href="/it/reference/backend-config.html#location" class="sidebar-link">Location </a></li><li class="sidebar-sub-header"><a href="/it/reference/backend-config.html#sections" class="sidebar-link">Sections </a></li><li class="sidebar-sub-header"><a href="/it/reference/backend-config.html#an-example-configuration-file" class="sidebar-link">An example configuration file </a></li></ul></li><li><a href="/it/reference/desync_monitor.html" class="sidebar-link">Synchronized Monitoring Tool </a></li><li><a href="/it/reference/json-rpc.html" class="sidebar-link">JSON-RPC Application Programming Interface </a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="server-configuration-file"><a href="#server-configuration-file" class="header-anchor">#</a> Server Configuration File </h1> <p>In this section, we will introduce parameters in the server configuration file.</p> <h2 id="introduction-to-the-server-configuration-file"><a href="#introduction-to-the-server-configuration-file" class="header-anchor">#</a> Introduction to the server configuration file </h2> <p>The server configuration file defines the node configuration of IBAX.</p> <h2 id="location"><a href="#location" class="header-anchor">#</a> Location </h2> <p>This file is located in the working directory of the server and is named <code>config.toml</code>.</p> <h2 id="sections"><a href="#sections" class="header-anchor">#</a> Sections </h2> <p>The configuration file consists the following sections:</p> <blockquote><p>general section</p></blockquote> <p>It defines the working directory DataDir, the first block directory FirstBlockPath and other parameters.</p> <blockquote><p>[TCPServer]</p></blockquote> <p>It defines the TCP service parameters.</p> <p>TCPServer is used for the network interaction between nodes.</p> <blockquote><p>[HTTP]</p></blockquote> <p>It defines the HTTP service parameters.</p> <p>HTTPServer provides RESTful APIs.</p> <blockquote><p>[DB]</p></blockquote> <p>It defines parameters of the PostgreSQL node database.</p> <blockquote><p>[StatsD]</p></blockquote> <p>It defines parameters of the node operation indicator collector StatsD.</p> <blockquote><p>[Centrifugo]</p></blockquote> <p>It defines parameters of the notification service Centrifugo.</p> <blockquote><p>[Log]</p></blockquote> <p>It defines parameters of the log service Log.</p> <blockquote><p>[TokenMovement]</p></blockquote> <p>It defines parameters of the token circulation service TokenMovement.</p> <h2 id="an-example-configuration-file"><a href="#an-example-configuration-file" class="header-anchor">#</a> An example configuration file </h2> <div class="language- extra-class"><pre class="language-text"><code>PidFilePath = &quot;/IBAX-data/go-ibax.pid&quot;
-LockFilePath = &quot;/IBAX-data/go-ibax.lock&quot;
-DataDir = &quot;/IBAX-data&quot;
-KeysDir = &quot;/IBAX-data&quot;
-TempDir = &quot;/var/folders/_l/9md_m4ms1651mf5pbng1y1xh0000gn/T/IBAX-temp&quot;
-FirstBlockPath = &quot;/IBAX-data/1block&quot;
+    <title>Server Configuration File </a></li><li><a href="/it/reference/platform-parameters.html" class="sidebar-link">Platform Parameters </a></li><li><a href="/it/reference/backend-config.html" aria-current="page" class="active sidebar-link">Server Configuration File </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/it/reference/backend-config.html#introduction-to-the-server-configuration-file" class="sidebar-link">Introduction to the server configuration file </a></li><li class="sidebar-sub-header"><a href="/it/reference/backend-config.html#location" class="sidebar-link">Location </a></li><li class="sidebar-sub-header"><a href="/it/reference/backend-config.html#sections" class="sidebar-link">Sections </a></li><li class="sidebar-sub-header"><a href="/it/reference/backend-config.html#an-example-configuration-file" class="sidebar-link">An example configuration file </a></li></ul></li><li><a href="/it/reference/desync_monitor.html" class="sidebar-link">Synchronized Monitoring Tool </a></li><li><a href="/it/reference/json-rpc.html" class="sidebar-link">JSON-RPC Application Programming Interface </a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="server-configuration-file"><a href="#server-configuration-file" class="header-anchor">#</a> Server Configuration File </h1> <p>In this section, we will introduce parameters in the server configuration file.</p> <h2 id="introduction-to-the-server-configuration-file"><a href="#introduction-to-the-server-configuration-file" class="header-anchor">#</a> Introduction to the server configuration file </h2> <p>The server configuration file defines the node configuration of IBAX.</p> <h2 id="location"><a href="#location" class="header-anchor">#</a> Location </h2> <p>This file is located in the working directory of the server and is named <code>config.toml</code>.</p> <h2 id="sections"><a href="#sections" class="header-anchor">#</a> Sections </h2> <p>The configuration file consists the following sections:</p> <blockquote><p>general section</p></blockquote> <p>It defines the working directory DataDir, the first block directory FirstBlockPath and other parameters.</p> <blockquote><p>[TCPServer]</p></blockquote> <p>It defines the TCP service parameters.</p> <p>TCPServer is used for the network interaction between nodes.</p> <blockquote><p>[HTTP]</p></blockquote> <p>It defines the HTTP service parameters.</p> <p>HTTPServer provides RESTful APIs.</p> <blockquote><p>[DB]</p></blockquote> <p>It defines parameters of the PostgreSQL node database.</p> <blockquote><p>[StatsD]</p></blockquote> <p>It defines parameters of the node operation indicator collector StatsD.</p> <blockquote><p>[Centrifugo]</p></blockquote> <p>It defines parameters of the notification service Centrifugo.</p> <blockquote><p>[Log]</p></blockquote> <p>It defines parameters of the log service Log.</p> <blockquote><p>[TokenMovement]</p></blockquote> <p>It defines parameters of the token circulation service TokenMovement.</p> <h2 id="an-example-configuration-file"><a href="#an-example-configuration-file" class="header-anchor">#</a> An example configuration file </h2> <div class="language- extra-class"><pre class="language-text"><code>PidFilePath = &quot;/ibax-data/go-ibax.pid&quot;
+LockFilePath = &quot;/ibax-data/go-ibax.lock&quot;
+DataDir = &quot;/ibax-data&quot;
+KeysDir = &quot;/ibax-data&quot;
+TempDir = &quot;/var/folders/_l/9md_m4ms1651mf5pbng1y1xh0000gn/T/ibax-temp&quot;
+FirstBlockPath = &quot;/ibax-data/1block&quot;
 TLS = false
 TLSCert = &quot;&quot;
 TLSKey = &quot;&quot;
@@ -26,7 +26,7 @@ NodesAddr = []
   Port = 7079
 
 [DB]
-  Name = &quot;IBAX&quot;
+  Name = &quot;ibax&quot;
   Host = &quot;127.0.0.1&quot;
   Port = 5432
   User = &quot;postgres&quot;
@@ -36,7 +36,7 @@ NodesAddr = []
 [StatsD]
   Host = &quot;127.0.0.1&quot;
   Port = 8125
-  Name = &quot;IBAX&quot;
+  Name = &quot;ibax&quot;
 
 [Centrifugo]
   Secret = &quot;127.0.0.1&quot;
@@ -58,7 +58,7 @@ NodesAddr = []
   To = &quot;&quot;
   From = &quot;&quot;
   Subject = &quot;&quot;
-</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/it/reference/backend-config.md" target="_blank" rel="noopener noreferrer">Modifica questa pagina su GitHub</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">Ultimo aggiornamento:</span> <span class="time">4/11/2021, 10:39:00</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/it/reference/backend-config.md" target="_blank" rel="noopener noreferrer">Modifica questa pagina su GitHub</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">Ultimo aggiornamento:</span> <span class="time">25/6/2023, 15:46:02</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/it/reference/platform-parameters.html" class="prev">
         Platform Parameters 
@@ -67,6 +67,6 @@ NodesAddr = []
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.1e099771.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/76.3c1a9102.js" defer></script>
+    <script src="/assets/js/app.8ffd1d30.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/76.614be833.js" defer></script>
   </body>
 </html>
