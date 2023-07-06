@@ -77,18 +77,18 @@ Content-Type: application/json
 </code></pre></div></li></ul> <p><strong>响应</strong></p> <ul><li><p><code>token</code></p> <blockquote><p>JWT令牌。</p></blockquote></li> <li><p><code>ecosystem_id</code></p> <blockquote><p>生态系统ID。</p></blockquote></li> <li><p><code>key_id</code></p> <blockquote><p>账户地址ID</p></blockquote></li> <li><p><code>account</code></p> <blockquote><p>钱包地址 <code>XXXX-XXXX-.....-XXXX</code>。</p></blockquote></li> <li><p><code>notify_key</code></p> <blockquote><p>通知ID。</p></blockquote></li> <li><p><code>isnode</code></p> <blockquote><p>该账户地址是否是该节点的所有者。值： <code>true,false</code>。</p></blockquote></li> <li><p><code>isowner</code></p> <blockquote><p>该账户地址是否是该生态系统的创建者。值： <code>true,false</code>。</p></blockquote></li> <li><p><code>clb</code></p> <blockquote><p>登录的生态系统是否为 CLB 。值： <code>true,false</code>。</p></blockquote></li> <li><p><code>roles</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>角色列表： <code>[{角色ID,角色名称}]</code>。</p></blockquote></li></ul> <p><strong>响应示例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
 Content-Type: application/json
 {
-	&quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...30l665h3v7lH85rs5jgk0&quot;,
-	&quot;ecosystem_id&quot;: &quot;1&quot;,
-	&quot;key_id&quot;: &quot;-54321&quot;,
-	&quot;account&quot;: &quot;1285-...-7743-4282&quot;,
-	&quot;notify_key&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....._JTFfheD0K4CfMbvVNpOJVMNDPx25zIDGir9g3ZZM0w&quot;,
-	&quot;timestamp&quot;: &quot;1451309883&quot;,
-	&quot;roles&quot;: [
-		{
-			&quot;role_id&quot;: 1,
-			&quot;role_name&quot;: &quot;Developer&quot;
-		}
-	]
+    &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...30l665h3v7lH85rs5jgk0&quot;,
+    &quot;ecosystem_id&quot;: &quot;1&quot;,
+    &quot;key_id&quot;: &quot;-54321&quot;,
+    &quot;account&quot;: &quot;1285-...-7743-4282&quot;,
+    &quot;notify_key&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....._JTFfheD0K4CfMbvVNpOJVMNDPx25zIDGir9g3ZZM0w&quot;,
+    &quot;timestamp&quot;: &quot;1451309883&quot;,
+    &quot;roles&quot;: [
+        {
+            &quot;role_id&quot;: 1,
+            &quot;role_name&quot;: &quot;Developer&quot;
+        }
+    ]
 }      
 </code></pre></div><p><strong>错误响应</strong></p> <p><em>E_SERVER, E_UNKNOWNUID, E_SIGNATURE, E_STATELOGIN, E_EMPTYPUBLIC</em></p> <h2 id="server-side-command-interface"><a href="#server-side-command-interface" class="header-anchor">#</a> 服务端命令接口 </h2> <h3 id="version"><a href="#version" class="header-anchor">#</a> version </h3> <p><strong>GET</strong>/ 返回当前服务器版本。</p> <p>该请求不需要登录授权。</p> <p><strong>请求</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
 /api/v2/version
@@ -651,11 +651,11 @@ Content-Type: application/json
 }      
 </code></pre></div><h3 id="special-instructions"><a href="#special-instructions" class="header-anchor">#</a> 特殊说明 </h3> <h4 id="omitempty"><a href="#omitempty" class="header-anchor">#</a> Omitempty </h4> <p>如字段带有omitempty属性，表示此字段为可选参数</p> <h4 id="authorization"><a href="#authorization" class="header-anchor">#</a> Authorization </h4> <p>如接口带有Authorization标签，表示此接口需要login授权，请求头添加Authorization，示例：</p> <p>key = Authorization
 value = &quot;Bearer +<a href="#login">login token</a>&quot;</p> <div class="language-text extra-class"><pre class="language-text"><code>    Authorization   Bearer eyJhbGciOiJI.....kBZgGIlPhfXNZJ73RiZtM
-</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/zh-CN/reference/api2.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2023/6/25 15:46:02</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/zh-CN/reference/platform-parameters.html">
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/zh-CN/reference/api2.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2023/7/6 18:59:03</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/zh-CN/reference/platform-parameters.html">
         平台参数 
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.8ffd1d30.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/158.929f7c5e.js" defer></script>
+    <script src="/assets/js/app.d049f7ab.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/158.4bceb302.js" defer></script>
   </body>
 </html>

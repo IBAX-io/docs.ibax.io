@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>IBAX开发教程 </a></li><li><a href="/zh-CN/tutorials/tutorial.html" aria-current="page" class="active sidebar-link">IBAX开发教程 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#getting-started-guide" class="sidebar-link">入门指南 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#deployment" class="sidebar-link">部署 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#advanced-guide" class="sidebar-link">进阶指南 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#deploy-first-smart-contract-via-command-line-tool" class="sidebar-link">通过命令行工具部署第一个智能合约 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#create-application" class="sidebar-link">创建应用 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#writing-contracts" class="sidebar-link">编写智能合约 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#create-contract" class="sidebar-link">创建智能合约 </a></li></ul></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#command-line-tool-eco-development" class="sidebar-link">命令行工具生态开发 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-1-create-ecosystem" class="sidebar-link">第1步创建生态 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-2-create-application" class="sidebar-link">第2步创建应用 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-3-create-table" class="sidebar-link">第3步创建数据表 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-4-create-application-parameters" class="sidebar-link">第4步创建应用参数 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-5-create-contract-deploy-contract" class="sidebar-link">第5步创建智能合约部署智能合约 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-6-create-ecological-parameters" class="sidebar-link">第6步设置生态参数 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-7-add-localization" class="sidebar-link">第7步添加本地化 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-8-modify-the-contract" class="sidebar-link">第8步修改智能合约 </a></li></ul></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#deploy-application-using-command-line-tools" class="sidebar-link">使用命令行工具部署应用 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#export-application" class="sidebar-link">导出应用 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#import-application" class="sidebar-link">导入应用 </a></li></ul></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#ecological-configuration-using-command-line-tool" class="sidebar-link">使用命令行工具生态配置 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#apply-to-join-the-ecosystem" class="sidebar-link">申请加入生态 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#add-ecosystem-members" class="sidebar-link">添加生态成员 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#freezing-of-accounts" class="sidebar-link">冻结账户 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#role-management" class="sidebar-link">角色管理 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#issuance-of-token" class="sidebar-link">生态代币发行 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#eco-deduction" class="sidebar-link">生态代扣 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#dao-governance-ecosystem" class="sidebar-link">DAO治理生态 </a></li></ul></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#deploy-applications-using-application-packaging-tool" class="sidebar-link">使用应用打包工具部署应用 </a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="ibax-development-tutorial"><a href="#ibax-development-tutorial" class="header-anchor">#</a> IBAX开发教程 </h1> <h2 id="getting-started-guide"><a href="#getting-started-guide" class="header-anchor">#</a> 入门指南 </h2> <ul><li><a href="#deploy-first-smart-contract-via-command-line-tool">通过命令行工具部署第一个智能合约</a></li> <li><a href="#command-line-tool-eco-development">命令行工具生态开发</a></li></ul> <h2 id="deployment"><a href="#deployment" class="header-anchor">#</a> 部署 </h2> <ul><li><a href="#deploy-application-using-command-line-tools">使用命令行工具部署应用</a></li> <li><a href="#ecological-configuration-using-command-line-tool">使用命令行工具生态配置</a></li></ul> <h2 id="advanced-guide"><a href="#advanced-guide" class="header-anchor">#</a> 进阶指南 </h2> <ul><li><a href="#deploy-applications-using-application-packaging-tool">使用应用打包工具部署应用</a></li></ul> <h2 id="deploy-first-smart-contract-via-command-line-tool"><a href="#deploy-first-smart-contract-via-command-line-tool" class="header-anchor">#</a> 通过命令行工具部署第一个智能合约 </h2> <p>我们将通过<a href="https://github.com/IBAX-io/ibax-cli" target="_blank" rel="noopener noreferrer">命令行工具<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 在IBAX区块链上部署<a href="/zh-CN/concepts/thesaurus.html#smart-contract">智能合约</a> , 并学习何如调用智能合约。作为我们的第一个智能合约，我们将其部署到<a href="/zh-CN/concepts/blockchain-layers.html">本地测试网络</a> 上，如何部署本地网络你可以参考<a href="/zh-CN/howtos/deployment.html">网络部署</a> , 因此您不需要任何开销就可以随意部署和运行它。</p> <h3 id="create-application"><a href="#create-application" class="header-anchor">#</a> 创建应用 </h3> <p>调用智能合约@1NewApplication创建应用，该智能合约有一个应用名称参数和一个修改<a href="/zh-CN/concepts/about-the-platform.html#access-rights-control-mechanism">权限参数</a> 。</p> <div class="language-text extra-class"><pre class="language-text"><code>1    $ ibax-cli console
+    <title>IBAX开发教程 </a></li><li><a href="/zh-CN/tutorials/tutorial.html" aria-current="page" class="active sidebar-link">IBAX开发教程 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#getting-started-guide" class="sidebar-link">入门指南 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#deployment" class="sidebar-link">部署 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#advanced-guide" class="sidebar-link">进阶指南 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#deploy-first-smart-contract-via-command-line-tool" class="sidebar-link">通过命令行工具部署第一个智能合约 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#create-application" class="sidebar-link">创建应用 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#writing-contracts" class="sidebar-link">编写智能合约 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#create-contract" class="sidebar-link">创建智能合约 </a></li></ul></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#command-line-tool-eco-development" class="sidebar-link">命令行工具生态开发 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-1-create-ecosystem" class="sidebar-link">第1步创建生态 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-2-create-application" class="sidebar-link">第2步创建应用 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-3-create-table" class="sidebar-link">第3步创建数据表 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-4-create-application-parameters" class="sidebar-link">第4步创建应用参数 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-5-create-contract-deploy-contract" class="sidebar-link">第5步创建智能合约部署智能合约 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-6-create-ecosystem-parameters" class="sidebar-link">第6步设置生态参数 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-7-add-localization" class="sidebar-link">第7步添加本地化 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#step-8-modify-the-contract" class="sidebar-link">第8步修改智能合约 </a></li></ul></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#deploy-application-using-command-line-tools" class="sidebar-link">使用命令行工具部署应用 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#export-application" class="sidebar-link">导出应用 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#import-application" class="sidebar-link">导入应用 </a></li></ul></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#ecosystem-configuration-using-command-line-tool" class="sidebar-link">使用命令行工具生态配置 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#apply-to-join-the-ecosystem" class="sidebar-link">申请加入生态 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#add-ecosystem-members" class="sidebar-link">添加生态成员 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#freezing-of-accounts" class="sidebar-link">冻结账户 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#role-management" class="sidebar-link">角色管理 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#issuance-of-token" class="sidebar-link">生态代币发行 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#eco-deduction" class="sidebar-link">生态代扣 </a></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#dao-governance-ecosystem" class="sidebar-link">DAO治理生态 </a></li></ul></li><li class="sidebar-sub-header"><a href="/zh-CN/tutorials/tutorial.html#deploy-applications-using-application-packaging-tool" class="sidebar-link">使用应用打包工具部署应用 </a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="ibax-development-tutorial"><a href="#ibax-development-tutorial" class="header-anchor">#</a> IBAX开发教程 </h1> <h2 id="getting-started-guide"><a href="#getting-started-guide" class="header-anchor">#</a> 入门指南 </h2> <ul><li><a href="#deploy-first-smart-contract-via-command-line-tool">通过命令行工具部署第一个智能合约</a></li> <li><a href="#command-line-tool-eco-development">命令行工具生态开发</a></li></ul> <h2 id="deployment"><a href="#deployment" class="header-anchor">#</a> 部署 </h2> <ul><li><a href="#deploy-application-using-command-line-tools">使用命令行工具部署应用</a></li> <li><a href="#ecosystem-configuration-using-command-line-tool">使用命令行工具生态配置</a></li></ul> <h2 id="advanced-guide"><a href="#advanced-guide" class="header-anchor">#</a> 进阶指南 </h2> <ul><li><a href="#deploy-applications-using-application-packaging-tool">使用应用打包工具部署应用</a></li></ul> <h2 id="deploy-first-smart-contract-via-command-line-tool"><a href="#deploy-first-smart-contract-via-command-line-tool" class="header-anchor">#</a> 通过命令行工具部署第一个智能合约 </h2> <p>我们将通过<a href="https://github.com/IBAX-io/ibax-cli" target="_blank" rel="noopener noreferrer">命令行工具<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 在IBAX区块链上部署<a href="/zh-CN/concepts/thesaurus.html#smart-contract">智能合约</a> , 并学习何如调用智能合约。作为我们的第一个智能合约，我们将其部署到<a href="/zh-CN/concepts/blockchain-layers.html">本地测试网络</a> 上，如何部署本地网络你可以参考<a href="/zh-CN/howtos/deployment.html">网络部署</a> , 因此您不需要任何开销就可以随意部署和运行它。</p> <h3 id="create-application"><a href="#create-application" class="header-anchor">#</a> 创建应用 </h3> <p>调用智能合约@1NewApplication创建应用，该智能合约有一个应用名称参数和一个修改<a href="/zh-CN/concepts/about-the-platform.html#access-rights-control-mechanism">权限参数</a> 。</p> <div class="language-text extra-class"><pre class="language-text"><code>1    $ ibax-cli console
 2    
 3    Welcome to the IBAX console!
 4    To exit, press ctrl-d or type exit
@@ -93,7 +93,7 @@
 3、<a href="#step-3-create-table">创建数据表</a>
 4、<a href="#step-4-create-application-parameters">创建应用参数</a>
 5、<a href="#step-5-create-contract-deploy-contract">创建和部署智能合约</a>
-6、<a href="#step-6-create-ecological-parameters">创建生态参数</a>
+6、<a href="#step-6-create-ecosystem-parameters">创建生态参数</a>
 7、<a href="#step-7-add-localization">添加本地化</a>
 8、<a href="#step-8-modify-the-contract">修改智能合约</a>
 9、<a href="#step-9-modify-data-table-permissions">修改数据表权限</a></p> <p>为了更清楚的了解IBAX生态与应用是怎么样的，做什么用的，首选我们了解一下生态和应用应该属于那一部分，我们通过一个简单的思维导图可以更好的理解：
@@ -165,97 +165,97 @@ To exit, press ctrl-d or <span class="token builtin class-name">type</span> <spa
 &gt;callContract @1NewAppParam {&quot;ApplicationId&quot;: 47, &quot;Name&quot;: &quot;grade_type_b+&quot;, &quot;Value&quot;: &quot;{\&quot;max\&quot;: 80,\&quot;min\&quot;: 70}&quot;, &quot;Conditions&quot;: &quot;ContractConditions(\&quot;MainCondition\&quot;)&quot;}
 &gt;callContract @1NewAppParam {&quot;ApplicationId&quot;: 47, &quot;Name&quot;: &quot;grade_type_b&quot;, &quot;Value&quot;: &quot;{\&quot;max\&quot;: 70,\&quot;min\&quot;: 60}&quot;, &quot;Conditions&quot;: &quot;ContractConditions(\&quot;MainCondition\&quot;)&quot;}
 &gt;callContract @1NewAppParam {&quot;ApplicationId&quot;: 47, &quot;Name&quot;: &quot;grade_type_c&quot;, &quot;Value&quot;: &quot;{\&quot;max\&quot;: 60,\&quot;min\&quot;: 0}&quot;, &quot;Conditions&quot;: &quot;ContractConditions(\&quot;MainCondition\&quot;)&quot;}
-</code></pre></div><p>其中<code>grade_best_type</code>为最好的评级类型，<code>grade_type_a+</code>为评级<code>A+</code>所触发的条件，当分数大于等于90并且小于101时，评为<code>A+</code>,其他参数类似。</p> <h3 id="step-5-create-contract-deploy-contract"><a href="#step-5-create-contract-deploy-contract" class="header-anchor">#</a> 第5步创建智能合约部署智能合约 </h3> <p>我们创建一个智能合约，用于记录学生各科目成绩信息与最终评级，录入信息时输入学生的年级班级与各科目成绩，根据输入的各科的成绩做平均运算，得出综合评分<code>overallScore</code>与最终评级<code>score</code>,当调用智能合约时，将创建一条记录到我们刚刚创建的数据表中<code>grade_info</code>。</p> <p>首先我们编写一个智能合约，将它命名为<code>NewRecord.sim</code>。</p> <div class="language-text extra-class"><pre class="language-text"><code>1	contract NewRecord {				
-2	    data {				
-3	        Student string				
-4	        Grade int				
-5	        Class int				
-6	        Mathematics int				
-7	        Physics int				
-8	        Literature int				
-9	    }				
-10	    func getScore(a b c int) map{				
-11	        var m map				
-12	        var overallScore int				
-13	        overallScore = (a+b+c) / 3				
-14	        m[&quot;overallScore&quot;] = overallScore				
-15	        if overallScore &gt;= $gradeTypeABest[&quot;min&quot;] &amp;amp;&amp;amp; overallScore &amp;lt; $gradeTypeABest[&quot;max&quot;] {				
-16	            m[&quot;score&quot;] = &quot;A+&quot;				
-17	        }elif overallScore &gt;= $gradeTypeA[&quot;min&quot;] &amp;amp;&amp;amp; overallScore &amp;lt; $gradeTypeA[&quot;max&quot;] {				
-18	            m[&quot;score&quot;] = &quot;A&quot;				
-19	        }elif overallScore &gt;= $gradeTypeBBest[&quot;min&quot;] &amp;amp;&amp;amp; overallScore &amp;lt; $gradeTypeBBest[&quot;max&quot;] {				
-20	            m[&quot;score&quot;] = &quot;B+&quot;				
-21	        }elif overallScore &gt;= $gradeTypeB[&quot;min&quot;] &amp;amp;&amp;amp; overallScore &amp;lt; $gradeTypeB[&quot;max&quot;] {				
-22	            m[&quot;score&quot;] = &quot;B&quot;				
-23	        }elif overallScore &gt;= $gradeTypeC[&quot;min&quot;] &amp;amp;&amp;amp; overallScore &amp;lt; $gradeTypeC[&quot;max&quot;]{				
-24	            m[&quot;score&quot;] = &quot;C&quot;				
-25	        }else{				
-26	            m[&quot;score&quot;] = &quot;Notset&quot;				
-27	        }				
-28	        return m				
-29	    }				
-30	    func safeJsonDecode(m string) map {				
-31	        var res map				
-32	        if Size(m) &gt; 0 {				
-33	            res = JSONDecode(m)				
-34	        }				
-35	        return res				
-36	    }				
-37					
-38	    conditions {				
-39	        if Size($Student) == 0 {				
-40	            warning &quot;Student Can not be empty&quot;				
-41	        }				
-42	        if $Class &amp;lt;= 0{				
-43	            warning &quot;Class cannot be less than or equal to zero&quot;				
-44	        }				
-45	        if $Grade &amp;lt;= 0{				
-46	            warning &quot;Grade cannot be less than or equal to zero&quot;				
-47	        }				
-48	        if $Mathematics &amp;lt; 0 {				
-49	            warning &quot;Mathematics cannot be less than zero&quot;				
-50	        }				
-51	        if $Physics &amp;lt; 0 {				
-52	            warning &quot;Physics cannot be less than zero&quot;				
-53	        }				
-54	        if $Literature &amp;lt; 0 {				
-55	            warning &quot;Literature cannot be less than zero&quot;				
-56	        }				
-57	        if $Mathematics &gt; 100 || $Physics &gt; 100 ||  $Literature &gt; 100{				
-58	            warning &quot;Score cannot exceed 100&quot;				
-59	        }				
-60	        var app map				
-61	        app = DBFind(&quot;@1applications&quot;).Columns(&quot;id,ecosystem&quot;).Where({&quot;ecosystem&quot;: 18,&quot;name&quot;:&quot;GradesRecorder&quot;,&quot;deleted&quot;:0}).Row()				
-62	        if !app {				
-63	            warning LangRes(&quot;@1app_not_found&quot;)				
-64	        }				
-65					
-66	        var app_id int				
-67	        app_id = Int(app[&quot;id&quot;])				
-68	        $eId = Int(app[&quot;ecosystem&quot;])				
-69	        $gradeBestType = AppParam(app_id, &quot;grade_best_type&quot;, $eId)				
-70	        $gradeTypeABest = safeJsonDecode(AppParam(app_id, &quot;grade_type_a+&quot;, $eId))				
-71	        $gradeTypeA = safeJsonDecode(AppParam(app_id, &quot;grade_type_a&quot;, $eId))				
-72	        $gradeTypeBBest = safeJsonDecode(AppParam(app_id, &quot;grade_type_b+&quot;, $eId))				
-73	        $gradeTypeB = safeJsonDecode(AppParam(app_id, &quot;grade_type_b&quot;, $eId))				
-74	        $gradeTypeC = safeJsonDecode(AppParam(app_id, &quot;grade_type_c&quot;, $eId))				
-75	    }				
-76	    action {				
-77	        var m map 				
-78	        m = getScore($Mathematics,$Physics,$Literature)				
-79	        var in map				
-80	        in[&quot;student&quot;] = $Student				
-81	        in[&quot;class&quot;] = $Class				
-82	        in[&quot;grade&quot;] = $Grade				
-83	        in[&quot;mathematics&quot;] = $Mathematics				
-84	        in[&quot;physics&quot;] = $Physics 				
-85	        in[&quot;literature&quot;] = $Literature 				
-86	        in[&quot;overall_score&quot;] = m[&quot;overallScore&quot;]				
-87	        in[&quot;score&quot;] = m[&quot;score&quot;]				
-88	        in[&quot;created_at&quot;] = $time				
-89	        DBInsert(&quot;@&quot;+ Str($eId)+&quot;grade_info&quot;, in)				
-90	    }				
-91	}				
+</code></pre></div><p>其中<code>grade_best_type</code>为最好的评级类型，<code>grade_type_a+</code>为评级<code>A+</code>所触发的条件，当分数大于等于90并且小于101时，评为<code>A+</code>,其他参数类似。</p> <h3 id="step-5-create-contract-deploy-contract"><a href="#step-5-create-contract-deploy-contract" class="header-anchor">#</a> 第5步创建智能合约部署智能合约 </h3> <p>我们创建一个智能合约，用于记录学生各科目成绩信息与最终评级，录入信息时输入学生的年级班级与各科目成绩，根据输入的各科的成绩做平均运算，得出综合评分<code>overallScore</code>与最终评级<code>score</code>,当调用智能合约时，将创建一条记录到我们刚刚创建的数据表中<code>grade_info</code>。</p> <p>首先我们编写一个智能合约，将它命名为<code>NewRecord.sim</code>。</p> <div class="language-text extra-class"><pre class="language-text"><code>1 contract NewRecord {
+2       data {
+3         Student string
+4         Grade int
+5         Class int
+6         Mathematics int
+7         Physics int
+8         Literature int
+9       }
+10     func getScore(a b c int) map{
+11          var m map
+12          var overallScore int
+13          overallScore = (a+b+c) / 3
+14          m[&quot;overallScore&quot;] = overallScore
+15          if overallScore &gt;= $gradeTypeABest[&quot;min&quot;] &amp;amp;&amp;amp; overallScore &amp;lt; $gradeTypeABest[&quot;max&quot;] {
+16              m[&quot;score&quot;] = &quot;A+&quot;
+17          }elif overallScore &gt;= $gradeTypeA[&quot;min&quot;] &amp;amp;&amp;amp; overallScore &amp;lt; $gradeTypeA[&quot;max&quot;] {
+18              m[&quot;score&quot;] = &quot;A&quot;
+19          }elif overallScore &gt;= $gradeTypeBBest[&quot;min&quot;] &amp;amp;&amp;amp; overallScore &amp;lt; $gradeTypeBBest[&quot;max&quot;] {
+20              m[&quot;score&quot;] = &quot;B+&quot;
+21          }elif overallScore &gt;= $gradeTypeB[&quot;min&quot;] &amp;amp;&amp;amp; overallScore &amp;lt; $gradeTypeB[&quot;max&quot;] {
+22              m[&quot;score&quot;] = &quot;B&quot;
+23          }elif overallScore &gt;= $gradeTypeC[&quot;min&quot;] &amp;amp;&amp;amp; overallScore &amp;lt; $gradeTypeC[&quot;max&quot;]{
+24              m[&quot;score&quot;] = &quot;C&quot;
+25          }else{
+26              m[&quot;score&quot;] = &quot;Notset&quot;
+27          }
+28          return m
+29      }
+30      func safeJsonDecode(m string) map {
+31          var res map
+32          if Size(m) &gt; 0 {
+33             res = JSONDecode(m)
+34          }
+35          return res
+36      }
+37
+38      conditions {
+39          if Size($Student) == 0 {
+40            warning &quot;Student Can not be empty&quot;
+41          }
+42          if $Class &amp;lt;= 0{
+43              warning &quot;Class cannot be less than or equal to zero&quot;
+44          }
+45          if $Grade &amp;lt;= 0{
+46              warning &quot;Grade cannot be less than or equal to zero&quot;
+47          }
+48          if $Mathematics &amp;lt; 0 {
+49              warning &quot;Mathematics cannot be less than zero&quot;
+50          }
+51          if $Physics &amp;lt; 0 {
+52              warning &quot;Physics cannot be less than zero&quot;
+53          }
+54          if $Literature &amp;lt; 0 {
+55              warning &quot;Literature cannot be less than zero&quot;
+56          }
+57          if $Mathematics &gt; 100 || $Physics &gt; 100 ||  $Literature &gt; 100{
+58              warning &quot;Score cannot exceed 100&quot;
+59          }
+60          var app map
+61          app = DBFind(&quot;@1applications&quot;).Columns(&quot;id,ecosystem&quot;).Where({&quot;ecosystem&quot;: 18,&quot;name&quot;:&quot;GradesRecorder&quot;,&quot;deleted&quot;:0}).Row()
+62          if !app {
+63              warning LangRes(&quot;@1app_not_found&quot;)
+64          }
+65
+66          var app_id int
+67          app_id = Int(app[&quot;id&quot;])
+68          $eId = Int(app[&quot;ecosystem&quot;])
+69          $gradeBestType = AppParam(app_id, &quot;grade_best_type&quot;, $eId)
+70          $gradeTypeABest = safeJsonDecode(AppParam(app_id, &quot;grade_type_a+&quot;, $eId))
+71          $gradeTypeA = safeJsonDecode(AppParam(app_id, &quot;grade_type_a&quot;, $eId))
+72          $gradeTypeBBest = safeJsonDecode(AppParam(app_id, &quot;grade_type_b+&quot;, $eId))
+73          $gradeTypeB = safeJsonDecode(AppParam(app_id, &quot;grade_type_b&quot;, $eId))
+74          $gradeTypeC = safeJsonDecode(AppParam(app_id, &quot;grade_type_c&quot;, $eId))
+75      }
+76      action {
+77          var m map
+78          m = getScore($Mathematics,$Physics,$Literature)
+79          var in map
+80          in[&quot;student&quot;] = $Student
+81          in[&quot;class&quot;] = $Class
+82          in[&quot;grade&quot;] = $Grade
+83          in[&quot;mathematics&quot;] = $Mathematics
+84          in[&quot;physics&quot;] = $Physics
+85          in[&quot;literature&quot;] = $Literature
+86          in[&quot;overall_score&quot;] = m[&quot;overallScore&quot;]
+87          in[&quot;score&quot;] = m[&quot;score&quot;]
+88          in[&quot;created_at&quot;] = $time
+89          DBInsert(&quot;@&quot;+ Str($eId)+&quot;grade_info&quot;, in)
+90      }
+91  }
 </code></pre></div><p>下面按行解释：</p> <ul><li>第2行，<a href="/zh-CN/topics/script.html#data-section">数据部分</a> 定义了输入参数<code>Student</code>学生名称,<code>Grade</code>年级,<code>Class</code>班级,<code>Mathematics</code>数学分数,<code>Physics</code>物理分数,<code>Literature</code>文学分数。</li> <li>第10行，getScore函数，根据各科成绩得出综合评分与最终评级。</li> <li>第30行，safeJsonDecode函数，将字符串进行json解码并转为map。</li> <li>第38行，<a href="/zh-CN/topics/script.html#conditions-section">条件部分</a> 。</li> <li>第39行，<a href="/zh-CN/topics/script.html#action-section">操作部分</a> 。</li></ul> <p>可以看到，当智能合约被调用时，首先走条件部分，验证智能合约输入参数是否有效，比如学生名称<code>if Size($Student) == 0 {</code>是否为空(第39行)，如果为空，则返回报错信息。<code>&quot;Student Can not be empty&quot;</code>(第30行),当所有输入参数都校验通过后，第61行，使用<a href="/zh-CN/topics/script.html#dbfind">DBFind</a> 从数据库检索生态id为<code>18</code>，应用名称为<code>GradesRecorder</code>并且未删除<code>deleted=0</code>的应用信息，第69行-74行，使用<a href="/zh-CN/topics/script.html#appparam">AppParam</a> 检索应用参数， 如<code>$gradeBestType = AppParam(app_id, &quot;grade_best_type&quot;, $eId)</code>（第69行）,如果应用参数为json格式存储，如<code>grade_type_a</code>,你可以参考<code>$gradeTypeABest = safeJsonDecode(AppParam(app_id, &quot;grade_type_a+&quot;, $eId))</code>,将获取到的应用参数通过safeJsonDecode函数转为map格式。</p> <p>然后执行到操作部分，调用getScore函数获取得出综合评分与最终评级(第10行),使用map存储，第79行，定义一个map，保存学生成绩信息，<a href="/zh-CN/topics/script.html#dbinsert">DBInsert</a> 往数据表<code>@18grade_info</code>插入数据。</p> <p>有两种方法创建智能合约，第一种方法：</p> <p>首先我们编写一个智能合约参数文件，文件格式为json：</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
   <span class="token property">&quot;ApplicationId&quot;</span><span class="token operator">:</span> <span class="token number">47</span><span class="token punctuation">,</span>
   <span class="token property">&quot;Value&quot;</span><span class="token operator">:</span> <span class="token string">&quot;contract NewRecord {\n    data {\n        Student string\n        Grade int\n        Class int\n        Mathematics int\n        Physics int\n        Literature int\n    }\n    func getScore(a b c int) map{\n        var m map\n        var overallScore int\n        overallScore = (a+b+c) / 3\n        m[\&quot;overallScore\&quot;] = overallScore\n        if overallScore &gt;= $gradeTypeABest[\&quot;min\&quot;] &amp;&amp; overallScore &lt; $gradeTypeABest[\&quot;max\&quot;] {\n            m[\&quot;score\&quot;] = \&quot;A+\&quot;\n        }elif overallScore &gt;= $gradeTypeA[\&quot;min\&quot;] &amp;&amp; overallScore &lt; $gradeTypeA[\&quot;max\&quot;] {\n            m[\&quot;score\&quot;] = \&quot;A\&quot;\n        }elif overallScore &gt;= $gradeTypeBBest[\&quot;min\&quot;] &amp;&amp; overallScore &lt; $gradeTypeBBest[\&quot;max\&quot;] {\n            m[\&quot;score\&quot;] = \&quot;B+\&quot;\n        }elif overallScore &gt;= $gradeTypeB[\&quot;min\&quot;] &amp;&amp; overallScore &lt; $gradeTypeB[\&quot;max\&quot;] {\n            m[\&quot;score\&quot;] = \&quot;B\&quot;\n        }elif overallScore &gt;= $gradeTypeC[\&quot;min\&quot;] &amp;&amp; overallScore &lt; $gradeTypeC[\&quot;max\&quot;]{\n            m[\&quot;score\&quot;] = \&quot;C\&quot;\n        }else{\n            m[\&quot;score\&quot;] = \&quot;Notset\&quot;\n        }\n        return m\n    }\n    func safeJsonDecode(m string) map {\n        var res map\n        if Size(m) &gt; 0 {\n            res = JSONDecode(m)\n        }\n        return res\n    }\n\n    conditions {\n        if Size($Student) == 0 {\n            warning \&quot;Student Can not be empty\&quot;\n        }\n        if $Class &lt;= 0{\n            warning \&quot;Class cannot be less than or equal to zero\&quot;\n        }\n         if $Grade &lt;= 0{\n            warning \&quot;Grade cannot be less than or equal to zero\&quot;\n        }\n        if $Mathematics &lt; 0 {\n            warning \&quot;Mathematics cannot be less than zero\&quot;\n        }\n        if $Physics &lt; 0 {\n            warning \&quot;Physics cannot be less than zero\&quot;\n        }\n        if $Literature &lt; 0 {\n            warning \&quot;Literature cannot be less than zero\&quot;\n        }\n        if $Mathematics &gt; 100 || $Physics &gt; 100 ||  $Literature &gt; 100{\n            warning \&quot;Score cannot exceed 100\&quot;\n        }\n        var app map\n        app = DBFind(\&quot;@1applications\&quot;).Columns(\&quot;id,ecosystem\&quot;).Where({\&quot;ecosystem\&quot;: 18,\&quot;name\&quot;:\&quot;GradesRecorder\&quot;,\&quot;deleted\&quot;:0}).Row()\n        if !app {\n            warning LangRes(\&quot;@1app_not_found\&quot;)\n        }\n\n        var app_id int\n        app_id = Int(app[\&quot;id\&quot;])\n        $eId = Int(app[\&quot;ecosystem\&quot;])\n        $gradeBestType = AppParam(app_id, \&quot;grade_best_type\&quot;, $eId)\n        $gradeTypeABest = safeJsonDecode(AppParam(app_id, \&quot;grade_type_a+\&quot;, $eId))\n        $gradeTypeA = safeJsonDecode(AppParam(app_id, \&quot;grade_type_a\&quot;, $eId))\n        $gradeTypeBBest = safeJsonDecode(AppParam(app_id, \&quot;grade_type_b+\&quot;, $eId))\n        $gradeTypeB = safeJsonDecode(AppParam(app_id, \&quot;grade_type_b\&quot;, $eId))\n        $gradeTypeC = safeJsonDecode(AppParam(app_id, \&quot;grade_type_c\&quot;, $eId))\n    }\n    action {\n        var m map \n        m = getScore($Mathematics,$Physics,$Literature)\n        var in map\n        in[\&quot;student\&quot;] = $Student\n        in[\&quot;class\&quot;] = $Class\n        in[\&quot;grade\&quot;] = $Grade\n        in[\&quot;mathematics\&quot;] = $Mathematics\n        in[\&quot;physics\&quot;] = $Physics \n        in[\&quot;literature\&quot;] = $Literature \n        in[\&quot;overall_score\&quot;] = m[\&quot;overallScore\&quot;]\n        in[\&quot;score\&quot;] = m[\&quot;score\&quot;]\n        in[\&quot;created_at\&quot;] = $time\n        DBInsert(\&quot;@\&quot;+ Str($eId)+\&quot;grade_info\&quot;, in)\n    }\n}&quot;</span><span class="token punctuation">,</span>
@@ -295,7 +295,7 @@ To exit, press ctrl-d or <span class="token builtin class-name">type</span> <spa
         }
     ]
 }
-</code></pre></div><p>可以看到在数据表中已有一条记录，<code>student</code> tom的综合评分为56 评级为C。</p> <p>以上例子仅用于学习研究使用，你需要根据实际情况更改相关参数，比如数据表的写入权限, 智能合约的修改权限等。</p> <p>比如说我们要指定一个一个人才能调用这个新建记录的智能合约，其他所有人都不可以调用，我们可以设置一个生态参数<code>new_record_account</code>。</p> <h3 id="step-6-create-ecological-parameters"><a href="#step-6-create-ecological-parameters" class="header-anchor">#</a> 第6步设置生态参数 </h3> <p>调用智能合约<code>@1NewParameter</code>,将在<code>@1parameters</code>表创建生态参数<code>new_record_account</code>,如果你需要修改生态参数可以调用<code>@1EditParameter</code>。</p> <div class="language-text extra-class"><pre class="language-text"><code>&gt;callContract @1NewParameter {&quot;Name&quot;: &quot;new_record_account&quot;, &quot;Value&quot;: &quot;6667782293976713160&quot;, &quot;Conditions&quot;: &quot;ContractConditions(\&quot;MainCondition\&quot;)&quot;}
+</code></pre></div><p>可以看到在数据表中已有一条记录，<code>student</code> tom的综合评分为56 评级为C。</p> <p>以上例子仅用于学习研究使用，你需要根据实际情况更改相关参数，比如数据表的写入权限, 智能合约的修改权限等。</p> <p>比如说我们要指定一个一个人才能调用这个新建记录的智能合约，其他所有人都不可以调用，我们可以设置一个生态参数<code>new_record_account</code>。</p> <h3 id="step-6-create-ecosystem-parameters"><a href="#step-6-create-ecosystem-parameters" class="header-anchor">#</a> 第6步设置生态参数 </h3> <p>调用智能合约<code>@1NewParameter</code>,将在<code>@1parameters</code>表创建生态参数<code>new_record_account</code>,如果你需要修改生态参数可以调用<code>@1EditParameter</code>。</p> <div class="language-text extra-class"><pre class="language-text"><code>&gt;callContract @1NewParameter {&quot;Name&quot;: &quot;new_record_account&quot;, &quot;Value&quot;: &quot;6667782293976713160&quot;, &quot;Conditions&quot;: &quot;ContractConditions(\&quot;MainCondition\&quot;)&quot;}
 
 {
     &quot;block_id&quot;: 1416,
@@ -406,7 +406,7 @@ Encode:ewoJIm5hbWUiOiAid<span class="token punctuation">..</span>.CQkJIlR5cGUiOi
 <span class="token punctuation">}</span>
 </code></pre></div><ul><li>第3步,将value.data-&gt;Data中的数据组装成一维数组，[a,b,c,d],然后创建一个合约参数文件<code>importParams.json</code>,内容如下：</li></ul> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span><span class="token property">&quot;Data&quot;</span><span class="token operator">:</span><span class="token string">&quot;[a,b,c,d]&quot;</span><span class="token punctuation">}</span>
 </code></pre></div><p>-第4步,调用合约<code>@1Import</code>导入应用数据。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span>callContract @1Import <span class="token parameter variable">-f</span><span class="token operator">=</span>./importParams.json
-</code></pre></div><h2 id="ecological-configuration-using-command-line-tool"><a href="#ecological-configuration-using-command-line-tool" class="header-anchor">#</a> 使用命令行工具生态配置 </h2> <p>在本教程中，您将学习如何：</p> <ol><li><a href="#apply-to-join-the-ecosystem">申请加入生态</a></li> <li><a href="#add-ecosystem-members">添加生态成员</a></li> <li><a href="#freezing-of-accounts">冻结账户</a></li> <li><a href="#role-management">角色管理</a></li> <li><a href="#issuance-of-token">生态代币发行</a></li> <li><a href="#eco-deduction">生态代扣</a></li> <li><a href="#dao-governance-ecosystem">DAO治理生态</a></li></ol> <p>在开始本教程之前，你需要有一个自己的应用并且知道生态与应用的概念，你可以参考<a href="#getting-started-guide">入门指南</a> 。我们将通过<a href="https://github.com/IBAX-io/ibax-cli" target="_blank" rel="noopener noreferrer">命令行工具<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 在IBAX区块链上进行生态配置。</p> <h3 id="apply-to-join-the-ecosystem"><a href="#apply-to-join-the-ecosystem" class="header-anchor">#</a> 申请加入生态 </h3> <p>我们可以调用<code>@1MembershipRequest</code>合约申请加入生态。如下例子：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span>callContract @1MembershipRequest <span class="token punctuation">{</span><span class="token string">&quot;EcosystemId&quot;</span><span class="token builtin class-name">:</span> <span class="token number">19</span><span class="token punctuation">}</span>
+</code></pre></div><h2 id="ecosystem-configuration-using-command-line-tool"><a href="#ecosystem-configuration-using-command-line-tool" class="header-anchor">#</a> 使用命令行工具生态配置 </h2> <p>在本教程中，您将学习如何：</p> <ol><li><a href="#apply-to-join-the-ecosystem">申请加入生态</a></li> <li><a href="#add-ecosystem-members">添加生态成员</a></li> <li><a href="#freezing-of-accounts">冻结账户</a></li> <li><a href="#role-management">角色管理</a></li> <li><a href="#issuance-of-token">生态代币发行</a></li> <li><a href="#eco-deduction">生态代扣</a></li> <li><a href="#dao-governance-ecosystem">DAO治理生态</a></li></ol> <p>在开始本教程之前，你需要有一个自己的应用并且知道生态与应用的概念，你可以参考<a href="#getting-started-guide">入门指南</a> 。我们将通过<a href="https://github.com/IBAX-io/ibax-cli" target="_blank" rel="noopener noreferrer">命令行工具<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 在IBAX区块链上进行生态配置。</p> <h3 id="apply-to-join-the-ecosystem"><a href="#apply-to-join-the-ecosystem" class="header-anchor">#</a> 申请加入生态 </h3> <p>我们可以调用<code>@1MembershipRequest</code>合约申请加入生态。如下例子：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span>callContract @1MembershipRequest <span class="token punctuation">{</span><span class="token string">&quot;EcosystemId&quot;</span><span class="token builtin class-name">:</span> <span class="token number">19</span><span class="token punctuation">}</span>
 </code></pre></div><p>申请加入生态id为<code>19</code>的生态，<code>@1MembershipRequest</code>合约对调用生态做了限制，只有在基础生态才可调用，当申请成功后，目标生态管理者会收到一条申请，只有申请被生态管理者批复后才算是加入了目标生态,当然如果目标生态是公开的，你可以直接加入目标生态。</p> <h3 id="add-ecosystem-members"><a href="#add-ecosystem-members" class="header-anchor">#</a> 添加生态成员 </h3> <p>当生态刚创建时,生态成员只有生态创建者,当你需要邀请其他成员加入时,你需要知道被邀请人的公钥,然后调用合约<code>@1MembershipAdd</code>添加成员。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span>callContract @1MembershipAdd <span class="token punctuation">{</span><span class="token string">&quot;Keys&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;04f2c1780ca0aa0f343d0e541c77811...3b0d5bf3a9903253aad6e78c966b5f91ffb32703884020&quot;</span><span class="token punctuation">}</span>
 </code></pre></div><p>如果生态是公开的允许任何人加入，你可以设置生态参数<code>free_membership</code> = 1,默认是不公开的，设置完成后，无需通过审批即可加入你的生态。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span>callContract @1NewParameter <span class="token punctuation">{</span><span class="token string">&quot;Name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;free_membership&quot;</span>, <span class="token string">&quot;Value&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;1&quot;</span>, <span class="token string">&quot;Conditions&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;ContractConditions(<span class="token entity" title="\&quot;">\&quot;</span>MainCondition<span class="token entity" title="\&quot;">\&quot;</span>)&quot;</span><span class="token punctuation">}</span>
 </code></pre></div><p>如果你没有设置参数<code>free_membership</code>,其他成员申请加入你的生态时，你将会收到一条申请通知，可通过``查看所有的角色通知。</p> <p>调用<code>@1MembershipDecide</code>合约批复申请,合约参数<code>NotificId</code>为通知id，'Accept'为决议标识，决议标识<code>1</code>为通过。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span>callContract @1MembershipDecide <span class="token punctuation">{</span><span class="token string">&quot;NotificId&quot;</span><span class="token builtin class-name">:</span> <span class="token number">6</span>, <span class="token string">&quot;Accept&quot;</span><span class="token builtin class-name">:</span> <span class="token number">1</span><span class="token punctuation">}</span>
@@ -516,7 +516,7 @@ Encode:ewoJIm5hbWUiOiAid<span class="token punctuation">..</span>.CQkJIlR5cGUiOi
 </code></pre></div><h3 id="eco-deduction"><a href="#eco-deduction" class="header-anchor">#</a> 生态代扣 </h3> <p>在设置生态代扣之前，你需要了解IBAX收费模型，可在 <a href="https://github.com/IBAX-io/whitepaper" target="_blank" rel="noopener noreferrer">白皮书<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 中找到.</p> <p>我们首先设置生态钱包地址,调用<code>@1EditParameter</code>合约，修改生态参数：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span>callContract @1EditParameter <span class="token punctuation">{</span><span class="token string">&quot;Id&quot;</span><span class="token builtin class-name">:</span> <span class="token number">334</span>, <span class="token string">&quot;Value&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;1273-2644-xxxx-5846-6598&quot;</span><span class="token punctuation">}</span>
 </code></pre></div><p>其中<code>Id</code>为生态钱包<code>ecosystem_wallet</code>参数id，可通过如下方式查询：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span>getList @1parameters <span class="token parameter variable">-w</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">&quot;ecosystem&quot;</span><span class="token builtin class-name">:</span> <span class="token number">22</span>, <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;ecosystem_wallet&quot;</span><span class="token punctuation">}</span>
 </code></pre></div><p><code>Value</code>值为将要绑定的生态钱包地址，合约产生的gas费，由该地址付款。该地址必须在当前生态有足够的代币，并且需要被绑定地址同意后才会修改成功。</p> <p>调用<code>@1EcoFeeModeManage</code>合约设置多生态扣费,如下：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span>callContract @1EcoFeeModeManage <span class="token punctuation">{</span><span class="token string">&quot;FollowFuel&quot;</span><span class="token builtin class-name">:</span> <span class="token number">0.01</span>, <span class="token string">&quot;CombustionFlag&quot;</span><span class="token builtin class-name">:</span> <span class="token number">1</span>, <span class="token string">&quot;VmCostFlag&quot;</span><span class="token builtin class-name">:</span> <span class="token number">2</span>, <span class="token string">&quot;VmCostConversionRate&quot;</span><span class="token builtin class-name">:</span> <span class="token number">100</span>, <span class="token string">&quot;StorageConversionRate&quot;</span><span class="token builtin class-name">:</span> <span class="token number">100</span>, <span class="token string">&quot;StorageFlag&quot;</span><span class="token builtin class-name">:</span> <span class="token number">2</span>, <span class="token string">&quot;ExpediteFlag&quot;</span><span class="token builtin class-name">:</span> <span class="token number">1</span><span class="token punctuation">}</span>
-</code></pre></div><p>其中合约参数字段定义如下：</p> <ul><li><code>FollowFuel</code>        参数为跟随生态1费率的倍数。</li> <li><code>CombustionFlag</code>	是否开启生态交易gas费燃烧，1-否，2-是。</li> <li><code>CombustionPercent</code>	燃烧百分比，仅开启gas费燃烧生效,取值1到100，未开启时为0。</li> <li><code>VmCostFlag</code>	    虚拟机费用标识，设置直付或代付，1-直付，2-代付。</li> <li><code>StorageFlag</code>	    存储费用标识，设置直付或代付，1-直付，2-代付。</li> <li><code>ExpediteFlag</code>	    加急费用标识，设置直付或代付，1-直付，2-代付。</li> <li><code>VmCostConversionRate</code>	   虚拟机费用转换率，小数位2位，仅代付生效，大于零。</li> <li><code>StorageConversionRate</code>	   存储费用转换率，小数位2位，仅代付生效，大于零。</li></ul> <p>如果你使用了上述设置,所有用户在该生态内调用合约所产生的交易费用，由当前生态设置的生态钱包统一支付。所有用户只需要支付在该生态内所产生的gas费用.当然你可以根据实际需要，调整对应费用参数。</p> <h3 id="dao-governance-ecosystem"><a href="#dao-governance-ecosystem" class="header-anchor">#</a> DAO治理生态 </h3> <p>在修改为DAO治理生态之前，你需要确保当前生态已经发行代币，修改为DAO治理生态后，生态所有的提案都将由治理委员会成员投票决定，不再单独由生态开发者管理， DAO治理委员会成员由生态持币量前50名代表当选。</p> <p>调用<code>@1EditControlMode</code>合约，将生态治理模式改为DAO治理模式。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span>callContract @1EditControlMode <span class="token punctuation">{</span><span class="token string">&quot;Value&quot;</span><span class="token builtin class-name">:</span> <span class="token number">2</span><span class="token punctuation">}</span>
+</code></pre></div><p>其中合约参数字段定义如下：</p> <ul><li><code>FollowFuel</code>        参数为跟随生态1费率的倍数。</li> <li><code>CombustionFlag</code> 是否开启生态交易gas费燃烧，1-否，2-是。</li> <li><code>CombustionPercent</code> 燃烧百分比，仅开启gas费燃烧生效,取值1到100，未开启时为0。</li> <li><code>VmCostFlag</code>     虚拟机费用标识，设置直付或代付，1-直付，2-代付。</li> <li><code>StorageFlag</code>     存储费用标识，设置直付或代付，1-直付，2-代付。</li> <li><code>ExpediteFlag</code>     加急费用标识，设置直付或代付，1-直付，2-代付。</li> <li><code>VmCostConversionRate</code>    虚拟机费用转换率，小数位2位，仅代付生效，大于零。</li> <li><code>StorageConversionRate</code>    存储费用转换率，小数位2位，仅代付生效，大于零。</li></ul> <p>如果你使用了上述设置,所有用户在该生态内调用合约所产生的交易费用，由当前生态设置的生态钱包统一支付。所有用户只需要支付在该生态内所产生的gas费用.当然你可以根据实际需要，调整对应费用参数。</p> <h3 id="dao-governance-ecosystem"><a href="#dao-governance-ecosystem" class="header-anchor">#</a> DAO治理生态 </h3> <p>在修改为DAO治理生态之前，你需要确保当前生态已经发行代币，修改为DAO治理生态后，生态所有的提案都将由治理委员会成员投票决定，不再单独由生态开发者管理， DAO治理委员会成员由生态持币量前50名代表当选。</p> <p>调用<code>@1EditControlMode</code>合约，将生态治理模式改为DAO治理模式。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span>callContract @1EditControlMode <span class="token punctuation">{</span><span class="token string">&quot;Value&quot;</span><span class="token builtin class-name">:</span> <span class="token number">2</span><span class="token punctuation">}</span>
 </code></pre></div><p>其中<code>Value</code>参数 <code>1</code>表示创建者模型 <code>2</code>表示DAO治理模型。</p> <p>我们可以试着创建一个应用：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span>callContract @1NewApplication <span class="token punctuation">{</span><span class="token string">&quot;Name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;testApp&quot;</span>, <span class="token string">&quot;Conditions&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;ContractConditions(<span class="token entity" title="\&quot;">\&quot;</span>@1DeveloperCondition<span class="token entity" title="\&quot;">\&quot;</span>)&quot;</span><span class="token punctuation">}</span>
 </code></pre></div><p>这个时候会生成一个DAO治理提案，经过DAO治理委员会投票通过后才会创建应用.有效提案需75%的投票数中68%的通过率.
 DAO治理范围包括：
@@ -573,11 +573,11 @@ To exit, press ctrl-d or <span class="token builtin class-name">type</span> <spa
 
 <span class="token operator">&gt;</span>import <span class="token parameter variable">-f</span> ./airdrop.json
 </code></pre></div><p>当然如果你有一个应用，也可以通过以下命令生成完整的目录结构。</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ app-tool.exe airdrop.json
-</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/zh-CN/tutorials/tutorial.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2023/6/25 15:46:02</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/zh-CN/tutorials/tutorial.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2023/7/6 18:59:03</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/zh-CN/tutorials/app_tutorial.html" class="prev">
         应用程序开发教程 {#tutorial-for-application-development}
       </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.8ffd1d30.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/168.bad3d875.js" defer></script>
+    <script src="/assets/js/app.d049f7ab.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/168.0f4cc962.js" defer></script>
   </body>
 </html>
