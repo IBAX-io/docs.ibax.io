@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>API RESTful v2 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/es/reference/api2.html#error-response-handling" class="sidebar-link">Manejo de respuestas de error </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/es/reference/api2.html#error-list" class="sidebar-link">Lista de errores </a></li></ul></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#request-type" class="sidebar-link">Tipo de solicitud </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#authentication-interface" class="sidebar-link">Interfaz de autenticación </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/es/reference/api2.html#getuid" class="sidebar-link">getuid </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#login" class="sidebar-link">login </a></li></ul></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#server-side-command-interface" class="sidebar-link">Interfaz de comando del lado del servidor </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/es/reference/api2.html#version" class="sidebar-link">versión </a></li></ul></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#data-request-function-interface" class="sidebar-link">Interfaz de Función de Solicitud de Datos </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/es/reference/api2.html#balance" class="sidebar-link">balance </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#blocks" class="sidebar-link">blocks </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#detailed-blocks" class="sidebar-link">detailed_blocks </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#data-id-data-hash" class="sidebar-link">/data/{id}/data/{hash} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#data-table-id-column-hash" class="sidebar-link">/data/{table}/id/{column}/{hash} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#keyinfo" class="sidebar-link">keyinfo </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#wallethistory" class="sidebar-link">walletHistory </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#listwhere-name" class="sidebar-link">listWhere/{name} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#nodelistwhere-name" class="sidebar-link">nodelistWhere/{name} </a></li></ul></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#get-metrics-interface" class="sidebar-link">Obtener la interfaz de indicadores. </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/es/reference/api2.html#metrics-keys" class="sidebar-link">metrics/keys </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#metrics-blocks" class="sidebar-link">metrics/blocks </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#metrics-transactions" class="sidebar-link">metrics/transactions </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#metrics-ecosystems" class="sidebar-link">metrics/ecosystems </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#metrics-honornodes" class="sidebar-link">metrics/honornodes </a></li></ul></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#ecosystem-interface" class="sidebar-link">Interfaz del ecosistema. </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/es/reference/api2.html#ecosystemname" class="sidebar-link">ecosystemname </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#appparams-appid" class="sidebar-link">appparams/{appid} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#appparam-appid-name" class="sidebar-link">appparam/{appid}/{name} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#ecosystemparams" class="sidebar-link">ecosystemparams </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#ecosystemparam-name" class="sidebar-link">ecosystemparam/{name} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#tables-limit-offset" class="sidebar-link">tables/\[?limit=\... &amp;offset=\... \] </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#table-name" class="sidebar-link">table/{name} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#list-name-limit-offset-columns" class="sidebar-link">list/{name}\[?limit=\... &amp;offset=\... &amp;columns=\... \] </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#sections-limit-offset-lang" class="sidebar-link">sections\[?limit=\... &amp;offset=\... &amp;lang=\] </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#row-name-id-columns" class="sidebar-link">row/{name}/{id}\[?columns=\] </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#row-name-colorn-id" class="sidebar-link">row/{name}/{column}/{id} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#systemparams" class="sidebar-link">systemparams </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#history-name-id" class="sidebar-link">history/{name}/{id} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#interface-page-menu-snippet-name" class="sidebar-link">interface/{page|menu|snippet}/{name} </a></li></ul></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#contract-function-interface" class="sidebar-link">Contract Function Interface </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/es/reference/api2.html#contracts-limit-offset" class="sidebar-link">contracts\[?limit=\... &amp;offset=\... \] </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#contract-name" class="sidebar-link">contract/{name} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#sendtx" class="sidebar-link">sendTX </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#txstatus" class="sidebar-link">txstatus </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#txinfo-hash" class="sidebar-link">txinfo/{hash} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#txinfomultiple" class="sidebar-link">txinfoMultiple </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#page-validators-count-name" class="sidebar-link">/page/validators_count/{name} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#content-menu-page-name" class="sidebar-link">content/menu\|page/{name} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#content-source-name" class="sidebar-link">content/source/{name} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#content-hash-name" class="sidebar-link">content/hash/{name} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#content" class="sidebar-link">content </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#maxblockid" class="sidebar-link">maxblockid </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#block-id" class="sidebar-link">block/{id} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#avatar-ecosystem-member" class="sidebar-link">avatar/{ecosystem}/{member} </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#config-centrifugo" class="sidebar-link">config/centrifugo </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#updnotificator" class="sidebar-link">updnotificator </a></li><li class="sidebar-sub-header"><a href="/es/reference/api2.html#special-instructions" class="sidebar-link">Entendido, ¿en qué puedo ayudarte? </a></li></ul></li></ul></li><li><a href="/es/reference/platform-parameters.html" class="sidebar-link">Parámetros de la plataforma </a></li><li><a href="/es/reference/backend-config.html" class="sidebar-link">Archivo de configuración del servidor </a></li><li><a href="/es/reference/desync_monitor.html" class="sidebar-link">Herramienta de monitoreo sincronizado </a></li><li><a href="/es/reference/json-rpc.html" class="sidebar-link">Interfaz de programación de aplicaciones JSON-RPC </a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="restful-api-v2"><a href="#restful-api-v2" class="header-anchor">#</a> API RESTful v2 </h1> <p>Todos los servicios ofrecidos por Weaver, incluyendo autenticación, recepción de datos del ecosistema, manejo de errores, operaciones de tablas de bases de datos, páginas y ejecución de contratos inteligentes, pueden ser accedidos a través de la API REST de la plataforma IBAX blockchain.</p> <p>Al utilizar la API REST, los desarrolladores pueden acceder a cualquier función de la plataforma sin necesidad de utilizar Weaver.</p> <p>Las llamadas a los comandos de la API se realizan mediante la dirección <code>/api/v2/command/[param]</code>, donde <code>command</code> es el nombre del comando y <code>param</code> son los parámetros adicionales. Los parámetros de solicitud deben ser enviados en formato <code>Content-Type: x-www-form-urlencoded</code>. La respuesta del servidor es en formato JSON.</p> <ul><li><a href="#restful-api-v2">RESTful API v2</a> <ul><li><a href="#error-response-handling">Manejo de respuestas de error</a> <ul><li><a href="#error-list">Lista de errores</a></li></ul></li> <li><a href="#request-type">Tipo de solicitud</a></li> <li><a href="#authentication-interface">Interfaz de autenticación</a> <ul><li><a href="#getuid">getuid</a></li> <li><a href="#login">login</a></li></ul></li> <li><a href="#server-side-command-interface">Interfaz de comandos del servidor</a> <ul><li><a href="#version">version</a></li></ul></li> <li><a href="#data-request-function-interface">Interfaz de funciones de solicitud de datos</a> <ul><li><a href="#balance">balance</a></li> <li><a href="#blocks">blocks</a></li> <li><a href="#detailed-blocks">detailed_blocks</a></li> <li><a href="#data-id-data-hash">/data/{id}/data/{hash}</a></li> <li><a href="#data-table-id-column-hash">/data/{table}/id/{column}/{hash}</a></li> <li><a href="#keyinfo">keyinfo</a></li> <li><a href="#wallethistory">walletHistory</a></li> <li><a href="#listwhere-name">listWhere/{name}</a></li> <li><a href="#nodelistwhere-name">nodelistWhere/{name}</a></li></ul></li> <li><a href="#get-metrics-interface">Obtener la interfaz de indicadores.</a> <ul><li><a href="#metrics-keys">metrics/keys</a></li> <li><a href="#metrics-blocks">metrics/blocks</a></li> <li><a href="#metrics-transactions">metrics/transactions</a></li> <li><a href="#metrics-ecosystems">metrics/ecosystems</a></li> <li><a href="#metrics-honornodes">metrics/honornodes</a></li></ul></li> <li><a href="#ecosystem-interface">Interfaz del ecosistema.</a> <ul><li><a href="#ecosystemname">ecosystemname</a></li> <li><a href="#appparams-appid">appparams/{appID}</a></li> <li><a href="#appparam-appid-name">appparam/{appid}/{name}</a></li> <li><a href="#ecosystemparams">ecosystemparams</a></li> <li><a href="#ecosystemparam-name">ecosystemparam/{name}</a></li> <li><a href="#tables-limit-offset">tables/[?limit=... &amp;offset=... ]</a></li> <li><a href="#table-name">table/{name}</a></li> <li><a href="#list-name-limit-offset-columns">list/{name}[?limit=... &amp;offset=... &amp;columns=... ]</a></li> <li><a href="#sections-limit-offset-lang">sections[?limit=... &amp;offset=... &amp;lang=]</a></li> <li><a href="#row-name-id-columns">row/{name}/{id}[?columns=]</a></li> <li><a href="#row-name-column-id">row/{name}/{column}/{id}</a></li> <li><a href="#systemparams">systemparams</a></li> <li><a href="#history-name-id">history/{name}/{id}</a></li> <li><a href="#interface-page-menu-snippet-name">interface/{page|menu|snippet}/{name}</a></li></ul></li> <li><a href="#contract-function-interface">Interfaz de funciones de contratos inteligentes.</a> <ul><li><a href="#contracts-limit-offset">contracts[?limit=... &amp;offset=... ]</a></li> <li><a href="#contract-name">contract/{name}</a></li> <li><a href="#sendtx">sendTX</a></li> <li><a href="#txstatus">txstatus</a></li> <li><a href="#txinfo-hash">txinfo/{hash}</a></li> <li><a href="#txinfomultiple">txinfoMultiple</a></li> <li><a href="#page-validators-count-name">/page/validators_count/{name}</a></li> <li><a href="#content-menu-page-name">content/menu|page/{name}</a></li> <li><a href="#content-source-name">content/source/{name}</a></li> <li><a href="#content-hash-name">content/hash/{name}</a></li> <li><a href="#content">content</a></li> <li><a href="#maxblockid">maxblockid</a></li> <li><a href="#block-id">block/{id}</a></li> <li><a href="#avatar-ecosystem-member">avatar/{ecosystem}/{member}</a></li> <li><a href="#config-centrifugo">config/centrifugo</a></li> <li><a href="#updnotificator">updnotificator</a></li></ul></li></ul></li></ul> <h2 id="error-response-handling"><a href="#error-response-handling" class="header-anchor">#</a> Manejo de respuestas de error </h2> <p>En caso de que la solicitud se ejecute correctamente, se devolverá un estado <code>200</code>. Si ocurre un error, además del estado de error, se devolverá un objeto JSON con los siguientes campos:</p> <ul><li><p><strong>error</strong></p> <blockquote><p>Identificador de error.</p></blockquote></li> <li><p><strong>msg</strong></p> <blockquote><p>Información de texto de error.</p></blockquote></li> <li><p><strong>params</strong></p> <blockquote><p>Matriz de parámetros adicionales de error, que se pueden incluir en el mensaje de error.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>400 (Bad preguntar)
+Content-Type: application/json
+{
+    &quot;err&quot;: &quot;E_INVALIDWALLET&quot;,
+    &quot;msg&quot;: &quot;Wallet 1234-5678-9012-3444-3488 is not valid&quot;,
+    &quot;params&quot;: [&quot;1234-5678-9012-3444-3488&quot;]
+}
+</code></pre></div><h3 id="error-list"><a href="#error-list" class="header-anchor">#</a> Lista de errores </h3> <blockquote><p><code>E_CONTRACT</code></p></blockquote> <div class="language- extra-class"><pre><code>El contrato inteligente `%s` no existe
+</code></pre></div><blockquote><p><code>E_DBNIL</code></p></blockquote> <div class="language- extra-class"><pre><code>La base de datos está vacía
+</code></pre></div><blockquote><p><code>E_DELETEDKEY</code></p></blockquote> <div class="language- extra-class"><pre><code>La dirección de la cuenta está congelada
+</code></pre></div><blockquote><p><code>E_ECOSYSTEM</code></p></blockquote> <div class="language- extra-class"><pre><code>El ecosistema `%d` no existe
+</code></pre></div><blockquote><p><code>E_EMPTYPUBLIC</code></p></blockquote> <div class="language- extra-class"><pre><code>La clave pública de la cuenta no es válida
+</code></pre></div><blockquote><p><code>E_KEYNOTFOUND</code></p></blockquote> <div class="language- extra-class"><pre><code>La dirección de la cuenta no se encontró
+</code></pre></div><blockquote><p><code>E_HASHWRONG</code></p></blockquote> <div class="language- extra-class"><pre><code>El hash no es correcto
+</code></pre></div><blockquote><p><code>E_HASHNOTFOUND</code></p></blockquote> <div class="language- extra-class"><pre><code>El hash no se encontró
+</code></pre></div><blockquote><p><code>E_HEAVYPAGE</code></p></blockquote> <div class="language- extra-class"><pre><code>Se cargaron demasiadas páginas
+</code></pre></div><blockquote><p><code>E_INVALIDWALLET</code></p></blockquote> <div class="language- extra-class"><pre><code>La dirección de la billetera `%s` no es válida
+</code></pre></div><blockquote><p><code>E_LIMITTXSIZE</code></p></blockquote> <div class="language- extra-class"><pre><code>El tamaño de la transacción ha excedido el límite
+</code></pre></div><blockquote><p><code>E_NOTFOUND</code></p></blockquote> <div class="language- extra-class"><pre><code>No se encontró el contenido de la página o menú
+</code></pre></div><blockquote><p><code>E_PARAMNOTFOUND</code></p></blockquote> <div class="language- extra-class"><pre><code>El parámetro no se encontró
+</code></pre></div><blockquote><p><code>E_PERMISSION</code></p></blockquote> <div class="language- extra-class"><pre><code>No tiene permiso
+</code></pre></div><blockquote><p><code>E_QUERY</code></p></blockquote> <div class="language- extra-class"><pre><code>Error en la consulta de la base de datos
+</code></pre></div><blockquote><p><code>E_RECOVERED</code></p></blockquote> <div class="language- extra-class"><pre><code>Se produjo un error de pánico en la API.
+
+Si se produce un error de pánico, se devuelve un error.
+
+Este error significa que ha encontrado un error que necesita ser buscado y reparado.
+</code></pre></div><blockquote><p><code>E_SERVER</code></p></blockquote> <div class="language- extra-class"><pre><code>Error del servidor.
+
+Si hay un error en una función de la biblioteca de Golang, se devuelve con el campo *msg* que contiene información de texto de error.
+
+El error **E_SERVER** puede ocurrir al responder cualquier comando. Si se debe a una entrada de parámetro incorrecta, se puede cambiar a un error relacionado.
+En otro caso, este error informa de una operación inválida o una configuración del sistema incorrecta, lo que requiere un informe de investigación más detallado.
+</code></pre></div><blockquote><p><code>E_SIGNATURE</code></p></blockquote> <div class="language- extra-class"><pre><code>Firma incorrecta
+</code></pre></div><blockquote><p><code>E_STATELOGIN</code></p></blockquote> <div class="language- extra-class"><pre><code>`%s` no es miembro del ecosistema `%s`
+</code></pre></div><blockquote><p><code>E_TABLENOTFOUND</code></p></blockquote> <div class="language- extra-class"><pre><code>No se encontró la tabla de datos `%s`
+</code></pre></div><blockquote><p><code>E_TOKENEXPIRED</code></p></blockquote> <div class="language- extra-class"><pre><code>La sesión ha caducado `%s`
+</code></pre></div><blockquote><p><code>E_UNAUTHORIZED</code></p></blockquote> <div class="language- extra-class"><pre><code>No autorizado.
+
+Cualquier comando, excepto `getuid, login`, devuelve el error **E_UNAUTHORIZED** si se ejecuta sin iniciar sesión o si la sesión ha caducado.
+</code></pre></div><blockquote><p><code>E_UNKNOWNUID</code></p></blockquote> <div class="language- extra-class"><pre><code>UID desconocido
+</code></pre></div><blockquote><p><code>E_UPDATING</code></p></blockquote> <div class="language- extra-class"><pre><code>El nodo está actualizando la cadena de bloques
+</code></pre></div><blockquote><p><code>E_STOPPING</code></p></blockquote> <div class="language- extra-class"><pre><code>El nodo se ha detenido
+</code></pre></div><blockquote><p><code>E_NOTIMPLEMENTED</code></p></blockquote> <div class="language- extra-class"><pre><code>No implementado todavía
+</code></pre></div><blockquote><p><code>E_BANNED</code></p></blockquote> <div class="language- extra-class"><pre><code>Esta dirección de cuenta está prohibida en `%s`
+</code></pre></div><blockquote><p><code>E_CHECKROLE</code></p></blockquote> <div class="language- extra-class"><pre><code>Acceso denegado
+
+Interfaz no disponible en CLB
+</code></pre></div><hr> <blockquote><p>Solicitud de interfaz con nodo CLB no disponible:</p></blockquote> <ul><li>metrics</li> <li>txinfo</li> <li>txinfoMultiple</li> <li>appparam</li> <li>appparams</li> <li>appcontent</li> <li>history</li> <li>balance</li> <li>block</li> <li>maxblockid</li> <li>blocks</li> <li>detailed_blocks</li> <li>ecosystemparams</li> <li>systemparams</li> <li>ecosystems</li> <li>ecosystemparam</li> <li>ecosystemname</li> <li>walletHistory</li> <li>tx_record</li></ul> <h2 id="request-type"><a href="#request-type" class="header-anchor">#</a> Tipo de solicitud </h2> <p><strong>Utilizar de manera uniforme</strong></p> <ul><li>application/x-www-form-urlencoded</li></ul> <h2 id="authentication-interface"><a href="#authentication-interface" class="header-anchor">#</a> Interfaz de autenticación </h2> <p><a href="https://jwt.io" target="_blank" rel="noopener noreferrer">Token JWT<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+se utiliza para la autenticación. Después de recibir el token JWT, debe colocarlo en cada encabezado de solicitud: <code>Authorization: Bearer TOKEN_HERE</code>.</p> <h3 id="getuid"><a href="#getuid" class="header-anchor">#</a> getuid </h3> <p><strong>GET</strong>/ Devuelve un valor único, lo firma con una clave privada y luego lo envía de vuelta al servidor con el comando <a href="#login">login</a>.</p> <p>Genera un token JWT temporal, que debe pasarse al llamar a <strong>login</strong> en la autorización.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/getuid
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>uid</code></p> <blockquote><p>Número de firma.</p></blockquote></li> <li><p><code>token</code></p> <blockquote><p>Token temporal pasado durante el inicio de sesión.</p> <p>El tiempo de vida del token temporal es de 5 segundos.</p></blockquote></li> <li><p><code>network_id</code></p> <blockquote><p>Identificador del servidor.</p></blockquote></li> <li><p><code>cryptoer</code></p> <blockquote><p>Algoritmo de curva elíptica.</p></blockquote></li> <li><p><code>hasher</code></p> <blockquote><p>Algoritmo de hash.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta 1</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;uid&quot;: &quot;4999317241855959593&quot;,
+    &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9........I7LY6XX4IP12En6nr8UPklE9U4qicqg3K9KEzGq_8zE&quot;,
+    &quot;network_id&quot;: &quot;4717243765193692211&quot;
+}
+</code></pre></div><p>En caso de que no se requiera autorización (la solicitud no incluye <strong>Authorization</strong>), se devolverá la siguiente información:</p> <ul><li><p><code>expire</code></p> <blockquote><p>Tiempo de expiración.</p></blockquote></li> <li><p><code>ecosystem</code></p> <blockquote><p>ID del ecosistema.</p></blockquote></li> <li><p><code>key_id</code></p> <blockquote><p>Dirección de la cuenta.</p></blockquote></li> <li><p><code>address</code></p> <blockquote><p>Dirección de la billetera <code>XXXX-XXXX-.....-XXXX</code>.</p></blockquote></li> <li><p><code>network_id</code></p> <blockquote><p>Identificador del servidor.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta 2</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;expire&quot;: &quot;2159h59m49.4310543s&quot;,
+    &quot;ecosystem_id&quot;: &quot;1&quot;,
+    &quot;key_id&quot;: &quot;-654321&quot;,
+    &quot;address&quot;: &quot;1196-......-3496&quot;,
+    &quot;network_id&quot;: &quot;1&quot;
+}
+</code></pre></div><p><strong>Error de respuesta</strong></p> <p><em>E_SERVER</em></p> <h3 id="login"><a href="#login" class="header-anchor">#</a> login </h3> <p><strong>POST</strong>/ Autenticación de usuario.</p> <blockquote><p>Se debe llamar primero al comando <strong>getuid</strong> para recibir un valor único y firmarlo. El token JWT temporal de getuid debe ser enviado en el encabezado de la solicitud.</p> <p>Si la solicitud es exitosa, el token recibido se incluirá en el encabezado <strong>Authorization</strong>.</p></blockquote> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/login
+</code></pre></div><ul><li><p><code>ecosystem</code></p> <blockquote><p>ID del ecosistema.</p> <p>Si no se especifica, se utiliza el primer ID de ecosistema por defecto.</p></blockquote></li> <li><p><code>expire</code></p> <blockquote><p>Tiempo de vida útil del token JWT en segundos. Por defecto es 28800.</p></blockquote></li> <li><p><code>pubkey</code></p> <blockquote><p>Clave pública de la cuenta en formato hexadecimal.</p></blockquote></li> <li><p><code>key_id</code></p> <blockquote><p>Dirección de la cuenta en formato <code>XXXX-...-XXXX</code>.</p> <p>Se utiliza este parámetro cuando la clave pública ya está almacenada en la cadena de bloques. No se puede utilizar junto con el parámetro <em>pubkey</em>.</p></blockquote></li> <li><p><code>signature</code></p> <blockquote><p>Firma del uid recibido por getuid utilizando la clave privada.
+Contenido de los datos firmados:</p></blockquote> <div class="language-text extra-class"><pre class="language-text"><code>    LOGIN+{$network_id}+uid
+</code></pre></div></li></ul> <p><strong>Respuesta</strong></p> <ul><li><p><code>token</code></p> <blockquote><p>Token JWT.</p></blockquote></li> <li><p><code>ecosystem_id</code></p> <blockquote><p>ID del ecosistema.</p></blockquote></li> <li><p><code>key_id</code></p> <blockquote><p>ID de la dirección de la cuenta.</p></blockquote></li> <li><p><code>account</code></p> <blockquote><p>Dirección de la cartera en formato <code>XXXX-XXXX-.....-XXXX</code>.</p></blockquote></li> <li><p><code>notify_key</code></p> <blockquote><p>ID de notificación.</p></blockquote></li> <li><p><code>isnode</code></p> <blockquote><p>Indica si la dirección de la cuenta es del propietario del nodo. Valores: <code>true,false</code>.</p></blockquote></li> <li><p><code>isowner</code></p> <blockquote><p>Indica si la dirección de la cuenta es del creador del ecosistema. Valores: <code>true,false</code>.</p></blockquote></li> <li><p><code>clb</code></p> <blockquote><p>Indica si el ecosistema de inicio de sesión es CLB. Valores: <code>true,false</code>.</p></blockquote></li> <li><p><code>roles</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Lista de roles: <code>[{ID de rol, nombre de rol}]</code>.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...30l665h3v7lH85rs5jgk0&quot;,
+    &quot;ecosystem_id&quot;: &quot;1&quot;,
+    &quot;key_id&quot;: &quot;-54321&quot;,
+    &quot;account&quot;: &quot;1285-...-7743-4282&quot;,
+    &quot;notify_key&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....._JTFfheD0K4CfMbvVNpOJVMNDPx25zIDGir9g3ZZM0w&quot;,
+    &quot;timestamp&quot;: &quot;1451309883&quot;,
+    &quot;roles&quot;: [
+        {
+           &quot;role_id&quot;: 1,
+            &quot;role_name&quot;: &quot;Developer&quot;
+        }
+    ]
+}      
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_SERVER, E_UNKNOWNUID, E_SIGNATURE, E_STATELOGIN, E_EMPTYPUBLIC</em></p> <h2 id="server-side-command-interface"><a href="#server-side-command-interface" class="header-anchor">#</a> Interfaz de comando del lado del servidor </h2> <h3 id="version"><a href="#version" class="header-anchor">#</a> versión </h3> <p><strong>GET</strong>/ Retorna la versión actual del servidor.</p> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/version
+</code></pre></div><p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+&quot;1.3.0 branch.main commit.790..757 time.2021-08-23-08:20:19(UTC)&quot;
+</code></pre></div><h2 id="data-request-function-interface"><a href="#data-request-function-interface" class="header-anchor">#</a> Interfaz de Función de Solicitud de Datos </h2> <h3 id="balance"><a href="#balance" class="header-anchor">#</a> balance </h3> <p><strong>GET</strong>/ solicita el saldo de la dirección de la cuenta en el ecosistema actual.</p> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/balance/{wallet}
+</code></pre></div><ul><li><p><code>wallet</code></p> <p>Dirección identificadora, puede ser especificada en cualquier formato <code>int64, uint64, XXXX-...-XXXX</code>. Consultar esta dirección en el ecosistema en el que el usuario ha iniciado sesión actualmente.</p></li> <li><p><code>ecosistema</code> <a href="#omitempty">Omitempty</a> Ecosistema predeterminado 1</p> <blockquote><p>ID del ecosistema predeterminado, por defecto es 1.</p></blockquote></li></ul> <p><strong>Respuesta</strong></p> <ul><li><p><code>amount</code></p> <blockquote><p>El saldo mínimo de la cuenta del contrato inteligente en la unidad más pequeña.</p></blockquote></li> <li><p><code>money</code></p> <blockquote><p>El saldo de la cuenta.</p></blockquote></li> <li><p><code>total</code></p> <blockquote><p>El saldo de la cuenta.</p></blockquote></li> <li><p><code>utxo</code></p> <blockquote><p>El saldo de la cuenta de UTXO.</p></blockquote></li> <li><p><em>digits</em></p> <blockquote><p>La precisión.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;amount&quot;: &quot;877450000000000&quot;,
+    &quot;money&quot;: &quot;877.45&quot;,
+    &quot;total&quot;: &quot;877450000000000&quot;,
+    &quot;digits&quot;: 6,
+    &quot;utxo&quot;: &quot;0&quot;
+}      
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_SERVER, E_INVALIDWALLET</em></p> <h3 id="blocks"><a href="#blocks" class="header-anchor">#</a> blocks </h3> <p><strong>GET</strong>/ Devuelve una lista que contiene información adicional sobre las transacciones en cada bloque.</p> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET 
+/api/v2/blocks
+</code></pre></div><ul><li><p><code>block_id</code> <a href="#omitempty">Omitempty</a> por defecto es 0</p> <blockquote><p>La altura del bloque de inicio que se desea consultar.</p></blockquote></li> <li><p><code>count</code> <a href="#omitempty">Omitempty</a> (por defecto es 25, máximo de solicitudes es 1000)</p> <blockquote><p>La cantidad de bloques que se desean consultar.</p></blockquote></li></ul> <p><strong>Respuesta</strong></p> <ul><li><p>Altura del bloque</p> <blockquote><p>Lista de transacciones en el bloque y la información adicional de cada transacción:</p> <blockquote><ul><li><p><code>hash</code></p> <blockquote><p>Hash de la transacción.</p></blockquote></li> <li><p><code>contract_name</code></p> <blockquote><p>Nombre del contrato inteligente.</p></blockquote></li> <li><p><code>params</code></p> <blockquote><p>Array de parámetros del contrato inteligente.</p></blockquote></li> <li><p><code>key_id</code></p> <blockquote><p>Para el primer bloque, es la dirección de la cuenta del primer bloque que firmó la transacción.</p> <p>Para todos los demás bloques, es la dirección de la cuenta que firmó la transacción.</p></blockquote></li></ul></blockquote></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{&quot;1&quot;:
+    [{&quot;hash&quot;:&quot;O1LhrjKznrYa0z5n5cej6p5Y1j5E9v/oV27VPRJmfgo=&quot;,
+    &quot;contract_name&quot;:&quot;&quot;,
+    &quot;params&quot;:null,
+    &quot;key_id&quot;:-118432674655542910}]
+}
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_SERVER, E_NOTFOUND</em></p> <h3 id="detailed-blocks"><a href="#detailed-blocks" class="header-anchor">#</a> detailed_blocks </h3> <p><strong>GET</strong>/ Return a detailed list of additional information for transactions in each block.</p> <p>This request does not require login authorization.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/detailed_blocks
+</code></pre></div><ul><li><code>block_id</code> <a href="#omitempty">Omitempty</a> Por defecto es 0.</li></ul> <blockquote><p>Altura del bloque inicial que se desea consultar.</p></blockquote> <ul><li><code>count</code> <a href="#omitempty">Omitempty</a> (por defecto es 25, máximo de solicitudes es 1000)</li></ul> <blockquote><p>Cantidad de bloques.</p></blockquote> <p><strong>Respuesta</strong></p> <ul><li><code>Block height</code> Altura del bloque</li> <li><code>blockhead</code> Encabezado del bloque que contiene los siguientes campos:
+<ul><li><code>block_id</code> Altura del bloque.</li> <li><code>time</code> Marca de tiempo de generación del bloque.</li> <li><code>key_id</code> Dirección de la cuenta que firmó el bloque.</li> <li><code>node_position</code> Posición del nodo que generó el bloque en la lista de nodos honoríficos.</li> <li><code>version</code> Versión de la estructura del bloque.</li></ul></li> <li><code>hash</code> Hash del bloque.</li> <li><code>node_position</code> Posición del nodo que generó el bloque en la lista de nodos honoríficos.</li> <li><code>key_id</code> Dirección de la cuenta que firmó el bloque.</li> <li><code>time</code> Marca de tiempo de generación del bloque.</li> <li><code>tx_count</code> Número de transacciones en el bloque.</li> <li><code>size</code> Tamaño del bloque.</li> <li><code>rollback_hash</code> Valor hash de reversión del bloque.</li> <li><code>merkle_root</code> Árbol de Merkle de las transacciones del bloque.</li> <li><code>bin_data</code> Serialización del encabezado del bloque, todas las transacciones del bloque, el hash del bloque anterior y la clave privada del nodo que generó el bloque.</li> <li><code>transactions</code> Lista de transacciones en el bloque y la información adicional de cada transacción:
+<ul><li><code>hash</code> Hash de la transacción.</li> <li><code>contract_name</code> Nombre del contrato inteligente.</li> <li><code>params</code> Parámetros del contrato inteligente.</li> <li><code>key_id</code> Dirección de la cuenta que firmó la transacción.</li> <li><code>time</code> Marca de tiempo de generación de la transacción.</li> <li><code>type</code> Tipo de transacción.</li> <li><code>size</code> Tamaño de la transacción.</li></ul></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{&quot;1&quot;:
+    {&quot;header&quot;:
+        {&quot;block_id&quot;:1,
+        &quot;time&quot;:1551069320,
+        &quot;ecosystem_id&quot;:0,
+        &quot;key_id&quot;:-118432674655542910,
+        &quot;node_position&quot;:0,
+        &quot;version&quot;:1},
+    &quot;hash&quot;:&quot;3NxhvswmpGvRdw8HdkrniI5Mx/q14Z4d5hwGKMp6KHI=&quot;,
+    &quot;ecosystem_id&quot;:0,
+    &quot;node_position&quot;:0,
+    &quot;key_id&quot;:-118432674655542910,
+    &quot;time&quot;:1551069320,
+    &quot;tx_count&quot;:1,
+    &quot;size&quot;: &quot;1.69KiB&quot;,
+    &quot;rollbacks_hash&quot;:&quot;I2JHugpbdMNxBdNW1Uc0XnbiXFtzB74yD9AK5YI5i/k=&quot;,
+    &quot;mrkl_root&quot;:&quot;MTZiMjY2NGJjOWY3MDAyODlhYjkyMDVhZDQwNDgxNzkxMjY1MWJjNjczNDkyZjk5MWI2Y2JkMjAxNTIwYjUyYg==&quot;,
+    &quot;bin_data&quot;:null,
+    &quot;sys_update&quot;:false,
+    &quot;gen_block&quot;:false,
+    &quot;stop_count&quot;:0,
+    &quot;transactions&quot;:[
+        {
+            &quot;hash&quot;:&quot;O1LhrjKznrYa0z5n5cej6p5Y1j5E9v/oV27VPRJmfgo=&quot;,
+            &quot;contract_name&quot;:&quot;&quot;,
+            &quot;params&quot;:null,
+            &quot;key_id&quot;:0,
+            &quot;time&quot;:0,
+            &quot;type&quot;:0,
+            &quot;size&quot;: &quot;300.00B&quot;
+        }
+    ]}
+}
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_SERVER, E_NOTFOUND</em></p> <h3 id="data-id-data-hash"><a href="#data-id-data-hash" class="header-anchor">#</a> /data/{id}/data/{hash} </h3> <p><strong>GET</strong>/
+Si se especifica un hash que coincide con los datos en la tabla binaria, el campo y el registro, se devolverán los datos en esta solicitud. De lo contrario, se devolverá un error.</p> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/data/{id}/data/{hash}
+</code></pre></div><ul><li><p><code>id</code></p> <ul><li><code>hash</code></li></ul> <blockquote><p>El hash de la solicitud de datos.</p></blockquote></li></ul> <p><strong>Respuesta</strong></p> <blockquote><p>Datos binarios</p></blockquote> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: *
+{
+    &quot;name&quot;: &quot;NFT Miner&quot;,
+    &quot;conditions&quot;: &quot;ContractConditions(\&quot;@1DeveloperCondition\&quot;)&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;Type&quot;: &quot;contracts&quot;,
+            &quot;Name&quot;: &quot;NewNFTMiner&quot;,
+        },
+        ...
+    ]
+}
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_SERVER, E_NOTFOUND, E_HASHWRONG</em></p> <h3 id="data-table-id-column-hash"><a href="#data-table-id-column-hash" class="header-anchor">#</a> /data/{table}/id/{column}/{hash} </h3> <p><strong>GET</strong>/
+Si el hash especificado coincide con los datos en la tabla, campo y registro especificados, se devolverán los datos. De lo contrario, se devolverá un error.</p> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/data/{table}/id/{column}/{hash}
+</code></pre></div><ul><li><p><code>table</code></p> <ul><li><code>id</code></li></ul> <blockquote><p>Identificador del registro.</p></blockquote></li> <li><p><code>column</code></p> <blockquote><p>Nombre de la columna de la tabla de datos, solo puede ser uno.</p></blockquote></li> <li><p><code>hash</code></p> <blockquote><p>Hash de la solicitud de datos.</p></blockquote></li></ul> <p><strong>Respuesta</strong></p> <blockquote><p>Datos binarios</p></blockquote> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/octet-stream
+Content-Disposition: attachment
+
+SetVar(this_page, @1voting_list).(this_table, @1votings)
+Include(@1pager_header)
+
+SetTitle(&quot;$@1voting_list$&quot;)
+Span(Class: text-muted h5 m0 mb ml-lg, Body: Span(Class: ml-sm, Body: &quot;$@1votings_list_desc$&quot;))
+AddToolButton(Title: $@1templates_list$, Page: @1voting_templates_list, Icon: icon-pin)
+AddToolButton(Title: $@1create$, Page: @1voting_create, Icon: icon-plus).Popup(60, $@1new_voting$)
+
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_SERVER, E_NOTFOUND, E_HASHWRONG</em></p> <h3 id="keyinfo"><a href="#keyinfo" class="header-anchor">#</a> keyinfo </h3> <p><strong>GET</strong>/ Devolver una lista de ecosistemas que contengan roles registrados en la dirección especificada.</p> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/keyinfo/{address}
+</code></pre></div><ul><li><p><code>address</code></p> <blockquote><p>Address identifier, puede ser especificado en cualquier formato <code>int64, uint64, XXXX-...-XXXX</code>.</p> <p>Esta solicitud busca en todos los ecosistemas.</p></blockquote></li></ul> <p><strong>Respuesta</strong></p> <ul><li><p><code>ecosystem</code></p> <blockquote><p>Identificador del ecosistema.</p></blockquote></li> <li><p><code>name</code></p> <blockquote><p>Nombre del ecosistema.</p></blockquote></li> <li><p><code>roles</code></p> <blockquote><p>Lista de roles con campos <em>id</em> y <em>nombre</em>.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+[{
+    &quot;ecosystem&quot;:&quot;1&quot;,
+    &quot;name&quot;:&quot;platform ecosystem&quot;,
+    &quot;roles&quot;:[{&quot;id&quot;:&quot;1&quot;,&quot;name&quot;:&quot;Governancer&quot;},{&quot;id&quot;:&quot;2&quot;,&quot;name&quot;:&quot;Developer&quot;}]
+}]
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_SERVER, E_INVALIDWALLET</em></p> <h3 id="wallethistory"><a href="#wallethistory" class="header-anchor">#</a> walletHistory </h3> <p><strong>GET</strong>/ &quot;Devolver el historial de transacciones de la cuenta actual, buscando en orden descendente según el ID.&quot;</p> <p><a href="#authorization">Authorization</a></p> <p><strong>Solicitud</strong></p> <ul><li><p><code>searchType</code></p> <blockquote><p>Tipo de búsqueda (ingreso: transferencia entrante, egreso: transferencia saliente, todo: todo, por defecto).</p></blockquote></li> <li><p><code>page</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Número de página de búsqueda, por defecto es la primera página, mínimo 1.</p></blockquote></li> <li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Número de entradas por página, por defecto son 20 entradas. Mínimo 1, máximo 500.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/walletHistory?searchType=all&amp;amp;page=1&amp;amp;limit=10
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>total</code></p> <blockquote><p>Número total de entradas.</p></blockquote></li> <li><p><code>page</code></p> <blockquote><p>Número de página actual.</p></blockquote></li> <li><p><code>limit</code></p> <blockquote><p>Número de entradas buscadas actualmente.</p></blockquote></li> <li><p>Cada elemento en el array <code>list</code> contiene los siguientes parámetros:</p> <ul><li><code>id</code> ID de la entrada.</li> <li><code>sender_id</code> ID de la clave de envío.</li> <li><code>sender_add</code> Dirección de la cuenta de envío.</li> <li><code>recipient_id</code> ID de la clave de recepción.</li> <li><code>recipient_add</code> Dirección de la cuenta de recepción.</li> <li><code>amount</code> Cantidad de la transacción.</li> <li><code>comment</code> Comentario de la transacción.</li> <li><code>block_id</code> Altura del bloque.</li> <li><code>tx_hash</code> Hash de la transacción.</li> <li><code>created_at</code> Tiempo de creación de la transacción en milisegundos.</li> <li><code>money</code> Cantidad de la transacción.</li></ul></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;page&quot;: 1,
+    &quot;limit&quot;: 10,
+    &quot;total&quot;: 617,
+    &quot;list&quot;: [
+        {
+            &quot;id&quot;: 650,
+            &quot;sender_id&quot;: 666081971617879...,
+            &quot;sender_add&quot;: &quot;0666-0819-7161-xxxx-5186&quot;,
+            &quot;recipient_id&quot;: 666081971617879...,
+            &quot;recipient_add&quot;: &quot;0666-0819-7161-xxxx-5186&quot;,
+            &quot;amount&quot;: &quot;242250000&quot;,
+            &quot;comment&quot;: &quot;taxes for execution of @1Export contract&quot;,
+            &quot;block_id&quot;: 209,
+            &quot;tx_hash&quot;: &quot;a213bc767d710a223856d83515d53518075b56fb9e9c063bce8a256c20ff0775&quot;,
+            &quot;created_at&quot;: 1666001092090,
+            &quot;money&quot;: &quot;0.00024225&quot;
+        }
+        ...
+    ]
+}  
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_SERVER</em></p> <h3 id="listwhere-name"><a href="#listwhere-name" class="header-anchor">#</a> listWhere/{name} </h3> <p><strong>POST</strong>/ Retrieve entries from a specified data table in the current ecosystem. It is possible to specify the columns to be returned.</p> <p><a href="#authorization">Authorization</a></p> <p><strong>Solicitud</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Nombre de la tabla de datos.</p></blockquote></li> <li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p></li></ul> <blockquote><p>Número de entradas, por defecto 25.</p></blockquote> <ul><li><code>offset</code> <a href="#omitempty">Omitempty</a></li></ul> <blockquote><p>Desplazamiento, por defecto 0.</p></blockquote> <ul><li><code>order</code> <a href="#omitempty">Omitempty</a></li></ul> <blockquote><p>Orden de clasificación, por defecto id ASC.</p></blockquote> <ul><li><code>columns</code> <a href="#omitempty">Omitempty</a></li></ul> <blockquote><p>Lista de columnas solicitadas, separadas por comas. Si no se especifica, se devolverán todas las columnas. En todos los casos, se devolverá la columna id.</p></blockquote> <ul><li><code>where</code> <a href="#omitempty">Omitempty</a></li></ul> <blockquote><p>Condiciones de consulta</p> <p>Ejemplo: si desea consultar id&gt;2 y name = john</p> <p>Puede usar: where:{&quot;id&quot;:{&quot;$gt&quot;:2},&quot;name&quot;:{&quot;$eq&quot;:&quot;john&quot;}}</p> <p>Para más detalles, consulte la sintaxis where de <a href="/es/topics/script.html#dbfind">DBFind</a>.</p></blockquote> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/listWhere/mytable
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>count</code></p> <blockquote><p>Número total de entradas.</p></blockquote></li> <li><p><code>list</code></p> <blockquote><p>Cada elemento del array contiene los siguientes parámetros:</p></blockquote> <ul><li><code>id</code> <blockquote><p>ID de la entrada.</p></blockquote></li> <li><code>...</code> <blockquote><p>Otras columnas de la tabla de datos.</p></blockquote></li></ul></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 1,
+    &quot;list&quot;: [
+        {
+            &quot;account&quot;: &quot;xxxx-0819-7161-xxxx-xxxx&quot;,
+            &quot;ecosystem&quot;: &quot;1&quot;,
+            &quot;id&quot;: &quot;12&quot;,
+            &quot;key&quot;: &quot;avatar&quot;,
+            &quot;value&quot;: &quot;{\&quot;binary_id\&quot;: 4}&quot;
+        }
+    ]
+}
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_SERVER</em>,<em>E_TABLENOTFOUND</em></p> <h3 id="nodelistwhere-name"><a href="#nodelistwhere-name" class="header-anchor">#</a> nodelistWhere/{name} </h3> <p><strong>POST</strong>/ Recupere las entradas de una tabla de datos especificada. Puede especificar las columnas que se devolverán. Realice la codificación hexadecimal en los datos de tipo <em>BYTEA</em> en la tabla.</p> <p><a href="#authorization">Authorization</a></p> <p><strong>Solicitud</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Nombre de la tabla de datos.</p></blockquote></li> <li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p></li></ul> <blockquote><p>Número de entradas, por defecto 25 entradas.</p></blockquote> <ul><li><code>offset</code> <a href="#omitempty">Omitempty</a></li></ul> <blockquote><p>Desplazamiento, por defecto 0.</p></blockquote> <ul><li><code>order</code> <a href="#omitempty">Omitempty</a></li></ul> <blockquote><p>Método de ordenamiento, por defecto id ASC.</p></blockquote> <ul><li><code>columns</code> <a href="#omitempty">Omitempty</a></li></ul> <blockquote><p>Lista de columnas solicitadas, separadas por comas. Si no se especifica, se devolverán todas las columnas. En todos los casos, se devolverá la columna id.</p></blockquote> <ul><li><code>where</code> <a href="#omitempty">Omitempty</a></li></ul> <blockquote><p>Condiciones de consulta</p> <p>Ejemplo: si desea consultar id&gt;2 y name = john</p> <p>Puede usar: where:{&quot;id&quot;:{&quot;$gt&quot;:2},&quot;name&quot;:{&quot;$eq&quot;:&quot;john&quot;}}</p> <p>Para más detalles, consulte la sintaxis where de <a href="/es/topics/script.html#dbfind">DBFind</a>.</p></blockquote> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/nodelistWhere/mytable
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>count</code></p> <blockquote><p>Número total de entradas.</p></blockquote></li> <li><p><code>lista</code></p> <blockquote><p>Cada elemento del array contiene los siguientes parámetros:</p></blockquote> <ul><li><code>id</code> <blockquote><p>ID de la entrada.</p></blockquote></li> <li><code>...</code> <blockquote><p>Otras columnas de la tabla de datos.</p></blockquote></li></ul></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 1,
+    &quot;list&quot;: [
+        {
+            &quot;account&quot;: &quot;xxxx-0819-7161-xxxx-xxxx&quot;,
+            &quot;ecosystem&quot;: &quot;1&quot;,
+            &quot;id&quot;: &quot;12&quot;,
+            &quot;key&quot;: &quot;avatar&quot;,
+            &quot;value&quot;: &quot;{\&quot;binary_id\&quot;: 4}&quot;
+        }
+    ]
+}
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_SERVER</em>,<em>E_TABLENOTFOUND</em></p> <h2 id="get-metrics-interface"><a href="#get-metrics-interface" class="header-anchor">#</a> Obtener la interfaz de indicadores. </h2> <h3 id="metrics-keys"><a href="#metrics-keys" class="header-anchor">#</a> metrics/keys </h3> <p><strong>GET</strong>/ Lo siento, como modelo de lenguaje de IA, no tengo acceso a información específica sobre cuentas en Ecosystem 1. ¿Hay algo más en lo que pueda ayudarte?</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/metrics/keys
+</code></pre></div><p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 28
+}
+</code></pre></div><h3 id="metrics-blocks"><a href="#metrics-blocks" class="header-anchor">#</a> metrics/blocks </h3> <p><strong>GET</strong>/ Devuelve la cantidad de bloques.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/metrics/blocks
+</code></pre></div><p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 28
+}
+</code></pre></div><h3 id="metrics-transactions"><a href="#metrics-transactions" class="header-anchor">#</a> metrics/transactions </h3> <p><strong>GET</strong>/ Devolver el número total de transacciones.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/metrics/transactions
+</code></pre></div><p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 28
+}
+</code></pre></div><h3 id="metrics-ecosystems"><a href="#metrics-ecosystems" class="header-anchor">#</a> metrics/ecosystems </h3> <p><strong>GET</strong>/ Devuelve la cantidad de ecosistemas.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/metrics/ecosystems
+</code></pre></div><p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 28
+}
+</code></pre></div><h3 id="metrics-honornodes"><a href="#metrics-honornodes" class="header-anchor">#</a> metrics/honornodes </h3> <p><strong>GET</strong>/ La cantidad de nodos de honor.</p> <p>This request does not require login authorization.</p> <div class="language- extra-class"><pre class="language-text"><code>GET
+/api/v2/metrics/honornodes
+</code></pre></div><p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 28
+}
+</code></pre></div><h2 id="ecosystem-interface"><a href="#ecosystem-interface" class="header-anchor">#</a> Interfaz del ecosistema. </h2> <h3 id="ecosystemname"><a href="#ecosystemname" class="header-anchor">#</a> ecosystemname </h3> <p><strong>GET</strong>Devuelva el nombre del ecosistema a través de su identificador.</p> <p>This request does not require login authorization.</p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/ecosystemname?id=1
+</code></pre></div><ul><li><p><em>id</em></p> <blockquote><p>ID del ecosistema.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;ecosystem_name&quot;: &quot;platform_ecosystem&quot;
+}
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_PARAMNOTFOUND</em></p> <h3 id="appparams-appid"><a href="#appparams-appid" class="header-anchor">#</a> appparams/{appid} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Devuelve la lista de parámetros de la aplicación actual o especificada en el ecosistema.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/appparams/{appid}
+</code></pre></div><ul><li><p><code>appid</code></p> <blockquote><p>Identificación de la aplicación.</p></blockquote></li> <li><p><code>ecosystem</code></p> <blockquote><p>Ecosystem system ID; si no se especifica, se devolverán los parámetros del sistema ecológico actual.</p></blockquote></li> <li><p><code>names</code></p> <blockquote><p>Lista de parámetros recibidos.</p> <p>Se pueden especificar una lista de nombres de parámetros separados por comas, por ejemplo: <code>/api/v2/appparams/1?names=name,mypar</code>.</p></blockquote></li></ul> <p><strong>Respuesta</strong></p> <ul><li><p><code>list</code></p> <blockquote><p>Cada elemento en el arreglo contiene los siguientes parámetros:</p> <ul><li><code>name</code>, nombre del parámetro;</li> <li><code>value</code>, valor del parámetro;</li> <li><code>conditions</code>, permisos para cambiar el parámetro.</li></ul></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;list&quot;: [{ 
+        &quot;name&quot;: &quot;name&quot;,
+        &quot;value&quot;: &quot;MyState&quot;,
+        &quot;conditions&quot;: &quot;true&quot;,
+    }, 
+    { 
+        &quot;name&quot;: &quot;mypar&quot;,
+        &quot;value&quot;: &quot;My value&quot;,
+        &quot;conditions&quot;: &quot;true&quot;,
+    }, 
+    ]
+}      
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_ECOSYSTEM</em></p> <h3 id="appparam-appid-name"><a href="#appparam-appid-name" class="header-anchor">#</a> appparam/{appid}/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Devuelve información relevante del parámetro <strong>{name}</strong> de la aplicación <strong>{appid}</strong> en el ecosistema actual o especificado.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/appparam/{appid}/{name}[?ecosystem=1]
+</code></pre></div><ul><li><p><code>appid</code></p> <blockquote><p>Application ID.</p></blockquote></li> <li><p><code>name</code></p> <blockquote><p>Nombre del parámetro solicitado.</p></blockquote></li> <li><p><code>ecosystem</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>ID del ecosistema (parámetro opcional).</p> <p>Devuelve el ecosistema actual por defecto.</p></blockquote></li></ul> <p><strong>Respuesta</strong></p> <ul><li><p><code>id</code></p> <ul><li><code>ID de parámetro</code></li></ul> <blockquote><p>Identificador del parámetro.</p></blockquote></li> <li><p><code>name</code></p> <blockquote><p>Nombre del parámetro.</p></blockquote></li> <li><p>`value``</p> <blockquote><p>Valor del parámetro.</p></blockquote></li> <li><p><code>conditions</code></p> <blockquote><p>Permisos para cambiar el parámetro.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;id&quot;: &quot;10&quot;,
+    &quot;name&quot;: &quot;par&quot;,
+    &quot;value&quot;: &quot;My value&quot;,
+    &quot;conditions&quot;: &quot;true&quot;
+}      
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_ECOSYSTEM, E_PARAMNOTFOUND</em></p> <h3 id="ecosystemparams"><a href="#ecosystemparams" class="header-anchor">#</a> ecosystemparams </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Devolver la lista de parámetros del ecosistema.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/ecosystemparams/[?ecosystem=...&amp;amp;names=...]
+</code></pre></div><ul><li><p><code>ecosystem</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Ecosystem system ID. Si no se especifica, se devolverá el ID del sistema ecológico actual.</p></blockquote></li> <li><p><code>names</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Parámetros de solicitud, separados por comas.</p> <p>Ejemplo:<code>/api/v2/ecosystemparams/?names=name,currency,logo</code>.</p></blockquote></li></ul> <p><strong>Respuesta</strong></p> <ul><li><p><code>list</code></p> <blockquote><p>Cada elemento en el arreglo contiene los siguientes parámetros:</p> <ul><li><p><code>name</code></p> <p>Nombre del parámetro.</p></li> <li><p><code>value</code></p> <blockquote><p>Parámetro valor.</p></blockquote></li> <li><p><code>conditions</code></p> <blockquote><p>Cambiar los permisos de los parámetros.</p></blockquote></li></ul></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;list&quot;: [{ 
+        &quot;name&quot;: &quot;name&quot;,
+        &quot;value&quot;: &quot;MyState&quot;,
+        &quot;conditions&quot;: &quot;true&quot;,
+    }, 
+    { 
+        &quot;name&quot;: &quot;currency&quot;,
+        &quot;value&quot;: &quot;MY&quot;,
+        &quot;conditions&quot;: &quot;true&quot;,
+    }, 
+    ]
+}      
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_ECOSYSTEM</em></p> <h3 id="ecosystemparam-name"><a href="#ecosystemparam-name" class="header-anchor">#</a> ecosystemparam/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Devuelve información relevante sobre el parámetro <strong>{name}</strong> en el ecosistema actual o especificado.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/ecosystemparam/{name}[?ecosystem=1]
+</code></pre></div><ul><li><p><code>name</code></p> <blockquote><p>Nombre del parámetro solicitado.</p></blockquote></li> <li><p><code>ecosystem</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Sí, se puede especificar el ID del ecosistema. Por defecto, se devuelve el ID del ecosistema actual.</p></blockquote></li></ul> <p><strong>Respuesta</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Nombre del parámetro.</p></blockquote></li> <li><p><code>value</code></p> <blockquote><p>Parámetro valor.</p></blockquote></li> <li><p><code>conditions</code></p> <blockquote><p>Cambiar los permisos de los parámetros.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;name&quot;: &quot;currency&quot;,
+    &quot;value&quot;: &quot;MYCUR&quot;,
+    &quot;conditions&quot;: &quot;true&quot;
+}      
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_ECOSYSTEM</em></p> <h3 id="tables-limit-offset"><a href="#tables-limit-offset" class="header-anchor">#</a> tables/[?limit=... &amp;offset=... ] </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Devuelve una lista de tablas de datos del ecosistema actual. Se pueden establecer el desplazamiento y el número de entradas.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Número de entradas, por defecto 100 entradas, máximo 1000 entradas.</p></blockquote></li> <li><p><code>offset</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Offset, por defecto es 0.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/tables?limit=...&amp;amp;offset=...
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>count</code></p> <blockquote><p>Número total de entradas en la tabla de datos.</p></blockquote></li> <li><p><code>list</code></p> <blockquote><p>Cada elemento en el arreglo contiene los siguientes parámetros:</p> <blockquote><ul><li><p><code>name</code></p> <blockquote><p>Nombre de tabla de datos sin prefijo.</p></blockquote></li> <li><p><code>count</code></p> <blockquote><p>Número de entradas en la tabla de datos.</p></blockquote></li></ul></blockquote></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: &quot;100&quot;
+    &quot;list&quot;: [{ 
+        &quot;name&quot;: &quot;accounts&quot;,
+        &quot;count&quot;: &quot;10&quot;,
+    }, 
+    { 
+        &quot;name&quot;: &quot;citizens&quot;,
+        &quot;count&quot;: &quot;5&quot;,
+   }, 
+    ]
+}    
+</code></pre></div><h3 id="table-name"><a href="#table-name" class="header-anchor">#</a> table/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Devuelve información relevante sobre la tabla de datos solicitada por el ecosistema actual.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Nombre de la tabla de datos.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/table/{table_name}
+</code></pre></div><p>Devuelve la siguiente información de campo:</p> <ul><li><p><code>name</code></p> <blockquote><p>Nombre de la tabla de datos.</p></blockquote></li> <li><p><code>insert</code></p> <blockquote><p>Permiso para agregar una entrada nueva.</p></blockquote></li> <li><p><code>new_column</code></p> <blockquote><p>Agregar permisos de campo.</p></blockquote></li> <li><p><code>update</code></p> <blockquote><p>Cambiar los permisos del elemento.</p></blockquote></li> <li><p><code>columns</code></p> <blockquote><p>Array de información relacionada con los campos:</p> <blockquote><ul><li><p><code>name</code></p> <blockquote><p>Field name.</p></blockquote></li> <li><p><code>type</code></p> <blockquote><p>Campo de tipo de datos.</p></blockquote></li> <li><p><code>perm</code></p> <blockquote><p>Cambiar los permisos para modificar el valor de este campo.</p></blockquote></li></ul></blockquote></blockquote></li></ul> <h3 id="list-name-limit-offset-columns"><a href="#list-name-limit-offset-columns" class="header-anchor">#</a> list/{name}[?limit=... &amp;offset=... &amp;columns=... ] </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Devuelva una lista de entradas de tabla de datos específicas en el ecosistema actual. Puede establecer un desplazamiento y un número de entradas.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Nombre de la tabla de datos.</p></blockquote></li> <li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Número de entradas predeterminado: 25 entradas.</p></blockquote></li> <li><p><code>offset</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Offset, por defecto es 0.</p></blockquote></li> <li><p><code>columns</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Solicite la lista de columnas separadas por comas. Si no se especifica, se devolverán todas las columnas. En todos los casos, se devolverá la columna de identificación (id).</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/list/mytable?columns=name
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>count</code></p> <blockquote><p>Número total de entradas.</p></blockquote></li> <li><p><code>list</code></p> <blockquote><p>Cada elemento en el arreglo contiene los siguientes parámetros:</p> <blockquote><ul><li><p><code>id</code></p> <blockquote><p>ID del elemento.</p></blockquote></li> <li><p>Solicitar la secuencia de columnas.</p></li></ul></blockquote></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: &quot;10&quot;
+    &quot;list&quot;: [{ 
+        &quot;id&quot;: &quot;1&quot;,
+        &quot;name&quot;: &quot;John&quot;,
+    }, 
+    { 
+        &quot;id&quot;: &quot;2&quot;,
+        &quot;name&quot;: &quot;Mark&quot;,
+   }, 
+    ]
+}   
+</code></pre></div><h3 id="sections-limit-offset-lang"><a href="#sections-limit-offset-lang" class="header-anchor">#</a> sections[?limit=... &amp;offset=... &amp;lang=] </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Devuelve una lista de entradas de la tabla <em>sections</em> del ecosistema actual, se puede establecer un desplazamiento y un número de entradas.</p> <p>Si el campo <em>role_access</em> contiene una lista de roles y no incluye el rol actual, no se devolverán registros.</p> <p>Los datos en el campo <em>title</em> serán reemplazados por los recursos de idioma de la cabecera de solicitud <em>Accept-Language</em>.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Número de entradas predeterminado: 25 entradas.</p></blockquote></li> <li><p><code>offset</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Offset, por defecto es 0.</p></blockquote></li> <li><p><code>lang</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>This field specifies the code or localization of a multilingual resource, for example: <em>en, es</em>. If the specified multilingual resource, such as <em>en-US</em>, is not found, it will be searched in the multilingual resource group <em>en</em>.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/sections
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>count</code></p> <blockquote><p><em>secciones</em> Número total de entradas en la tabla.</p></blockquote></li> <li><p><code>list</code></p> <blockquote><p>Cada elemento en el arreglo contiene información de todas las columnas en la tabla &quot;sections&quot;.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: &quot;2&quot;
+    &quot;list&quot;: [{
+        &quot;id&quot;: &quot;1&quot;,
+        &quot;title&quot;: &quot;Development&quot;,
+       &quot;urlpage&quot;: &quot;develop&quot;,
+       ...
+    },
+    ]
+}
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_TABLENOTFOUND</em></p> <h3 id="row-name-id-columns"><a href="#row-name-id-columns" class="header-anchor">#</a> row/{name}/{id}[?columns=] </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Devuelve las entradas de la tabla de datos especificada en el ecosistema actual. Se pueden especificar las columnas que se desean devolver.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Nombre de la tabla de datos.</p></blockquote></li> <li><p><code>id</code></p> <blockquote><p>ID de entrada.</p></blockquote></li> <li><p><code>columns</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Solicite la lista de columnas separadas por comas. Si no se especifica, se devolverán todas las columnas. En todos los casos, se devolverá la columna de identificación (id).</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/row/mytable/10?columns=name
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>value</code></p> <blockquote><p>Array que recibe los valores de la columna.</p> <blockquote><ul><li><p><code>id</code></p> <blockquote><p>ID del elemento.</p></blockquote></li> <li><p>Solicito la secuencia de columnas.</p></li></ul></blockquote></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;values&quot;: {
+    &quot;id&quot;: &quot;10&quot;,
+    &quot;name&quot;: &quot;John&quot;,
+    }
+}   
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_NOTFOUND</em></p> <h3 id="row-name-colorn-id"><a href="#row-name-colorn-id" class="header-anchor">#</a> row/{name}/{column}/{id} </h3> <p>[Authorization] (#authorization)</p> <p><strong>GET</strong>/ Devuelve las entradas de la tabla de datos especificada en el ecosistema actual. Se pueden especificar las columnas que se desean devolver.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>Name</code></p> <blockquote><p>Nombre de la tabla de datos.</p></blockquote></li> <li><p><code>colorn</code></p> <blockquote><p>Nombre de columna de la tabla de datos.</p></blockquote></li> <li><p><code>ID</code></p> <blockquote><p>ID del elemento.</p></blockquote></li> <li><p><code>columns</code> <a href="#omitempty">omitempty</a></p> <blockquote><p>Solicite la lista de columnas separadas por comas. Si no se especifica, se devolverán todas las columnas. En todos los casos, se devolverá la columna de identificación (id).</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/row/mytable/name/John?columns=name
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>value</code></p> <blockquote><p>接收列值的数组</p> <blockquote><ul><li><p><em>id</em></p> <blockquote><p>ID de entrada.</p></blockquote></li> <li><p>The sequence of the request column.</p></li></ul></blockquote></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;values&quot;: {
+    &quot;id&quot;: &quot;10&quot;,
+    &quot;name&quot;: &quot;John&quot;,
+    }
+}   
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_NOTFOUND</em></p> <h3 id="systemparams"><a href="#systemparams" class="header-anchor">#</a> systemparams </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns a list of platform parameters.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/systemparams/[?names=...]
+</code></pre></div><ul><li><code>names</code> <a href="#omitempty">Omitempty</a></li></ul> <p>Una lista de parámetros de solicitud, separados por comas. Por ejemplo:
+<code>/api/v2/systemparams/?names=max_columns,max_indexes</code>。</p> <p><strong>Respuesta</strong></p> <ul><li><p><code>list</code></p> <blockquote><p>Cada elemento de la matriz contiene los siguientes parámetros:</p> <blockquote><ul><li><p><code>name</code></p> <blockquote><p>Nombre del parámetro.</p></blockquote></li> <li><p><code>value</code></p> <blockquote><p>Parámetro valor.</p></blockquote></li> <li><p><code>conditions</code></p> <blockquote><p>Cambiar los permisos de los parámetros.</p></blockquote></li></ul></blockquote></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;list&quot;: [{ 
+        &quot;name&quot;: &quot;max_columns&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;conditions&quot;: &quot;ContractAccess(&quot;@1UpdateSysParam&quot;)&quot;,
+    }, 
+    { 
+        &quot;name&quot;: &quot;max_indexes&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;conditions&quot;: &quot;ContractAccess(&quot;@1UpdateSysParam&quot;)&quot;,
+    }, 
+    ]
+}      
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_PARAMNOTFOUND</em></p> <h3 id="history-name-id"><a href="#history-name-id" class="header-anchor">#</a> history/{name}/{id} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Devuelve los registros de cambios para las entradas en la tabla de datos especificada en el ecosistema actual.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/history?name=contracts&amp;amp;id=5
+</code></pre></div><blockquote><ul><li><p><code>name</code></p> <blockquote><p>Nombre de la tabla de datos.</p></blockquote></li> <li><p><code>id</code></p> <blockquote><p>ID de entrada.</p></blockquote></li></ul></blockquote> <p><strong>Respuesta</strong></p> <blockquote><ul><li><p><code>list</code></p> <blockquote><p>Cada elemento en el array contiene los registros de cambios para el elemento solicitado.</p></blockquote></li></ul></blockquote> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;list&quot;: [
+        {
+            &quot;name&quot;: &quot;default_page&quot;,
+            &quot;value&quot;: &quot;P(class, Default Ecosystem Page)&quot;
+        },
+        {
+            &quot;menu&quot;: &quot;default_menu&quot;
+        }
+    ]
+}
+</code></pre></div><h3 id="interface-page-menu-snippet-name"><a href="#interface-page-menu-snippet-name" class="header-anchor">#</a> interface/{page|menu|snippet}/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Devuelve las entradas del campo <em>name</em> de la tabla de datos especificada (pages, menu o snippet) del ecosistema actual.</p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/interface/page/default_page
+/api/v2/interface/menu/default_menu
+/api/v2/interface/snippet/welcome
+</code></pre></div><p><strong>Solicitud</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Nombre de la entrada en la tabla especificada.</p></blockquote></li></ul> <p><strong>Respuesta</strong></p> <ul><li><p><code>id</code></p> <blockquote><p>ID de entrada.</p></blockquote></li> <li><p><code>name</code></p> <blockquote><p>Nombre del elemento.</p></blockquote></li> <li><p><code>other</code></p> <blockquote><p>Las otras columnas de esta tabla.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;name&quot;: &quot;default_page&quot;,
+    &quot;value&quot;: &quot;P(Page content)&quot;,
+    &quot;default_menu&quot;: &quot;default_menu&quot;,
+    &quot;validate_count&quot;: 1
+}   
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_QUERY</em>, <em>E_NOTFOUND</em></p> <h2 id="contract-function-interface"><a href="#contract-function-interface" class="header-anchor">#</a> Contract Function Interface </h2> <h3 id="contracts-limit-offset"><a href="#contracts-limit-offset" class="header-anchor">#</a> contracts[?limit=... &amp;offset=... ] </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Devuelve una lista de contratos inteligentes en el ecosistema actual, se puede establecer un desplazamiento y un número de entradas.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Número de entradas predeterminado: 25 entradas.</p></blockquote></li> <li><p><code>offset</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Offset, por defecto es 0.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/contracts
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>count</code></p> <blockquote><p>Número total de entradas.</p></blockquote></li> <li><p><code>list</code></p> <blockquote><p>Cada elemento en el arreglo contiene los siguientes parámetros:</p> <blockquote><ul><li><p><code>id</code></p> <blockquote><p>ID de contrato inteligente.</p></blockquote></li> <li><p><code>name</code></p> <blockquote><p>Nombre del contrato inteligente.</p></blockquote></li> <li><p><code>value</code></p> <blockquote><p>Contenido del contrato inteligente:</p></blockquote></li> <li><p><code>wallet_id</code></p> <blockquote><p>Dirección de cuenta vinculada al contrato inteligente.</p></blockquote></li> <li><p><code>address</code></p> <blockquote><p>Dirección de billetera vinculada al contrato inteligente <code>XXXX-...-XXXX</code>.</p></blockquote></li> <li><p><code>ecosystem_id</code></p> <blockquote><p>ID del ecosistema al que pertenece el contrato inteligente.</p></blockquote></li> <li><p><code>app_id</code></p> <blockquote><p>ID de la aplicación a la que pertenece el contrato inteligente.</p></blockquote></li> <li><p><code>conditions</code></p> <blockquote><p>Cambiar los permisos del contrato inteligente.</p></blockquote></li> <li><p><code>token_id</code></p> <blockquote><p>ID del ecosistema donde se encuentra el token utilizado para pagar la tarifa del contrato inteligente.</p></blockquote></li></ul></blockquote></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: &quot;10&quot;
+    &quot;list&quot;: [{ 
+        &quot;id&quot;: &quot;1&quot;,
+        &quot;name&quot;: &quot;MainCondition&quot;,
+        &quot;token_id&quot;: &quot;1&quot;, 
+        &quot;wallet_id&quot;: &quot;0&quot;, 
+        &quot;value&quot;: &quot;contract MainCondition {
+                conditions {
+                if(EcosysParam(`founder_account`)!=$key_id)
+                {
+                    warning `Sorry, you dont have access to this action.`
+                }
+                }
+            }&quot;,
+            &quot;address&quot;:&quot;0000-0000-0000-0000-0000&quot;,
+            &quot;conditions&quot;:&quot;ContractConditions(`MainCondition`)&quot;
+        },
+    ...
+    ]
+ }
+</code></pre></div><h3 id="contract-name"><a href="#contract-name" class="header-anchor">#</a> contract/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Retrieve information related to a specified smart contract. By default, the smart contract will be searched within the current ecosystem.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Nombre del contrato inteligente.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/contract/mycontract
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>id</code></p> <blockquote><p>ID de contrato inteligente en una máquina virtual (VM).</p></blockquote></li> <li><p><code>name</code></p> <blockquote><p>Nombre del contrato inteligente con ID del sistema ecológico &quot;@1MainCondition&quot;.</p></blockquote></li> <li><p><code>state</code></p> <blockquote><p>ID del ecosistema al que pertenece el contrato inteligente.</p></blockquote></li> <li><p><code>walletid</code></p> <blockquote><p>Dirección de cuenta vinculada al contrato inteligente.</p></blockquote></li> <li><p><code>tokenid</code></p> <blockquote><p>ID del ecosistema donde se encuentra el token utilizado como tarifa para los contratos inteligentes de pago.</p></blockquote></li> <li><p><code>address</code></p> <blockquote><p>Dirección de billetera vinculada al contrato inteligente: <code>XXXX-...-XXXX</code>.</p></blockquote></li> <li><p><code>tableid</code></p> <blockquote><p>ID del elemento en la tabla <em>contracts</em> donde se encuentra el contrato inteligente.</p></blockquote></li> <li><p><code>fields</code></p> <blockquote><p>The structure information of each parameter in the <strong>data</strong> section of the smart contract is included in the array.</p> <blockquote><ul><li><p><code>name</code></p> <blockquote><p>Nombre del parámetro.</p></blockquote></li> <li><p><code>type</code></p> <p>Tipo de parámetro.</p></li> <li><p><code>optional</code></p> <blockquote><p>Opciones de parámetros, `true` indica un parámetro opcional, `false` indica un parámetro obligatorio.</p></blockquote></li></ul></blockquote></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;fields&quot; : [
+        {&quot;name&quot;:&quot;amount&quot;, &quot;type&quot;:&quot;int&quot;, &quot;optional&quot;: false},
+        {&quot;name&quot;:&quot;name&quot;, &quot;type&quot;:&quot;string&quot;, &quot;optional&quot;: true}
+    ],
+    &quot;id&quot;: 150,
+    &quot;name&quot;: &quot;@1mycontract&quot;,
+    &quot;tableid&quot; : 10,
+}      
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_CONTRACT</em></p> <h3 id="sendtx"><a href="#sendtx" class="header-anchor">#</a> sendTX </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>POST</strong>/ Agregar la transacción recibida en los parámetros a la cola de transacciones y, si la solicitud se ejecuta correctamente, devolver el hash de la transacción. Este hash se puede utilizar para obtener la transacción correspondiente en el bloque y, en caso de una respuesta de error, el hash se incluirá en el mensaje de texto de error.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>tx_key</code></p> <blockquote><p>Contenido de la transacción, este parámetro puede especificar cualquier nombre y admite recibir múltiples transacciones.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/sendTx
+
+Headers:
+Content-Type: multipart/form-data
+
+Parameters:
+tx1 - 交易1
+txN - 交易N
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>hashes</code></p> <blockquote><p>Array de hash de transacciones:</p> <blockquote><ul><li><p><code>tx1</code></p> <blockquote><p>El hash de la transacción 1.</p></blockquote></li> <li><p><code>txN</code></p> <blockquote><p>Hash de la transacción N.</p></blockquote></li></ul></blockquote></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;hashes&quot;: {
+        &quot;tx1&quot;: &quot;67afbc435634.....&quot;,
+        &quot;txN&quot;: &quot;89ce4498eaf7.....&quot;,
+}
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_LIMITTXSIZE</em>,<em>E_BANNED</em></p> <h3 id="txstatus"><a href="#txstatus" class="header-anchor">#</a> txstatus </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>POST</strong>/ La función devuelve el ID del bloque y un mensaje de error para la transacción especificada. Si los valores devueltos para el ID del bloque y el mensaje de error están vacíos, significa que la transacción aún no ha sido incluida en ningún bloque.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>data</code></p> <blockquote><p>Lista JSON de hash de transacciones.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>{&quot;hashes&quot;:[&quot;contract1hash&quot;, &quot;contract2hash&quot;, &quot;contract3hash&quot;]}
+</code></pre></div><div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/txstatus/
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>results</code></p> <blockquote><p>En el diccionario de datos, el hash de la transacción sirve como clave y los detalles de la transacción sirven como valor.</p> <p><code>hash</code></p> <blockquote><p>Transaction hash.</p> <ul><li><p><code>blockid</code></p> <blockquote><p>Si la transacción se ejecuta correctamente, se devolverá el ID del bloque; si la transacción falla, <em>blockid</em> será [0]{.title-ref}.</p></blockquote></li> <li><p><code>result</code></p> <blockquote><p>Devuelve el resultado de la transacción a través de la variable <strong>$result</strong>.</p></blockquote></li> <li><p><code>errmsg</code></p> <blockquote><p>Si la transacción no se ejecuta correctamente, devuelve un mensaje de texto de error.</p></blockquote></li></ul></blockquote></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{&quot;results&quot;:
+  {
+    &quot;hash1&quot;: {
+         &quot;blockid&quot;: &quot;3123&quot;,
+         &quot;result&quot;: &quot;&quot;,
+     },
+     &quot;hash2&quot;: {
+          &quot;blockid&quot;: &quot;3124&quot;,
+          &quot;result&quot;: &quot;&quot;,
+     }
+   }
+ }
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_HASHWRONG, E_HASHNOTFOUND</em></p> <h3 id="txinfo-hash"><a href="#txinfo-hash" class="header-anchor">#</a> txinfo/{hash} </h3> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <p><strong>GET</strong>/</p> <p>Devolver información relacionada con la transacción para un hash especificado, incluyendo el ID del bloque y el número de confirmaciones. Si se especifican parámetros opcionales, también puede devolver el nombre del contrato inteligente y sus parámetros relacionados.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>hash</code></p> <blockquote><p>Transacción hash.</p></blockquote></li> <li><p><code>contractinfo</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Identificación detallada de los parámetros del contrato inteligente. Para obtener detalles del contrato inteligente relacionados con esta transacción, se debe especificar <code>contractinfo=1</code>.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/txinfo/c7ef367b494c7ce855f09aa3f1f2af7402535ea627fa615ebd63d437db5d0c8a?contractinfo=1
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>blockid</code></p> <blockquote><p>Incluye el ID de bloque de la transacción. Si el valor es <code>0</code>, no se puede encontrar la transacción con ese hash.</p></blockquote></li> <li><p><code>confirm</code></p> <blockquote><p>El número de confirmaciones para el bloque <em>blockid</em>.</p></blockquote></li> <li><p><code>data</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Si se especifica <code>contentinfo=1</code>, los detalles del contrato inteligente se devolverán a ese parámetro.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;blockid&quot;: &quot;9&quot;,
+    &quot;confirm&quot;: 11,
+    &quot;data&quot;: {
+        &quot;block&quot;: &quot;9&quot;,
+        &quot;contract&quot;: &quot;@1NewContract&quot;,
+        &quot;params&quot;: {
+            &quot;ApplicationId&quot;: 1,
+            &quot;Conditions&quot;: &quot;true&quot;,
+            &quot;Value&quot;: &quot;contract crashci4b {\n\t\t\tdata {}\n\t\t}&quot;
+        }
+    }
+}
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_HASHWRONG</em></p> <h3 id="txinfomultiple"><a href="#txinfomultiple" class="header-anchor">#</a> txinfoMultiple </h3> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <p><strong>GET</strong>/</p> <p>Devolver información relacionada con la transacción para un hash especificado.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>data</code></p> <ul><li><code>hashes</code></li></ul> <blockquote><p>Lista de hash de transacciones.</p></blockquote></li> <li><p><code>contractinfo</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Identificación detallada de los parámetros del contrato inteligente. Para obtener detalles del contrato inteligente relacionados con esta transacción, se debe especificar <code>contractinfo=1</code>.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>data: {&quot;hashes&quot;:[&quot;contract1hash&quot;, &quot;contract2hash&quot;, &quot;contract3hash&quot;]}
+</code></pre></div><div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/txinfoMultiple
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>results</code></p> <blockquote><p>En el diccionario de datos, el hash de la transacción sirve como clave y los detalles de la transacción sirven como valor.</p> <blockquote><p><code>hash</code></p> <blockquote><p>Transacción hash.</p> <p><code>blockid</code></p> <blockquote><p>Incluye el ID de bloque de la transacción. Si el valor es <code>0</code>, no se puede encontrar la transacción con ese hash.</p></blockquote> <p><code>confirm</code></p> <blockquote><p>El número de confirmaciones para el bloque <em>blockid</em>.</p></blockquote> <p><code>data</code></p> <blockquote><p>Si se especifica <code>contentinfo=1</code>, los detalles del contrato inteligente se devolverán a ese parámetro.</p></blockquote></blockquote></blockquote></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{&quot;results&quot;:
+  { 
+    &quot;hash1&quot;: {
+         &quot;blockid&quot;: &quot;3123&quot;,
+         &quot;confirm&quot;: &quot;5&quot;,
+     },
+     &quot;hash2&quot;: {
+          &quot;blockid&quot;: &quot;3124&quot;,
+          &quot;confirm&quot;: &quot;3&quot;,
+     }
+   }
+ }
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_HASHWRONG</em></p> <h3 id="page-validators-count-name"><a href="#page-validators-count-name" class="header-anchor">#</a> /page/validators_count/{name} </h3> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <p><strong>GET</strong></p> <p>Devuelve el número de nodos de validación necesarios para acceder a la página especificada.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Nombre de página con ID de ecosistema, en formato <code>@ecosystem_id%%page_name%</code>, por ejemplo <code>@1main_page</code>.</p></blockquote> <blockquote><p>Si no se proporciona un ID de ecosistema, se buscará la página en el primer ecosistema.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/page/validators_count/@2page_name
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>validate_count</code></p> <blockquote><p>Número de nodos requeridos para la validación de la página especificada.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{&quot;validate_count&quot;:1}
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_NOTFOUND, E_SERVER</em></p> <h3 id="content-menu-page-name"><a href="#content-menu-page-name" class="header-anchor">#</a> content/menu|page/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>POST</strong></p> <p>Devuelve el código del árbol de objetos JSON de la página o nombre de menú especificado, que es el resultado del procesamiento del motor de plantillas.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Nombre de página o menú con ID de ecosistema, en formato <code>@ecosystem_id%%page_name%</code>, por ejemplo <code>@1main_page</code>.</p></blockquote> <blockquote><p>Si no se proporciona un ID de ecosistema, se buscará la página o menú en el ecosistema actual.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/content/page/default
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>menu</code> || <code>title</code></p> <blockquote><p>Cuando se solicita <em>content/page/...</em>, el nombre del menú al que pertenece la página.</p></blockquote></li> <li><p><code>menutree</code></p> <blockquote><p>Cuando se solicita <em>content/page/...</em>, se devuelve el árbol de objetos JSON del menú de la página.</p></blockquote></li> <li><p><code>title</code> --head for the menu <em>content/menu/...</em></p> <blockquote><p>Cuando se solicita <em>content/menu/...</em>, se obtiene el título del menú.</p></blockquote></li> <li><p><code>tree</code></p> <blockquote><p>Árbol de objetos JSON de página o menú.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;tree&quot;: {&quot;type&quot;:&quot;......&quot;, 
+          &quot;children&quot;: [
+               {...},
+               {...}
+          ]
+    },
+}      
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><code>E_NOTFOUND</code></p> <h3 id="content-source-name"><a href="#content-source-name" class="header-anchor">#</a> content/source/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>POST</strong></p> <p>Devolver un árbol de objetos JSON de código para el nombre de página especificado. No se ejecutan funciones ni se reciben datos. El árbol de objetos JSON devuelto corresponde a la plantilla de página y se puede utilizar en el diseñador de páginas visual. Si no se encuentra la página, se devuelve un error 404.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>cosystem_id%%page_name%<code>, por ejemplo</code>@1main_page`.</p></blockquote> <blockquote><p>Si no se proporciona un ID de ecosistema, se buscará la página en el ecosistema actual.</p></blockquote></li></ul> <p><strong>Respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/content/source/default
+</code></pre></div><ul><li><p><code>tree</code></p> <blockquote><p>Árbol de objetos JSON de la página.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;tree&quot;: {&quot;type&quot;:&quot;......&quot;, 
+          &quot;children&quot;: [
+               {...},
+               {...}
+          ]
+    },
+}      
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_NOTFOUND, E_SERVER</em></p> <h3 id="content-hash-name"><a href="#content-hash-name" class="header-anchor">#</a> content/hash/{name} </h3> <p><strong>POST</strong></p> <p>Devuelva el hash SHA256 de la página especificada por su nombre. Si la página no se encuentra, se devolverá un error 404.</p> <p>Esta solicitud no requiere autorización de inicio de sesión. Para recibir el hash correcto al hacer solicitudes a otros nodos, también debe pasar los parámetros <em>ecosystem, keyID, roleID</em>.</p> <p>Para recibir una página de otros ecosistemas, debe agregar el prefijo del ID del ecosistema al nombre de la página. Por ejemplo: <code>@2mypage</code>.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/content/hash/default
+</code></pre></div><ul><li><p><code>name</code></p> <blockquote><p>Nombre de página con ID de sistema ecológico.</p></blockquote></li> <li><p><code>ecosystem</code></p> <blockquote><p>ID del ecosistema.</p></blockquote></li> <li><p><code>keyID</code></p> <blockquote><p>Dirección de cuenta.</p></blockquote></li> <li><p><code>roleID</code></p> <blockquote><p>ID de personaje.</p></blockquote></li></ul> <p><strong>Respuesta</strong></p> <ul><li><p><code>hash</code></p> <blockquote><p>Hexadecimal hash value.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;hash&quot;: &quot;b631b8c28761b5bf03c2cfbc2b49e4b6ade5a1c7e2f5b72a6323e50eae2a33c6&quot;
+}      
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_NOTFOUND, E_SERVER, E_HEAVYPAGE</em></p> <h3 id="content"><a href="#content" class="header-anchor">#</a> content </h3> <p><strong>POST</strong></p> <p>La solicitud devuelve un objeto JSON que representa el código de la página a partir del parámetro <strong>template</strong>. Si se especifica el parámetro opcional <strong>source</strong> como <code>true</code> o <code>1</code>, el árbol de objetos JSON no ejecutará ninguna función ni recibirá datos. Este árbol de objetos JSON se puede utilizar en el diseñador de páginas visual.</p> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>template</code></p> <blockquote><p>código de página.</p></blockquote></li> <li><p><code>source</code></p> <blockquote><p>Si se especifica como <code>true</code> o <code>1</code>, el árbol de objetos JSON no ejecuta ninguna función ni recibe datos.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/content
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>tree</code></p> <blockquote><p>Objeto de árbol JSON.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;tree&quot;: {&quot;type&quot;:&quot;......&quot;, 
+          &quot;children&quot;: [
+               {...},
+               {...}
+          ]
+    },
+}      
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_NOTFOUND, E_SERVER</em></p> <h3 id="maxblockid"><a href="#maxblockid" class="header-anchor">#</a> maxblockid </h3> <p><strong>GET</strong>/ Devuelve el ID del bloque más alto en el nodo actual.</p> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/maxblockid
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>max_block_id</code></p> <blockquote><p>ID del bloque más alto en el nodo actual.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;max_block_id&quot; : 341,
+}
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_NOTFOUND</em></p> <h3 id="block-id"><a href="#block-id" class="header-anchor">#</a> block/{id} </h3> <p><strong>GET</strong>/ Devuelve información relacionada con el ID de bloque especificado.</p> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>id</code></p> <blockquote><p>Identificador de bloque.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/block/32
+</code></pre></div><p><strong>Respuesta</strong></p> <ul><li><p><code>hash</code></p> <blockquote><p>Valor hash del bloque.</p></blockquote></li> <li><p><code>key_id</code></p> <blockquote><p>Dirección de cuenta que firmó el bloque.</p></blockquote></li> <li><p><code>time</code></p> <blockquote><p>Marca de tiempo de generación de bloque.</p></blockquote></li> <li><p><code>tx_count</code></p> <blockquote><p>El número total de transacciones dentro de este bloque.</p></blockquote></li> <li><p><code>rollbacks_hash</code></p> <blockquote><p>Hash de reversión de bloques.</p></blockquote></li> <li><p><code>node_position</code></p> <blockquote><p>El bloque se encuentra en la posición de la lista de Nodos de Honor.</p></blockquote></li></ul> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;hash&quot;: &quot;1x4S5s/zNUTopP2YK43SppEyvT2O4DW5OHSpQfp5Tek=&quot;,
+    &quot;key_id&quot;: -118432674655542910,
+    &quot;time&quot;: 1551145365,
+    &quot;tx_count&quot;: 3,
+    &quot;rollbacks_hash&quot;: &quot;47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&quot;,
+    &quot;node_position&quot;: 0,
+}      
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_NOTFOUND</em></p> <h3 id="avatar-ecosystem-member"><a href="#avatar-ecosystem-member" class="header-anchor">#</a> avatar/{ecosystem}/{member} </h3> <p><strong>GET</strong>/ Devuelve el avatar del usuario en la tabla <em>member</em> (se puede usar sin iniciar sesión).</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>ecosystem</code></p> <blockquote><p>ID del sistema ecológico.</p></blockquote></li> <li><p><code>member</code></p> <blockquote><p>Dirección de cuenta del usuario. (xxxx-...-xxxx)</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/avatar/1/1234-2134-...-4321
+</code></pre></div><p><strong>Respuesta</strong></p> <p>El encabezado de solicitud <em>Content-Type</em> es para el tipo de imagen, y los datos de la imagen se devuelven en el cuerpo de la respuesta.</p> <p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: image/png  
+</code></pre></div><p><strong>Respuesta de error</strong></p> <p><em>E_NOTFOUND</em> <em>E_SERVER</em></p> <h3 id="config-centrifugo"><a href="#config-centrifugo" class="header-anchor">#</a> config/centrifugo </h3> <p><strong>GET</strong>/ Devuelve la dirección y el puerto del host de Centrifugo.</p> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <p><strong>Solicitud</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/config/centrifugo
+</code></pre></div><p><strong>Respuesta</strong></p> <p>El formato de respuesta es <code>http://dirección:puerto</code>, por ejemplo: <code>http://127.0.0.1:8100</code>.</p> <p><strong>Respuesta de error</strong></p> <p><em>E_SERVER</em></p> <h3 id="updnotificator"><a href="#updnotificator" class="header-anchor">#</a> updnotificator </h3> <p><strong>POST</strong>/</p> <p>(obsoleto)</p> <p>Envía todos los mensajes que no han sido enviados al servicio de notificación de centrífugo. Solo envíe mensajes para ecosistemas y miembros específicos.</p> <p>Esta solicitud no requiere autorización de inicio de sesión.</p> <p><strong>Solicitud</strong></p> <ul><li><p><code>id</code></p> <blockquote><p>Dirección de cuenta del miembro.</p></blockquote></li> <li><p><code>ecosystem</code></p> <blockquote><p>ID del ecosistema.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/updnotificator
+</code></pre></div><p><strong>Ejemplo de respuesta</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;result&quot;: true
+}      
+</code></pre></div><h3 id="special-instructions"><a href="#special-instructions" class="header-anchor">#</a> Entendido, ¿en qué puedo ayudarte? </h3> <h4 id="omitempty"><a href="#omitempty" class="header-anchor">#</a> Omitempty </h4> <p>Si un campo tiene la propiedad &quot;omitempty&quot;, significa que ese campo es un parámetro opcional.</p> <h4 id="authorization"><a href="#authorization" class="header-anchor">#</a> Authorization </h4> <p>Si la interfaz tiene una etiqueta de Authorization, significa que esta interfaz requiere autorización de inicio de sesión. Agregue Authorization en la cabecera de la solicitud. Ejemplo:</p> <p>key = Authorization
+value = &quot;Bearer +<a href="#login">login token</a>&quot;</p> <div class="language-text extra-class"><pre class="language-text"><code>    Authorization   Bearer eyJhbGciOiJI.....kBZgGIlPhfXNZJ73RiZtM
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/es/reference/api2.md" target="_blank" rel="noopener noreferrer">Edita esta página en GitHub</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">Última actualización:</span> <span class="time">6/7/2023, 18:59:03</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/es/reference/platform-parameters.html">
+        Parámetros de la plataforma 
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d049f7ab.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/38.8dae8b84.js" defer></script>
+  </body>
+</html>

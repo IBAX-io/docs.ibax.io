@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>실시간 모니터링 도구 </a></li><li><a href="/kr/reference/platform-parameters.html" class="sidebar-link">플랫폼 매개변수 </a></li><li><a href="/kr/reference/backend-config.html" class="sidebar-link">서버 구성 파일 </a></li><li><a href="/kr/reference/desync_monitor.html" aria-current="page" class="active sidebar-link">실시간 모니터링 도구 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/kr/reference/desync_monitor.html#location" class="sidebar-link">위치 </a></li><li class="sidebar-sub-header"><a href="/kr/reference/desync_monitor.html#command-prompt-flags" class="sidebar-link">명령 프롬프트 플래그 </a></li><li class="sidebar-sub-header"><a href="/kr/reference/desync_monitor.html#configuration" class="sidebar-link">구성 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/kr/reference/desync_monitor.html#nodes-list" class="sidebar-link">nodes_list </a></li><li class="sidebar-sub-header"><a href="/kr/reference/desync_monitor.html#daemon" class="sidebar-link">[daemon] </a></li><li class="sidebar-sub-header"><a href="/kr/reference/desync_monitor.html#alert-message" class="sidebar-link">[alert_message] </a></li><li class="sidebar-sub-header"><a href="/kr/reference/desync_monitor.html#smtp" class="sidebar-link">[smtp] </a></li></ul></li></ul></li><li><a href="/kr/reference/json-rpc.html" class="sidebar-link">JSON-RPC API </a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="synchronized-monitoring-tool"><a href="#synchronized-monitoring-tool" class="header-anchor">#</a> 실시간 모니터링 도구 </h1> <p>Desync_monitor는 지정된 노드의 데이터베이스가 동기화되었는지 확인하는 특수 도구입니다.</p> <p>이 도구는 데몬으로 사용하거나 일회성 검사를 실행하는 데 사용할 수 있습니다.</p> <p>이 도구의 작동 원리는 다음과 같습니다:</p> <blockquote><ol><li>각 블록에는 모든 거래의 변경 내용에 대한 해시가 포함되어 있으며, 지정된 노드에 마지막 블록 ID를 요청합니다.</li> <li>그런 다음 해당 ID를 가진 블록을 모든 노드에서 요청하고 위의 해시를 비교합니다.</li> <li>해시가 다른 경우, 동기화 오류 메시지가 지정된 이메일 주소로 전송됩니다.</li></ol></blockquote> <h2 id="location"><a href="#location" class="header-anchor">#</a> 위치 </h2> <p>이 도구는 <code>tools/desync_monitor/</code>에 위치해 있습니다.</p> <h2 id="command-prompt-flags"><a href="#command-prompt-flags" class="header-anchor">#</a> 명령 프롬프트 플래그 </h2> <p>다음 플래그를 사용하여 명령 프롬프트에서 사용할 수 있습니다:</p> <blockquote><ul><li><strong>confPath</strong> -- 구성 파일의 경로입니다. 기본 파일 이름은 <code>config.toml</code>입니다.</li> <li><strong>nodesList</strong> -- 블록을 요청할 노드 목록입니다. 쉼표로 구분됩니다. 기본값은 <code>127.0.0.1:7079</code>입니다.</li> <li><strong>daemonMode</strong> -- 데몬 모드로 실행하여 N초마다 확인해야 할 경우 사용합니다. 이 플래그는 기본적으로 <code>false</code>로 설정됩니다.</li> <li><strong>queryingPeriod</strong> -- 도구를 데몬 모드로 실행할 경우, 확인 간의 시간 간격(초)을 설정합니다. 기본값은 <code>1</code>초입니다.</li></ul></blockquote> <ul><li><p><strong>alertMessageTo</strong> -- 동기화 경고 오류를 받을 이메일 주소입니다.</p> <blockquote><ul><li><strong>alertMessageSubj</strong> -- 경고 메시지의 제목입니다. 기본값은 &quot;노드 동기화 문제&quot;입니다.</li> <li><strong>alertMessageFrom</strong> -- 메시지를 보내는 주소입니다.</li> <li><strong>smtpHost</strong> -- 이메일을 보내기 위한 SMTP 서버 호스트입니다. 기본값은 <code>&quot;&quot;</code>입니다.</li> <li><strong>smtpPort</strong> -- 이메일 메시지를 보내기 위한 SMTP 서버 포트입니다. 기본값은 <code>25</code>입니다.</li> <li><strong>smtpUsername</strong> -- SMTP 서버 사용자 이름입니다. 기본값은 <code>&quot;&quot;</code>입니다.</li> <li><strong>smtpPassword</strong> -- SMTP 서버 비밀번호입니다. 기본값은 <code>&quot;&quot;</code>입니다.</li></ul></blockquote></li></ul> <h2 id="configuration"><a href="#configuration" class="header-anchor">#</a> 구성 </h2> <p>이 도구는 toml 형식의 구성 파일을 사용합니다.</p> <p>기본적으로 실행 파일이 있는 폴더에서 <em>config.toml</em> 파일을 찾습니다.</p> <p><strong>configPath</strong> 플래그를 사용하여 파일 경로를 변경할 수 있습니다.</p> <div class="language-text extra-class"><pre class="language-text"><code>nodes_list = [&quot;http://127.0.0.1:7079&quot;, &quot;http://127.0.0.1:7002&quot;]
+
+[daemon]
+daemon = false
+querying_period = 1
+
+[alert_message]
+to = &quot;&quot;
+subject = &quot;problem with xxx nodes&quot;
+from = &quot;&quot;
+
+[smtp]
+host = &quot;&quot;
+port = 25
+username = &quot;&quot;
+password = &quot;&quot;
+</code></pre></div><h3 id="nodes-list"><a href="#nodes-list" class="header-anchor">#</a> nodes_list </h3> <blockquote><ul><li><strong>nodes_list</strong> -- 요청 정보의 노드(호스트) 목록을 요청합니다.</li></ul></blockquote> <h3 id="daemon"><a href="#daemon" class="header-anchor">#</a> [daemon] </h3> <p>데몬 모드 구성.</p> <blockquote><ul><li><strong>daemon_mode</strong> -- 도구가 데몬으로 작동하고 동기화 검사를 수행합니다.</li> <li><strong>querying_period</strong> -- 동기화 검사 간의 시간 간격.</li></ul></blockquote> <h3 id="alert-message"><a href="#alert-message" class="header-anchor">#</a> [alert_message] </h3> <p>경고 메시지 매개변수.</p> <blockquote><ul><li><strong>to</strong> -- 동기화 오류 경고 메시지를 받을 수신자 주소;</li> <li><strong>subject</strong> -- 메시지 주제;</li> <li><strong>from</strong> -- 발신자 주소.</li></ul></blockquote> <h3 id="smtp"><a href="#smtp" class="header-anchor">#</a> [smtp] </h3> <p>동기화 오류 메시지를 보내기 위한 (Simple Mail Transfer Protocol SMTP) 서버 매개변수.</p> <blockquote><ul><li><strong>host</strong> -- SMTP 서버 호스트;</li> <li><strong>port</strong> -- SMTP 서버 포트;</li> <li><strong>username</strong> -- SMTP 서버 사용자 이름;</li> <li><strong>password</strong> -- SMTP 서버 비밀번호;</li></ul></blockquote></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/kr/reference/desync_monitor.md" target="_blank" rel="noopener noreferrer">GitHub에서 이 페이지 편집</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">마지막 업데이트:</span> <span class="time">2023/7/4 11:08:51</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/kr/reference/backend-config.html" class="prev">
+        서버 구성 파일 
+      </a></span> <span class="next"><a href="/kr/reference/json-rpc.html">
+        JSON-RPC API 
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d049f7ab.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/113.8d49bda2.js" defer></script>
+  </body>
+</html>

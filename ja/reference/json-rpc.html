@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JSON-RPC アプリケーション プログラミング インターフェイス </a></li><li><a href="/ja/reference/platform-parameters.html" class="sidebar-link">プラットフォームパラメータ </a></li><li><a href="/ja/reference/backend-config.html" class="sidebar-link">サーバー設定ファイル </a></li><li><a href="/ja/reference/desync_monitor.html" class="sidebar-link">同期モニタリングツール </a></li><li><a href="/ja/reference/json-rpc.html" aria-current="page" class="active sidebar-link">JSON-RPC アプリケーション プログラミング インターフェイス </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#client-side-implementation" class="sidebar-link">Client-sideの実装 </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#curl-example" class="sidebar-link">Curlの例 </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#covenant" class="sidebar-link">契約 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#hex" class="sidebar-link">Hex </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#request-type" class="sidebar-link">リクエストの種類 </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#special-markers" class="sidebar-link">特殊マーカー </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#batch-requests" class="sidebar-link">バッチリクエスト </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#error-response-handling" class="sidebar-link">エラーレスポンスの処理 </a></li></ul></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#json-rpc-namespaces" class="sidebar-link">JSON-RPC ネームスペース </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-namespace" class="sidebar-link">ibax ネームスペース </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#net-namespace" class="sidebar-link">ネット名前空間 </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#rpc-namespace" class="sidebar-link">rpc名前空間 </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#admin-namespace" class="sidebar-link">admin名前空間 </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#debug-namespace" class="sidebar-link">debug名前空間 </a></li></ul></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#json-rpc-interface-methods" class="sidebar-link">JSON-RPC インターフェースメソッド </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getuid" class="sidebar-link">ibax.getUid </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-login" class="sidebar-link">ibax.login </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getauthstatus" class="sidebar-link">ibax.getAuthStatus </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getversion" class="sidebar-link">ibax.getVersion </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getbalance" class="sidebar-link">ibax.getBalance </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getblockstxinfo" class="sidebar-link">ibax.getBlocksTxInfo </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-detailedblocks" class="sidebar-link">ibax.detailedBlocks </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getkeyinfo" class="sidebar-link">ibax.getKeyInfo </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-detailedblock" class="sidebar-link">ibax.detailedBlock </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-maxblockid" class="sidebar-link">ibax.maxBlockId </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getkeyscount" class="sidebar-link">ibax.getKeysCount </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-gettxcount" class="sidebar-link">ibax.getTxCount </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-gettransactioncount" class="sidebar-link">ibax.getTransactionCount </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getblockscountbynode" class="sidebar-link">ibax.getBlocksCountByNode </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-honornodescount" class="sidebar-link">ibax.honorNodesCount </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getecosystemcount" class="sidebar-link">ibax.getEcosystemCount </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-ecosysteminfo" class="sidebar-link">ibax.ecosystemInfo </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-appparams" class="sidebar-link">ibax.appParams </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getecosystemparams" class="sidebar-link">ibax.getEcosystemParams </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-gettablecount" class="sidebar-link">ibax.getTableCount </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-gettable" class="sidebar-link">ibax.getTable </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getlist" class="sidebar-link">ibax.getList </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getsections" class="sidebar-link">ibax.getSections </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getrow" class="sidebar-link">ibax.getRow </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-systemparams" class="sidebar-link">ibax.systemParams </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-history" class="sidebar-link">ibax.history </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getpagerow" class="sidebar-link">ibax.getPageRow </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getmenurow" class="sidebar-link">ibax.getMenuRow </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getsnippetrow" class="sidebar-link">ibax.getSnippetRow </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getappcontent" class="sidebar-link">ibax.getAppContent </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getmember" class="sidebar-link">ibax.getMember </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getcontracts" class="sidebar-link">ibax.getContracts </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getcontractinfo" class="sidebar-link">ibax.getContractInfo </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-sendtx" class="sidebar-link">ibax.sendTx </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-txstatus" class="sidebar-link">ibax.txStatus </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-txinfo" class="sidebar-link">ibax.txInfo </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-txinfomultiple" class="sidebar-link">ibax.txInfoMultiple </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getpagevalidatorscount" class="sidebar-link">ibax.getPageValidatorsCount </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getpage" class="sidebar-link">ibax.getPage </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getmenu" class="sidebar-link">ibax.getMenu </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getsource" class="sidebar-link">ibax.getSource </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getpagehash" class="sidebar-link">ibax.getPageHash </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getcontent" class="sidebar-link">ibax.getContent </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getblockinfo" class="sidebar-link">ibax.getBlockInfo </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#ibax-getconfig" class="sidebar-link">ibax.getConfig </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#net-getnetwork" class="sidebar-link">net.getNetwork </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#net-status" class="sidebar-link">net.status </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#rpc-modules" class="sidebar-link">rpc.modules </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#admin-startjsonrpc" class="sidebar-link">admin.startJsonRpc </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#admin-stopjsonrpc" class="sidebar-link">admin.stopJsonRpc </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#debug-getnodebanstat" class="sidebar-link">debug.getNodeBanStat </a></li><li class="sidebar-sub-header"><a href="/ja/reference/json-rpc.html#debug-getmemstat" class="sidebar-link">debug.getMemStat </a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="json-rpc-application-programming-interface"><a href="#json-rpc-application-programming-interface" class="header-anchor">#</a> JSON-RPC アプリケーション プログラミング インターフェイス </h1> <p>ソフトウェア アプリケーションが IBAX ブロックチェーンと対話するには (ブロック データを取得したり、トランザクションをネットワークに送信したり)、ソフトウェア アプリケーションは IBAX ネットワーク ノードに接続されている必要があります。</p> <p>元の REST API インターフェイスの汎用性と拡張性により、インターフェイスとクライアントの数がますます増え、ますます複雑になります。 私たちは、特定のノードやクライアントの実装に関係なく、すべてのクライアントが同じ仕様セットを使用できるようにするためのインターフェイスの統合の重要性を認識しています。</p> <p>JSON-RPC は、ステートレスで軽量なリモート プロシージャ コール (RPC) プロトコルです。 これは、多数のデータ構造とその処理ルールを定義します。 これらの概念は、インターフェイス、ハイパーテキスト転送プロトコル、または多くの異なるメッセージング環境を介して同じプロセスで使用できるため、トランスポートに依存しません。 データ形式として JSON (RFC 4627) を使用します。</p> <p>JSON-RPC は、ほとんどの REST API インターフェイスと互換性があり、元の REST API インターフェイスを保持しており、REST API インターフェイスを使用するクライアントは、インターフェイスの一部である JSON-RPC インターフェイスに簡単に転送できます。</p> <ul><li><a href="/ja/reference/api2.html#data-id-data-hash">/data/{id}/data/{hash}</a></li> <li><a href="/ja/reference/api2.html#data-table-id-column-hash">/data/{table}/id/{column}/{hash}</a></li> <li><a href="/ja/reference/api2.html#avatar-ecosystem-member">avatar/{ecosystem}/{member}</a></li></ul> <p>REST API インターフェイスを通じて利用できます。</p> <h2 id="client-side-implementation"><a href="#client-side-implementation" class="header-anchor">#</a> Client-sideの実装 </h2> <p>SON-RPC 仕様を実装する場合、各クライアントは異なるプログラミング言語を使用できます。
+<a href="https://github.com/IBAX-io/go-ibax-sdk" target="_blank" rel="noopener noreferrer">GO-SDK<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="curl-example"><a href="#curl-example" class="header-anchor">#</a> Curlの例 </h2> <p>以下に、IBAX ノードに対してcurlリクエストを行うことによるJSON RPC APIの使用例を示します。 各例には、特定のエンドポイント、そのパラメーター、戻り値の型、およびその使用方法の実例の説明が含まれています。</p> <p>Curl リクエストは、コンテンツ タイプに関連するエラー メッセージを返す場合があります。 これは、 --data オプションによってコンテンツ タイプが application/x-www-form-urlencoded に設定されるためです。 リクエストにこの問題がある場合は、呼び出しの先頭に -H &quot;Content-Type: application/json&quot; を配置して、ヘッダーを手動で設定します。 これらの例には、curl の最後のパラメータである必要がある URL/インターネット プロトコルとポートの組み合わせも含まれていません (例: 127.0.0.1:7079)。この追加データを含む完全なcurl リクエストは次の形式になります。</p> <div class="language-text extra-class"><pre class="language-text"><code>curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.maxBlockId&quot;,&quot;params&quot;:[],&quot;id&quot;:1}' http://127.0.0.1:7079
+</code></pre></div><h2 id="covenant"><a href="#covenant" class="header-anchor">#</a> 契約 </h2> <h3 id="hex"><a href="#hex" class="header-anchor">#</a> Hex </h3> <p><strong>16進数コード</strong></p> <p>バイト配列、ハッシュ、およびバイトコード配列をエンコードする場合: エンコードは 16 進数で、1 バイトあたり 2 桁の 16 進数になります。</p> <h3 id="request-type"><a href="#request-type" class="header-anchor">#</a> リクエストの種類 </h3> <p><strong>Uniformの使用</strong></p> <ul><li>Content-Type: application/json</li></ul> <h3 id="special-markers"><a href="#special-markers" class="header-anchor">#</a> 特殊マーカー </h3> <h4 id="omitempty"><a href="#omitempty" class="header-anchor">#</a> Omitempty </h4> <p>このフィールドはオプションのパラメータです。</p> <p>行に複数の <code>Omitempty</code> フィールドがある場合、
+特定のフィールドの値のみを渡したい場合は、不要なフィールドを null（フィールドタイプの null 値）に設定する必要があります。例：</p> <ul><li><strong>id</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> id</li> <li><strong>name</strong> - <em>String</em> - <a href="#omitempty">Omitempty</a> Name</li> <li><strong>column</strong> - <em>String</em> - <a href="#omitempty">Omitempty</a> Filter column names</li></ul> <p>名前の値のみが渡される場合、リクエストパラメータは以下のように渡されます
+<code>&quot;params&quot;:[0, &quot;testname&quot;]</code> - <em>Number</em> null 値は 0</p> <p>カラムの値のみが渡される場合、リクエストパラメータは以下のように渡されます
+<code>&quot;params&quot;:[0,&quot;&quot;, &quot;title,page&quot;]</code> - <em>String</em> 空の値は</p> <h4 id="authorization"><a href="#authorization" class="header-anchor">#</a> Authorization </h4> <p>認証ヘッダー、リクエストヘッダーにAuthorizationを追加します。例：</p> <p><strong>name</strong> : Authorization
+<strong>value</strong> : Bearer +<a href="#ibax-login">ログイントークン</a></p> <p>例：</p> <div class="language-text extra-class"><pre class="language-text"><code>    //request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer ey....&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getContractInfo&quot;,&quot;params&quot;:[&quot;@1TokensSend&quot;],&quot;id&quot;:1}' http://127.0.0.1:7079
+
+</code></pre></div><h4 id="accountorkeyid"><a href="#accountorkeyid" class="header-anchor">#</a> AccountOrKeyId </h4> <p>アカウントアドレスのパラメータでは、2つの形式のアドレスを使用できます。例えば</p> <ol><li><ul><li><em>String</em> - アカウントアドレス <code>&quot;XXXX-XXXX-XXXX-XXXX-XXXX&quot;</code> またはアカウントID <code>&quot;64842...538120&quot;</code></li></ul></li> <li><ul><li><em>Object</em> - アドレスオブジェクト</li> <li><strong>key_id</strong> - <em>Number</em> - アカウントID、例: <code>{&quot;key_id&quot;:-64842 38120}</code></li> <li><strong>account</strong> - <em>String</em> - アカウントアドレス、例: <code>{&quot;account&quot;: &quot;1196-... - -... -3496&quot;}</code></li></ul> <p><strong>アカウントIDが存在する場合、アカウントアドレスとアカウントIDの両方がある場合はアカウントIDが優先されます</strong>。</p></li></ol> <h4 id="blockorhash"><a href="#blockorhash" class="header-anchor">#</a> BlockOrHash </h4> <p>ブロックの高さまたはブロックのハッシュ、例:</p> <ol><li><ul><li><em>String</em>  -   ブロックの高さ <code>&quot;100&quot;</code> または ブロックのハッシュ   <code>&quot;4663aa47...a60753c18d9ba9cb4&quot;</code></li></ul></li> <li><ul><li><em>Object</em> - ブロック情報オブジェクト</li> <li><strong>id</strong> - <em>Number</em> - ブロックの高さ、例: <code>{&quot;id&quot;:2}</code></li> <li><strong>hash</strong> - <em><a href="#hex">Hex</a> String</em> - ブロックのハッシュ、例: <code>{&quot;hash&quot;: &quot;d36b8996c c616d3043a0d02a0f59&quot;}</code></li></ul> <p><strong>ブロックの高さとブロックのハッシュはどちらか一方を選択できます</strong>。</p></li></ol> <h3 id="batch-requests"><a href="#batch-requests" class="header-anchor">#</a> バッチリクエスト </h3> <p>この機能は、特に大量の大部分が独立したデータオブジェクトを取得する場合にネットワークのレイテンシを低減するために使用できます。</p> <p>以下は、最高ブロックとトランザクションの総数を取得する例です：</p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '[{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getTxCount&quot;,&quot;id&quot;:1,&quot;params&quot;:[]},{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.maxBlockId&quot;,&quot;id&quot;:2,&quot;params&quot;:[]}]' http://127.0.0.1:7079
+
+    //Response
+    [
+        {
+            &quot;jsonrpc&quot;: &quot;2.0&quot;,
+            &quot;id&quot;: 1,
+            &quot;result&quot;: 149100
+        },
+        {
+            &quot;jsonrpc&quot;: &quot;2.0&quot;,
+            &quot;id&quot;: 2,
+            &quot;result&quot;: 797
+        }
+    ]
+</code></pre></div><h3 id="error-response-handling"><a href="#error-response-handling" class="header-anchor">#</a> エラーレスポンスの処理 </h3> <p>リクエストが正常に実行された場合、ステータスコード <code>200</code> が返されます。</p> <p>エラーが発生した場合、以下のフィールドを持つJSONオブジェクトが返されます:</p> <ul><li>jsonrpc
+エラー識別子。</li> <li>id
+エラーテキストメッセージ。</li> <li>error
+<ul><li>code
+レスポンスステータスコード</li> <li>message
+レスポンスステータスの説明</li></ul></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: 1,
+    &quot;error&quot;: {
+        &quot;code&quot;: -32014,
+        &quot;message&quot;: &quot;Unauthorized&quot;
+    }
+}
+</code></pre></div><h2 id="json-rpc-namespaces"><a href="#json-rpc-namespaces" class="header-anchor">#</a> JSON-RPC ネームスペース </h2> <h3 id="ibax-namespace"><a href="#ibax-namespace" class="header-anchor">#</a> ibax ネームスペース </h3> <h4 id="authentication-interface"><a href="#authentication-interface" class="header-anchor">#</a> 認証インターフェース </h4> <ul><li><a href="#ibax-getuid">ibax.getuid</a></li> <li><a href="#ibax-login">ibax.login</a></li> <li><a href="#ibax-getauthstatus">ibax.getAuthStatus</a></li></ul> <h4 id="server-side-command-interface"><a href="#server-side-command-interface" class="header-anchor">#</a> server-sideのコマンドインターフェイス </h4> <ul><li><a href="#ibax-getversion">ibax.getVersion</a></li></ul> <h4 id="data-request-function-interface"><a href="#data-request-function-interface" class="header-anchor">#</a> データリクエスト機能インターフェース </h4> <ul><li><a href="#ibax-getbalance">ibax.getBalance</a></li> <li><a href="#ibax-getblockstxinfo">ibax.getBlocksTxInfo</a></li> <li><a href="#ibax-detailedblocks">ibax.detailedBlocks</a></li> <li><a href="#ibax-getkeyinfo">ibax.getKeyInfo</a></li> <li><a href="#ibax-detailedblock">ibax.detailedBlock</a></li></ul> <h4 id="get-metrics-interface"><a href="#get-metrics-interface" class="header-anchor">#</a> メトリクスの取得インターフェイス </h4> <ul><li><a href="#ibax-maxblockid">ibax.maxBlockId</a></li> <li><a href="#ibax-getkeyscount">ibax.getKeysCount</a></li> <li><a href="#ibax-gettxcount">ibax.getTxCount</a></li> <li><a href="#ibax-gettransactioncount">ibax.getTransactionCount</a></li> <li><a href="#ibax-getblockscountbynode">ibax.getBlocksCountByNode</a></li> <li><a href="#ibax-honornodescount">ibax.honorNodesCount</a></li> <li><a href="#ibax-getecosystemcount">ibax.getEcosystemCount</a></li></ul> <h4 id="ecosystem-interface"><a href="#ecosystem-interface" class="header-anchor">#</a> エコシステムインターフェース </h4> <ul><li><a href="#ibax-ecosysteminfo">ibax.ecosystemInfo</a></li> <li><a href="#ibax-appparams">ibax.appParams</a></li> <li><a href="#ibax-getecosystemparams">ibax.getEcosystemParams</a></li> <li><a href="#ibax-gettablecount">ibax.getTableCount</a></li> <li><a href="#ibax-gettable">ibax.getTable</a></li> <li><a href="#ibax-getlist">ibax.getList</a></li> <li><a href="#ibax-getsections">ibax.getSections</a></li> <li><a href="#ibax-getrow">ibax.getRow</a></li> <li><a href="#ibax-systemparams">ibax.systemParams</a></li> <li><a href="#ibax-history">ibax.history</a></li> <li><a href="#ibax-getpagerow">ibax.getPageRow</a></li> <li><a href="#ibax-getmenurow">ibax.getMenuRow</a></li> <li><a href="#ibax-getsnippetrow">ibax.getSnippetRow</a></li> <li><a href="#ibax-getappcontent">ibax.getAppContent</a></li> <li><a href="#ibax-getmember">ibax.getMember</a></li></ul> <h4 id="contract-function-interface"><a href="#contract-function-interface" class="header-anchor">#</a> スマートコントラクト機能インターフェース </h4> <ul><li><a href="#ibax-getcontracts">ibax.getContracts</a></li> <li><a href="#ibax-getcontractinfo">ibax.getContractInfo</a></li> <li><a href="#ibax-sendtx">ibax.sendTx</a></li> <li><a href="#ibax-txstatus">ibax.txStatus</a></li> <li><a href="#ibax-txinfo">ibax.txInfo</a></li> <li><a href="#ibax-txinfomultiple">ibax.txInfoMultiple</a></li> <li><a href="#ibax-getpagevalidatorscount">ibax.getPageValidatorsCount</a></li> <li><a href="#ibax-getpage">ibax.getPage</a></li> <li><a href="#ibax-getmenu">ibax.getMenu</a></li> <li><a href="#ibax-getsource">ibax.getSource</a></li> <li><a href="#ibax-getpagehash">ibax.getPageHash</a></li> <li><a href="#ibax-getcontent">ibax.getContent</a></li> <li><a href="#ibax-getblockinfo">ibax.getBlockInfo</a></li> <li><a href="#ibax-getconfig">ibax.getConfig</a></li></ul> <h3 id="net-namespace"><a href="#net-namespace" class="header-anchor">#</a> ネット名前空間 </h3> <ul><li><a href="#net-getnetwork">net.getNetwork</a></li> <li><a href="#net-status">net.status</a></li></ul> <h3 id="rpc-namespace"><a href="#rpc-namespace" class="header-anchor">#</a> rpc名前空間 </h3> <ul><li><a href="#rpc-modules">rpc.modules</a></li></ul> <h3 id="admin-namespace"><a href="#admin-namespace" class="header-anchor">#</a> admin名前空間 </h3> <ul><li><a href="#admin-startjsonrpc">admin.startJsonRpc</a></li> <li><a href="#admin-stopjsonrpc">admin.stopJsonRpc</a></li></ul> <h3 id="debug-namespace"><a href="#debug-namespace" class="header-anchor">#</a> debug名前空間 </h3> <ul><li><a href="#debug-getnodebanstat">debug.getNodeBanStat</a></li> <li><a href="#debug-getmemstat">debug.getMemStat</a></li></ul> <h2 id="json-rpc-interface-methods"><a href="#json-rpc-interface-methods" class="header-anchor">#</a> JSON-RPC インターフェースメソッド </h2> <h3 id="ibax-getuid"><a href="#ibax-getuid" class="header-anchor">#</a> <strong>ibax.getUid</strong> </h3> <p><a href="#authorization">Authorization</a> <a href="#omitempty">Omitempty</a></p> <p><a href="#ibax-login"><strong>login</strong></a>を呼び出す際に、<a href="#authorization"><strong>Authorization</strong></a>に渡す必要がある一時的なJWTトークンを生成します。</p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>戻り値</strong></p> <ul><li><p><strong>uid</strong> - <em>String</em> - 署名の数値。</p></li> <li><p><strong>token</strong> - <em>String</em> - ログイン時に渡される一時トークン（一時トークンの寿命は5秒）。</p></li> <li><p><strong>network_id</strong> - <em>String</em> - ネットワークの識別子。</p></li> <li><p><strong>cryptoer</strong> - <em>String</em> - 楕円曲線アルゴリズム。</p></li> <li><p><strong>hasher</strong> - <em>String</em> - ハッシュアルゴリズム。</p></li></ul> <p>認証が必要ない場合（リクエストに<a href="#authorization">Authorization</a>が含まれている場合）、以</p> <ul><li><p><strong>expire</strong> - <em>String</em> - 有効期限。</p></li> <li><p><strong>ecosystem</strong> - <em>String</em> - エコシステムID。</p></li> <li><p><strong>key_id</strong> - <em>String</em> - アカウントアドレス。</p></li> <li><p><strong>address</strong> - <em>String</em> - ウォレットアドレス <code>XXXX-XXXXXX-XXXX-XXXX-XXXX</code>。</p></li> <li><p><strong>network_id</strong> - <em>String</em> - ネットワークの識別子。</p></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request1
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getUid&quot;,&quot;params&quot;:[],&quot;id&quot;:1}' http://127.0.0.1:7079
+
+    //Response1
+     {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;uid&quot;: &quot;5823391950439015186&quot;,
+            &quot;token&quot;: &quot;ey....&quot;,
+            &quot;network_id&quot;: &quot;1&quot;,
+            &quot;cryptoer&quot;: &quot;ECC_Secp256k1&quot;,
+            &quot;hasher&quot;: &quot;KECCAK256&quot;
+        }
+    }
+
+    //Request2
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer ey....&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getUid&quot;,&quot;params&quot;:[],&quot;id&quot;:1}' http://127.0.0.1:7079
+
+    //Response2
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;expire&quot;: &quot;7h59m49.5361126s&quot;,
+            &quot;ecosystem_id&quot;: &quot;1&quot;,
+            &quot;key_id&quot;: &quot;6667782293976713160&quot;,
+            &quot;address&quot;: &quot;0666-7782-2939-7671-3160&quot;,
+            &quot;network_id&quot;: &quot;1&quot;,
+            &quot;cryptoer&quot;: &quot;ECC_Secp256k1&quot;,
+            &quot;hasher&quot;: &quot;KECCAK256&quot;
+        }
+    }
+</code></pre></div><h3 id="ibax-login"><a href="#ibax-login" class="header-anchor">#</a> <strong>ibax.login</strong> </h3> <p>ユーザー認証。<a href="#authorization">Authorization</a></p> <p>最初に<a href="#ibax-getuid"><strong>ibax.getUid</strong></a>コマンドを呼び出して、一意の値を受信し、署名する必要があります。getuidの一時的なJWTトークンは、リクエストヘッダーに渡す必要があります。リクエストが成功した場合、レスポンスで受信したトークンは<a href="#authorization"><strong>Authorization</strong></a>に含まれます。</p> <p><strong>パラメーター</strong></p> <p><em>Object</em> - 認証呼び出しオブジェクト</p> <ul><li><p><strong>ecosystem_id</strong> - <em>Number</em> - エコシステムID。指定されていない場合、最初のエコシステムIDにデフォルト設定されます。</p></li> <li><p><strong>expire</strong> - <em>Number</em> - JWTトークンのライフサイクル（秒単位）、デフォルトは28800、8時間です。</p></li> <li><p><strong>public_key</strong> - <em><a href="#hex">Hex</a> String</em> - 16進数のアカウント公開鍵。</p></li> <li><p><strong>key_id</strong> - <em>String</em> -</p> <blockquote><p>アカウントアドレス「XXXX-...-XXXX」。</p> <p>公開鍵がすでにブロックチェーンに保存されている場合、このパラメーターを使用します。<em>pubkey</em>パラメーターとは一緒に使用できません。</p></blockquote></li> <li><p><strong>signature</strong> - <em>String</em> -
+getuidで受信したuidに対して、秘密鍵を使用して署名します。</p> <p>署名データの内容：LOGIN+{$network_id}+uid</p></li> <li><p><strong>role_id</strong> - <em>Number</em> - ロールID、デフォルトロール0</p></li></ul> <p><strong>戻り値</strong> <em>Object</em> - 認証オブジェクト</p> <ul><li><p><strong>token</strong> - <em>String</em> - JWTトークン。</p></li> <li><p><strong>ecosystem_id</strong> - <em>String</em> - エコシステムID。</p></li> <li><p><strong>key_id</strong> - <em>String</em> - アカウントアドレスID</p></li> <li><p><strong>account</strong> - <em>String</em> - ウォレットアドレス「XXXX-XXXXXX-XXXX-XXXX-XXXX」。</p></li> <li><p><strong>notify_key</strong> - <em>String</em> - 通知ID。</p></li> <li><p><strong>isnode</strong> - <em>Bool</em> - アカウントアドレスがノードのオーナーであるかどうか。値：<code>true,false</code>。</p></li> <li><p><strong>isowner</strong> - <em>Bool</em> - アカウントアドレスがこのエコシステムの作成者であるかどうか。値：<code>true,false</code>。</p></li> <li><p><strong>clb</strong> - <em>Bool</em> - ログインしたエコシステムがCLBであるかどうか。値：<code>true,false</code>。</p></li> <li><p><strong>timestamp</strong> - <em>String</em> - 現在のタイムスタンプ</p></li> <li><p><strong>roles</strong> - <em>Array</em> - ロールのリスト。ロールがない場合、このフィールドはnilです。</p> <ul><li><strong>role_id</strong> - <em>Number</em> - ロールID</li> <li><strong>role_name</strong> - <em>String</em> - ロール名</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.login&quot;,&quot;params&quot;:[{&quot;ecosystem_id&quot;:1,&quot;public_key&quot;:&quot;04....&quot;,&quot;signature&quot;,&quot;46...&quot;,&quot;role_id&quot;:0}],&quot;id&quot;:1}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;token&quot;: &quot;ey...&quot;,
+            &quot;ecosystem_id&quot;: &quot;1&quot;,
+            &quot;key_id&quot;: &quot;6660819716178795186&quot;,
+            &quot;account&quot;: &quot;0666-xxxx-xxxx-xxxx-5186&quot;,
+            &quot;notify_key&quot;: &quot;ey....&quot;,
+            &quot;isnode&quot;: false,
+            &quot;isowner&quot;: false,
+            &quot;clb&quot;: false,
+            &quot;timestamp&quot;: &quot;1678336163&quot;,
+            &quot;roles&quot;: nil //[{&quot;role_id&quot;: 1, &quot;role_name&quot;: &quot;Developer&quot;},{&quot;role_id&quot;: 2, &quot;role_name&quot;: &quot;DevelopGovernancerer&quot;}]
+        }
+    }
+</code></pre></div><h3 id="ibax-getauthstatus"><a href="#ibax-getauthstatus" class="header-anchor">#</a> <strong>ibax.getAuthStatus</strong> </h3> <p>ユーザー認証ステータス
+<a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>戻り値</strong> <em>Object</em> - 認証ステータスオブジェクト</p> <ul><li><p><strong>active</strong> - <em>Bool</em> - 現在のユーザー認証ステータス。値：<code>true,false</code></p></li> <li><p><strong>exp</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> トークン有効期限の切り捨てタイムスタンプ</p></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getAuthStatus&quot;,&quot;id&quot;:1}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;active&quot;: true,
+            &quot;exp&quot;: 1678354136
+        }
+    }
+</code></pre></div><h3 id="ibax-getversion"><a href="#ibax-getversion" class="header-anchor">#</a> <strong>ibax.getVersion</strong> </h3> <p>現在のサーバーバージョンを返します。</p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>戻り値</strong></p> <ul><li><strong>vesion</strong> - <em>String</em> - バージョン番号（<code>big Version</code> + <code>branch name</code> + <code>git commit</code> + <code>time</code> + <code>node status</code>）</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getVersion&quot;,&quot;id&quot;:1}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: &quot;1.3.0 branch.main commit.b57d4194 time.2023-03-08-09:30:29(UTC) node server status is running&quot;
+    }
+</code></pre></div><h3 id="ibax-getbalance"><a href="#ibax-getbalance" class="header-anchor">#</a> <strong>ibax.getBalance</strong> </h3> <p>アカウントアドレスの残高を取得します。</p> <p><strong>パラメーター</strong></p> <ul><li><p>key_idまたはaccount - <a href="#accountorkeyid"><em>AccountOrKeyId</em></a> - アカウントアドレス `XXXX- XXXX-XXXX-XXXX-XXXX` またはアカウントID</p></li> <li><p>ecosystem_id - <em>Number</em> - エコシステムID <a href="#*omitempty*">Omitempty</a> デフォルト1</p></li></ul> <p><strong>戻り値</strong> <em>Object</em> - 残高オブジェクトを取得する</p> <ul><li><p><strong>amount</strong> - <strong>String</strong> - 契約アカウント残高の最小単位。</p></li> <li><p><strong>total</strong> - <strong>String</strong> - 最小単位のアカウントの総残高（amount+utxo）。</p></li> <li><p><strong>utxo</strong> - <strong>String</strong> - 最小単位のUTXOアカウント残高。</p></li> <li><p><strong>digits</strong> - <strong>Number</strong> - 精度</p></li> <li><p><strong>token_symbol</strong> - <strong>String</strong> - トークンシンボル</p></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request1
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getBalance&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;648...8120&quot;]}' http://127.0.0.1:7079
+
+    //Request2
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getBalance&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;1196-...-...-...-3496&quot;,1]}' http://127.0.0.1:7079
+
+    //Request3
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getBalance&quot;,&quot;id&quot;:1,&quot;params&quot;:[{&quot;key_id&quot;:{$key_id}},1]}' http://127.0.0.1:7079 //keyId or account
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;amount&quot;: &quot;9915319240441612&quot;,
+            &quot;digits&quot;: 12,
+            &quot;total&quot;: &quot;9915319240441612&quot;,
+            &quot;utxo&quot;: &quot;0&quot;,
+            &quot;token_symbol&quot;: &quot;IBXC&quot;
+        }
+    }
+</code></pre></div><h3 id="ibax-getblockstxinfo"><a href="#ibax-getblockstxinfo" class="header-anchor">#</a> <strong>ibax.getBlocksTxInfo</strong> </h3> <p>ブロック内のトランザクションに関する追加情報が含まれたリストを返します。</p> <p><strong>パラメーター</strong></p> <ul><li><p><strong>block_id</strong> - <em>Number</em> - クエリする開始ブロック高</p></li> <li><p><strong>count</strong> - <em>Number</em> - ブロック数、デフォルトは25、最大リクエスト数は100</p></li></ul> <p><strong>戻り値</strong> <em>Object</em> - ブロック情報オブジェクトを取得する</p> <ul><li><p><strong>block_id</strong> - <em>String</em> - ブロック高</p></li> <li><p>各トランザクションの追加情報を含むブロック内のトランザクションのリスト：</p> <ul><li><p><strong>hash</strong> - <em><a href="#hex">Hex</a> String</em> - トランザクションのハッシュ。</p></li> <li><p><strong>contract_name</strong> - <em>String</em> - コントラクトの名前。</p></li> <li><p><strong>params</strong> - <em>Object</em> - コントラクトパラメーター。<a href="#ibax-getcontractinfo">ibax.getContractInfo</a>を使用して、コントラクトフィールドをクエリできます。</p></li> <li><p><strong>key_id</strong> - <em>Number</em> -
+最初のブロックの場合、トランザクションに署名した最初のブロックのアカウントアドレスです。</p> <p>他のすべてのブロックの場合、トランザクションに署名したアカウントのアドレスです。</p></li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getBlocksTxInfo&quot;,&quot;id&quot;:1,&quot;params&quot;:[1,2]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;1&quot;: [ //block_id
+                {
+                    &quot;hash&quot;: &quot;uXSaSrMWlbHpNlu049J5BDypC6MzBQ0/5VEfGQf+5aQ=&quot;,
+                    &quot;contract_name&quot;: &quot;&quot;,
+                    &quot;params&quot;: null,
+                    &quot;key_id&quot;: 6667782293976713160
+                }
+            ],
+            &quot;2&quot;: [ //block_id
+                {
+                    &quot;hash&quot;: &quot;r8U9IKjtZ5Be5D4ak3zxLlDwn36CTdfIAsVvQhx7P3w=&quot;,
+                    &quot;contract_name&quot;: &quot;@1NewUser&quot;,
+                    &quot;params&quot;: {
+                        &quot;Ecosystem&quot;: 1,
+                        &quot;NewPubkey&quot;: &quot;d11ea197fe23152562c6f54c46335d9093f245ab5d22b13ff3e0e2132dc9ff38da77aa093945280c4cf5ad9e889c074dfd9080099982d8b2d4d100315e1cebc7&quot;
+                    },
+                    &quot;key_id&quot;: 6667782293976713160
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-detailedblocks"><a href="#ibax-detailedblocks" class="header-anchor">#</a> <strong>ibax.detailedBlocks</strong> </h3> <p>R各ブロック内のトランザクションに関する詳細情報を含むリストを返します。</p> <p><strong>パラメーター</strong></p> <ul><li><p><strong>block_id</strong> - <em>Number</em> - クエリの開始ブロック高</p></li> <li><p><strong>count</strong> - <em>Number</em> - ブロック数。デフォルトは 25 ですが、最大要求数は 100 です。</p></li></ul> <p><strong>戻り値</strong> <em>Object</em> - ブロックの詳細情報オブジェクト</p> <ul><li><strong>block_id</strong> - <em>String</em> - ブロック高
+<ul><li><strong>header</strong> - <em>Object</em> - ブロックヘッダー。ブロックヘッダーには、次のフィールドが含まれます。
+<ul><li><strong>block_id</strong> - <em>Number</em> - ブロックの高さ。</li> <li><strong>time</strong> - <em>Number</em> - ブロック生成タイムスタンプ。</li> <li><strong>key_id</strong> - <em>Number</em> - ブロックに署名したアカウントのアドレス。</li> <li><strong>node_position</strong> - <em>Number</em> - ブロックを生成したノードの栄誉ノードリスト内の位置。</li> <li><strong>version</strong> - <em>Number</em> - ブロック構造バージョン。</li></ul></li> <li><strong>hash</strong> - <em><a href="#hex">Hex</a> String</em> - ブロックのハッシュ。</li> <li><strong>node_position</strong> - <em>Number</em> - ブロックを生成したノードの栄誉ノードリスト内の位置。</li> <li><strong>key_id</strong> - <em>Number</em> - ブロックに署名したアカウントのアドレス。</li> <li><strong>time</strong> - <em>Number</em> - ブロック生成タイムスタンプ。</li> <li><strong>tx_count</strong> - <em>Number</em> - ブロック内のトランザクション数。</li> <li><strong>size</strong> - <em>String</em> - ブロックのサイズ。</li> <li><strong>rollback_hash</strong> - <em><a href="#hex">Hex</a> String</em> - ブロックのロールバックハッシュ。</li> <li><strong>merkle_root</strong> - <em><a href="#hex">Hex</a> String</em> - このブロックトランザクションのマークルツリー。</li> <li><strong>bin_data</strong> - <em><a href="#hex">Hex</a> String</em> - ブロックヘッダー、ブロック内のすべてのトランザクション、前のブロックハッシュ、およびブロックを生成したノードの秘密鍵のシリアル化。</li> <li><strong>transactions</strong> - <em>Object</em> - トランザクションリスト。ブロック内の各トランザクションに関する追加情報が含まれます。
+<ul><li><strong>hash</strong> - <em><a href="#hex">Hex</a> String</em> - トランザクションのハッシュ。</li> <li><strong>contract_name</strong> - <em>String</em> - コントラクトの名前。</li> <li><strong>params</strong> - <em>Object</em> - コントラクトパラメーター。<a href="#ibax-getcontractinfo">ibax.getContractInfo</a>を使用して、コントラクトフィールドをクエリできます。</li> <li><strong>key_id</strong> - <em>Number</em> - トランザクションに署名したアカウントのアドレス。</li> <li><strong>time</strong> - <em>Number</em> - トランザクション生成タイムスタンプ（単位：ミリ秒）。</li> <li><strong>type</strong> - <em>Number</em> - トランザクションのタイプ。</li> <li><strong>size</strong> - <em>String</em> - トランザクションのサイズ。</li></ul></li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.detailedBlocks&quot;,&quot;id&quot;:1,&quot;params&quot;:[1,2]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;1&quot;: { //block id
+                &quot;header&quot;: {
+                    &quot;block_id&quot;: 1,
+                    &quot;time&quot;: 1676512422,
+                    &quot;key_id&quot;: 6667782293976713160,
+                    &quot;node_position&quot;: 0,
+                    &quot;version&quot;: 3
+                },
+                &quot;hash&quot;: &quot;0d7d51b4c14bacbf45d812f73497ede8f22d678bc4be6e6848193f3b7262ac91&quot;,
+                &quot;node_position&quot;: 0,
+                &quot;key_id&quot;: 6667782293976713160,
+                &quot;time&quot;: 1676512422,
+                &quot;tx_count&quot;: 1,
+                &quot;size&quot;: &quot;660.00B&quot;,
+                &quot;rollbacks_hash&quot;: &quot;1a829923f2c9b1e259fdfb42cc1bc255e144dbfb352af7e072d0b9d61a94df15&quot;,
+                &quot;merkle_root&quot;: &quot;36373332663064383331353264316333653639346431656436383734373634363463616363616564636632353232646335633736643066623737343931366363&quot;,
+                &quot;bin_data&quot;: &quot;Cp4BCAEQppm...&quot;,
+                &quot;stop_count&quot;: 0,
+                &quot;transactions&quot;: [
+                    {
+                        &quot;hash&quot;: &quot;b9749a4ab31695b1e9365bb4e3d279043ca90ba333050d3fe5511f1907fee5a4&quot;,
+                        &quot;contract_name&quot;: &quot;&quot;,
+                        &quot;params&quot;: null,
+                        &quot;key_id&quot;: 6667782293976713160,
+                        &quot;time&quot;: 1676512422406,
+                        &quot;type&quot;: 1,
+                        &quot;size&quot;: &quot;250.00B&quot;
+                    }
+                ]
+            },
+            &quot;2&quot;: { //block id
+                &quot;header&quot;: {
+                    &quot;block_id&quot;: 2,
+                    &quot;time&quot;: 1676536235,
+                    &quot;key_id&quot;: 6667782293976713160,
+                    &quot;node_position&quot;: 0,
+                    &quot;version&quot;: 3
+                },
+                &quot;hash&quot;: &quot;dd13a30661d35e01df82027a6e6607eb47ee00765d69767dbb99e151676c2c96&quot;,
+                &quot;node_position&quot;: 0,
+                &quot;key_id&quot;: 6667782293976713160,
+                &quot;time&quot;: 1676536235,
+                &quot;tx_count&quot;: 1,
+                &quot;size&quot;: &quot;1.53KiB&quot;,
+                &quot;rollbacks_hash&quot;: &quot;9041312d69e6bcd37c91a2bfa066abaeb53b8398708937a618a89960bfadab3d&quot;,
+                &quot;merkle_root&quot;: &quot;65366537383931353662613230356565396466353061316538656538643636323332316636616265623764633539616166346635343030383135386538643130&quot;,
+                &quot;bin_data&quot;: &quot;Cp4BCAIQq9O...&quot;,
+                &quot;stop_count&quot;: 0,
+                &quot;transactions&quot;: [
+                    {
+                        &quot;hash&quot;: &quot;afc53d20a8ed67905ee43e1a937cf12e50f09f7e824dd7c802c56f421c7b3f7c&quot;,
+                        &quot;contract_name&quot;: &quot;@1NewUser&quot;,
+                        &quot;params&quot;: {
+                            &quot;Ecosystem&quot;: 1,
+                            &quot;NewPubkey&quot;: &quot;d11ea197fe23152562c6f54c46335d9093f245ab5d22b13ff3e0e2132dc9ff38da77aa093945280c4cf5ad9e889c074dfd9080099982d8b2d4d100315e1cebc7&quot;
+                        },
+                        &quot;key_id&quot;: 6667782293976713160,
+                        &quot;time&quot;: 1676536233945,
+                        &quot;type&quot;: 3,
+                        &quot;size&quot;: &quot;390.00B&quot;
+                    }
+                ]
+            }
+        }
+    }
+</code></pre></div><h3 id="ibax-getkeyinfo"><a href="#ibax-getkeyinfo" class="header-anchor">#</a> <strong>ibax.getKeyInfo</strong> </h3> <p>指定されたアドレスに登録されている役割を持つエコシステムのリストを返します。</p> <p><strong>パラメーター</strong></p> <ul><li><strong>account</strong> - <em>String</em> - アカウントアドレス</li></ul> <p><strong>戻り値</strong> <em>Object</em> - アドレスエコリストオブジェクトを指定します。</p> <ul><li><strong>account</strong> - <em>String</em> - アカウントアドレス</li> <li><strong>ecosystems</strong> - <em>Array</em> - エコリスト
+<ul><li><strong>ecosystem</strong> - <em>String</em> - エコシステム ID</li> <li><strong>name</strong> - <em>String</em> - エコシステム名</li> <li><strong>digits</strong> - <em>Number</em> - 精度</li> <li><strong>roles</strong> - <em>Array</em> - 役割のリスト。
+<ul><li><strong>id</strong> - <em>String</em> - 役割 ID</li> <li><strong>name</strong> - <em>String</em> - キャラ</li></ul></li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getKeyInfo&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;0666-XXXX-XXXX-XXXX-5186&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;account&quot;: &quot;0666-XXXX-XXXX-XXXX-5186&quot;,
+            &quot;ecosystems&quot;: [
+                {
+                    &quot;ecosystem&quot;: &quot;1&quot;,
+                    &quot;name&quot;: &quot;platform ecosystem&quot;,
+                    &quot;digits&quot;: 12,
+                    &quot;roles&quot;: [
+                        {
+                            &quot;id&quot;: &quot;1&quot;,
+                            &quot;name&quot;: &quot;Developer&quot;
+                        },
+                        {
+                            &quot;id&quot;: &quot;2&quot;,
+                            &quot;name&quot;: &quot;Governancer&quot;
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-detailedblock"><a href="#ibax-detailedblock" class="header-anchor">#</a> <strong>ibax.detailedBlock</strong> </h3> <p>ブロック内のトランザクションに関する詳細な情報のリストを返します。</p> <p><strong>パラメーター</strong></p> <ul><li><strong>Block or Hash</strong> - <em><a href="#blockorhash">BlockOrHash</a></em> - ブロックの高さまたはブロックハッシュ</li></ul> <p><strong>戻り値</strong> <em>Object</em> - ブロックの詳細オブジェクトを取得します。</p> <ul><li><p><strong>header</strong> - <em>Object</em> - ブロックヘッダー。以下のフィールドが含まれます。</p> <ul><li><strong>block_id</strong> - <em>Number</em> - ブロックの高さ</li> <li><strong>time</strong> - <em>Number</em> - ブロックの生成タイムスタンプ</li> <li><strong>key_id</strong> - <em>Number</em> - ブロックに署名したアカウントのアドレス</li> <li><strong>node_position</strong> - <em>Number</em> - ブロックを生成したノードのHonorノードリスト内の位置</li> <li><strong>version</strong> - <em>Number</em> - ブロック構造のバージョン</li></ul></li> <li><p><strong>hash</strong> - <em><a href="#hex">Hex</a> String</em> - ブロックのハッシュ</p></li> <li><p><strong>node_position</strong> - <em>Number</em> - ブロックを生成したノードのHonorノードリスト内の位置</p></li> <li><p><strong>key_id</strong> - <em>Number</em> - ブロックに署名したアカウントのアドレス</p></li> <li><p><strong>time</strong> - <em>Number</em> - ブロックの生成タイムスタンプ</p></li> <li><p><strong>tx_count</strong> - <em>Number</em> - ブロック内のトランザクション数</p></li> <li><p><strong>size</strong> - <em>String</em> - ブロックのサイズ</p></li> <li><p><strong>rollback_hash</strong> - <em><a href="#hex">Hex</a> String</em> - ブロックのロールバックハッシュ</p></li> <li><p><strong>merkle_root</strong> - <em><a href="#hex">Hex</a> String</em> - このブロックのトランザクションのマークルツリー</p></li> <li><p><strong>bin_data</strong> - <em><a href="#hex">Hex</a> String</em> - ブロックヘッダー、ブロック内のすべてのトランザクション、前のブロックハッシュ、およびブロックを生成したノードの秘密鍵のシリアル化</p></li> <li><p><strong>transactions</strong> - <em>Array</em> - トランザクション。ブロック内のトランザクションのリストと各トランザクションに関する追加情報。</p> <ul><li><strong>hash</strong> - <em><a href="#hex">Hex</a> String</em> - トランザクションのハッシュ</li> <li><strong>contract_name</strong> - <em>String</em> - コントラクト名</li> <li><strong>params</strong> - <em>Object</em> - コントラクトパラメータ。コントラクトのフィールドは、<a href="#ibax-getcontractinfo">ibax.getContractInfo</a>を介してクエリできます。</li> <li><strong>key_id</strong> - <em>Number</em> - トランザクションに署名したアカウントのアドレス</li> <li><strong>time</strong> - <em>Number</em> - トランザクションの生成タイムスタンプ（単位：ms）</li> <li><strong>type</strong> - <em>Number</em> - トランザクションのタイプ</li> <li><strong>size</strong> - <em>String</em> - トランザクションのサイズ</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request1
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.detailedBlock&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;1&quot;]}' http://127.0.0.1:7079
+
+    //Request2
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.detailedBlock&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;0d7d51b4c14bacbf45d812f7349...e6e6848193f3b7262ac91&quot;]}' http://127.0.0.1:7079
+
+    //Request3
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.detailedBlock&quot;,&quot;id&quot;:1,&quot;params&quot;:[{&quot;id&quot;:1}]}' http://127.0.0.1:7079
+
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;header&quot;: {
+                &quot;block_id&quot;: 1,
+                &quot;time&quot;: 1676512422,
+                &quot;key_id&quot;: 6667782293976713160,
+                &quot;node_position&quot;: 0,
+                &quot;version&quot;: 3
+            },
+            &quot;hash&quot;: &quot;0d7d51b4c14bacbf45d812f7349...e6e6848193f3b7262ac91&quot;,
+            &quot;node_position&quot;: 0,
+            &quot;key_id&quot;: 6667782293976713160,
+            &quot;time&quot;: 1676512422,
+            &quot;tx_count&quot;: 1,
+            &quot;size&quot;: &quot;660.00B&quot;,
+            &quot;rollbacks_hash&quot;: &quot;1a829923f2c9b1e259fdfb42cc1bc255e144dbfb352af7e072d0b9d61a94df15&quot;,
+            &quot;merkle_root&quot;: &quot;3637333266306438333135...623737343931366363&quot;,
+            &quot;bin_data&quot;: &quot;Cp4BCAEQppm2nwYgyI/8gLSVrsRcMkAFGTK6nxD86hfhgQX0dWzO8aYZExDN9UPm8sKkqeUbwrNliYuCJHvvdX+txINnM7+gDqtMF/1K43kc0gYC0u8uOiANfVG0wUusv0XYEvc0l+3o8i1ni8S+bmhIGT87cmKskUIgBEhSsqZwreVAfnj7KGPFHen8uWVCoHGG/jrtpruKEW1IA1ABYAESRDogQBBdW8EBBcF/1yuTqPczaeLubu5NRxS3v3vzwvFW5gFCIARIUrKmcK3lQH54+yhjxR3p/LllQqBxhv467aa7ihFtGkA2NzMyZjBkODMxNTJkMWMzZTY5NGQxZWQ2ODc0NzY0NjRjYWNjYWVkY2YyNTIyZGM1Yzc2ZDBmYjc3NDkxNmNjKugCeJxibFvmk5+enlp0YK1LUkhRYl5xYnJJZn7egSUuiSWJ7Uu9Uys9XS7HdOxY7SDPfmJJSGZu6mUGBgaG5Lc9y1YGlCblZCZ7p1YecejvOPzyp63tWeYpWS+nxBTv3biTOUTqg7vfgedPuXdbnjsmYX49a9mXA025NT4TbjQ65bQwbloQcjbQRG3ZudjjUxuL1/rlp6QimTfLcZNH0o/bie/SfiskTNm1tPrfmrrlbdfMklamXHR53XpxwSODSb1hX3Kvyb1fU+awbZVG8yaXmGqtO3wR8jPsP6y7vTW4JL/AL7WkPL8o2zm1qMSpNC8lJ/XAkpDU4hKwBxgYGBg3BhRlliWWpDrl5CdnJ2ckZuadh0oxrAT5tLgkMbfgMgMDY1v42yy2ZSEVHonFGUcUdpbM8tosNnXjS7PoLY8vVbLYrORebMzKa/80UF6S/d/TJcsDEitz8hNTjvwaueEHCAAA//+pZRGv&quot;,
+            &quot;stop_count&quot;: 0,
+            &quot;transactions&quot;: [
+                {
+                    &quot;hash&quot;: &quot;b9749a4ab31695b1e9365bb4e3d279043ca90ba333050d3fe5511f1907fee5a4&quot;,
+                    &quot;contract_name&quot;: &quot;&quot;,
+                    &quot;params&quot;: null,
+                    &quot;key_id&quot;: 6667782293976713160,
+                    &quot;time&quot;: 1676512422406,
+                    &quot;type&quot;: 1,
+                    &quot;size&quot;: &quot;250.00B&quot;
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-maxblockid"><a href="#ibax-maxblockid" class="header-anchor">#</a> <strong>ibax.maxBlockId</strong> </h3> <p>Get the highest block ID on the current node</p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>戻り値</strong></p> <ul><li><strong>Block Id</strong> - <em>Number</em> - 現在のノード上の最高ブロック</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.maxBlockId&quot;,&quot;id&quot;:1,&quot;params&quot;:[]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: 774
+    }
+</code></pre></div><h3 id="ibax-getkeyscount"><a href="#ibax-getkeyscount" class="header-anchor">#</a> <strong>ibax.getKeysCount</strong> </h3> <p>現在のノード上のアドレスの総数を取得する</p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>戻り値</strong></p> <ul><li><strong>Count</strong> - <em>Number</em> - Total number of addresses</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getKeysCount&quot;,&quot;id&quot;:1,&quot;params&quot;:[]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: 11
+    }
+</code></pre></div><h3 id="ibax-gettxcount"><a href="#ibax-gettxcount" class="header-anchor">#</a> <strong>ibax.getTxCount</strong> </h3> <p>現在のノード上のトランザクションの総数を取得します。</p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>戻り値</strong></p> <ul><li><strong>Count</strong> - <em>Number</em> - Total number of transactions</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getTxCount&quot;,&quot;id&quot;:1,&quot;params&quot;:[]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: 149068
+    }
+</code></pre></div><h3 id="ibax-gettransactioncount"><a href="#ibax-gettransactioncount" class="header-anchor">#</a> <strong>ibax.getTransactionCount</strong> </h3> <p>ブロックトランザクションの数を取得する</p> <p><strong>パラメーター</strong></p> <ul><li><strong>block or hash</strong> - <em><a href="#blockorhash">BlockOrHash</a></em> - ブロック高さまたはブロックハッシュ</li></ul> <p><strong>戻り値</strong></p> <ul><li><strong>Count</strong> - <em>Number</em> - ブロックの総数</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getTransactionCount&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;efc386f7573269610a34af9cc722f775cca8183ccaa0ed7a96db61ef0bde6d1c&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: 337
+    }
+</code></pre></div><h3 id="ibax-getblockscountbynode"><a href="#ibax-getblockscountbynode" class="header-anchor">#</a> <strong>ibax.getBlocksCountByNode</strong> </h3> <p>Gノードロケーションパッキングブロックの数を取得する</p> <p><strong>パラメーター</strong></p> <ul><li><strong>nodePosition</strong> - <em>Number</em> - ノードサブスクリプト</li> <li><strong>consensusMode</strong> - <em>Number</em> - コンセンサスモード。パラメーター (1: Creator Managementモード、2: DAO Governanceモード)</li></ul> <p><strong>戻り値</strong> <em>Object</em> - ノードサブスクリプトのパッキング数オブジェクトを取得します。</p> <ul><li><strong>total_count</strong> - <em>Number</em> - ブロックの総数</li> <li><strong>partial_count</strong> - <em>Number</em> - ノードサブスクリプトのパッキングブロック数</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getBlocksCountByNode&quot;,&quot;id&quot;:1,&quot;params&quot;:[0,1]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;total_count&quot;: 774,
+            &quot;partial_count&quot;: 774
+        }
+    }
+</code></pre></div><h3 id="ibax-honornodescount"><a href="#ibax-honornodescount" class="header-anchor">#</a> <strong>ibax.honorNodesCount</strong> </h3> <p>名誉ノード数を取得する</p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>戻り値</strong></p> <ul><li><strong>Count</strong> - <em>Number</em> - ノードの数
+<strong>例</strong></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.honorNodesCount&quot;,&quot;id&quot;:1,&quot;params&quot;:[]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: 1
+    }
+</code></pre></div><h3 id="ibax-getecosystemcount"><a href="#ibax-getecosystemcount" class="header-anchor">#</a> <strong>ibax.getEcosystemCount</strong> </h3> <p>エコシステムの獲得数を取得する</p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>戻り値</strong></p> <ul><li><strong>Count</strong> - <em>Number</em> - エコロジー番号</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getEcosystemCount&quot;,&quot;id&quot;:1,&quot;params&quot;:[]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: 2
+    }
+</code></pre></div><h3 id="ibax-ecosysteminfo"><a href="#ibax-ecosysteminfo" class="header-anchor">#</a> <strong>ibax.ecosystemInfo</strong> </h3> <p>エコロジー情報にアクセスする</p> <p><strong>パラメーター</strong></p> <ul><li><strong>ecosystem id</strong> - <em>Number</em> - エコロジーID</li></ul> <p><strong>戻り値</strong></p> <ul><li><strong>id</strong> - <em>Number</em> - エコID</li> <li><strong>name</strong> - <em>String</em> - エコロジー名</li> <li><strong>digits</strong> - <em>Number</em> - 精度</li> <li><strong>token_symbol</strong> - <em>String</em> - トークンシンボル</li> <li><strong>token_name</strong> - <em>String</em> - トークンの名称</li> <li><strong>total_amount</strong> - <em>String</em> - 発行量（初回発行、発行していない場合は <code>&quot;0&quot;</code>）</li> <li><strong>is_withdraw</strong> - <em>Bool</em> - 破棄可能性 <code>true:破棄可能 false:破棄不可能</code></li> <li><strong>withdraw</strong> - <em>String</em> - 破棄量（破棄不可能な場合、または破棄されていない場合は <code>&quot;0&quot;</code>）</li> <li><strong>is_emission</strong> - <em>Bool</em> - 増発可能性 <code>true:増発可能 false:増発不可能</code></li> <li><strong>emission</strong> - <em>String</em> - 増発量（増発不可能な場合、または増発がない場合は <code>&quot;0&quot;</code>）</li> <li><strong>introduction</strong> - <em>String</em> - エコの紹介</li> <li><strong>logo</strong> - <em>Number</em> - エコロゴのID（バイナリテーブルIDに対応）、RESTFUL APIで利用可能</li> <li><strong>creator</strong> - <em>String</em> - エコ作成者</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.ecosystemInfo&quot;,&quot;id&quot;:1,&quot;params&quot;:[1]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 2,
+        &quot;result&quot;: {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;test name&quot;,
+            &quot;digits&quot;: 6,
+            &quot;token_symbol&quot;: &quot;test&quot;,
+            &quot;token_name&quot;: &quot;test Coin&quot;,
+            &quot;total_amount&quot;: &quot;10000&quot;,
+            &quot;is_withdraw&quot;: true,
+            &quot;withdraw&quot;: &quot;100000000000900000&quot;,
+            &quot;is_emission&quot;: true,
+            &quot;emission&quot;: &quot;100000000001000000&quot;,
+            &quot;introduction&quot;: &quot;this is a test introduction&quot;,
+            &quot;logo&quot;: 6,
+            &quot;creator&quot;: &quot;0666-0819-7161-7879-5186&quot;
+        }
+    }
+</code></pre></div><h3 id="ibax-appparams"><a href="#ibax-appparams" class="header-anchor">#</a> <strong>ibax.appParams</strong> </h3> <p>現在のエコシステムまたは指定されたエコシステムのアプリケーションパラメータのリストを返します</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><p><strong>appid</strong> - <em>Number</em> - アプリケーションID。</p></li> <li><p><strong>ecosystem</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> - エコシステムID;</p> <p>指定されていない場合、または0の場合、現在のエコシステムのパラメータが返されます。</p></li> <li><p><strong>names</strong> - <em>String</em> - <a href="#omitempty">Omitempty</a> - アプリケーションパラメータ名をフィルタリングします。</p> <p>カンマで区切られた名前のリスト、例：<code>name1,name2</code>。</p></li> <li><p><strong>offset</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> オフセット、デフォルトは0です。</p></li> <li><p><strong>limit</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> エントリ数、デフォルトは100、最大100。</p></li></ul> <p><strong>戻り値</strong> <em>Array</em> - アプリケーションパラメータのリスト</p> <ul><li><strong>app_id</strong> - <em>Number</em> - アプリケーションID</li> <li><strong>list</strong> - <em>Number</em> - 配列の各要素には、次のパラメータが含まれます。
+<ul><li><strong>id</strong> - <em>String</em> - パラメータID、ユニーク。</li> <li><strong>name</strong> - <em>String</em> - パラメータ名。</li> <li><strong>value</strong> - <em>String</em> - パラメータ値。</li> <li><strong>conditions</strong> - <em>String</em> - パラメータを変更するための権限。</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.appParams&quot;,&quot;id&quot;:1,&quot;params&quot;:[1,1,&quot;role_developer,role_governancer&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;app_id&quot;: 1,
+            &quot;list&quot;: [
+                {
+                    &quot;id&quot;: &quot;4&quot;,
+                    &quot;name&quot;: &quot;role_developer&quot;,
+                    &quot;value&quot;: &quot;1&quot;,
+                    &quot;conditions&quot;: &quot;ContractConditions(\&quot;MainCondition\&quot;)&quot;
+                },
+                {
+                    &quot;id&quot;: &quot;5&quot;,
+                    &quot;name&quot;: &quot;role_governancer&quot;,
+                    &quot;value&quot;: &quot;2&quot;,
+                    &quot;conditions&quot;: &quot;ContractConditions(\&quot;MainCondition\&quot;)&quot;
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-getecosystemparams"><a href="#ibax-getecosystemparams" class="header-anchor">#</a> <strong>ibax.getEcosystemParams</strong> </h3> <p>エコシステムパラメータのリストを取得する</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><p><strong>ecosystem</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> - エコシステムID</p> <p>もし0またはそのようなパラメータがない場合、デフォルト: 現在のecid。</p></li> <li><p><strong>names</strong> - <em>String</em> - <a href="#omitempty">Omitempty</a> - フィルタパラメータの名前。</p> <p>カンマで区切られた名前のリスト、例：<code>name1,name2</code>。</p> <p>フィルタパラメータがある場合、<em>offset</em>と<em>limit</em>パラメータは無効です。</p></li> <li><p><strong>offset</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> オフセット、デフォルトは0です。</p></li> <li><p><strong>limit</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> エントリ数、デフォルトは100、最大100。</p></li></ul> <p><strong>戻り値</strong></p> <ul><li><strong>list</strong> - <em>Array</em> - 配列の各要素には、次のパラメータが含まれます。
+<ul><li><strong>id</strong> - <em>String</em> - パラメータのID、ユニーク。</li> <li><strong>name</strong> - <em>String</em> - パラメータの名前。</li> <li><strong>value</strong> - <em>String</em> - パラメータの値。</li> <li><strong>conditions</strong> - <em>String</em> - パラメータを変更するための権限。</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getEcosystemParams&quot;,&quot;id&quot;:1,&quot;params&quot;:[0,&quot;changing_app_params,changing_language&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;list&quot;: [
+                {
+                    &quot;id&quot;: &quot;9&quot;,
+                    &quot;name&quot;: &quot;changing_app_params&quot;,
+                    &quot;value&quot;: &quot;ContractConditions(\&quot;DeveloperCondition\&quot;)&quot;,
+                    &quot;conditions&quot;: &quot;ContractConditions(\&quot;DeveloperCondition\&quot;)&quot;
+                },
+                {
+                    &quot;id&quot;: &quot;4&quot;,
+                    &quot;name&quot;: &quot;changing_language&quot;,
+                    &quot;value&quot;: &quot;ContractConditions(\&quot;DeveloperCondition\&quot;)&quot;,
+                    &quot;conditions&quot;: &quot;ContractConditions(\&quot;DeveloperCondition\&quot;)&quot;
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-gettablecount"><a href="#ibax-gettablecount" class="header-anchor">#</a> <strong>ibax.getTableCount</strong> </h3> <p>現在のエコシステムに関するデータテーブルのリストを返します。</p> <p>Offset and number of entries can be set</p> <p><a href="#authorization">Authorization</a> <strong>パラメーター</strong></p> <ul><li><p><strong>offset</strong> - <em>Number</em> - [Omitempty] オフセット。デフォルトは0です。</p></li> <li><p><strong>limit</strong> - <em>Number</em> - [Omitempty] エントリの数。デフォルトは100で、最大は100です。</p></li></ul> <p><strong>戻り値</strong></p> <ul><li><p><strong>count</strong> - <em>Number</em> - 現在のエコロジカルデータテーブルの総シート数。</p></li> <li><p><strong>list</strong> - <em>Array</em> - 配列の各要素には次のパラメーターが含まれています：</p> <ul><li><strong>name</strong> - <em>String</em> - プレフィックスなしのデータテーブルの名前。</li> <li><strong>count</strong> - <em>String</em> - データテーブル内のエントリ数。</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getTableCount&quot;,&quot;id&quot;:1,&quot;params&quot;:[0,2]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;count&quot;: 32,
+            &quot;list&quot;: [
+                {
+                    &quot;name&quot;: &quot;app_params&quot;,
+                    &quot;count&quot;: &quot;41&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;applications&quot;,
+                    &quot;count&quot;: &quot;7&quot;
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-gettable"><a href="#ibax-gettable" class="header-anchor">#</a> <strong>ibax.getTable</strong> </h3> <p>R現在のエコシステムのリクエストデータテーブルに関する情報を返します。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><strong>tableName</strong> - <em>String</em> - データテーブル名</li></ul> <p><strong>返り値</strong></p> <ul><li><p><strong>name</strong> - <em>String</em> - データテーブルの名前。</p></li> <li><p><strong>insert</strong> - <em>String</em> - エントリを追加する権限。</p></li> <li><p><strong>new_column</strong> - <em>String</em> - 新しいフィールドを追加する権限。</p></li> <li><p><strong>update</strong> - <em>String</em> - エントリの権限を変更する権限。</p></li> <li><p><strong>app_id</strong> - <em>String</em> - アプリケーションID。</p></li> <li><p><strong>conditions</strong> - <em>String</em> - 権限を変更するための条件。</p></li> <li><p><strong>columns</strong> - <em>Array</em> - データテーブルフィールドに関連する情報の配列：</p> <ul><li><strong>name</strong> - <em>String</em> - フィールドの名前。</li> <li><strong>type</strong> - <em>String</em> - フィールドのデータ型。</li> <li><strong>perm</strong> - <em>String</em> - このフィールドの値を変更する権限。</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getTable&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;app_params&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;name&quot;: &quot;app_params&quot;,
+            &quot;insert&quot;: &quot;ContractConditions(\&quot;DeveloperCondition\&quot;)&quot;,
+            &quot;new_column&quot;: &quot;ContractConditions(\&quot;@1MainCondition\&quot;)&quot;,
+            &quot;update&quot;: &quot;ContractAccess(\&quot;@1EditAppParam\&quot;)&quot;,
+            &quot;conditions&quot;: &quot;ContractConditions(\&quot;@1MainCondition\&quot;)&quot;,
+            &quot;app_id&quot;: &quot;1&quot;,
+            &quot;columns&quot;: [
+                {
+                    &quot;name&quot;: &quot;value&quot;,
+                    &quot;type&quot;: &quot;text&quot;,
+                    &quot;perm&quot;: &quot;ContractAccess(\&quot;@1EditAppParam\&quot;)&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;app_id&quot;,
+                    &quot;type&quot;: &quot;number&quot;,
+                    &quot;perm&quot;: &quot;ContractAccess(\&quot;@1ItemChangeAppId\&quot;)&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;ecosystem&quot;,
+                    &quot;type&quot;: &quot;number&quot;,
+                    &quot;perm&quot;: &quot;false&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;conditions&quot;,
+                    &quot;type&quot;: &quot;text&quot;,
+                    &quot;perm&quot;: &quot;ContractAccess(\&quot;@1EditAppParam\&quot;)&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;permissions&quot;,
+                    &quot;type&quot;: &quot;json&quot;,
+                    &quot;perm&quot;: &quot;ContractConditions(\&quot;@1MainCondition\&quot;)&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;name&quot;,
+                    &quot;type&quot;: &quot;varchar&quot;,
+                    &quot;perm&quot;: &quot;false&quot;
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-getlist"><a href="#ibax-getlist" class="header-anchor">#</a> <strong>ibax.getList</strong> </h3> <p>指定されたデータテーブルのエントリを返します。</p> <p>返される列を指定することができます。</p> <p>オフセットとエントリの数を設定することができます。</p> <p>クエリ条件を設定することができます。</p> <p>タイプが <em>BYTEA</em>（バイト配列、ハッシュ、バイトコード配列）のデータテーブルのヘックスエンコーディング</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong> <em>Object</em> - データテーブルオブジェクトを取得します。</p> <ul><li><p><strong>name</strong> - <em>String</em> - データテーブルの名前。</p></li> <li><p><strong>limit</strong> - <em>Number</em> - [Omitempty] エントリの数。デフォルトは25です。</p></li> <li><p><strong>offset</strong> - <em>Number</em> - [Omitempty] オフセット。デフォルトは0です。</p></li> <li><p><strong>order</strong> - <em>String</em> - [Omitempty] ソート方法。デフォルトはid ASCです。</p></li> <li><p><strong>columns</strong> - <em>String</em> - [Omitempty] 要求された列のコンマ区切りのリスト。指定されていない場合はすべての列が返されます。</p> <p>id列は常に返されます。</p></li> <li><p><strong>where</strong> - <em>Object</em> - [Omitempty] クエリ条件</p> <p>例：id &gt; 2 かつ name = john をクエリしたい場合は、<code>where:{&quot;id&quot;:{&quot;$gt&quot;:2}, &quot;name&quot;:{&quot;$eq&quot;: &quot;john&quot;}}</code> を使用します。</p> <p>詳細については、<a href="/ja/topics/script.html#dbfind">DBFind</a> のwhere構文を参照してください。</p></li></ul> <p><strong>返り値</strong></p> <ul><li><p><strong>count</strong> - <em>Number</em> - エントリの総数。</p></li> <li><p><strong>list</strong> - <em>Array</em> - 配列の各要素には次のパラメーターが含まれています：</p> <ul><li><strong>id</strong> - <em>String</em> - エントリのID。</li> <li><strong>...</strong> - データテーブルの他の列。</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getList&quot;,&quot;id&quot;:1,&quot;params&quot;:[{&quot;name&quot;:&quot;@1history&quot;,&quot;where&quot;:{&quot;$and&quot;: [{&quot;id&quot;:{&quot;$gt&quot;: 2}}, {&quot;id&quot;:{&quot;$lt&quot;: 5}}]}}]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;count&quot;: 2,
+            &quot;list&quot;: [
+                {
+                    &quot;amount&quot;: &quot;1000000000000000000&quot;,
+                    &quot;block_id&quot;: &quot;4&quot;,
+                    &quot;comment&quot;: &quot;UTXO&quot;,
+                    &quot;created_at&quot;: &quot;1676538080433&quot;,
+                    &quot;ecosystem&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;3&quot;,
+                    &quot;recipient_balance&quot;: &quot;1000000000000000000&quot;,
+                    &quot;recipient_id&quot;: &quot;666...160&quot;,
+                    &quot;sender_balance&quot;: &quot;1000000000000000000&quot;,
+                    &quot;sender_id&quot;: &quot;666...3160&quot;,
+                    &quot;status&quot;: &quot;0&quot;,
+                    &quot;txhash&quot;: &quot;2ac156c0ce55c10fd485cb9d59f50e3f9b269fb9bb69571d3c2eeae033d6c6cc&quot;,
+                    &quot;type&quot;: &quot;24&quot;,
+                    &quot;value_detail&quot;: &quot;NULL&quot;
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-getsections"><a href="#ibax-getsections" class="header-anchor">#</a> <strong>ibax.getSections</strong> </h3> <p>現在のエコシステムのタブに戻ります。
+テーブルエントリのリストで、オフセットとエントリ数を設定できます。</p> <p>もし <em>role_access</em> フィールドがロールのリストを含み、現在のロールが含まれていない場合、レコードは返されません。<em>title</em> フィールドのデータは、リクエストヘッダーの <em>Accept-Language</em> 言語リソースによって置き換えられます。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><em>Object</em> - アクションリクエストオブジェクトを取得します。
+<ul><li><p><strong>limit</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> - エントリの数。デフォルトは25です。</p></li> <li><p><strong>offset</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> - オフセット。デフォルトは0です。</p></li> <li><p><strong>lang</strong> - <em>String</em> - <a href="#omitempty">Omitempty</a> - このフィールドは、マルチリンガルリソースコードまたはローカライゼーションを指定します。例：<em>en, ja</em>。指定されたマルチリンガルリソースが見つからない場合、例えば <em>en-US</em> の場合は、マルチリンガルリソースグループで検索します。<strong>デフォルト</strong>: <strong>en</strong>。</p></li></ul></li></ul> <p><strong>返り値</strong></p> <ul><li><p><strong>count</strong> - <em>Number</em> - タブエントリの総数。</p></li> <li><p><strong>list</strong> - <em>Array</em> - 配列の各要素には、セクションテーブルのすべての列に関する情報が含まれています。</p></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getSections&quot;,&quot;id&quot;:1,&quot;params&quot;:[{&quot;offset&quot;:0,&quot;limit&quot;:2}]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;count&quot;: 2,
+            &quot;list&quot;: [
+                {
+                    &quot;ecosystem&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;1&quot;,
+                    &quot;page&quot;: &quot;default_page&quot;,
+                    &quot;roles_access&quot;: &quot;[]&quot;,
+                    &quot;status&quot;: &quot;2&quot;,
+                    &quot;title&quot;: &quot;Home&quot;,
+                    &quot;urlname&quot;: &quot;home&quot;
+                },
+                {
+                    &quot;ecosystem&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;2&quot;,
+                    &quot;page&quot;: &quot;developer_index&quot;,
+                    &quot;roles_access&quot;: &quot;[]&quot;,
+                    &quot;status&quot;: &quot;1&quot;,
+                    &quot;title&quot;: &quot;Developer&quot;,
+                    &quot;urlname&quot;: &quot;developer&quot;
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-getrow"><a href="#ibax-getrow" class="header-anchor">#</a> <strong>ibax.getRow</strong> </h3> <p>現在のエコシステムの指定されたデータテーブルのエントリを返します。返される列を指定することができます。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><p><strong>tableName</strong> - <em>String</em> - データテーブルの名前。</p></li> <li><p><strong>id</strong> - <em>Number</em> - エントリのID。</p></li> <li><p><strong>columns</strong> - <em>String</em> - <a href="#omitempty">Omitempty</a></p> <p>要求された列のコンマ区切りのリスト。指定されていない場合、すべての列が返されます。</p> <p>フィルタリングしない場合は、空白 &quot;&quot; を指定できます。</p> <p>id列は常に返されます。</p></li> <li><p><strong>whereColumn</strong> - <em>String</em> - <a href="#omitempty">Omitempty</a> - 検索する列名（Number型の列のみ検索可能）</p></li></ul> <p><strong>返り値</strong></p> <ul><li><strong>value</strong> - <em>Object</em> - 列の値を受け取るオブジェクト
+<ul><li><strong>id</strong> - <em>String</em> - エントリのID。</li> <li><strong>...</strong> - 要求された列のシーケンス。</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getRow&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;@1history&quot;,4,&quot;id,sender_id,recipient_id,amount,ecosystem,created_at&quot;,&quot;id&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;value&quot;: {
+                &quot;amount&quot;: &quot;680388766240&quot;,
+                &quot;created_at&quot;: &quot;1677222830899&quot;,
+                &quot;ecosystem&quot;: &quot;1&quot;,
+                &quot;id&quot;: &quot;296&quot;,
+                &quot;recipient_id&quot;: &quot;6667782293976713160&quot;,
+                &quot;sender_id&quot;: &quot;6660819716178795186&quot;
+            }
+        }
+    }
+</code></pre></div><h3 id="ibax-systemparams"><a href="#ibax-systemparams" class="header-anchor">#</a> <strong>ibax.systemParams</strong> </h3> <p>プラットフォームパラメータのリストを返します。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><p><strong>names</strong> - <em>String</em> - <a href="#omitempty">Omitempty</a> - カンマで区切られたリクエストパラメータのリスト。</p> <p>例：<code>names=&quot;name1,name2&quot;</code>。</p></li> <li><p><strong>offset</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> - オフセット。デフォルトは0です。</p></li> <li><p><strong>limit</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> - エントリの数。デフォルトは100で、最大は100です。</p></li></ul> <p><strong>返り値</strong></p> <ul><li><strong>list</strong> - <em>Array</em> - 配列の各要素には次のパラメーターが含まれています：
+<ul><li><strong>id</strong> - <em>String</em> - ユニークなID</li> <li><strong>name</strong> - <em>String</em> - パラメーターの名前。</li> <li><strong>value</strong> - <em>String</em> - パラメーターの値。</li> <li><strong>conditions</strong> - <em>String</em> - パラメーターを変更する権限。</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.systemParams&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;gap_between_blocks,honor_nodes&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;list&quot;: [
+                {
+                    &quot;id&quot;: &quot;4&quot;,
+                    &quot;name&quot;: &quot;gap_between_blocks&quot;,
+                    &quot;value&quot;: &quot;2&quot;,
+                    &quot;conditions&quot;: &quot;ContractAccess(\&quot;@1UpdatePlatformParam\&quot;)&quot;
+                },
+                {
+                    &quot;id&quot;: &quot;6&quot;,
+                    &quot;name&quot;: &quot;honor_nodes&quot;,
+                    &quot;value&quot;: &quot;&quot;,
+                    &quot;conditions&quot;: &quot;ContractAccess(\&quot;@1UpdatePlatformParam\&quot;)&quot;
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-history"><a href="#ibax-history" class="header-anchor">#</a> <strong>ibax.history</strong> </h3> <p>現在のエコシステムの指定されたデータテーブルのエントリの変更レコードを返します。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><strong>name</strong> - <em>String</em> - データテーブルの名前。</li> <li><strong>tableId</strong> - <em>Number</em> - エントリのID。</li></ul> <p><strong>返り値</strong></p> <ul><li><strong>list</strong> - <em>Array</em> - 配列の各要素には、要求されたエントリの変更レコードが含まれています。</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.history&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;contracts&quot;,1]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;list&quot;: [
+                {
+                    &quot;conditions&quot;: &quot;ContractConditions(\&quot;MainCondition\&quot;)&quot;,
+                    &quot;ecosystem&quot;: &quot;1&quot;,
+                    &quot;value&quot;: &quot;// This contract is used to set \&quot;developer\&quot; rights.....&quot;
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-getpagerow"><a href="#ibax-getpagerow" class="header-anchor">#</a> <strong>ibax.getPageRow</strong> </h3> <p>エコシステムページデータテーブルのフィールドで、現在のエントリを取得します。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><strong>name</strong> - <em>String</em> - テーブル内のエントリの名前を指定します。</li></ul> <p><strong>返り値</strong></p> <ul><li><strong>id</strong> - <em>Number</em> - エントリのID。</li> <li><strong>name</strong> - <em>String</em> - エントリの名前。</li> <li><strong>value</strong> - <em>String</em> - コンテンツ。</li> <li><strong>menu</strong> - <em>String</em> - ディレクトリ。</li> <li><strong>nodesCount</strong> - <em>Number</em> - ページが検証するノードの数。</li> <li><strong>app_id</strong> - <em>Number</em> - アプリケーションID。</li> <li><strong>conditions</strong> - <em>String</em> - パラメーターを変更する権限。</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getPageRow&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;default_page&quot;]}' http://127.0.0.1:7079
+
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;default_page&quot;,
+            &quot;value&quot;: &quot;If(#account_id# == #guest_account#){\n    Include(@1apps_description)\n}.Else{\n    Include(@1profile)\n}&quot;,
+            &quot;menu&quot;: &quot;default_menu&quot;,
+            &quot;nodesCount&quot;: 1,
+            &quot;app_id&quot;: 1,
+            &quot;conditions&quot;: &quot;ContractConditions(\&quot;@1DeveloperCondition\&quot;)&quot;
+        }
+    }
+</code></pre></div><h3 id="ibax-getmenurow"><a href="#ibax-getmenurow" class="header-anchor">#</a> <strong>ibax.getMenuRow</strong> </h3> <p>エコシステムメニューデータテーブルのフィールドで、現在のエントリを取得します。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><strong>name</strong> - <em>String</em> - テーブル内のエントリの名前を指定します。</li></ul> <p><strong>返り値</strong></p> <ul><li><strong>id</strong> - <em>Number</em> - エントリのID。</li> <li><strong>name</strong> - <em>String</em> - エントリの名前。</li> <li><strong>title</strong> - <em>String</em> - タイトル。</li> <li><strong>value</strong> - <em>String</em> - コンテンツ。</li> <li><strong>conditions</strong> - <em>String</em> - パラメーターを変更する権限。</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getMenuRow&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;default_menu&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;default_menu&quot;,
+            &quot;title&quot;: &quot;default&quot;,
+            &quot;value&quot;: &quot;\nMenuItem.....&quot;,
+            &quot;conditions&quot;: &quot;ContractConditions(\&quot;@1DeveloperCondition\&quot;)&quot;
+        }
+    }
+</code></pre></div><h3 id="ibax-getsnippetrow"><a href="#ibax-getsnippetrow" class="header-anchor">#</a> <strong>ibax.getSnippetRow</strong> </h3> <p>エコシステムスニペットデータテーブルのフィールドから、現在のエントリを取得します。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><strong>name</strong> - <em>String</em> - テーブル内のエントリの名前を指定します。</li></ul> <p><strong>返り値</strong></p> <ul><li><strong>id</strong> - <em>Number</em> - エントリのID。</li> <li><strong>name</strong> - <em>String</em> - エントリの名前。</li> <li><strong>value</strong> - <em>String</em> - コンテンツ。</li> <li><strong>conditions</strong> - <em>String</em> - パラメーターを変更する権限。</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getSnippetRow&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;welcome&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;id&quot;: 12,
+            &quot;name&quot;: &quot;welcome&quot;,
+            &quot;value&quot;: &quot;Div(content-wrapper)....&quot;,
+            &quot;conditions&quot;: &quot;ContractConditions(\&quot;@1DeveloperCondition\&quot;)&quot;
+        }
+    }
+</code></pre></div><h3 id="ibax-getappcontent"><a href="#ibax-getappcontent" class="header-anchor">#</a> <strong>ibax.getAppContent</strong> </h3> <p>アプリケーションに関連する情報（ページ、スニペット、メニューなど）を取得します。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><strong>id</strong> - <em>Number</em> - アプリケーションID</li></ul> <p><strong>返り値</strong></p> <ul><li><p><strong>snippets</strong> - <em>Array</em> - コードスニペット情報の配列</p> <ul><li><strong>id</strong> - <em>Number</em> - ID</li> <li><strong>name</strong> - <em>String</em> - コードスニペット名</li></ul></li> <li><p><strong>pages</strong> - <em>Array</em> - ページ情報の配列</p> <ul><li><strong>id</strong> - <em>Number</em> - ID</li> <li><strong>name</strong> - <em>String</em> - ページ名</li></ul></li> <li><p><strong>contracts</strong> - <em>Array</em> - コントラクト情報の配列</p> <ul><li><strong>id</strong> - <em>Number</em> - ID</li> <li><strong>name</strong> - <em>String</em> - コントラクト名</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getAppContent&quot;,&quot;id&quot;:1,&quot;params&quot;:[1]}' http://127.0.0.1:7079
+    
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;snippets&quot;: [ //if not app snippets is null array,example:[]
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;developer_link&quot;
+                },
+                {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;export_info&quot;
+                }
+            ],
+            &quot;pages&quot;: [  //if not app pages is null array,example:[]
+                {
+                    &quot;id&quot;: 6,
+                    &quot;name&quot;: &quot;menus_list&quot;
+                },
+                {
+                    &quot;id&quot;: 7,
+                    &quot;name&quot;: &quot;params_edit&quot;
+                }
+            ],
+            &quot;contracts&quot;: [  //if not app contracts is null array,example:[]
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;MainCondition&quot;
+                },
+                {
+                    &quot;id&quot;: 33,
+                    &quot;name&quot;: &quot;NodeOwnerCondition&quot;
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-getmember"><a href="#ibax-getmember" class="header-anchor">#</a> <strong>ibax.getMember</strong> </h3> <p>メンバー情報を取得します。</p> <p><strong>パラメーター</strong></p> <ul><li><strong>account</strong> - <em>String</em> - メンバー情報</li> <li><strong>ecosystemId</strong> - <em>Number</em> - エコシステムID</li></ul> <p><strong>返り値</strong></p> <ul><li><strong>id</strong> - <em>Number</em> - メンバーID</li> <li><strong>member_name</strong> - <em>String</em> - 名前</li> <li><strong>image_id</strong> - <em>Number</em> - アバターのID</li> <li><strong>member_info</strong> - <em>String</em> - 自己紹介</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getMember&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;1497-2036-4953-3607-1121&quot;,1]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;id&quot;: 14,
+            &quot;member_name&quot;: &quot;som&quot;,
+            &quot;image_id&quot;: 5,           
+            &quot;member_info&quot;: &quot;{\&quot;information\&quot;: \&quot;Everything will be okay in the end. If it's not okay, it's not the end.\&quot;}&quot;
+        }
+    }
+</code></pre></div><h3 id="ibax-getcontracts"><a href="#ibax-getcontracts" class="header-anchor">#</a> <strong>ibax.getContracts</strong> </h3> <p>現在のエコシステムのコントラクトのリストを取得します。オフセットとエントリ数を設定することができます。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><strong>offset</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> オフセット。デフォルトは0です。</li> <li><strong>limit</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> エントリ数。デフォルトは25です。</li></ul> <p><strong>返り値</strong></p> <ul><li><p><strong>count</strong> - <em>Number</em> - エントリの総数。</p></li> <li><p><strong>list</strong> - <em>Array</em> - 配列の各要素には、次のパラメータが含まれます：</p> <ul><li><strong>id</strong> - <em>String</em> - コントラクトID。</li> <li><strong>name</strong> - <em>String</em> - コントラクトの名前。</li> <li><strong>value</strong> - <em>String</em> - コントラクトの内容。</li> <li><strong>wallet_id</strong> - <em>String</em> - コントラクトがバインドされているアカウントのアドレス。</li> <li><strong>address</strong> - <em>String</em> - コントラクトにバインドされたウォレットのアドレス <code>XXXX-...-XXXX</code>。</li> <li><strong>ecosystem_id</strong> - <em>String</em> - コントラクトが所属するエコシステムのID。</li> <li><strong>app_id</strong> - <em>String</em> - コントラクトが所属するアプリケーションのID。</li> <li><strong>conditions</strong> - <em>String</em> - コントラクトの権限を変更します。</li> <li><strong>token_id</strong> - <em>String</em> - コントラクトの支払いに使用されるパスのエコシステムID。</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getContracts&quot;,&quot;id&quot;:1,&quot;params&quot;:[0,1]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;count&quot;: 293,
+            &quot;list&quot;: [
+                {
+                    &quot;address&quot;: &quot;0000-0000-0000-0000-0000&quot;,
+                    &quot;app_id&quot;: &quot;1&quot;,
+                    &quot;conditions&quot;: &quot;ContractConditions(\&quot;@1DeveloperCondition\&quot;)&quot;,
+                    &quot;ecosystem_id&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;1&quot;,
+                    &quot;name&quot;: &quot;DeveloperCondition&quot;,
+                    &quot;token_id&quot;: &quot;1&quot;,
+                    &quot;value&quot;: &quot;// This contract is used to ...&quot;,
+                    &quot;wallet_id&quot;: &quot;0&quot;
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-getcontractinfo"><a href="#ibax-getcontractinfo" class="header-anchor">#</a> <strong>ibax.getContractInfo</strong> </h3> <p>指定されたコントラクトの情報を返します。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><strong>contractName</strong> - <em>String</em> - コントラクトの名前。形式は <code>@ecosystem_id%%contractName%</code> です。例：@1contractName（指定されたエコシステムID1のcontractNameコントラクト）またはcontractName（現在のエコシステムのcontractNameコントラクト）。</li></ul> <p><strong>返り値</strong></p> <ul><li><strong>id</strong> - <em>Number</em> - VM内のコントラクトID。</li> <li><strong>name</strong> - <em>String</em> - エコシステムIDを含むコントラクト名 <code>@1MainCondition</code>。</li> <li><strong>state</strong> - <em>Number</em> - コントラクトが所属するエコシステムのID。</li> <li><strong>walletid</strong> - <em>String</em> - コントラクトがバインドされているアカウントのアドレス。</li> <li><strong>tokenid</strong> - <em>String</em> - コントラクトの支払いに使用されるパスのエコシステムID。</li> <li><strong>address</strong> - <em>String</em> - コントラクトにバインドされたウォレットのアドレス <code>XXXX-...-XXXX</code>。</li> <li><strong>tableid</strong> - <em>String</em> - コントラクトが配置されている<em>contracts</em>テーブルのエントリのID。</li> <li><strong>fields</strong> - <em>Array</em> - コントラクトの<strong>data</strong>セクションの各パラメータの構造情報が含まれる配列：
+<ul><li><strong>name</strong> - <em>String</em> - パラメータの名前。</li> <li><strong>type</strong> - <em>String</em> - パラメータの型。</li> <li><strong>optional</strong> - <em>Bool</em> - パラメータのオプション。<code>true</code> はオプションパラメータを意味し、<code>false</code> は必須パラメータを意味します。</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getContractInfo&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;@1TokensSend&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;id&quot;: 5098,
+            &quot;state&quot;: 1,
+            &quot;tableid&quot;: &quot;98&quot;,
+            &quot;walletid&quot;: &quot;0&quot;,
+            &quot;tokenid&quot;: &quot;1&quot;,
+            &quot;address&quot;: &quot;0000-0000-0000-0000-0000&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Amount&quot;,
+                    &quot;type&quot;: &quot;money&quot;,
+                    &quot;optional&quot;: false
+                },
+                {
+                    &quot;name&quot;: &quot;Recipient&quot;,
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;optional&quot;: true
+                },
+                {
+                    &quot;name&quot;: &quot;iName&quot;,
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;optional&quot;: true
+                },
+                {
+                    &quot;name&quot;: &quot;Comment&quot;,
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;optional&quot;: true
+                },
+                {
+                    &quot;name&quot;: &quot;Ecosystem&quot;,
+                    &quot;type&quot;: &quot;int&quot;,
+                    &quot;optional&quot;: true
+                }
+            ],
+            &quot;name&quot;: &quot;@1TokensSend&quot;
+        }
+    }
+</code></pre></div><h3 id="ibax-sendtx"><a href="#ibax-sendtx" class="header-anchor">#</a> <strong>ibax.sendTx</strong> </h3> <p>パラメーターでトランザクションを受け取り、それらをトランザクションキューに追加し、リクエストが正常に実行された場合はトランザクションのハッシュを返します。このハッシュはブロック内の対応するトランザクションを指し示し、エラーレスポンスの場合にはエラーテキストメッセージに含まれます。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><em>Object</em> - トランザクションデータオブジェクト
+<ul><li><strong>tx_key</strong> - <em>String</em> - トランザクションの内容です。このパラメーターは任意の名前を指定でき、複数のトランザクションを受け取ることができます。</li></ul></li></ul> <p><strong>返り値</strong></p> <ul><li><strong>hashes</strong> - <em>Array</em> - トランザクションハッシュの配列：
+<ul><li><strong>tx1</strong> - <em>String</em> - トランザクション1のハッシュ。</li> <li><strong>txN</strong> - <em>String</em> - トランザクションNのハッシュ。</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.sendTx&quot;,&quot;id&quot;:1,&quot;params&quot;:[{&quot;tx1&quot;:...,&quot;txN&quot;:...}]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;hashes&quot;:[
+                {&quot;hash1&quot;:&quot;hash1&quot;},
+                {&quot;hashN&quot;:&quot;hashN&quot;}
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-txstatus"><a href="#ibax-txstatus" class="header-anchor">#</a> <strong>ibax.txStatus</strong> </h3> <p>指定されたトランザクションハッシュのブロックIDとエラーメッセージを取得します。ブロックIDとエラーテキストメッセージの返り値がnullの場合、トランザクションはまだブロックに含まれていません。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><strong>hashes</strong> - <em>String</em> - トランザクションハッシュ。<code>,</code>で区切って指定します。</li></ul> <p><strong>返り値</strong></p> <ul><li><strong>hash</strong> - <em>Object</em> - トランザクションハッシュ
+<ul><li><p><strong>blockid</strong> - <em>String</em> - トランザクションが正常に実行された場合、ブロックIDが返されます。</p> <p>トランザクションの実行が失敗した場合、<em>blockid</em> は <code>0</code> となり、トランザクションの実行エラーがペナルティにより処理された場合は、対応するブロックIDが返されます。</p></li> <li><p><strong>result</strong> - <em>String</em> - トランザクションの結果を <strong>$result</strong> 変数で返します。</p></li> <li><p><strong>errmsg</strong> - <em>Object</em> - <a href="#omitempty">Omitempty</a> トランザクションの実行に失敗した場合、エラーテキストメッセージが返されます。</p> <ul><li><strong>type</strong> - <em>String</em> - エラーのタイプ</li> <li><strong>error</strong> - <em>String</em> - エラーメッセージ</li></ul></li> <li><p><strong>penalty</strong> - <em>Number</em> - トランザクションの実行が失敗した場合、(0: ペナルティなし、1: ペナルティあり)</p></li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.txStatus&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;cf46ef1ce7ecfcf48ccf209577fb8a2130426b71adc3a3855aff7f68d114fca9,4a458232de2ab2a3f5361da68e409b925c775346d14139263a69c0e8ecf0166b&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 2,
+        &quot;result&quot;: {
+            &quot;4a458232de2ab2a3f5361da68e409b925c775346d14139263a69c0e8ecf0166b&quot;: {
+                &quot;blockid&quot;: &quot;793&quot;,
+                &quot;result&quot;: &quot;&quot;,
+                &quot;penalty&quot;: 0
+            },
+            &quot;cf46ef1ce7ecfcf48ccf209577fb8a2130426b71adc3a3855aff7f68d114fca9&quot;: {
+                &quot;blockid&quot;: &quot;793&quot;,
+                &quot;errmsg&quot;: {
+                    &quot;type&quot;: &quot;warning&quot;,
+                    &quot;error&quot;: &quot;platform ecosystem can not be burning Tokens&quot;
+                },
+                &quot;result&quot;: &quot;&quot;,
+                &quot;penalty&quot;: 1
+            }
+        }
+    }
+</code></pre></div><h3 id="ibax-txinfo"><a href="#ibax-txinfo" class="header-anchor">#</a> <strong>ibax.txInfo</strong> </h3> <p>指定されたハッシュに関するトランザクションの情報を返します。ブロックIDと確認数を含みます。オプションのパラメータが指定された場合、コントラクト名と関連するパラメータも返すことができます。</p> <p><strong>パラメーター</strong></p> <ul><li><strong>hash</strong> - <em>String</em> - トランザクションのハッシュ。</li> <li><strong>contractinfo</strong> - <em>Bool</em> <a href="#omitempty">Omitempty</a> - コントラクトの詳細パラメータ識別子。このトランザクションに関連するコントラクトの詳細を取得します。デフォルトは <code>false</code> です。</li></ul> <p><strong>返り値</strong></p> <ul><li><p><strong>blockid</strong> - <em>Number</em> - トランザクションが含まれるブロックのID。
+値が <code>0</code> の場合、このハッシュに対するトランザクションは見つかりません。
+トランザクションが現在のノードで発生した場合、<a href="#ibax-txstatus">ibax.txStatus</a> を通じて取得できます。</p></li> <li><p><strong>confirm</strong> - <em>Number</em> - このブロック <em>blockid</em> のノードの確認数。</p></li> <li><p><strong>data</strong> - <em>Object</em> - <code>contractinfo=true</code> が指定された場合、コントラクトの詳細情報が返されます。指定されていない場合は null が返されます。</p> <ul><li><strong>block_id</strong> - <em>Number</em> - ブロックの高さ</li> <li><strong>block_hash</strong> - <em>String</em> - ブロックのハッシュ</li> <li><strong>address</strong> - <em>String</em> - トランザクションの作成アドレス</li> <li><strong>ecosystem</strong> - <em>String</em> - トランザクションの送信エコシステムID</li> <li><strong>hash</strong> - <em>String</em> - トランザクションのハッシュ</li> <li><strong>expedite</strong> - <em>String</em> - 速達料金、利用できない場合は &quot;&quot;</li> <li><strong>contract_name</strong> - <em>String</em> - コントラクト名</li> <li><strong>params</strong> - <em>Object</em> - コントラクトのパラメータ、<a href="#ibax-getcontractinfo">ibax.getContractInfo</a> を介してコントラクトフィールドをクエリできます</li> <li><strong>created_at</strong> - <em>Number</em> - トランザクションの作成日時</li> <li><strong>size</strong> - <em>String</em> - トランザクションのサイズ、単位: B;KiB;MiB;GiB;TiB</li> <li><strong>status</strong> - <em>String</em> - ステータス (0: 成功 1: ペナルティ)</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.txInfo&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;020d8c004b3a0c00a6bfffa36e2746509295e5ea6dbb14e7cd6098c3d906bb58&quot;,true]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;blockid&quot;: &quot;796&quot;,
+            &quot;confirm&quot;: 0,
+            &quot;data&quot;: {
+                &quot;block_id&quot;: 796,
+                &quot;block_hash&quot;: &quot;bccbc3cf47b49bee5fb7321810884db49b73f5114b0a6fcd234dd3fdf9c22ef4&quot;,
+                &quot;address&quot;: &quot;0666-7782-2939-7671-3160&quot;,
+                &quot;ecosystem&quot;: 2,
+                &quot;hash&quot;: &quot;020d8c004b3a0c00a6bfffa36e2746509295e5ea6dbb14e7cd6098c3d906bb58&quot;,
+                &quot;expedite&quot;: &quot;1&quot;,
+                &quot;contract_name&quot;: &quot;@1TokensSend&quot;,
+                &quot;params&quot;: {
+                    &quot;Amount&quot;: &quot;1000000000000&quot;,
+                    &quot;Recipient&quot;: &quot;0666-7782-2939-7671-3160&quot;
+                },
+                &quot;created_at&quot;: 1678774455841,
+                &quot;size&quot;: &quot;213.00B&quot;,
+                &quot;status&quot;: 1
+            }
+        }
+    }
+</code></pre></div><h3 id="ibax-txinfomultiple"><a href="#ibax-txinfomultiple" class="header-anchor">#</a> <strong>ibax.txInfoMultiple</strong> </h3> <p>指定されたハッシュリストに関するトランザクションに関する情報を返します。</p> <p><strong>パラメーター</strong></p> <ul><li><p><strong>hashes</strong> - <em>Array</em> - トランザクションのハッシュのリスト。</p></li> <li><p><strong>contractinfo</strong> - <em>Bool</em> <a href="#omitempty">Omitempty</a> - コントラクトの詳細パラメータ識別子。このトランザクションに関連するコントラクトの詳細を取得します。デフォルトは <code>false</code> です。</p></li></ul> <p><strong>返り値</strong></p> <ul><li><strong>results</strong> - <em>Array</em> - トランザクションのハッシュをキー、トランザクションの詳細を値とするデータ辞書。
+<ul><li><strong>hash</strong> - <em>String</em> - トランザクションのハッシュ。
+<ul><li><strong>blockid</strong> - <em>Number</em> - トランザクションが含まれるブロックのID。値が <code>0</code> の場合、そのハッシュに対するトランザクションは見つかりません。</li> <li><strong>confirm</strong> - <em>Number</em> - このブロック <em>blockid</em> の確認数。</li> <li><strong>data</strong> - <em>Object</em> - <code>contentinfo=true</code> が指定された場合、このパラメータにはコントラクトの詳細が返されます。指定されていない場合は null です。
+<ul><li><strong>block_id</strong>- <em>Number</em> - ブロックの高さ</li> <li><strong>block_hash</strong> - <em>String</em> - ブロックのハッシュ</li> <li><strong>address</strong> - <em>String</em> - トランザクションの作成アドレス</li> <li><strong>ecosystem</strong> - <em>String</em> - トランザクションの送信エコシステムID</li> <li><strong>hash</strong> - <em>String</em> - トランザクションのハッシュ</li> <li><strong>expedite</strong> - <em>String</em> - 速達料金、利用できない場合は &quot;&quot;</li> <li><strong>contract_name</strong> - <em>String</em> - コントラクト名</li> <li><strong>params</strong> - <em>Object</em> - コントラクトのパラメータ、<a href="#ibax-getcontractinfo">ibax.getContractInfo</a> を介してコントラクトフィールドをクエリできます</li> <li><strong>created_at</strong> - <em>Number</em> - トランザクションの作成日時</li> <li><strong>size</strong> - <em>String</em> - トランザクションのサイズ、単位: B;KiB;MiB;GiB;TiB</li> <li><strong>status</strong> - <em>String</em> - ステータス (0:成功 1:ペナルティ)</li></ul></li></ul></li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getPageValidatorsCount&quot;,&quot;id&quot;:1,&quot;params&quot;:[[&quot;1875b4fc02a8bf5ccf0d3fbce83011dd6711d8d325c7d731ac659b8beffc0284&quot;,&quot;4a458232de2ab2a3f5361da68e409b925c775346d14139263a69c0e8ecf0166b&quot;],true]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;results&quot;: {
+                &quot;1875b4fc02a8bf5ccf0d3fbce83011dd6711d8d325c7d731ac659b8beffc0284&quot;: {
+                    &quot;blockid&quot;: 0,
+                    &quot;confirm&quot;: 0,
+                    &quot;data&quot;: null
+                },
+                &quot;4a458232de2ab2a3f5361da68e409b925c775346d14139263a69c0e8ecf0166b&quot;: {
+                    &quot;blockid&quot;: 793,
+                    &quot;confirm&quot;: 0,
+                    &quot;data&quot;: {
+                        &quot;block_id&quot;: 793,
+                        &quot;block_hash&quot;: &quot;ef3b2f2e18662e0b8bba136a209e30c5aae76d9a82e0b21209786f62fe5676e4&quot;,
+                        &quot;address&quot;: &quot;0666-0819-7161-7879-5186&quot;,
+                        &quot;ecosystem&quot;: 1,
+                        &quot;hash&quot;: &quot;4a458232de2ab2a3f5361da68e409b925c775346d14139263a69c0e8ecf0166b&quot;,
+                        &quot;expedite&quot;: &quot;1&quot;,
+                        &quot;contract_name&quot;: &quot;@1TokensSend&quot;,
+                        &quot;params&quot;: {
+                            &quot;Amount&quot;: &quot;200&quot;,
+                            &quot;Comment&quot;: &quot;Hello Dear&quot;,
+                            &quot;Recipient&quot;: &quot;1196-2490-5275-7101-3496&quot;
+                        },
+                        &quot;created_at&quot;: 1678765099072,
+                        &quot;size&quot;: &quot;297.00B&quot;,
+                        &quot;status&quot;: 0
+                    }
+                }
+            }
+        }
+    }
+</code></pre></div><h3 id="ibax-getpagevalidatorscount"><a href="#ibax-getpagevalidatorscount" class="header-anchor">#</a> <strong>ibax.getPageValidatorsCount</strong> </h3> <p>指定されたページに対して検証する必要があるノードの数を返します。</p> <p><strong>パラメーター</strong></p> <ul><li><strong>name</strong> - <em>String</em> - ページ名。<code>@ecosystem_id%%%page_name%</code> の形式で指定します。例: @1params_list (エコロジー1のページ名 params_list) や params_list (現在のエコロジーのページ名 params_list)。</li></ul> <p><strong>返り値</strong></p> <ul><li><strong>validate_count</strong> - <em>Number</em> - ページに対して検証する必要があるノードの数を指定します。</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getPageValidatorsCount&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;@1params_list&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;validate_count&quot;: 1
+        }
+    }
+</code></pre></div><h3 id="ibax-getpage"><a href="#ibax-getpage" class="header-anchor">#</a> <strong>ibax.getPage</strong> </h3> <p>指定されたページ名のコードJSONオブジェクトのツリーを取得します。このツリーはテンプレートエンジンによる処理の結果です。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><p><strong>name</strong> - <em>String</em> - ページ名。<code>@ecosystem_id%%page_name%</code> の形式で指定します。例: <code>@1main_page</code>。</p> <p>エコシステムIDが指定されていない場合、現在のエコロジーのページを検索します。例: <code>main_page</code></p></li></ul> <p><strong>返り値</strong></p> <ul><li><strong>menu</strong> - <em>String</em> - ページが所属するメニューの名前です。</li> <li><strong>menutree</strong> - <em>Array</em> - ページのメニューのJSONオブジェクトツリーです。</li> <li><strong>tree</strong> - <em>Array</em> - ページのJSONオブジェクトツリーです。</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getPage&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;@1params_list&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;menu&quot;: &quot;developer_menu&quot;,
+            &quot;menutree&quot;: [
+                {
+                    &quot;tag&quot;: &quot;menuitem&quot;,
+                    &quot;attr&quot;: {
+                        &quot;icon&quot;: &quot;icon-cloud-upload&quot;,
+                        &quot;page&quot;: &quot;@1import_upload&quot;,
+                        &quot;title&quot;: &quot;Import&quot;
+                    }
+                }
+                ...
+            ],
+            &quot;tree&quot;: [
+                {
+                    ....
+                }
+                ...
+            ],
+            &quot;nodesCount&quot;: 1
+        }
+    }
+</code></pre></div><h3 id="ibax-getmenu"><a href="#ibax-getmenu" class="header-anchor">#</a> <strong>ibax.getMenu</strong> </h3> <p>指定されたメニュー名のコードJSONオブジェクトツリーを取得します。このメニューはテンプレートエンジンによる処理の結果です。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><strong>name</strong> - <em>String</em> -
+<blockquote><p>メニュー名は <code>@ecosystem_id%%%menu_name%</code> の形式で指定します。例： <code>@1main_menu</code>。
+エコシステムIDを指定しない場合は、デフォルトで現在のエコロジーのメニューが見つかります。例： <code>main_menu</code></p></blockquote></li></ul> <p><strong>返り値</strong></p> <ul><li><p><strong>title</strong> - <em>String</em> - メニューのタイトル。</p></li> <li><p><strong>tree</strong> - <em>Array</em> - メニューのJSONオブジェクトツリー。</p></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getMenu&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;@1default_menu&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;title&quot;: &quot;default&quot;,
+            &quot;tree&quot;: [
+                {
+                    &quot;tag&quot;: &quot;menuitem&quot;,
+                    &quot;attr&quot;: {
+                        &quot;icon&quot;: &quot;icon-cloud-upload&quot;,
+                        &quot;page&quot;: &quot;@1import_upload&quot;,
+                        &quot;title&quot;: &quot;Import&quot;
+                    }
+                }
+                ...
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-getsource"><a href="#ibax-getsource" class="header-anchor">#</a> <strong>ibax.getSource</strong> </h3> <p>指定されたページ名のコード化されたJSONオブジェクトツリーを返します。いかなる関数も実行せず、データを受信しません。返されるJSONオブジェクトツリーは、ページのテンプレートに対応し、ビジュアルページデザイナーで使用することができます。ページが見つからない場合は、404エラーが返されます。</p> <p><a href="#authorization">Authorization</a></p> <p><strong>パラメーター</strong></p> <ul><li><strong>name</strong> - <em>String</em> -
+ページ名は <code>@ecosystem_id%%%page_name%</code> の形式で指定します。例： <code>@1main_page</code>。
+エコシステムIDを持たない場合は、デフォルトで現在のエコロジーのページが見つかります。例： <code>main_page</code></li></ul> <p><strong>返り値</strong></p> <ul><li><strong>tree</strong> - <em>Array</em> - ページのJSONオブジェクトツリー。</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Bearer {$Token}&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getSource&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;@1params_list&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;tree&quot;: [
+                {
+                    &quot;tag&quot;: &quot;dbfind&quot;,
+                    &quot;attr&quot;: {
+                        &quot;name&quot;: &quot;@1applications&quot;
+                    },
+                    &quot;tail&quot;: [
+                        {
+                            &quot;tag&quot;: &quot;where&quot;,
+                            &quot;attr&quot;: {
+                                &quot;where&quot;: &quot;{\&quot;ecosystem\&quot;: \&quot;#ecosystem_id#\&quot;, \&quot;name\&quot;: \&quot;System\&quot;}&quot;
+                            }
+                        }
+                        ...
+                    ]
+                },
+                {
+                    &quot;tag&quot;: &quot;setvar&quot;,
+                    &quot;attr&quot;: {
+                        &quot;name&quot;: &quot;role_developer_id&quot;,
+                        &quot;value&quot;: &quot;AppParam(Ecosystem: #ecosystem_id#, App: #application_id#, Name: role_developer)&quot;
+                    }
+                },
+                {
+                    &quot;tag&quot;: &quot;dbfind&quot;,
+                    &quot;attr&quot;: {
+                        &quot;name&quot;: &quot;@1roles_participants&quot;
+                    },
+                    &quot;tail&quot;: [
+                        {
+                            &quot;tag&quot;: &quot;where&quot;,
+                            &quot;attr&quot;: {
+                                &quot;where&quot;: &quot;{\&quot;ecosystem\&quot;: \&quot;#ecosystem_id#\&quot;, \&quot;$and\&quot;: [{\&quot;role-&gt;id\&quot;: {\&quot;$in\&quot;: [#role_developer_id#]}}, {\&quot;role-&gt;id\&quot;: \&quot;#role_id#\&quot;}], \&quot;member-&gt;account\&quot;: \&quot;#account_id#\&quot;, \&quot;deleted\&quot;: 0}&quot;
+                            }
+                        }
+                        ...
+                    ]
+                },
+                {
+                    &quot;tag&quot;: &quot;if&quot;,
+                    &quot;attr&quot;: {
+                        &quot;condition&quot;: &quot;#developer_access_id#&gt;0&quot;
+                    },
+                    &quot;children&quot;: [
+                        {
+                            &quot;tag&quot;: &quot;setvar&quot;,
+                            &quot;attr&quot;: {
+                                &quot;name&quot;: &quot;this_page&quot;,
+                                &quot;value&quot;: &quot;@1params_list&quot;
+                            }
+                        }
+                        ...
+                    ],
+                    &quot;tail&quot;: [
+                        {
+                            &quot;tag&quot;: &quot;else&quot;,
+                            &quot;children&quot;: [
+                                {
+                                    &quot;tag&quot;: &quot;settitle&quot;,
+                                    &quot;attr&quot;: {
+                                        &quot;title&quot;: &quot;$@1ecosystem_parameters$&quot;
+                                    }
+                                }
+                                ...
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="ibax-getpagehash"><a href="#ibax-getpagehash" class="header-anchor">#</a> <strong>ibax.getPageHash</strong> </h3> <p>指定されたページ名のSHA256ハッシュを返します。ページが見つからない場合は404エラーが返されます。</p> <p>他のノードにリクエストを行う際に正しいハッシュを受け取るためには、<em>ecosystem,key_id,role_id</em> パラメーターも渡す必要があります。他のエコシステムからページを受け取るには、ページ名の前にエコシステムIDを付ける必要があります。例：<code>@2mypage</code>。</p> <p><strong>パラメーター</strong></p> <ul><li><p><strong>name</strong> - <em>String</em> - エコシステムIDを含むページの名前。形式は <code>@ecosystem_id%%%page_name%</code> です。例： <code>@1main_page</code>。エコシステムIDを指定することもできます。</p></li> <li><p><strong>ecosystem</strong> - <em>Number</em> - <a href="#omitempty">Omitempty</a> エコシステムID。</p></li> <li><p><em>Object</em> - <a href="#omitempty">Omitempty</a> 指定されたページオブジェクトを取得する場合</p> <ul><li><strong>key_id</strong> - <em>String</em> - アカウントアドレス。</li> <li><strong>role_id</strong> - <em>String</em> - ロールID。</li></ul></li></ul> <p><strong>返り値</strong></p> <ul><li><em>Object</em> -
+<ul><li><strong>hash</strong> - <em>String</em> - 16進数のハッシュ値。</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getPageHash&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;@1params_list&quot;,0,{&quot;role_id&quot;:&quot;1&quot;,&quot;key_id&quot;:&quot;-6484253546138538120&quot;}]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;hash&quot;: &quot;fc5ed3b5e879dd5521dfb792e815019bd8411851e850e75a3590d71e950a0465&quot;
+        }
+    }
+</code></pre></div><h3 id="ibax-getcontent"><a href="#ibax-getcontent" class="header-anchor">#</a> <strong>ibax.getContent</strong> </h3> <p>オプションのパラメーター <strong>source</strong> が <code>true</code> と指定されている場合、<strong>template</strong> パラメーターのページコードからJSONオブジェクトの数を返します。このJSONオブジェクトツリーは、関数を実行せずにデータを受信しないものです。このJSONオブジェクトツリーは、ビジュアルページデザイナーで使用することができます。</p> <p><strong>パラメーター</strong></p> <ul><li><em>Object</em> <ul><li><strong>template</strong> - <em>String</em> - ページコード。</li> <li><strong>source</strong> - <em>Bool</em> - <code>true</code> と指定されている場合、JSONオブジェクトツリーは関数を実行せずにデータを受信しません。</li></ul></li></ul> <p><strong>返り値</strong></p> <ul><li><strong>tree</strong> - <em>Object</em> - JSONオブジェクトツリー。</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getContent&quot;,&quot;id&quot;:1,&quot;params&quot;:[{&quot;template&quot;,&quot;...&quot;source&quot;:true}]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;tree&quot;: {
+                &quot;type&quot;:&quot;......&quot;, 
+                &quot;children&quot;: [
+                    {...},
+                    {...}
+                ]
+            }
+        }
+    }
+      
+</code></pre></div><h3 id="ibax-getblockinfo"><a href="#ibax-getblockinfo" class="header-anchor">#</a> <strong>ibax.getBlockInfo</strong> </h3> <p>指定されたブロックIDに関する情報を返します。</p> <p><strong>パラメーター</strong></p> <ul><li><strong>id</strong> - <em>Number</em> - ブロックの高さ。</li></ul> <p><strong>返り値</strong></p> <ul><li><strong>hash</strong> - <em>String</em> - ブロックのハッシュ値。</li> <li><strong>key_id</strong> - <em>Number</em> - ブロックに署名したアカウントのアドレス。</li> <li><strong>time</strong> - <em>Number</em> - ブロックの生成タイムスタンプ。</li> <li><strong>tx_count</strong> - <em>Number</em> - ブロック内のトランザクションの総数。</li> <li><strong>rollbacks_hash</strong> - <em>String</em> - ブロックのロールバックハッシュ。</li> <li><strong>node_position</strong> - <em>Number</em> - ブロックのエンドポイントリスト内での位置。</li> <li><strong>consensus_mode</strong> - <em>Number</em> - コンセンサスモード（1: クリエーターマネージメントモード、2: DAOガバナンスモード）。</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getBlockInfo&quot;,&quot;id&quot;:1,&quot;params&quot;:[12]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;hash&quot;: &quot;Hl+/VvYFFu4iq4zLrRDGHBhm7DM7llEAfEJyaX2Q3is=&quot;,
+            &quot;key_id&quot;: 6667782293976713160,
+            &quot;time&quot;: 1677134955,
+            &quot;tx_count&quot;: 1,
+            &quot;rollbacks_hash&quot;: &quot;o37QAighKMb8WqbEHAqCQb5bOfMvOqV0WoTaN631q74=&quot;,
+            &quot;node_position&quot;: 0,
+            &quot;consensus_mode&quot;: 1
+        }
+    }
+</code></pre></div><h3 id="ibax-getconfig"><a href="#ibax-getconfig" class="header-anchor">#</a> <strong>ibax.getConfig</strong> </h3> <p>centrifugoのホストアドレスとポートを取得します。</p> <p><strong>パラメーター</strong></p> <ul><li><p><strong>option</strong> - <em>String</em> - 設定項目</p> <ol><li>&quot;centrifugo&quot; - メッセージングサービス</li></ol></li></ul> <p><strong>返り値</strong></p> <ul><li><strong>centrifugo</strong> - <em>String</em> - <a href="#omitempty">Omitempty</a> centrifugoのホストアドレスとポート。結果の形式は <code>http://address:port</code> となります。例: <code>http://127.0.0.1:8100</code>。</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;ibax.getConfig&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;centrifugo&quot;]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;centrifugo&quot;:&quot;http://127.0.0.1:8100&quot;
+        }
+    }
+</code></pre></div><h3 id="net-getnetwork"><a href="#net-getnetwork" class="header-anchor">#</a> <strong>net.getNetwork</strong> </h3> <p>ノードの情報を取得します。</p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>返り値</strong></p> <ul><li><strong>network_id</strong> - <em>String</em> - ネットワークの識別子。</li> <li><strong>centrifugo_url</strong> - <em>String</em> - centrifugoメッセージサービスのアドレス。</li> <li><strong>test</strong> - <em>Bool</em> - テストチェーンであるかどうか。</li> <li><strong>private</strong> - <em>Bool</em> - チェーンがプライベートであるかどうか。</li> <li><strong>honor_nodes</strong> - <em>Object</em> - honorノードのリスト。
+<ul><li><strong>tcp_address</strong> - <em>String</em> - TCPアドレス。</li> <li><strong>api_address</strong> - <em>String</em> - APIアドレス。</li> <li><strong>public_key</strong> - <em>String</em> - ノードの公開鍵。</li> <li><strong>unban_time</strong> - <em>String</em> - アンバンの時間。</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;net.getNetwork&quot;,&quot;id&quot;:1,&quot;params&quot;:[]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;network_id&quot;: &quot;1&quot;,
+            &quot;centrifugo_url&quot;: &quot;127.0.0.1&quot;,
+            &quot;test&quot;: false,
+            &quot;private&quot;: false,
+            &quot;honor_nodes&quot;: [
+                {
+                    &quot;tcp_address&quot;: &quot;127.0.0.1:7078&quot;,
+                    &quot;api_address&quot;: &quot;http://127.0.0.1:7078&quot;,
+                    &quot;public_key&quot;: &quot;049a41b24862f8db61ee66fb206094baa57bfeac7ea786d63662a964d144eb85d1a0e230928d56f46dd61eefac7640b6aa2883b2445c7b2adc0e581f983ff0aedb&quot;,
+                    &quot;unban_time&quot;: &quot;-62135596800&quot;
+                }
+            ]
+        }
+    }
+</code></pre></div><h3 id="net-status"><a href="#net-status" class="header-anchor">#</a> <strong>net.status</strong> </h3> <p>現在のノードのステータスを取得します。</p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>返り値</strong></p> <ul><li><strong>status</strong> - <em>String</em> - ノードのステータス
+<ul><li>&quot;node server status is running&quot; - ノードが稼働中です</li> <li>&quot;node server is updating&quot; - ノードが更新中です</li> <li>&quot;node server is stopped&quot; - ノードが停止中です</li></ul></li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;net.status&quot;,&quot;id&quot;:1,&quot;params&quot;:[]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: &quot;node server status is running&quot;
+    }
+</code></pre></div><h3 id="rpc-modules"><a href="#rpc-modules" class="header-anchor">#</a> <strong>rpc.modules</strong> </h3> <p>現在登録されているJSON-RPCインターフェースを取得します。</p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>返り値</strong></p> <ul><li><em>Array</em> - JSON-RPCインターフェースの配列</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;rpc.modules&quot;,&quot;id&quot;:1,&quot;params&quot;:[]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: [
+            &quot;net.getNetwork&quot;,
+            &quot;ibax.getAppContent&quot;,
+            &quot;ibax.honorNodesCount&quot;,
+            &quot;ibax.maxBlockId&quot;,
+            &quot;ibax.detailedBlock&quot;,
+            &quot;ibax.getConfig&quot;,
+            &quot;ibax.getTableCount&quot;,
+            &quot;ibax.getMenu&quot;
+        ]
+    }
+</code></pre></div><h3 id="admin-startjsonrpc"><a href="#admin-startjsonrpc" class="header-anchor">#</a> <strong>admin.startJsonRpc</strong> </h3> <p>JSON-RPCの名前空間サービスの切り替えに使用できます。</p> <p><strong>パラメーター</strong> <strong>methods</strong> - <em>String</em> - JSON-RPCモジュール、デフォルト値: &quot;ibax,net&quot;</p> <p><strong>返り値</strong></p> <ul><li><em>bool</em> - 実行のステータス</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;admin.startJsonRpc&quot;,&quot;id&quot;:1,&quot;params&quot;:[&quot;ibax,net,admin&quot;]}' http://127.0.0.1:8385
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: true
+    }
+</code></pre></div><h3 id="admin-stopjsonrpc"><a href="#admin-stopjsonrpc" class="header-anchor">#</a> <strong>admin.stopJsonRpc</strong> </h3> <p>JSON-RPCサービスを閉じることができます。</p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>返り値</strong></p> <ul><li><em>bool</em> - 実行のステータス</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;admin.stopJsonRpc&quot;,&quot;id&quot;:1,&quot;params&quot;:[]}' http://127.0.0.1:8385
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: true
+    }
+</code></pre></div><h3 id="debug-getnodebanstat"><a href="#debug-getnodebanstat" class="header-anchor">#</a> <strong>debug.getNodeBanStat</strong> </h3> <p>ノードの無効化状態を取得します。</p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>返り値</strong> <strong>node_position</strong> - <em>Number</em> - ノードの添字
+<strong>status</strong> - <em>Bool</em> - 無効化の状態。<code>true</code>は無効化されていることを示し、<code>false</code>は無効化されていないことを示します。</p> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;debug.getNodeBanStat&quot;,&quot;id&quot;:1,&quot;params&quot;:[]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: [
+            {
+                &quot;node_position&quot;: 0,
+                &quot;status&quot;: true
+            }
+        ]
+    }
+</code></pre></div><h3 id="debug-getmemstat"><a href="#debug-getmemstat" class="header-anchor">#</a> <strong>debug.getMemStat</strong> </h3> <p>現在のノードのメモリ使用状況を取得します。</p> <p><strong>パラメーター</strong></p> <ul><li>なし</li></ul> <p><strong>返り値</strong></p> <ul><li><strong>alloc</strong> - <em>Number</em> - リクエストされたバイト数およびまだ使用中のバイト数</li> <li><strong>sys</strong> - <em>Number</em> - システムから取得されたバイト数</li></ul> <p><strong>例</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>    //Request
+    curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;debug.getMemStat&quot;,&quot;id&quot;:1,&quot;params&quot;:[]}' http://127.0.0.1:7079
+
+    //Response
+    {
+        &quot;jsonrpc&quot;: &quot;2.0&quot;,
+        &quot;id&quot;: 1,
+        &quot;result&quot;: {
+            &quot;alloc&quot;: 11537432,
+            &quot;sys&quot;: 35329248
+        }
+    }
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/ja/reference/json-rpc.md" target="_blank" rel="noopener noreferrer">GitHubでこのページを編集する</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">最終更新:</span> <span class="time">2023/7/6 18:59:03</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/ja/reference/desync_monitor.html" class="prev">
+        同期モニタリングツール 
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d049f7ab.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/96.5f31f271.js" defer></script>
+  </body>
+</html>

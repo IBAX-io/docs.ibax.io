@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RESTful API v2 </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/it/reference/api2.html#error-response-handling" class="sidebar-link">Error response handling </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/it/reference/api2.html#error-list" class="sidebar-link">Error list </a></li></ul></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#request-type" class="sidebar-link">Request Type </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#authentication-interface" class="sidebar-link">Authentication Interface </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/it/reference/api2.html#getuid" class="sidebar-link">getuid </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#login" class="sidebar-link">login </a></li></ul></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#server-side-command-interface" class="sidebar-link">Server Side command interface </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/it/reference/api2.html#version" class="sidebar-link">version </a></li></ul></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#data-request-function-interface" class="sidebar-link">Data Request Function Interface </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/it/reference/api2.html#balance" class="sidebar-link">balance </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#blocks" class="sidebar-link">blocks </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#detailed-blocks" class="sidebar-link">detailed_blocks </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#data-id-data-hash" class="sidebar-link">/data/{id}/data/{hash} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#data-table-id-column-hash" class="sidebar-link">/data/{table}/id/{column}/{hash} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#keyinfo" class="sidebar-link">keyinfo </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#wallethistory" class="sidebar-link">walletHistory </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#listwhere-name" class="sidebar-link">listWhere/{name} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#nodelistwhere-name" class="sidebar-link">nodelistWhere/{name} </a></li></ul></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#get-metrics-interface" class="sidebar-link">Get Metrics Interface </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/it/reference/api2.html#metrics-keys" class="sidebar-link">metrics/keys </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#metrics-blocks" class="sidebar-link">metrics/blocks </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#metrics-transactions" class="sidebar-link">metrics/transactions </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#metrics-ecosystems" class="sidebar-link">metrics/ecosystems </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#metrics-honornodes" class="sidebar-link">metrics/honornodes </a></li></ul></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#ecosystem-interface" class="sidebar-link">Ecosystem Interface </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/it/reference/api2.html#ecosystemname" class="sidebar-link">ecosystemname </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#appparams-appid" class="sidebar-link">appparams/{appid} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#appparam-appid-name" class="sidebar-link">appparam/{appid}/{name} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#ecosystemparams" class="sidebar-link">ecosystemparams </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#ecosystemparam-name" class="sidebar-link">ecosystemparam/{name} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#tables-limit-offset" class="sidebar-link">tables/\[?limit=\... &amp;offset=\... \] </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#table-name" class="sidebar-link">table/{name} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#list-name-limit-offset-columns" class="sidebar-link">list/{name}\[?limit=\... &amp;offset=\... &amp;columns=\... \] </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#sections-limit-offset-lang" class="sidebar-link">sections\[?limit=\... &amp;offset=\... &amp;lang=\] </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#row-name-id-columns" class="sidebar-link">row/{name}/{id}\[?columns=\] </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#row-name-colorn-id" class="sidebar-link">row/{name}/{column}/{id} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#systemparams" class="sidebar-link">systemparams </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#history-name-id" class="sidebar-link">history/{name}/{id} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#interface-page-menu-snippet-name" class="sidebar-link">interface/{page|menu|snippet}/{name} </a></li></ul></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#contract-function-interface" class="sidebar-link">Contract Function Interface </a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/it/reference/api2.html#contracts-limit-offset" class="sidebar-link">contracts\[?limit=\... &amp;offset=\... \] </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#contract-name" class="sidebar-link">contract/{name} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#sendtx" class="sidebar-link">sendTX </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#txstatus" class="sidebar-link">txstatus </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#txinfo-hash" class="sidebar-link">txinfo/{hash} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#txinfomultiple" class="sidebar-link">txinfoMultiple </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#page-validators-count-name" class="sidebar-link">/page/validators_count/{name} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#content-menu-page-name" class="sidebar-link">content/menu\|page/{name} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#content-source-name" class="sidebar-link">content/source/{name} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#content-hash-name" class="sidebar-link">content/hash/{name} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#content" class="sidebar-link">content </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#maxblockid" class="sidebar-link">maxblockid </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#block-id" class="sidebar-link">block/{id} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#avatar-ecosystem-member" class="sidebar-link">avatar/{ecosystem}/{member} </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#config-centrifugo" class="sidebar-link">config/centrifugo </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#updnotificator" class="sidebar-link">updnotificator </a></li><li class="sidebar-sub-header"><a href="/it/reference/api2.html#special-instructions" class="sidebar-link">Special instructions </a></li></ul></li></ul></li><li><a href="/it/reference/platform-parameters.html" class="sidebar-link">Platform Parameters </a></li><li><a href="/it/reference/backend-config.html" class="sidebar-link">Server Configuration File </a></li><li><a href="/it/reference/desync_monitor.html" class="sidebar-link">Synchronized Monitoring Tool </a></li><li><a href="/it/reference/json-rpc.html" class="sidebar-link">JSON-RPC Application Programming Interface </a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="restful-api-v2"><a href="#restful-api-v2" class="header-anchor">#</a> RESTful API v2 </h1> <p>Weaver
+All functions provided, including authentication, ecosystem data reception, error handling, database table manipulation, page and contract execution are available through
+IBAX Blockchain Platform's REST API is available.</p> <p>By using the REST API, developers can access any of the platform's features without using Weaver.</p> <p>API command calls are executed by addressing <code>/api/v2/command/[param]</code>, where <code>command</code>
+is the command name and <code>param</code> is the additional parameter. The request parameters must be specified using the
+<code>Content-Type: x-www-form-urlencoded</code>
+The format is sent. The server response result is in JSON format.</p> <ul><li><a href="#error-response-handling">Error response handling</a> <ul><li><a href="#error-list">Error list</a></li></ul></li> <li><a href="#request-type">Request Type</a></li> <li><a href="#authentication-interface">Authentication Interface</a> <ul><li><a href="#getuid">getuid</a></li> <li><a href="#login">login</a></li></ul></li> <li><a href="#server-side-command-interface">Server Side command interface</a> <ul><li><a href="#version">version</a></li></ul></li> <li><a href="#data-request-function-interface">Data Request Function Interface</a> <ul><li><a href="#balance">balance</a></li> <li><a href="#blocks">blocks</a></li> <li><a href="#detailed-blocks">detailed_blocks</a></li> <li><a href="#data-id-data-hash">/data/{id}/data/{hash}</a></li> <li><a href="#data-table-id-column-hash">/data/{table}/id/{column}/{hash}</a></li> <li><a href="#keyinfo">keyinfo</a></li> <li><a href="#wallethistory">walletHistory</a></li> <li><a href="#listwhere-name">listWhere/{name}</a></li> <li><a href="#nodelistwhere-name">nodelistWhere/{name}</a></li></ul></li> <li><a href="#get-metrics-interface">Get Metrics Interface</a> <ul><li><a href="#metrics-keys">metrics/keys</a></li> <li><a href="#metrics-blocks">metrics/blocks</a></li> <li><a href="#metrics-transactions">metrics/transactions</a></li> <li><a href="#metrics-ecosystems">metrics/ecosystems</a></li> <li><a href="#metrics-honornodes">metrics/honornodes</a></li></ul></li> <li><a href="#ecosystem-interface">Ecosystem Interface</a> <ul><li><a href="#ecosystemname">ecosystemname</a></li> <li><a href="#appparams-appid">appparams/{appID}</a></li> <li><a href="#appparam-appid-name">appparam/{appid}/{name}</a></li> <li><a href="#ecosystemparams">ecosystemparams</a></li> <li><a href="#ecosystemparam-name">ecosystemparam/{name}</a></li> <li><a href="#tables-limit-offset">tables/[?limit=... &amp;offset=... ]</a></li> <li><a href="#table-name">table/{name}</a></li> <li><a href="#list-name-limit-offset-columns">list/{name}[?limit=... &amp;offset=... &amp;columns=... ]</a></li> <li><a href="#sections-limit-offset-lang">sections[?limit=... &amp;offset=... &amp;lang=]</a></li> <li><a href="#row-name-id-columns">row/{name}/{id}[?columns=]</a></li> <li><a href="#row-name-column-id">row/{name}/{column}/{id}</a></li> <li><a href="#systemparams">systemparams</a></li> <li><a href="#history-name-id">history/{name}/{id}</a></li> <li><a href="#interface-page-menu-snippet-name">interface/{page|menu|snippet}/{name}</a></li></ul></li> <li><a href="#contract-function-interface">Contract Function Interface</a> <ul><li><a href="#contracts-limit-offset">contracts[?limit=... &amp;offset=... ]</a></li> <li><a href="#contract-name">contract/{name}</a></li> <li><a href="#sendtx">sendTX</a></li> <li><a href="#txstatus">txstatus</a></li> <li><a href="#txinfo-hash">txinfo/{hash}</a></li> <li><a href="#txinfomultiple">txinfoMultiple</a></li> <li><a href="#page-validators-count-name">/page/validators_count/{name}</a></li> <li><a href="#content-menu-page-name">content/menu|page/{name}</a></li> <li><a href="#content-source-name">content/source/{name}</a></li> <li><a href="#content-hash-name">content/hash/{name}</a></li> <li><a href="#content">content</a></li> <li><a href="#maxblockid">maxblockid</a></li> <li><a href="#block-id">block/{id}</a></li> <li><a href="#avatar-ecosystem-member">avatar/{ecosystem}/{member}</a></li> <li><a href="#config-centrifugo">config/centrifugo</a></li> <li><a href="#updnotificator">updnotificator</a></li></ul></li></ul> <h2 id="error-response-handling"><a href="#error-response-handling" class="header-anchor">#</a> Error response handling </h2> <p>Return status in case of successful request execution
+<code>200</code>. If an error occurs, in addition to the error status, a JSON object with the following fields will be returned.</p> <ul><li><p><strong>error</strong></p> <blockquote><p>Error identifier.</p></blockquote></li> <li><p><strong>msg</strong></p> <blockquote><p>Error text message.</p></blockquote></li> <li><p><strong>params</strong></p> <blockquote><p>An array of additional parameters that can be placed in the error message.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>400 (Bad request)
+Content-Type: application/json
+{
+    &quot;err&quot;: &quot;E_INVALIDWALLET&quot;,
+    &quot;msg&quot;: &quot;Wallet 1234-5678-9012-3444-3488 is not valid&quot;,
+    &quot;params&quot;: [&quot;1234-5678-9012-3444-3488&quot;]
+}
+</code></pre></div><h3 id="error-list"><a href="#error-list" class="header-anchor">#</a> Error list </h3> <blockquote><p><code>E_CONTRACT</code></p></blockquote> <div class="language- extra-class"><pre><code>No `%s` contract exists
+</code></pre></div><blockquote><p><code>E_DBNIL</code></p></blockquote> <div class="language- extra-class"><pre><code>Database is empty
+</code></pre></div><blockquote><p><code>E_DELETEDKEY</code></p></blockquote> <div class="language- extra-class"><pre><code>Account address is frozen
+</code></pre></div><blockquote><p><code>E_ECOSYSTEM</code></p></blockquote> <div class="language- extra-class"><pre><code>Ecosystem `%d` does not exist
+</code></pre></div><blockquote><p><code>E_EMPTYPUBLIC</code></p></blockquote> <div class="language- extra-class"><pre><code>Invalid account public key
+</code></pre></div><blockquote><p><code>E_KEYNOTFOUND</code></p></blockquote> <div class="language- extra-class"><pre><code>Account address not found
+</code></pre></div><blockquote><p><code>E_HASHWRONG</code></p></blockquote> <div class="language- extra-class"><pre><code>Incorrect hash
+</code></pre></div><blockquote><p><code>E_HASHNOTFOUND</code></p></blockquote> <div class="language- extra-class"><pre><code>Hash not found
+</code></pre></div><blockquote><p><code>E_HEAVYPAGE</code></p></blockquote> <div class="language- extra-class"><pre><code>Too much page loading
+</code></pre></div><blockquote><p><code>E_INVALIDWALLET</code></p></blockquote> <div class="language- extra-class"><pre><code>Wallet address `%s` Invalid
+</code></pre></div><blockquote><p><code>E_LIMITTXSIZE</code></p></blockquote> <div class="language- extra-class"><pre><code>The transaction size has exceeded the limit
+</code></pre></div><blockquote><p><code>E_NOTFOUND</code></p></blockquote> <div class="language- extra-class"><pre><code>Page or menu content not found
+</code></pre></div><blockquote><p><code>E_PARAMNOTFOUND</code></p></blockquote> <div class="language- extra-class"><pre><code>Parameters not found
+</code></pre></div><blockquote><p><code>E_PERMISSION</code></p></blockquote> <div class="language- extra-class"><pre><code>No permission
+</code></pre></div><blockquote><p><code>E_QUERY</code></p></blockquote> <div class="language- extra-class"><pre><code>Database query error
+</code></pre></div><blockquote><p><code>E_RECOVERED</code></p></blockquote> <div class="language- extra-class"><pre><code>API panic error occurs.
+
+If a panic error occurs, an error is returned.
+
+This error means that you have encountered a bug that needs to be found and fixed.
+</code></pre></div><blockquote><p><code>E_SERVER</code></p></blockquote> <div class="language- extra-class"><pre><code>Server error.
+
+Return if there is an error in the golang library function. The \*msg\* field contains the error text message.
+
+**E_SERVER** may appear in response to any command Error. 
+If it occurs due to an incorrect input parameter, it can be changed to a related error. In another case, this error reports an invalid operation or incorrect system configuration, which requires a more detailed investigation report.
+</code></pre></div><blockquote><p><code>E_SIGNATURE</code></p></blockquote> <div class="language- extra-class"><pre><code>Incorrect signature
+</code></pre></div><blockquote><p><code>E_STATELOGIN</code></p></blockquote> <div class="language- extra-class"><pre><code>`%s` is not a member of the ecosystem `%s`
+</code></pre></div><blockquote><p><code>E_TABLENOTFOUND</code></p></blockquote> <div class="language- extra-class"><pre><code>Data sheet `%s` not found
+</code></pre></div><blockquote><p><code>E_TOKENEXPIRED</code></p></blockquote> <div class="language- extra-class"><pre><code>The session has expired `%s`
+</code></pre></div><blockquote><p><code>E_UNAUTHORIZED</code></p></blockquote> <div class="language- extra-class"><pre><code>Unauthorized.
+
+In case no login is performed or the session expires, 
+except for `getuid, login` Any command other than **E_UNAUTHORIZED** returns an error.
+</code></pre></div><blockquote><p><code>E_UNKNOWNUID</code></p></blockquote> <div class="language- extra-class"><pre><code>Unknown UID
+</code></pre></div><blockquote><p><code>E_UPDATING</code></p></blockquote> <div class="language- extra-class"><pre><code>Nodes are updating the blockchain
+</code></pre></div><blockquote><p><code>E_STOPPING</code></p></blockquote> <div class="language- extra-class"><pre><code>Node is stopped
+</code></pre></div><blockquote><p><code>E_NOTIMPLEMENTED</code></p></blockquote> <div class="language- extra-class"><pre><code>Not yet achieved
+</code></pre></div><blockquote><p><code>E_BANNED</code></p></blockquote> <div class="language- extra-class"><pre><code>This account address is prohibited in `%s`
+</code></pre></div><blockquote><p><code>E_CHECKROLE</code></p></blockquote> <div class="language- extra-class"><pre><code>Access denied
+
+CLB Unavailable Interface
+</code></pre></div><hr> <blockquote><p>Interface requests for which the CLB node is not available.</p></blockquote> <ul><li>metrics</li> <li>txinfo</li> <li>txinfoMultiple</li> <li>appparam</li> <li>appparams</li> <li>appcontent</li> <li>history</li> <li>balance</li> <li>block</li> <li>maxblockid</li> <li>blocks</li> <li>detailed_blocks</li> <li>ecosystemparams</li> <li>systemparams</li> <li>ecosystems</li> <li>ecosystemparam</li> <li>ecosystemname</li> <li>walletHistory</li> <li>tx_record</li></ul> <h2 id="request-type"><a href="#request-type" class="header-anchor">#</a> Request Type </h2> <p><strong>Uniform use</strong></p> <ul><li>application/x-www-form-urlencoded</li></ul> <h2 id="authentication-interface"><a href="#authentication-interface" class="header-anchor">#</a> Authentication Interface </h2> <p><a href="https://jwt.io" target="_blank" rel="noopener noreferrer">JWT token<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+Used for authentication. The JWT token must be placed in each request header after it is received: <code>Authorization: Bearer TOKEN_HERE</code>.</p> <h3 id="getuid"><a href="#getuid" class="header-anchor">#</a> getuid </h3> <p><strong>GET</strong>/ returns a unique value, signs it with the private key, and then uses
+The <a href="#login">login</a> command sends it back to the server.</p> <p>Generate a temporary JWT token that needs to be passed to <strong>Authorization</strong> when calling <strong>login</strong>.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/getuid
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>uid</code></p> <blockquote><p>Signature number.</p></blockquote></li> <li><p><code>token</code></p> <blockquote><p>The temporary token passed during login.</p> <p>The life cycle of a temporary token is 5 seconds.</p></blockquote></li> <li><p><code>network_id</code></p> <blockquote><p>Server identifier.</p></blockquote></li> <li><p><code>cryptoer</code></p> <blockquote><p>Elliptic curve algorithm.</p></blockquote></li> <li><p><code>hasher</code></p> <blockquote><p>hash algorithm.</p></blockquote></li></ul> <p><strong>Response Example 1</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+```json
+{
+    &quot;uid&quot;: &quot;4999317241855959593&quot;,
+    &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9........I7LY6XX4IP12En6nr8UPklE9U4qicqg3K9KEzGq_8zE&quot;,
+    &quot;network_id&quot;: &quot;4717243765193692211&quot;
+}
+</code></pre></div><p>In the case that no authorization is required (the request contains <strong>Authorization</strong>), the following message will be returned:</p> <ul><li><p><code>expire</code></p> <blockquote><p>Expiration time.</p></blockquote></li> <li><p><code>ecosystem</code></p> <blockquote><p>Ecosystem ID.</p></blockquote></li> <li><p><code>key_id</code></p> <blockquote><p>Account address.</p></blockquote></li> <li><p><code>address</code></p> <blockquote><p>Wallet address <code>XXXX-XXXX-..... -XXXX</code>.</p></blockquote></li> <li><p><code>network_id</code></p> <blockquote><p>Server identifier.</p></blockquote></li></ul> <p><strong>Response Example 2</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;expire&quot;: &quot;2159h59m49.4310543s&quot;,
+    &quot;ecosystem_id&quot;: &quot;1&quot;,
+    &quot;key_id&quot;: &quot;-654321&quot;,
+    &quot;address&quot;: &quot;1196-...... -3496&quot;,
+    &quot;network_id&quot;: &quot;1&quot;
+}
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_SERVER</em></p> <h3 id="login"><a href="#login" class="header-anchor">#</a> login </h3> <p><strong>POST</strong>/ User authentication.</p> <blockquote><p><strong>getuid</strong> should be called first
+command in order to receive the unique value and sign it. getuid's temporary JWT token needs to be passed in the request header.</p> <p>If the request is successful, the token received in the response is contained in <strong>Authorization</strong>.</p></blockquote> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/login
+</code></pre></div><ul><li><p><code>ecosystem</code></p> <blockquote><p>Ecosystem ID.</p> <p>If not specified, defaults to the first ecosystem ID.</p></blockquote></li> <li><p><code>expire</code></p> <blockquote><p>Lifecycle of the JWT token, in seconds, default is 28800.</p></blockquote></li> <li><p><code>pubkey</code></p> <blockquote><p>Hexadecimal account public key.</p></blockquote></li> <li><p><code>key_id</code></p> <blockquote><p>Account address <code>XXXX-... -XXXX</code>.</p> <p>Use this parameter if the public key is already stored in the blockchain. It cannot be used with <em>pubkey</em>
+parameters are used together.</p></blockquote></li> <li><p><code>signature</code></p> <blockquote><p>The uid signature received via getuid.</p></blockquote></li></ul> <p><strong>Response</strong></p> <ul><li><p><code>token</code></p> <blockquote><p>JWT token.</p></blockquote></li> <li><p><code>ecosystem_id</code></p> <blockquote><p>Ecosystem ID.</p></blockquote></li> <li><p><code>key_id</code></p> <blockquote><p>Account Address ID</p></blockquote></li> <li><p><code>account</code></p> <blockquote><p>Wallet address <code>XXXX-XXXX-..... -XXXX</code>.</p></blockquote></li> <li><p><code>notify_key</code></p> <blockquote><p>Notification ID.</p></blockquote></li> <li><p><code>isnode</code></p> <blockquote><p>Whether the account address is the owner of the node. Values: <code>true,false</code>.</p></blockquote></li> <li><p><code>isowner</code></p> <blockquote><p>Whether the account address is the creator of the ecosystem. Values: <code>true,false</code>.</p></blockquote></li> <li><p><code>clb</code></p> <blockquote><p>Whether the logged-in ecosystem is CLB. Values: <code>true,false</code>.</p></blockquote></li> <li><p><code>roles</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Role list: <code>[{Role ID,Role Name}]</code>.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.....30l665h3v7lH85rs5jgk0&quot;,
+    &quot;ecosystem_id&quot;: &quot;1&quot;,
+    &quot;key_id&quot;: &quot;-54321&quot;,
+    &quot;account&quot;: &quot;1285-... -7743-4282&quot;,
+    &quot;notify_key&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..... _JTFfheD0K4CfMbvVNpOJVMNDPx25zIDGir9g3ZZM0w&quot;,
+    &quot;timestamp&quot;: &quot;1451309883&quot;,
+    &quot;roles&quot;: [
+        {
+            &quot;role_id&quot;: 1,
+            &quot;role_name&quot;: &quot;Developer&quot;
+        }
+    ]
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_SERVER, E_UNKNOWNUID, E_SIGNATURE, E_STATELOGIN, E_EMPTYPUBLIC</em></p> <h2 id="server-side-command-interface"><a href="#server-side-command-interface" class="header-anchor">#</a> Server Side command interface </h2> <h3 id="version"><a href="#version" class="header-anchor">#</a> version </h3> <p><strong>GET</strong>/ Returns the current server version.</p> <p>This request does not require login authorization.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/version
+</code></pre></div><p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+&quot;1.3.0 branch.main commit.790..757 time.2021-08-23-08:20:19(UTC)&quot;
+</code></pre></div><h2 id="data-request-function-interface"><a href="#data-request-function-interface" class="header-anchor">#</a> Data Request Function Interface </h2> <h3 id="balance"><a href="#balance" class="header-anchor">#</a> balance </h3> <p><strong>GET</strong>/ Requests the balance of the account address in the current ecosystem.</p> <p>This request does not require login authorization.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/balance/{wallet}
+</code></pre></div><ul><li><p><code>wallet</code></p> <blockquote><p>Address identifier, can be specified in any format <code>int64, uint64, XXXX-... -XXXX</code>. Look up the address in the ecosystem where the user is currently logged in.</p></blockquote></li> <li><p><code>ecosystem</code> <a href="#omitempty">Omitempty</a> Default ecosystem 1</p> <blockquote><p>Ecosystem id.</p></blockquote></li></ul> <p><strong>Response</strong></p> <ul><li><p><code>amount</code></p> <blockquote><p>The minimum unit of contract account balance.</p></blockquote></li> <li><p><code>money</code></p> <blockquote><p>Account balance.</p></blockquote></li> <li><p><code>total</code></p> <blockquote><p>Account balance.</p></blockquote></li> <li><p><code>utxo</code></p> <blockquote><p>UTXO account balance.</p></blockquote></li> <li><p><em>digits</em></p> <blockquote><p>precision.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;amount&quot;: &quot;877450000000000&quot;,
+    &quot;money&quot;: &quot;877.45&quot;,
+    &quot;total&quot;: &quot;877450000000000&quot;,
+    &quot;digits&quot;: 6,
+    &quot;utxo&quot;: &quot;0&quot;
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_SERVER, E_INVALIDWALLET</em></p> <h3 id="blocks"><a href="#blocks" class="header-anchor">#</a> blocks </h3> <p><strong>GET</strong>/ Returns a list containing additional information related to the transactions in each block.</p> <p>This request does not require login authorization.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET 
+/api/v2/blocks
+</code></pre></div><ul><li><p><code>block_id</code> <a href="#omitempty">Omitempty</a> Default is 0</p> <blockquote><p>The height of the starting block to query.</p></blockquote></li> <li><p><code>count</code> <a href="#omitempty">Omitempty</a> (default is 25, max request 1000)</p> <blockquote><p>Number of blocks.</p></blockquote></li></ul> <p><strong>Response</strong></p> <ul><li><p><code>Block height</code></p> <blockquote><p>List of transactions in the block and additional information for each transaction.</p> <blockquote><ul><li><code>hash</code></li></ul> <blockquote><p>Trading Hash.</p></blockquote> <ul><li><code>contract_name</code></li></ul> <blockquote><p>Contract name.</p></blockquote> <ul><li><code>params</code></li></ul> <blockquote><p>Array of contract parameters.</p></blockquote> <ul><li><code>key_id</code></li></ul> <blockquote><p>For the first block, it is the account address of the first block that signed the transaction.</p></blockquote> <blockquote><p>For all other blocks, is the address of the account that signed the transaction.</p></blockquote></blockquote></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{ &quot;1&quot;:
+    [{&quot;hash&quot;: &quot;O1LhrjKznrYa0z5n5cej6p5Y1j5E9v/oV27VPRJmfgo=&quot;,
+    &quot;contract_name&quot;:&quot;&quot;,
+    &quot;params&quot;:null,
+    &quot;key_id&quot;:-118432674655542910}]
+}
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_SERVER, E_NOTFOUND</em></p> <h3 id="detailed-blocks"><a href="#detailed-blocks" class="header-anchor">#</a> detailed_blocks </h3> <p><strong>GET</strong>/ Returns a list containing detailed additional information about the transactions in each block.</p> <p>This request does not require login authorization.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/detailed_blocks
+</code></pre></div><ul><li><p><code>block_id</code> <a href="#omitempty">Omitempty</a> Default is 0</p> <blockquote><p>The height of the starting block to query.</p></blockquote></li> <li><p><code>count</code> <a href="#omitempty">Omitempty</a> (default is 25, max request 1000)</p> <blockquote><p>Number of blocks.</p></blockquote></li></ul> <p><strong>Response</strong></p> <ul><li><code>Block height</code> The block height.
+<ul><li><code>blockhead</code> The block header contains the following fields.
+<ul><li><code>block_id</code> Block height.</li> <li><code>time</code> Block generation timestamp.</li> <li><code>key_id</code> Sign the account address for the block.</li> <li><code>node_position</code> The location of the node that generated the block in the honor node list.</li> <li><code>version</code> Block structure version.</li></ul></li> <li><code>hash</code> Block Hashing.</li> <li><code>node_position</code> the location of the node that generated the block in the honor node list.</li> <li><code>key_id</code> The address of the account that signed the block.</li> <li><code>time</code> Block generation timestamp.</li> <li><code>tx_count</code> Number of transactions within the block.</li> <li><code>size</code> The block size.</li> <li><code>rollback_hash</code> Block rollback hash.</li> <li><code>merkle_root</code> The block deals with the Merkle tree.</li> <li><code>bin_data</code> Serialization of the block header, all transactions within the block, the previous block hash, and the private key of the node that generated the block.</li> <li><code>transactions</code> List of transactions in the block and additional information about each transaction.
+<ul><li><code>hash</code> Trading hash.</li> <li><code>contract_name</code> Contract name.</li> <li><code>params</code> Contract parameters.</li> <li><code>key_id</code> Sign the account address for this transaction.</li> <li><code>time</code> Transaction generation timestamp.</li> <li><code>type</code> Transaction type.</li> <li><code>size</code> Trade Size.</li></ul></li></ul></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{&quot;1&quot;:
+    {&quot;header&quot;:
+        {&quot;block_id&quot;:1,
+        &quot;time&quot;:1551069320,
+        &quot;ecosystem_id&quot;:0,
+        &quot;key_id&quot;:-118432674655542910,
+        &quot;node_position&quot;:0,
+        &quot;version&quot;:1},
+    &quot;hash&quot;:&quot;3NxhvswmpGvRdw8HdkrniI5Mx/q14Z4d5hwGKMp6KHI=&quot;,
+    &quot;ecosystem_id&quot;:0,
+    &quot;node_position&quot;:0,
+    &quot;key_id&quot;:-118432674655542910,
+    &quot;time&quot;:1551069320,
+    &quot;tx_count&quot;:1,
+    &quot;size&quot;: &quot;1.69KiB&quot;,
+    &quot;rollbacks_hash&quot;:&quot;I2JHugpbdMNxBdNW1Uc0XnbiXFtzB74yD9AK5YI5i/k=&quot;,
+    &quot;mrkl_root&quot;:&quot;MTZiMjY2NGJjOWY3MDAyODlhYjkyMDVhZDQwNDgxNzkxMjY1MWJjNjczNDkyZjk5MWI2Y2JkMjAxNTIwYjUyYg==&quot;,
+    &quot;bin_data&quot;:null,
+    &quot;sys_update&quot;:false,
+    &quot;gen_block&quot;:false,
+    &quot;stop_count&quot;:0,
+    &quot;transactions&quot;:[
+        {
+            &quot;hash&quot;:&quot;O1LhrjKznrYa0z5n5cej6p5Y1j5E9v/oV27VPRJmfgo=&quot;,
+            &quot;contract_name&quot;:&quot;&quot;,
+            &quot;params&quot;:null,
+            &quot;key_id&quot;:0,
+            &quot;time&quot;:0,
+            &quot;type&quot;:0,
+            &quot;size&quot;: &quot;300.00B&quot;
+        }
+    ]}
+}
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_SERVER, E_NOTFOUND</em></p> <h3 id="data-id-data-hash"><a href="#data-id-data-hash" class="header-anchor">#</a> /data/{id}/data/{hash} </h3> <p><strong>GET</strong>/ If the specified hash matching the data in the binary watch, field, and records, this request will return the data. Otherwise, return error.</p> <p>The request does not require login authorization.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/data/{id}/data/{hash}
+</code></pre></div><ul><li><p><code>id</code></p> <blockquote><p>Record ID.</p></blockquote></li> <li><p><code>hash</code></p> <blockquote><p>Hash request data.</p></blockquote></li></ul> <p><strong>Response</strong></p> <blockquote><p>Binary data</p></blockquote> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: *
+{
+    &quot;name&quot;: &quot;NFT Miner&quot;,
+    &quot;conditions&quot;: &quot;ContractConditions(\&quot;@1DeveloperCondition\&quot;)&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;Type&quot;: &quot;contracts&quot;,
+            &quot;Name&quot;: &quot;NewNFTMiner&quot;,
+        },
+        ...
+    ]
+}
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_SERVER, E_NOTFOUND, E_HASHWRONG</em></p> <h3 id="data-table-id-column-hash"><a href="#data-table-id-column-hash" class="header-anchor">#</a> /data/{table}/id/{column}/{hash} </h3> <p><strong>GET</strong>/ If the specified hash matches the data in the specified table, field, and records, the request will return the data. Otherwise, return error.</p> <p>The request does not require login authorization.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/data/{table}/id/{column}/{hash}
+</code></pre></div><ul><li><p><code>table</code></p> <blockquote><p>Data table name.</p></blockquote></li> <li><p><code>id</code></p> <blockquote><p>Record ID.</p></blockquote></li> <li><p><code>column</code></p> <blockquote><p>Data table name, only one</p></blockquote></li> <li><p><code>hash</code></p> <blockquote><p>Hash request data.</p></blockquote></li></ul> <p><strong>Response</strong></p> <blockquote><p>Binary data</p></blockquote> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/octet-stream
+Content-Disposition: attachment
+
+SetVar(this_page, @1voting_list).(this_table, @1votings)
+Include(@1pager_header)
+
+SetTitle(&quot;$@1voting_list$&quot;)
+Span(Class: text-muted h5 m0 mb ml-lg, Body: Span(Class: ml-sm, Body: &quot;$@1votings_list_desc$&quot;))
+AddToolButton(Title: $@1templates_list$, Page: @1voting_templates_list, Icon: icon-pin)
+AddToolButton(Title: $@1create$, Page: @1voting_create, Icon: icon-plus).Popup(60, $@1new_voting$)
+
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_SERVER, E_NOTFOUND, E_HASHWRONG</em></p> <h3 id="keyinfo"><a href="#keyinfo" class="header-anchor">#</a> keyinfo </h3> <p><strong>GET</strong>/ Return to a list of ecosystems, which contains the role of registered the specified address.</p> <p>The request does not require login authorization.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/keyinfo/{address}
+</code></pre></div><ul><li><p><code>address</code></p> <blockquote><p>Address identifier, you can specify <code>int64, uint64, xxxx -...-xxxx</code>.</p> <p>This request is query in all ecosystems.</p></blockquote></li></ul> <p><strong>Response</strong></p> <ul><li><p><code>ecosystem</code></p> <blockquote><p>Ecosystem ID.</p></blockquote></li> <li><p><code>name</code></p> <blockquote><p>Ecosystem name.</p></blockquote></li> <li><p><code>roles</code></p> <blockquote><p>Activities with <em>id</em> and <em>name</em> fields.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+[{
+    &quot;ecosystem&quot;:&quot;1&quot;,
+    &quot;name&quot;:&quot;platform ecosystem&quot;,
+    &quot;roles&quot;:[{&quot;id&quot;:&quot;1&quot;,&quot;name&quot;:&quot;Governancer&quot;},{&quot;id&quot;:&quot;2&quot;,&quot;name&quot;:&quot;Developer&quot;}]
+}]
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_SERVER, E_INVALIDWALLET</em></p> <h3 id="wallethistory"><a href="#wallethistory" class="header-anchor">#</a> walletHistory </h3> <p><strong>GET</strong>/ Return to the current account transaction history record, find it according to the ID of the ID</p> <p><a href="#authorization">Authorization</a></p> <p><strong>Request</strong></p> <ul><li><p><code>searchType</code></p> <blockquote><p>Find Type (Income: Turn into Outcom: Turn out all: All, default).</p></blockquote></li> <li><p><code>page</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Find the number of pages, the first page default, min: 1</p></blockquote></li> <li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Credit number, default 20 articles. min: 1, MAX: 500</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/walletHistory?searchType=all&amp;amp;page=1&amp;amp;limit=10
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>total</code></p> <blockquote><p>Total number of entries.</p></blockquote></li> <li><p><code>page</code></p> <blockquote><p>Number of current page.</p></blockquote></li> <li><p><code>limit</code></p> <blockquote><p>Currently find the number of bars.</p></blockquote></li> <li><p><code>list</code> Each element in the array contains the following parameters:</p> <ul><li><code>id</code> Stripe ID.</li> <li><code>sender_id</code> Send key_id</li> <li><code>sender_add</code> Send the account address</li> <li><code>recipient_id</code> Accept key_id</li> <li><code>recipient_add</code> Accept the account address</li> <li><code>amount</code> Transaction amount</li> <li><code>comment</code> Trading remarks</li> <li><code>block_id</code> Block height</li> <li><code>tx_hash</code> Trading hash</li> <li><code>created_at</code> Transaction creation time, millisecond time stamp</li> <li><code>money</code> Transaction amount</li></ul></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;page&quot;: 1,
+    &quot;limit&quot;: 10,
+    &quot;total&quot;: 617,
+    &quot;list&quot;: [
+        {
+            &quot;id&quot;: 650,
+            &quot;sender_id&quot;: 666081971617879...,
+            &quot;sender_add&quot;: &quot;0666-0819-7161-xxxx-5186&quot;,
+            &quot;recipient_id&quot;: 666081971617879...,
+            &quot;recipient_add&quot;: &quot;0666-0819-7161-xxxx-5186&quot;,
+            &quot;amount&quot;: &quot;242250000&quot;,
+            &quot;comment&quot;: &quot;taxes for execution of @1Export contract&quot;,
+            &quot;block_id&quot;: 209,
+            &quot;tx_hash&quot;: &quot;a213bc767d710a223856d83515d53518075b56fb9e9c063bce8a256c20ff0775&quot;,
+            &quot;created_at&quot;: 1666001092090,
+            &quot;money&quot;: &quot;0.00024225&quot;
+        }
+        ...
+    ]
+}  
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_SERVER</em></p> <h3 id="listwhere-name"><a href="#listwhere-name" class="header-anchor">#</a> listWhere/{name} </h3> <p><strong>GET</strong>/ Return to the entry of the data table specified in the current ecosystem. You can specify columns to be returned.</p> <p><a href="#authorization">Authorization</a></p> <p><strong>Request</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Data table name.</p></blockquote></li> <li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Credit number, default 25.</p></blockquote></li> <li><p><code>offset</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Disposal, default to 0.</p></blockquote></li> <li><p><code>order</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Sorting method, default <code>id ASC</code>.</p></blockquote></li> <li><p><code>columns</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>The list of request columns is separated by commas. If it is not specified, all columns will be returned. In all cases, the <code>id</code> column will be returned.</p></blockquote></li> <li><p><code>where</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Query condition</p> <p>Example: If you want to query id&gt; 2 and name = john</p> <p>You can use: where: {&quot;id&quot;: {&quot;$ gt&quot;: 2}, &quot;name&quot;: {&quot;$eq&quot;: &quot;john&quot;}}</p> <p>For details, please refer to [DBFind](../ topics/script.md#dbfind) where syntax</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/listWhere/mytable
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>count</code></p> <blockquote><p>Total number of entries.</p></blockquote></li> <li><p><code>list</code></p> <blockquote><p>Each element in the array contains the following parameters:</p></blockquote> <ul><li><code>id</code> <blockquote><p>Stripe ID.</p></blockquote></li> <li><code>...</code> <blockquote><p>Data tables other columns</p></blockquote></li></ul></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 1,
+    &quot;list&quot;: [
+        {
+            &quot;account&quot;: &quot;xxxx-0819-7161-xxxx-xxxx&quot;,
+            &quot;ecosystem&quot;: &quot;1&quot;,
+            &quot;id&quot;: &quot;12&quot;,
+            &quot;key&quot;: &quot;avatar&quot;,
+            &quot;value&quot;: &quot;{\&quot;binary_id\&quot;: 4}&quot;
+        }
+    ]
+}
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_SERVER</em>,<em>E_TABLENOTFOUND</em></p> <h3 id="nodelistwhere-name"><a href="#nodelistwhere-name" class="header-anchor">#</a> nodelistWhere/{name} </h3> <p><strong>GET</strong>/ Return to the specified data table. You can specify columns to be returned. The type in the data table is <strong>BYTEA</strong> Do hexadecimal encoding processing</p> <p><a href="#authorization">Authorization</a></p> <p><strong>Request</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Data table name.</p></blockquote></li> <li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Credit number, default 25.</p></blockquote></li> <li><p><code>offset</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Disposal, default to 0.</p></blockquote></li> <li><p><code>order</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Sorting method, default <code>id ASC</code>.</p></blockquote></li> <li><p><code>columns</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>The list of request columns is separated by commas. If it is not specified, all columns will be returned. In all cases, the <code>id</code> column will be returned.</p></blockquote></li> <li><p><code>where</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Query condition</p> <p>Example: If you want to query id&gt; 2 and name = john</p> <p>You can use: where: {&quot;id&quot;: {&quot;$ gt&quot;: 2}, &quot;name&quot;: {&quot;$eq&quot;: &quot;john&quot;}}</p> <p>For details, please refer to [DBFind](../ topics/script.md#dbfind) where syntax</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/nodelistWhere/mytable
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>count</code></p> <blockquote><p>Total number of entries.</p></blockquote></li> <li><p><code>list</code></p> <blockquote><p>Each element in the array contains the following parameters:</p></blockquote> <ul><li><code>id</code> <blockquote><p>Stripe ID.</p></blockquote></li> <li><code>...</code> <blockquote><p>Data tables other columns</p></blockquote></li></ul></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 1,
+    &quot;list&quot;: [
+        {
+            &quot;account&quot;: &quot;xxxx-0819-7161-xxxx-xxxx&quot;,
+            &quot;ecosystem&quot;: &quot;1&quot;,
+            &quot;id&quot;: &quot;12&quot;,
+            &quot;key&quot;: &quot;avatar&quot;,
+            &quot;value&quot;: &quot;{\&quot;binary_id\&quot;: 4}&quot;
+        }
+    ]
+}
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_SERVER</em>,<em>E_TABLENOTFOUND</em></p> <h2 id="get-metrics-interface"><a href="#get-metrics-interface" class="header-anchor">#</a> Get Metrics Interface </h2> <h3 id="metrics-keys"><a href="#metrics-keys" class="header-anchor">#</a> metrics/keys </h3> <p><strong>GET</strong>/ Returns the number of ecosystem 1 account addresses.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/metrics/keys
+</code></pre></div><p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 28
+}
+</code></pre></div><h3 id="metrics-blocks"><a href="#metrics-blocks" class="header-anchor">#</a> metrics/blocks </h3> <p><strong>GET</strong>/ Returns the number of blocks.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/metrics/blocks
+</code></pre></div><p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 28
+}
+</code></pre></div><h3 id="metrics-transactions"><a href="#metrics-transactions" class="header-anchor">#</a> metrics/transactions </h3> <p><strong>GET</strong>/ Returns the total number of transactions.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/metrics/transactions
+</code></pre></div><p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 28
+}
+</code></pre></div><h3 id="metrics-ecosystems"><a href="#metrics-ecosystems" class="header-anchor">#</a> metrics/ecosystems </h3> <p><strong>GET</strong>/ Returns the number of ecosystems.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/metrics/ecosystems
+</code></pre></div><p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 28
+}
+</code></pre></div><h3 id="metrics-honornodes"><a href="#metrics-honornodes" class="header-anchor">#</a> metrics/honornodes </h3> <p><strong>GET</strong>/ Returns the number of honor nodes.</p> <p>This request does not require login authorization.</p> <div class="language- extra-class"><pre class="language-text"><code>GET
+/api/v2/metrics/honornodes
+</code></pre></div><p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: 28
+}
+</code></pre></div><h2 id="ecosystem-interface"><a href="#ecosystem-interface" class="header-anchor">#</a> Ecosystem Interface </h2> <h3 id="ecosystemname"><a href="#ecosystemname" class="header-anchor">#</a> ecosystemname </h3> <p><strong>GET</strong>/ Returns the name of the ecosystem by its identifier.</p> <p>This request does not require login authorization.</p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/ecosystemname?id=1
+</code></pre></div><ul><li><p><em>id</em></p> <blockquote><p>Ecosystem ID.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;ecosystem_name&quot;: &quot;platform_ecosystem&quot;
+}
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_PARAMNOTFOUND</em></p> <h3 id="appparams-appid"><a href="#appparams-appid" class="header-anchor">#</a> appparams/{appid} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns a list of application parameters in the current or specified ecosystem.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/appparams/{appid}
+</code></pre></div><ul><li><p><code>appid</code></p> <blockquote><p>Application ID.</p></blockquote></li> <li><p><code>ecosystem</code></p> <blockquote><p>Ecosystem ID; if not specified, the current ecosystem parameter will be returned.</p></blockquote></li> <li><p><code>names</code></p> <blockquote><p>The list of received parameters.</p> <p>You can specify a comma-separated list of parameter names, for example:<code>/api/v2/appparams/1?names=name,mypar</code>.</p></blockquote></li></ul> <p><strong>Response</strong></p> <ul><li><p><code>list</code></p> <blockquote><p>Each element of the array contains the following parameters.</p> <ul><li><code>name</code>, the name of the parameter.</li> <li><code>value</code>, the value of the parameter.</li> <li><code>conditions</code>, change the permissions of the parameters.</li></ul></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;list&quot;: [{ 
+        &quot;name&quot;: &quot;name&quot;,
+        &quot;value&quot;: &quot;MyState&quot;,
+        &quot;conditions&quot;: &quot;true&quot;,
+    }, 
+    { 
+        &quot;name&quot;: &quot;mypar&quot;,
+        &quot;value&quot;: &quot;My value&quot;,
+        &quot;conditions&quot;: &quot;true&quot;,
+    }, 
+    ]
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_ECOSYSTEM</em></p> <h3 id="appparam-appid-name"><a href="#appparam-appid-name" class="header-anchor">#</a> appparam/{appid}/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns the parameter <strong>{appid}</strong> of the application <strong>{name}</strong> in the current or specified ecosystem
+The information related to the</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/appparam/{appid}/{name}[?ecosystem=1]
+</code></pre></div><ul><li><p><code>appid</code></p> <blockquote><p>Application ID.</p></blockquote></li> <li><p><code>name</code></p> <blockquote><p>The name of the requested parameter.</p></blockquote></li> <li><p><code>ecosystem</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Ecosystem ID (optional parameter).</p> <p>Returns the current ecosystem by default.</p></blockquote></li></ul> <p><strong>Response</strong></p> <ul><li><p><code>id</code></p> <blockquote><p>Parameter ID.</p></blockquote></li> <li><p><code>name</code></p> <blockquote><p>Parameter name.</p></blockquote></li> <li><p><code>value</code></p> <blockquote><p>The parameter value.</p></blockquote></li> <li><p><code>conditions</code></p> <blockquote><p>Permission to change parameters.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;id&quot;: &quot;10&quot;,
+    &quot;name&quot;: &quot;par&quot;,
+    &quot;value&quot;: &quot;My value&quot;,
+    &quot;conditions&quot;: &quot;true&quot;
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_ECOSYSTEM, E_PARAMNOTFOUND</em></p> <h3 id="ecosystemparams"><a href="#ecosystemparams" class="header-anchor">#</a> ecosystemparams </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns a list of ecosystem parameters.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/ecosystemparams/[?ecosystem=... &amp;amp;names=...]
+</code></pre></div><ul><li><p><code>ecosystem</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Ecosystem ID. if not specified, the current ecosystem ID will be returned.</p></blockquote></li> <li><p><code>names</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>List of request parameters, separated by commas.</p> <p>For example: <code>/api/v2/ecosystemparams/?names=name,currency,logo</code>.</p></blockquote></li></ul> <p><strong>Response</strong></p> <ul><li><p><code>list</code></p> <blockquote><p>Each element of the array contains the following parameters.</p> <ul><li><code>name</code></li></ul> <blockquote><p>Parameter name.</p></blockquote> <ul><li><code>value</code></li></ul> <blockquote><p>Parameter value.</p></blockquote> <ul><li><code>conditions</code></li></ul> <blockquote><p>Change permissions for parameters.</p></blockquote></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;list&quot;: [{ 
+        &quot;name&quot;: &quot;name&quot;,
+        &quot;value&quot;: &quot;MyState&quot;,
+        &quot;conditions&quot;: &quot;true&quot;,
+    }, 
+    { 
+        &quot;name&quot;: &quot;currency&quot;,
+        &quot;value&quot;: &quot;MY&quot;,
+        &quot;conditions&quot;: &quot;true&quot;,
+    }, 
+    ]
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_ECOSYSTEM</em></p> <h3 id="ecosystemparam-name"><a href="#ecosystemparam-name" class="header-anchor">#</a> ecosystemparam/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns information about the parameter <strong>{name}</strong> in the current or specified ecosystem.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/ecosystemparam/{name}[?ecosystem=1]
+</code></pre></div><ul><li><p><code>name</code></p> <blockquote><p>The name of the requested parameter.</p></blockquote></li> <li><p><code>ecosystem</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>The default is to return the current ecosystem ID.</p></blockquote></li></ul> <p><strong>Response</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Parameter name.</p></blockquote></li> <li><p><code>value</code></p> <blockquote><p>The parameter value.</p></blockquote></li> <li><p><code>conditions</code></p> <blockquote><p>Permission to change parameters.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;name&quot;: &quot;currency&quot;,
+    &quot;value&quot;: &quot;MYCUR&quot;,
+    &quot;conditions&quot;: &quot;true&quot;
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_ECOSYSTEM</em></p> <h3 id="tables-limit-offset"><a href="#tables-limit-offset" class="header-anchor">#</a> tables/[?limit=... &amp;offset=... ] </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns a list of data tables for the current ecosystem. You can set the offset and the number of entries.</p> <p><strong>Request</strong></p> <ul><li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Number of entries, default 100, maximum 1000.</p></blockquote></li> <li><p><code>offset</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Offset, default is 0.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/tables?limit=... &amp;amp;offset=...
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>count</code></p> <blockquote><p>The total number of entries in the data table.</p></blockquote></li> <li><p><code>list</code></p> <blockquote><p>Each element of the array contains the following parameters.</p> <blockquote><ul><li><code>name</code></li></ul> <blockquote><p>Data table name without prefix.</p></blockquote> <ul><li><code>count</code></li></ul> <blockquote><p>The number of entries in the data table.</p></blockquote></blockquote></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: &quot;100&quot;
+    &quot;list&quot;: [{ 
+        &quot;name&quot;: &quot;accounts&quot;,
+        &quot;count&quot;: &quot;10&quot;,
+    }, 
+    { 
+        &quot;name&quot;: &quot;citizens&quot;,
+        &quot;count&quot;: &quot;5&quot;,
+   }, 
+    ]
+} 
+</code></pre></div><h3 id="table-name"><a href="#table-name" class="header-anchor">#</a> table/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns information about the current ecosystem request data table.</p> <p><strong>Request</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Data table name.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/table/{table_name}
+</code></pre></div><p>Returns the following field information.</p> <ul><li><p><code>name</code></p> <blockquote><p>Data table name.</p></blockquote></li> <li><p><code>insert</code></p> <blockquote><p>Permission to add new entries.</p></blockquote></li> <li><p><code>new_column</code></p> <blockquote><p>Add field permissions.</p></blockquote></li> <li><p><code>update</code></p> <blockquote><p>Change entry permissions.</p></blockquote></li> <li><p><code>columns</code></p> <blockquote><p>Array of field-related information.</p> <blockquote><ul><li><code>name</code></li></ul> <blockquote><p>Field name.</p></blockquote> <ul><li><code>type</code></li></ul> <blockquote><p>Field data type.</p></blockquote> <ul><li><code>perm</code></li></ul> <blockquote><p>Change the permissions for the field value.</p></blockquote></blockquote></blockquote></li></ul> <h3 id="list-name-limit-offset-columns"><a href="#list-name-limit-offset-columns" class="header-anchor">#</a> list/{name}[?limit=... &amp;offset=... &amp;columns=... ] </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/
+Returns a list of the specified data table entries in the current ecosystem. You can set the offset and the number of entries.</p> <p><strong>Request</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Data table name.</p></blockquote></li> <li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Number of entries, default 25 entries.</p></blockquote></li> <li><p><code>offset</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Offset, default is 0.</p></blockquote></li> <li><p><code>columns</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>A comma-separated list of requested columns, if not specified, all columns will be returned. The id column will be returned in all cases.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/list/mytable?columns=name
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>count</code></p> <blockquote><p>Total number of entries.</p></blockquote></li> <li><p><code>list</code></p> <blockquote><p>Each element of the array contains the following parameters.</p> <blockquote><ul><li><code>id</code></li></ul> <blockquote><p>Entry ID.</p></blockquote> <ul><li>The sequence of request columns.</li></ul></blockquote></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: &quot;10&quot;
+    &quot;list&quot;: [{ 
+        &quot;id&quot;: &quot;1&quot;,
+        &quot;name&quot;: &quot;John&quot;,
+    }, 
+    { 
+        &quot;id&quot;: &quot;2&quot;,
+        &quot;name&quot;: &quot;Mark&quot;,
+   }, 
+    ]
+} 
+</code></pre></div><h3 id="sections-limit-offset-lang"><a href="#sections-limit-offset-lang" class="header-anchor">#</a> sections[?limit=... &amp;offset=... &amp;lang=] </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns the <em>sections</em> of the current ecosystem
+List of table entries, you can set the offset and the number of entries.</p> <p>If <em>role_access</em>
+field contains a list of roles and does not include the current role, no record will be returned. <em>title</em>
+The data in the field will be replaced by the <em>Accept-Language</em> language resource in the request header.</p> <p><strong>Request</strong></p> <ul><li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Number of entries, default 25 entries.</p></blockquote></li> <li><p><code>offset</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Offset, default is 0.</p></blockquote></li> <li><p><code>lang</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>This field specifies the multilingual resource code or localization, e.g., <em>en, it</em>. If the specified multilingual resource is not found, e.g., <em>en-US</em>, then the multilingual resource group in
+Search in <em>en</em>.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/sections
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>count</code></p> <blockquote><p><em>sections</em> Total number of table entries.</p></blockquote></li> <li><p><code>list</code></p> <blockquote><p>Each element of the array contains information about all columns in the actions table.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: &quot;2&quot;
+    &quot;list&quot;: [{
+        &quot;id&quot;: &quot;1&quot;,
+        &quot;title&quot;: &quot;Development&quot;,
+       &quot;urlpage&quot;: &quot;develop&quot;,
+       ...
+    },
+    ]
+}
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_TABLENOTFOUND</em></p> <h3 id="row-name-id-columns"><a href="#row-name-id-columns" class="header-anchor">#</a> row/{name}/{id}[?columns=] </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns the entry for the specified data table in the current ecosystem. You can specify the columns to be returned.</p> <p><strong>Request</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Data table name.</p></blockquote></li> <li><p><code>id</code></p> <blockquote><p>Entry ID.</p></blockquote></li> <li><p><code>columns</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>A comma-separated list of requested columns, if not specified, all columns will be returned. The id column will be returned in all cases.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/row/mytable/10?columns=name
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>value</code></p> <blockquote><p>Array of received column values</p> <blockquote><ul><li><code>id</code></li></ul> <blockquote><p>Entry ID.</p></blockquote> <ul><li>The sequence of request columns.</li></ul></blockquote></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;values&quot;: {
+    &quot;id&quot;: &quot;10&quot;,
+    &quot;name&quot;: &quot;John&quot;,
+    }
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_NOTFOUND</em></p> <h3 id="row-name-colorn-id"><a href="#row-name-colorn-id" class="header-anchor">#</a> row/{name}/{column}/{id} </h3> <p>[Authorization] (#authorization)</p> <p><strong>GET</strong>/ Return to the entry of the data table specified in the current ecosystem. You can specify columns to be returned.</p> <p><strong>Request</strong></p> <ul><li><p><code>Name</code></p> <blockquote><p>Data table name.</p></blockquote></li> <li><p><code>colorn</code></p> <blockquote><p>Data list name.</p></blockquote></li> <li><p><code>ID</code></p> <blockquote><p>Stripe ID.</p></blockquote></li> <li><p><code>columns</code> [omitempty] (#omitempty)</p> <blockquote><p>The list of request lists is separated by commas. If it is not specified, all columns will be returned. In all cases, the ID column will be returned.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/row/mytable/name/John?columns=name
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>value</code></p> <blockquote><p>Array of receiving column values
+Forecast</p> <ul><li><code>ID</code></li></ul> <blockquote><blockquote><p>Strip ID.</p></blockquote></blockquote> <ul><li>-The sequence of the request column.</li></ul></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;values&quot;: {
+    &quot;id&quot;: &quot;10&quot;,
+    &quot;name&quot;: &quot;John&quot;,
+    }
+}   
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_NOTFOUND</em></p> <h3 id="systemparams"><a href="#systemparams" class="header-anchor">#</a> systemparams </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns a list of platform parameters.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/systemparams/[?names=...]
+</code></pre></div><ul><li><p><code>names</code> <a href="#omitempty">Omitempty</a></p> <p>A list of request parameters, separated by commas. For example
+<code>/api/v2/systemparams/?names=max_columns,max_indexes</code>.</p></li></ul> <p><strong>Response</strong></p> <ul><li><p><code>list</code></p> <blockquote><p>Each element of the array contains the following parameters.</p> <blockquote><ul><li><code>name</code></li></ul> <blockquote><p>Parameter name.</p></blockquote> <ul><li><code>value</code></li></ul> <blockquote><p>Parameter values.</p></blockquote> <ul><li><code>conditions</code></li></ul> <blockquote><p>Change the permission of the parameter.</p></blockquote></blockquote></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;list&quot;: [{ 
+        &quot;name&quot;: &quot;max_columns&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;conditions&quot;: &quot;ContractAccess(&quot;@1UpdateSysParam&quot;)&quot;,
+    }, 
+    { 
+        &quot;name&quot;: &quot;max_indexes&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;conditions&quot;: &quot;ContractAccess(&quot;@1UpdateSysParam&quot;)&quot;,
+    }, 
+    ]
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_PARAMNOTFOUND</em></p> <h3 id="history-name-id"><a href="#history-name-id" class="header-anchor">#</a> history/{name}/{id} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns the change record for the entry in the specified data table in the current ecosystem.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/history?name=contracts&amp;amp;id=5
+</code></pre></div><blockquote><ul><li><code>name</code></li></ul> <p>Data Table Name.</p> <ul><li><code>id</code></li></ul> <blockquote><p>Entry ID.</p></blockquote></blockquote> <p><strong>Response</strong></p> <blockquote><ul><li><code>list</code></li></ul> <p>Each element of the array contains a change record for the requested entry.</p></blockquote> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;list&quot;: [
+        {
+            &quot;name&quot;: &quot;default_page&quot;,
+            &quot;value&quot;: &quot;P(class, Default Ecosystem Page)&quot;
+        },
+        {
+            &quot;menu&quot;: &quot;default_menu&quot;
+        }
+    ]
+}
+</code></pre></div><h3 id="interface-page-menu-snippet-name"><a href="#interface-page-menu-snippet-name" class="header-anchor">#</a> interface/{page|menu|snippet}/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns the current ecosystem in the specified data table (pages, menu or snippet) <em>name</em>
+The entry for the field.</p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/interface/page/default_page
+/api/v2/interface/menu/default_menu
+/api/v2/interface/snippet/welcome
+</code></pre></div><p><strong>Request</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Specifies the name of the entry in the table.</p></blockquote></li></ul> <p><strong>Response</strong></p> <ul><li><p><code>id</code></p> <blockquote><p>Entry ID.</p></blockquote></li> <li><p><code>name</code></p> <blockquote><p>Entry name.</p></blockquote></li> <li><p><code>other</code></p> <blockquote><p>Other columns of the table.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;name&quot;: &quot;default_page&quot;,
+    &quot;value&quot;: &quot;P(Page content)&quot;,
+    &quot;default_menu&quot;: &quot;default_menu&quot;,
+    &quot;validate_count&quot;: 1
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_QUERY</em>, <em>E_NOTFOUND</em></p> <h2 id="contract-function-interface"><a href="#contract-function-interface" class="header-anchor">#</a> Contract Function Interface </h2> <h3 id="contracts-limit-offset"><a href="#contracts-limit-offset" class="header-anchor">#</a> contracts[?limit=... &amp;offset=... ] </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns a list of contracts in the current ecosystem, with the ability to set offsets and the number of entries.</p> <p><strong>Request</strong></p> <ul><li><p><code>limit</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Number of entries, default 25 entries.</p></blockquote></li> <li><p><code>offset</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Offset, default is 0.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/contracts
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>count</code></p> <blockquote><p>Total number of entries.</p></blockquote></li> <li><p><code>list</code></p> <blockquote><p>Each element of the array contains the following parameters.</p> <blockquote><ul><li><code>id</code></li></ul> <blockquote><p>Contract ID.</p></blockquote> <ul><li><code>name</code></li></ul> <blockquote><p>Contract name.</p></blockquote> <ul><li><code>value</code></li></ul> <blockquote><p>Contract contents.</p></blockquote> <ul><li><code>wallet_id</code></li></ul> <blockquote><p>The account address to which the contract is tied.</p></blockquote> <ul><li><code>address</code></li></ul> <blockquote><p>Contract-bound wallet address <code>XXXX-... -XXXX</code>.</p></blockquote> <ul><li><code>ecosystem_id</code></li></ul> <blockquote><p>The ecosystem ID to which the contract belongs.</p></blockquote> <ul><li><code>app_id</code></li></ul> <blockquote><p>The application ID to which the contract belongs.</p></blockquote> <ul><li><code>conditions</code></li></ul> <blockquote><p>Change the permission of the contract.</p></blockquote> <ul><li><code>token_id</code></li></ul> <blockquote><p>The ID of the ecosystem where the pass is used to pay the contract fee.</p></blockquote></blockquote></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;count&quot;: &quot;10&quot;
+    &quot;list&quot;: [{ 
+        &quot;id&quot;: &quot;1&quot;,
+        &quot;name&quot;: &quot;MainCondition&quot;,
+        &quot;token_id&quot;: &quot;1&quot;, 
+        &quot;wallet_id&quot;: &quot;0&quot;, 
+        &quot;value&quot;: &quot;contract MainCondition {
+                conditions {
+                if(EcosysParam(`founder_account`)!=$key_id)
+                {
+                    warning `Sorry, you dont have access to this action.`
+                }
+                }
+            }&quot;,
+            &quot;address&quot;:&quot;0000-0000-0000-0000-0000&quot;,
+            &quot;conditions&quot;:&quot;ContractConditions(`MainCondition`)&quot;
+        },
+    ...
+    ]
+ }
+</code></pre></div><h3 id="contract-name"><a href="#contract-name" class="header-anchor">#</a> contract/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>GET</strong>/ Returns information about the specified contract. The default is to query the contract in the current ecosystem.</p> <p><strong>Request</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Contract name.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/contract/mycontract
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>id</code></p> <blockquote><p>Contract ID in VM.</p></blockquote></li> <li><p><code>name</code></p> <blockquote><p>Contract name with ecosystem ID <code>@1MainCondition</code>.</p></blockquote></li> <li><p><code>state</code></p> <blockquote><p>The ecosystem ID of the contract.</p></blockquote></li> <li><p><code>walletid</code></p> <blockquote><p>The address of the account to which the contract is tied.</p></blockquote></li> <li><p><code>tokenid</code></p> <blockquote><p>The ecosystem ID of the pass that is used to pay for the contract.</p></blockquote></li> <li><p><code>address</code></p> <blockquote><p>Contract-bound wallet address <code>XXXX-... -XXXX</code>.</p></blockquote></li> <li><p><code>tableid</code></p> <p>ID of the entry in the &gt; <em>contracts</em> table where the contract is located.</p></li> <li><p><code>fields</code></p> <blockquote><p>The array contains structural information for each parameter of the contract <strong>data</strong> section.</p> <blockquote><ul><li><code>name</code></li></ul> <blockquote><p>Parameter name.</p></blockquote> <ul><li><code>type</code></li></ul> <p>Parameter type.</p> <ul><li><code>optional</code></li></ul> <blockquote><p>Parameter options, `true` means optional parameters, `false` means mandatory parameters.</p></blockquote></blockquote></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;fields&quot; : [
+        {&quot;name&quot;: &quot;amount&quot;, &quot;type&quot;: &quot;int&quot;, &quot;optional&quot;: false},
+        {&quot;name&quot;: &quot;name&quot;, &quot;type&quot;: &quot;string&quot;, &quot;optional&quot;: true}
+    ],
+    &quot;id&quot;: 150,
+    &quot;name&quot;:&quot;@1mycontract&quot;,
+    &quot;tableid&quot; : 10,
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_CONTRACT</em></p> <h3 id="sendtx"><a href="#sendtx" class="header-anchor">#</a> sendTX </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>POST</strong>/
+Receives the transactions in the parameters and adds them to the transaction queue, returning a transaction hash if the request is executed successfully. This hash yields the corresponding transaction within the block and is included in the error text message in case of an Error Response.</p> <p><strong>Request</strong></p> <ul><li><p><code>tx_key</code></p> <blockquote><p>Transaction content, this parameter can specify any name and supports receiving multiple transactions.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/sendTx
+
+Headers:
+Content-Type: multipart/form-data
+
+Parameters:
+tx1 - Transaction 1
+txN - Trading N
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>hashes</code></p> <blockquote><p>Transaction hash arrays.</p> <blockquote><ul><li><code>tx1</code></li></ul> <blockquote><p>Trading 1 hash.</p></blockquote> <ul><li><code>txN</code></li></ul> <blockquote><p>Trading N's hash.</p></blockquote></blockquote></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;hashes&quot;: {
+        &quot;tx1&quot;: &quot;67afbc435634..... &quot;,
+        &quot;txN&quot;: &quot;89ce4498eaf7..... &quot;,
+}
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_LIMITTXSIZE</em>,<em>E_BANNED</em></p> <h3 id="txstatus"><a href="#txstatus" class="header-anchor">#</a> txstatus </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>POST</strong>/
+Returns the block ID and error message for the specified transaction hash. If the return values for the block ID and error text message are null, then the transaction is not yet contained in the block.</p> <p><strong>Request</strong></p> <ul><li><p><code>data</code></p> <blockquote><p>JSON list of transaction hashes.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>{&quot;hashes&quot;:[&quot;contract1hash&quot;, &quot;contract2hash&quot;, &quot;contract3hash&quot;]}
+</code></pre></div><div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/txstatus/
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>results</code></p> <blockquote><p>The transaction hash is used as the key and the transaction detail is used as the value in the data dictionary.</p> <p><code>hash</code></p> <blockquote><p>Trading Hash.</p> <ul><li><code>blockid</code></li></ul> <p>If the transaction execution succeeds, the block ID is returned; if the transaction execution fails, the</p> <blockquote><p><code>blockid</code> for [0]{.title-ref}.</p></blockquote> <ul><li><code>result</code></li></ul> <blockquote><p>Returns the result of the transaction via the <strong>$result</strong> variable.</p></blockquote> <ul><li><code>errmsg</code></li></ul> <p>Returns an error text message if the execution of the transaction fails.</p></blockquote></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{ &quot;results&quot;:
+  {
+    &quot;hash1&quot;: {
+         &quot;blockid&quot;: &quot;3123&quot;,
+         &quot;result&quot;: &quot;&quot;,
+     },
+     &quot;hash2&quot;: {
+          &quot;blockid&quot;: &quot;3124&quot;,
+          &quot;result&quot;: &quot;&quot;,
+     }
+   }
+ }
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_HASHWRONG, E_HASHNOTFOUND</em></p> <h3 id="txinfo-hash"><a href="#txinfo-hash" class="header-anchor">#</a> txinfo/{hash} </h3> <p>This request does not require login authorization.</p> <p><strong>GET</strong>/</p> <p>Returns information about the transaction for the specified hash, including the block ID and the number of confirmations. Also returns the contract name and its associated parameters, if optional parameters are specified.</p> <p><strong>Request</strong></p> <ul><li><p><code>hash</code></p> <blockquote><p>Transaction hash.</p></blockquote></li> <li><p><code>contractinfo</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Contract detail parameter identifier, to get the contract details related to this transaction, specify <code>contractinfo=1</code>.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/txinfo/c7ef367b494c7ce855f09aa3f1f2af7402535ea627fa615ebd63d437db5d0c8a?contractinfo=1
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>blockid</code></p> <blockquote><p>If the value is <code>0</code>, then no transaction was found for that hash.</p></blockquote></li> <li><p><code>confirm</code></p> <blockquote><p>The number of acknowledgements for this block <em>blockid</em>.</p></blockquote></li> <li><p><code>data</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>If <code>contentinfo=1</code> is specified, the contract details are returned to this parameter.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;blockid&quot;: &quot;9&quot;,
+    &quot;confirm&quot;: 11,
+    &quot;data&quot;: {
+        &quot;block&quot;: &quot;9&quot;,
+        &quot;contract&quot;: &quot;@1NewContract&quot;,
+        &quot;params&quot;: {
+            &quot;ApplicationId&quot;: 1,
+            &quot;Conditions&quot;: &quot;true&quot;,
+            &quot;Value&quot;: &quot;contract crashci4b {\n\t\t\tdata {}\n\t\t\t}&quot;
+        }
+    }
+}
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_HASHWRONG</em></p> <h3 id="txinfomultiple"><a href="#txinfomultiple" class="header-anchor">#</a> txinfoMultiple </h3> <p>This request does not require login authorization.</p> <p><strong>GET</strong>/</p> <p>Returns the transaction-related information for the specified hash.</p> <p><strong>Request</strong></p> <ul><li><p><code>data</code></p> <ul><li><code>hashes</code></li></ul> <blockquote><p>A list of transaction hashes.</p></blockquote></li> <li><p><code>contractinfo</code> <a href="#omitempty">Omitempty</a></p> <blockquote><p>Contract detail parameter identifier, to get the contract details related to this transaction, specify <code>contractinfo=1</code>.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>data: {&quot;hashes&quot;:[&quot;contract1hash&quot;, &quot;contract2hash&quot;, &quot;contract3hash&quot;]}
+</code></pre></div><div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/txinfoMultiple
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>results</code></p> <blockquote><p>The transaction hash is used as the key and the transaction detail is used as the value in the data dictionary.</p> <blockquote><p><code>hash</code></p> <blockquote><p>Trading Hash.</p></blockquote> <blockquote><p><code>blockid</code></p></blockquote></blockquote> <p>If the value is <code>0</code>, then no transaction was found for that hash.</p> <blockquote><blockquote><p><code>confirm</code></p></blockquote> <blockquote><p>Number of acknowledgements for this block <em>blockid</em>.</p></blockquote> <blockquote><p><code>data</code></p></blockquote> <blockquote><p>If <code>contentinfo=1</code> is specified, the contract details are returned to this parameter.</p></blockquote></blockquote></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{ &quot;results&quot;:
+  { 
+    &quot;hash1&quot;: {
+         &quot;blockid&quot;: &quot;3123&quot;,
+         &quot;confirm&quot;: &quot;5&quot;,
+     },
+     &quot;hash2&quot;: {
+          &quot;blockid&quot;: &quot;3124&quot;,
+          &quot;confirm&quot;: &quot;3&quot;,
+     }
+   }
+ }
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_HASHWRONG</em></p> <h3 id="page-validators-count-name"><a href="#page-validators-count-name" class="header-anchor">#</a> /page/validators_count/{name} </h3> <p>This request does not require login authorization.</p> <p><strong>GET</strong></p> <p>Returns the number of nodes to be validated for the specified page.</p> <p><strong>Request</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Page name with ecosystem ID in the format <code>@ecosystem_id%%page_name%</code>, for example
+<code>@1main_page</code>.
+If you don't have an ecosystem ID, then search in the first ecosystem page by default</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/page/validators_count/@2page_name
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>validate_count</code></p> <blockquote><p>Specifies the number of nodes to be validated for the page.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{&quot;validate_count&quot;:1}
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_NOTFOUND, E_SERVER</em></p> <h3 id="content-menu-page-name"><a href="#content-menu-page-name" class="header-anchor">#</a> content/menu|page/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>POST</strong></p> <p>Returns a tree of code JSON objects for the specified page or menu name, which is the result of processing by the template engine.</p> <p><strong>Request</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Page name or menu name with ecosystem ID in the format <code>@ecosystem_id%%page_name%</code>, for example
+<code>@1main_page</code>.
+If no ecosystem ID is included, then search for the current ecosystem page or menu by default</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/content/page/default
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>menu</code> || <code>title</code></p> <blockquote><p>request <em>content/page/...</em> The name of the menu to which the page belongs when requesting it.</p></blockquote></li> <li><p><code>menutree</code></p> <blockquote><p>request <em>content/page/...</em> The page's menu JSON object tree when requested.</p></blockquote></li> <li><p><code>title</code> --head for the menu <em>content/menu/...</em></p> <blockquote><p>request <em>content/menu/...</em> Menu title when requested.</p></blockquote></li> <li><p><code>tree</code></p> <blockquote><p>Page or menu JSON object tree.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;tree&quot;: {&quot;type&quot;:&quot;......&quot; , 
+          &quot;children&quot;: [
+               {...} ,
+               {...}
+          ]
+    },
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><code>E_NOTFOUND</code></p> <h3 id="content-source-name"><a href="#content-source-name" class="header-anchor">#</a> content/source/{name} </h3> <p><a href="#authorization">Authorization</a></p> <p><strong>POST</strong></p> <p>Returns a tree of coded JSON objects for the specified page name. Does not execute any functions or receive any data. The returned JSON object tree corresponds to the page template and can be used in the visual page designer. If the page is not found, a 404 error is returned.</p> <p><strong>Request</strong></p> <ul><li><p><code>name</code></p> <blockquote><p>Page name with ecosystem ID in the format <code>@ecosystem_id%%page_name%</code>, for example
+<code>@1main_page</code>.
+If no ecosystem ID is included, then search for the current eco-page by default.</p></blockquote></li></ul> <p><strong>Response</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/content/source/default
+</code></pre></div><ul><li><p><code>tree</code></p> <blockquote><p>JSON object tree of the page.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;tree&quot;: {&quot;type&quot;:&quot;......&quot; , 
+          &quot;children&quot;: [
+               {...} ,
+               {...}
+          ]
+    },
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_NOTFOUND, E_SERVER</em></p> <h3 id="content-hash-name"><a href="#content-hash-name" class="header-anchor">#</a> content/hash/{name} </h3> <p><strong>POST</strong></p> <p>Returns a SHA256 hash of the specified page name, or a 404 error if the page cannot be found.</p> <p>This request does not require login authorization. To receive the correct hash when making requests to other nodes, you must also pass
+<em>ecosystem,keyID,roleID,isMobile</em>
+parameter. To receive pages from other ecosystems, the ecosystem ID must be prefixed to the page name. For example: <code>@2mypage</code>.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/content/hash/default
+</code></pre></div><ul><li><p><code>name</code></p> <blockquote><p>The name of the page with the ecosystem ID.</p></blockquote></li> <li><p><code>ecosystem</code></p> <blockquote><p>Ecosystem ID.</p></blockquote></li> <li><p><code>keyID</code></p> <blockquote><p>Account address.</p></blockquote></li> <li><p><code>roleID</code></p> <blockquote><p>Role ID.</p></blockquote></li></ul> <p><strong>Response</strong></p> <ul><li><p><code>hash</code></p> <blockquote><p>Hexadecimal hash.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;hash&quot;: &quot;b631b8c28761b5bf03c2cfbc2b49e4b6ade5a1c7e2f5b72a6323e50eae2a33c6&quot;
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_NOTFOUND, E_SERVER, E_HEAVYPAGE</em></p> <h3 id="content"><a href="#content" class="header-anchor">#</a> content </h3> <p><strong>POST</strong></p> <p>Returns the number of JSON objects for the page code from the <strong>template</strong> parameter,
+if the optional parameter <strong>source</strong> is specified as <code>true or 1</code>,
+then this JSON object tree does not perform any functions and receive data.
+This JSON object tree can be used in the visual page designer.</p> <p>This request does not require login authorization.</p> <p><strong>Request</strong></p> <ul><li><p><code>template</code></p> <blockquote><p>Page code.</p></blockquote></li> <li><p><code>source</code></p> <blockquote><p>If <code>true or 1</code> is specified, the JSON object tree does not perform any functions and receives data.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/content
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>tree</code></p> <blockquote><p>JSON object tree.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;tree&quot;: {&quot;type&quot;:&quot;......&quot; , 
+          &quot;children&quot;: [
+               {...} ,
+               {...}
+          ]
+    },
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_NOTFOUND, E_SERVER</em></p> <h3 id="maxblockid"><a href="#maxblockid" class="header-anchor">#</a> maxblockid </h3> <p><strong>GET</strong>/ Returns the highest block ID on the current node.</p> <p>This request does not require login authorization.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/maxblockid
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>max_block_id</code></p> <blockquote><p>The highest block ID on the current node.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;max_block_id&quot; : 341,
+}
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_NOTFOUND</em></p> <h3 id="block-id"><a href="#block-id" class="header-anchor">#</a> block/{id} </h3> <p><strong>GET</strong>/ Returns information about the specified block ID.</p> <p>This request does not require login authorization.</p> <p><strong>Request</strong></p> <ul><li><p><code>id</code></p> <blockquote><p>Block ID.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/block/32
+</code></pre></div><p><strong>Response</strong></p> <ul><li><p><code>hash</code></p> <blockquote><p>Block hash.</p></blockquote></li> <li><p><code>key_id</code></p> <blockquote><p>The address of the account that signed the block.</p></blockquote></li> <li><p><code>time</code></p> <blockquote><p>Block generation timestamp.</p></blockquote></li> <li><p><code>tx_count</code></p> <blockquote><p>Total number of transactions in the block.</p></blockquote></li> <li><p><code>rollbacks_hash</code></p> <blockquote><p>Block rollback hash.</p></blockquote></li> <li><p><code>node_position</code></p> <blockquote><p>The position of the block in the honor node list.</p></blockquote></li></ul> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;hash&quot;: &quot;1x4S5s/zNUTopP2YK43SppEyvT2O4DW5OHSpQfp5Tek=&quot;,
+    &quot;key_id&quot;: -118432674655542910,
+    &quot;time&quot;: 1551145365,
+    &quot;tx_count&quot;: 3,
+    &quot;rollbacks_hash&quot;: &quot;47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&quot;,
+    &quot;node_position&quot;: 0,
+} 
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_NOTFOUND</em></p> <h3 id="avatar-ecosystem-member"><a href="#avatar-ecosystem-member" class="header-anchor">#</a> avatar/{ecosystem}/{member} </h3> <p><strong>GET</strong>/ Returns the avatar of the user in the <em>member</em> table (available without login).</p> <p><strong>Request</strong></p> <ul><li><p><code>ecosystem</code></p> <blockquote><p>Ecosystem ID.</p></blockquote></li> <li><p><code>member</code></p> <blockquote><p>The user's account address. (xxxx-... -xxxx)</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/avatar/1/1234-2134-... -4321
+</code></pre></div><p><strong>Response</strong></p> <p>The request header <em>Content-Type</em> is the image type and the image data is returned in the response body.</p> <p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: image/png  
+</code></pre></div><p><strong>Error Response</strong></p> <p><em>E_NOTFOUND</em> <em>E_SERVER</em></p> <h3 id="config-centrifugo"><a href="#config-centrifugo" class="header-anchor">#</a> config/centrifugo </h3> <p><strong>GET</strong>/ Returns the host address and port of centrifugo.</p> <p>This request does not require login authorization.</p> <p><strong>Request</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>GET
+/api/v2/config/centrifugo
+</code></pre></div><p><strong>Response</strong></p> <p>Response result format <code>http://address:port</code>, e.g.: <code>http://127.0.0.1:8100</code>.</p> <p><strong>Error Response</strong></p> <p><em>E_SERVER</em></p> <h3 id="updnotificator"><a href="#updnotificator" class="header-anchor">#</a> updnotificator </h3> <p><strong>POST</strong>/</p> <p>(Discarded)</p> <p>Sends all messages that have not yet been sent to the centrifugo notification service. Sends only messages for the specified ecosystem and members.</p> <p>This request does not require login authorization.</p> <p><strong>Request</strong></p> <ul><li><p><code>id</code></p> <blockquote><p>Member's account address.</p></blockquote></li> <li><p><code>ecosystem</code></p> <blockquote><p>Ecosystem ID.</p></blockquote></li></ul> <div class="language-text extra-class"><pre class="language-text"><code>POST
+/api/v2/updnotificator
+</code></pre></div><p><strong>Response Example</strong></p> <div class="language-text extra-class"><pre class="language-text"><code>200 (OK)
+Content-Type: application/json
+{
+    &quot;result&quot;: true
+} 
+</code></pre></div><h3 id="special-instructions"><a href="#special-instructions" class="header-anchor">#</a> Special instructions </h3> <h4 id="omitempty"><a href="#omitempty" class="header-anchor">#</a> Omitempty </h4> <p>If the field has an omitempty attribute, it means that the field is an optional parameter</p> <h4 id="authorization"><a href="#authorization" class="header-anchor">#</a> Authorization </h4> <p>If the interface with Authorization tag, that this interface requires login authorization, add Authorization to the request header, example.</p> <p>key = Authorization
+value = &quot;Bearer + <a href="#login">login token</a>&quot;</p> <div class="language-text extra-class"><pre class="language-text"><code>Authorization Bearer eyJhbGciOiJI..... kBZgGIlPhfXNZJ73RiZtM
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/IBAX-io/documentation/edit/master/docs/it/reference/api2.md" target="_blank" rel="noopener noreferrer">Modifica questa pagina su GitHub</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">Ultimo aggiornamento:</span> <span class="time">6/7/2023, 18:59:03</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/it/reference/platform-parameters.html">
+        Platform Parameters 
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d049f7ab.js" defer></script><script src="/assets/js/2.8d94a0db.js" defer></script><script src="/assets/js/75.df47cbbc.js" defer></script>
+  </body>
+</html>
